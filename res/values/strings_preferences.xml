@@ -4,7 +4,7 @@
     <string name="preferences">Configuración</string>
     
     <string name="server_preferences">Configuración Servidor</string>
-    <string name="default_server_url">http://nicaumich.miserver.it.umich.edu/zika-zip</string>
+    <string name="default_server_url">http://nicaumich.miserver.it.umich.edu/zika-positivas</string>
     <string name="server_url">URL de servidor</string>
     <string name="check_server">Verificar en el servidor</string>
     <string name="check_wipe">Limpiar base de datos</string>
