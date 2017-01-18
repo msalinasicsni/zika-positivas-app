@@ -238,6 +238,8 @@ public class Zp05UltrasoundExamXml {
     private String imei;
     @Element(required=false)
     private Date today;
+    @Element(required=false)
+    private String version;
 
 
     public Date getUltDate() {

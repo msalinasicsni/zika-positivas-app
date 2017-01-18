@@ -237,6 +237,8 @@ public class Zp01StudyEntrySectionFtoKXml{
     private String imei;
     @Element(required=false)
     private Date today;
+    @Element(required=false)
+    private String version;
 
     public String getSeaPreg() {
         return seaPreg;
