@@ -449,6 +449,8 @@ public class Zp03MonthlyVisitXml {
     private String imei;
     @Element(required=false)
     private Date today;
+    @Element(required=false)
+    private String version;
 
     public Date getMonVisitDate() {
         return monVisitDate;

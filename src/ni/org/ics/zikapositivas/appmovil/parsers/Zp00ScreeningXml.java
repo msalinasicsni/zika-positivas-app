@@ -121,8 +121,9 @@ public class Zp00ScreeningXml {
 	private String imei;
 	@Element(required=false)
 	private Date today;
-	
-	
+	@Element(required=false)
+	private String version;
+
 	//Getters
 	public Date getScrVisitDate() {
 		return scrVisitDate;

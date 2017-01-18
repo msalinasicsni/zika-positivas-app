@@ -148,6 +148,8 @@ public class Zp04TrimesterVisitSectionFtoHXml {
     private String imei;
     @Element(required=false)
     private Date today;
+    @Element(required=false)
+    private String version;
 
 
     public String getTriBugNuisInd() {
