@@ -183,7 +183,7 @@ public class NewZp05UltrasoundExamActivity extends AbstractAsyncActivity {
 	                    "_id","jrFormId","displayName"};
 	            //cursor que busca el formulario
 	            Cursor c = getContentResolver().query(Constants.CONTENT_URI, projection,
-	                    "jrFormId = 'ZP05_Ultrasound' and displayName = 'Estudio ZIP Examen de Ultrasonido'", null, null);
+	                    "jrFormId = 'ZPos05_Ultrasound' and displayName = 'Zika Positivas Examen de Ultrasonido'", null, null);
 	            c.moveToFirst();
 	            //captura el id del formulario
 	            Integer id = Integer.parseInt(c.getString(0));

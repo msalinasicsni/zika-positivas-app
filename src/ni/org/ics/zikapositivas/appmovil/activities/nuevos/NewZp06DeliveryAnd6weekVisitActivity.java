@@ -19,13 +19,13 @@ import android.widget.Toast;
 import ni.org.ics.zikapositivas.appmovil.AbstractAsyncActivity;
 import ni.org.ics.zikapositivas.appmovil.MainActivity;
 import ni.org.ics.zikapositivas.appmovil.MyZikaPosApplication;
+import ni.org.ics.zikapositivas.appmovil.R;
 import ni.org.ics.zikapositivas.appmovil.database.ZikaPosAdapter;
 import ni.org.ics.zikapositivas.appmovil.domain.Zp06DeliveryAnd6weekVisit;
 import ni.org.ics.zikapositivas.appmovil.parsers.Zp06DeliveryAnd6weekVisitXml;
 import ni.org.ics.zikapositivas.appmovil.preferences.PreferencesActivity;
 import ni.org.ics.zikapositivas.appmovil.utils.Constants;
 import ni.org.ics.zikapositivas.appmovil.utils.FileUtils;
-import ni.org.ics.zikapositivas.appmovil.R;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -40,15 +40,18 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
 
     protected static final String TAG = NewZp06DeliveryAnd6weekVisitActivity.class.getSimpleName();
 
-    private ZikaPosAdapter zikaPosA;
-    private static Zp06DeliveryAnd6weekVisit mDelivery = new Zp06DeliveryAnd6weekVisit();
+    private ZikaPosAdapter zikaPos;
+    private static Zp06DeliveryAnd6weekVisit mDelivery = null;
 
-    public static final int ADD_TAMIZAJE_ODK = 1;
+    public static final int ADD_ZP06_ODK = 1;
+	public static final int EDIT_ZP06_ODK = 2;
 
     Dialog dialogInit;
     private SharedPreferences settings;
     private String username;
     private String mRecordId = "";
+	private Integer accion = 0;
+	private String event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +67,10 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
                 settings.getString(PreferencesActivity.KEY_USERNAME,
                         null);
         String mPass = ((MyZikaPosApplication) this.getApplication()).getPassApp();
-        zikaPosA = new ZikaPosAdapter(this.getApplicationContext(),mPass,false,false);
+        zikaPos = new ZikaPosAdapter(this.getApplicationContext(),mPass,false,false);
         mRecordId = getIntent().getExtras().getString(Constants.RECORDID);
         mDelivery = (Zp06DeliveryAnd6weekVisit) getIntent().getExtras().getSerializable(Constants.OBJECTO_ZP06);
+        event = getIntent().getExtras().getString(Constants.EVENT);
         createInitDialog();
     }
 
@@ -82,10 +86,10 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
         //to set the message
         TextView message =(TextView) dialogInit.findViewById(R.id.yesnotext);
         if (mDelivery!=null){
-            message.setText(getString(R.string.edit)+ " " + getString(R.string.main_maternal));
+            message.setText(getString(R.string.edit)+ " " + getString(R.string.maternal_b_10)+"?");
         }
         else{
-            message.setText(getString(R.string.add)+ " " + getString(R.string.main_maternal));
+            message.setText(getString(R.string.add)+ " " + getString(R.string.maternal_b_10)+"?");
         }
 
         //add some action to the buttons
@@ -139,7 +143,7 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent intent) {
-        if(requestCode == ADD_TAMIZAJE_ODK) {
+    	if(requestCode == ADD_ZP06_ODK||requestCode == EDIT_ZP06_ODK) {
             if(resultCode == RESULT_OK) {
                 Uri instanceUri = intent.getData();
                 //Busca la instancia resultado
@@ -173,29 +177,40 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
 
     private void addZp06DeliveryAnd6weekVisit() {
         try{
-            //campos de proveedor de collect
-            String[] projection = new String[] {
-                    "_id","jrFormId","displayName"};
-            //cursor que busca el formulario
-            Cursor c = getContentResolver().query(Constants.CONTENT_URI, projection,
-                    "jrFormId = 'ZP06_Delivery' and displayName = 'Estudio ZIP Parto y Visita  de Seis Semanas (Madre)'", null, null);
-            c.moveToFirst();
-            //captura el id del formulario
-            Integer id = Integer.parseInt(c.getString(0));
-            //cierra el cursor
-            if (c != null) {
-                c.close();
-            }
-            //forma el uri para ODK Collect
-            Uri formUri = ContentUris.withAppendedId(Constants.CONTENT_URI, id);
+        	Uri formUri;
+			if(mDelivery==null){
+	            //campos de proveedor de collect
+	            String[] projection = new String[] {
+	                    "_id","jrFormId","displayName"};
+	            //cursor que busca el formulario
+	            Cursor c = getContentResolver().query(Constants.CONTENT_URI, projection,
+	                    "jrFormId = 'ZPos06_Delivery' and displayName = 'Zika Positivas Parto y Visita  de Seis Semanas (Madre)'", null, null);
+	            c.moveToFirst();
+	            //captura el id del formulario
+	            Integer id = Integer.parseInt(c.getString(0));
+	            //cierra el cursor
+	            if (c != null) {
+	                c.close();
+	            }
+	            //forma el uri para ODK Collect
+	            formUri = ContentUris.withAppendedId(Constants.CONTENT_URI, id);
+	            accion = ADD_ZP06_ODK;
+			}
+			else{
+				//forma el uri para la instancia en ODK Collect
+				Integer id = mDelivery.getIdInstancia();
+				formUri = ContentUris.withAppendedId(Constants.CONTENT_URI_I,id);
+				accion = EDIT_ZP06_ODK;
+			}
             //Arranca la actividad ODK Collect en busca de resultado
             Intent odkA =  new Intent(Intent.ACTION_EDIT,formUri);
-            startActivityForResult(odkA, ADD_TAMIZAJE_ODK);
+            startActivityForResult(odkA, accion);
         }
         catch(Exception e){
             //No existe el formulario en el equipo
             Log.e(TAG, e.getMessage(), e);
             Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            finish();
         }
     }
 
@@ -205,7 +220,7 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
         try {
             Zp06DeliveryAnd6weekVisitXml zp06Xml = serializer.read(Zp06DeliveryAnd6weekVisitXml.class, source);
             mDelivery.setRecordId(mRecordId);
-            mDelivery.setRedcapEventName("XXXX");
+            mDelivery.setRedcapEventName(event);
 
             mDelivery.setDeliVisitDate(zp06Xml.getDeliVisitDate());
             mDelivery.setDeliVisitStatus(zp06Xml.getDeliVisitStatus());
@@ -354,13 +369,15 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
             // Presenta el error al parsear el xml
             Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             e.printStackTrace();
+            finish();
         }
     }
 
     // ***************************************
     // Private classes
     // ***************************************
-    private class SaveDataTask extends AsyncTask<String, Void, String> {
+    private class SaveDataTask extends AsyncTask<Integer, Void, String> {
+    	private Integer accionaRealizar = null;
         @Override
         protected void onPreExecute() {
             // before the request begins, show a progress indicator
@@ -368,16 +385,27 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
         }
 
         @Override
-        protected String doInBackground(String... values) {
+        protected String doInBackground(Integer... values) {
             try {
-                zikaPosA.open();
-                zikaPosA.crearZp06DeliveryAnd6weekVisit(mDelivery);
-                zikaPosA.close();
+            	accionaRealizar = values[0];
+    			try {
+    				zikaPos.open();
+    				if (accionaRealizar == ADD_ZP06_ODK){
+    					zikaPos.crearZp06DeliveryAnd6weekVisit(mDelivery);
+    				}
+    				else{
+    					zikaPos.editarZp06DeliveryAnd6weekVisit(mDelivery);
+    				}
+    				zikaPos.close();
+    			} catch (Exception e) {
+    				Log.e(TAG, e.getLocalizedMessage(), e);
+    				return "error";
+    			}
+    			return "exito";
             } catch (Exception e) {
                 Log.e(TAG, e.getLocalizedMessage(), e);
                 return "error";
             }
-            return "exito";
         }
 
         protected void onPostExecute(String resultado) {
@@ -393,5 +421,6 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
     // ***************************************
     private void showResult(String resultado) {
         Toast.makeText(getApplicationContext(),	resultado, Toast.LENGTH_LONG).show();
+        finish();
     }
 }

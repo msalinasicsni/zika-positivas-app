@@ -63,6 +63,26 @@
         <item>@string/maternal_b_9</item>
     </string-array>
     
+    <string-array name="menu_maternal_delivery">
+        <item>@string/maternal_b_4</item>
+        <item>@string/maternal_b_5</item>
+        <item>@string/maternal_b_6</item>
+        <item>@string/maternal_b_7</item>
+        <item>@string/maternal_b_8</item>
+        <item>@string/maternal_b_9</item>
+        <item>@string/maternal_b_10</item>
+    </string-array>
+    
+    <string-array name="menu_maternal_postpartum">
+        <item>@string/maternal_b_4</item>
+        <item>@string/maternal_b_5</item>
+        <item>@string/maternal_b_6</item>
+        <item>@string/maternal_b_7</item>
+        <item>@string/maternal_b_8</item>
+        <item>@string/maternal_b_9</item>
+        <item>@string/maternal_b_11</item>
+    </string-array>
+    
     <string-array name="menu_maternal_quincenal">
         <item>@string/maternal_b_4</item>
     </string-array>

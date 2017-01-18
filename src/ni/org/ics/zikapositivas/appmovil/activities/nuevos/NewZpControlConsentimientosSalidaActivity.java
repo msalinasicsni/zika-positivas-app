@@ -213,7 +213,7 @@ public class NewZpControlConsentimientosSalidaActivity extends AbstractAsyncActi
 			showToast(this.getString( R.string.code_error));
 			return false;
 		}
-		if(!(mCodigo.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
+		if(!(mCodigo.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
 			showToast(mCodigo + " " + getString(R.string.code_error));
 			mCodigoView.setText(null);
 			mCodigo=null;
@@ -339,7 +339,7 @@ public class NewZpControlConsentimientosSalidaActivity extends AbstractAsyncActi
 			String sb = intent.getStringExtra("SCAN_RESULT");
 			if (sb != null && sb.length() > 0) {
 				try{
-					if(!(sb.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
+					if(!(sb.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
 						showToast(sb + " " + getString(R.string.scan_error));
 						mCodigoView.setText(null);
 						mCodigo=null;

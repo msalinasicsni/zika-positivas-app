@@ -169,7 +169,7 @@ public class NewZp00ScreeningActivity extends AbstractAsyncActivity {
 			mRecordId = intent.getStringExtra("SCAN_RESULT");
 			if (mRecordId != null && mRecordId.length() > 0) {
 				try{
-					if(!(mRecordId.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
+					if(!(mRecordId.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
 						Toast.makeText(getApplicationContext(),	getString(R.string.scan_error), Toast.LENGTH_LONG).show();
 						createInitDialog();
 						return;
@@ -229,7 +229,7 @@ public class NewZp00ScreeningActivity extends AbstractAsyncActivity {
 					"_id","jrFormId","displayName"};
 			//cursor que busca el formulario
 			Cursor c = getContentResolver().query(Constants.CONTENT_URI, projection,
-					"jrFormId = 'zp00_screening' and displayName = 'Estudio ZIP Visita de Tamizaje'", null, null);
+					"jrFormId = 'ZPos00_screening' and displayName = 'Zika Positivas Visita de Tamizaje'", null, null);
 			c.moveToFirst();
 			//captura el id del formulario
 			Integer id = Integer.parseInt(c.getString(0));
@@ -283,7 +283,7 @@ public class NewZp00ScreeningActivity extends AbstractAsyncActivity {
 			mTamizaje.setScrConsentD(zp00Xml.getScrConsentD());
 			mTamizaje.setScrConsentE(zp00Xml.getScrConsentE());
 			mTamizaje.setScrConsentF(zp00Xml.getScrConsentF());
-			mTamizaje.setScrPreviousZip(zp00Xml.getScrPreviousZip());
+			mTamizaje.setScrPreviousZikaPos(zp00Xml.getScrPreviousZikaPos());
 			mTamizaje.setScrPreviousStudyId(zp00Xml.getScrPreviousStudyId());
 			mTamizaje.setScrPreStudyNa(zp00Xml.getScrPreStudyNa());
 			mTamizaje.setScrReasonNot(zp00Xml.getScrReasonNot());
@@ -343,7 +343,7 @@ public class NewZp00ScreeningActivity extends AbstractAsyncActivity {
 				public void onClick(DialogInterface dialog, int which) {
 					dialog.dismiss();
 					mRecordId = input.getText().toString(); 
-					if(!(mRecordId.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
+					if(!(mRecordId.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
 						Toast.makeText(getApplicationContext(),	getString(R.string.code_error), Toast.LENGTH_LONG).show();
 						createDialog(ADD_TAM_MANUAL);
 						return;

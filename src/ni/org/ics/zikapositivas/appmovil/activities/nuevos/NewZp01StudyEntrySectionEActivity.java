@@ -184,7 +184,7 @@ public class NewZp01StudyEntrySectionEActivity extends AbstractAsyncActivity {
 						"_id","jrFormId","displayName"};
 				//cursor que busca el formulario
 				Cursor c = getContentResolver().query(Constants.CONTENT_URI, projection,
-						"jrFormId = 'zp01_study_entry_e' and displayName = 'Estudio ZIP Visita inicial en el estudio_E'", null, null);
+						"jrFormId = 'ZPos01_study_entry_e' and displayName = 'Zika Positivas Visita inicial en el estudio_E'", null, null);
 				c.moveToFirst();
 				//captura el id del formulario
 				Integer id = Integer.parseInt(c.getString(0));

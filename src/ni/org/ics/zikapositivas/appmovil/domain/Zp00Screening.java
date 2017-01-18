@@ -37,7 +37,7 @@ public class Zp00Screening extends BaseMetaData{
     private String scrConsentD;
     private String scrConsentE;
     private String scrConsentF;
-    private String scrPreviousZip;
+    private String scrPreviousZikaPos;
     private String scrPreviousStudyId;
     private String scrPreStudyNa;
     private String scrReasonNot;
@@ -249,12 +249,12 @@ public class Zp00Screening extends BaseMetaData{
         this.scrConsentF = scrConsentF;
     }
 
-    public String getScrPreviousZip() {
-        return scrPreviousZip;
+    public String getScrPreviousZikaPos() {
+        return scrPreviousZikaPos;
     }
 
-    public void setScrPreviousZip(String scrPreviousZip) {
-        this.scrPreviousZip = scrPreviousZip;
+    public void setScrPreviousZikaPos(String scrPreviousZikaPos) {
+        this.scrPreviousZikaPos = scrPreviousZikaPos;
     }
 
     public String getScrPreviousStudyId() {

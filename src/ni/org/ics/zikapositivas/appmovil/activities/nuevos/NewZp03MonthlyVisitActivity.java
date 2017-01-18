@@ -184,7 +184,7 @@ public class NewZp03MonthlyVisitActivity extends AbstractAsyncActivity {
 	                    "_id","jrFormId","displayName"};
 	            //cursor que busca el formulario
 	            Cursor c = getContentResolver().query(Constants.CONTENT_URI, projection,
-	                    "jrFormId = 'ZP03_Monthly_Visit' and displayName = 'Estudio ZIP Visita Cuestionario Mensual'", null, null);
+	                    "jrFormId = 'ZPos03_Monthly_Visit' and displayName = 'Zika Positivas Visita Cuestionario Mensual'", null, null);
 	            c.moveToFirst();
 	          //captura el id del formulario
 	            Integer id = Integer.parseInt(c.getString(0));

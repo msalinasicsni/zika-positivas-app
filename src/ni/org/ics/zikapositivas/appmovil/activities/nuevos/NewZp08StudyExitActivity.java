@@ -171,7 +171,7 @@ public class NewZp08StudyExitActivity  extends AbstractAsyncActivity {
                     "_id","jrFormId","displayName"};
             //cursor que busca el formulario
             Cursor c = getContentResolver().query(Constants.CONTENT_URI, projection,
-                    "jrFormId = 'Zp08_Study_Exit' and displayName = 'Estudio ZIP Salida del Estudio'", null, null);
+                    "jrFormId = 'ZPos08_Study_Exit' and displayName = 'Zika Positivas Salida del Estudio'", null, null);
             c.moveToFirst();
             //captura el id del formulario
             Integer id = Integer.parseInt(c.getString(0));

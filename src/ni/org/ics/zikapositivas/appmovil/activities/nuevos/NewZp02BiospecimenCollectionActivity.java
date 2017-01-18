@@ -184,7 +184,7 @@ public class NewZp02BiospecimenCollectionActivity extends AbstractAsyncActivity 
 	                    "_id","jrFormId","displayName"};
 	            //cursor que busca el formulario
 	            Cursor c = getContentResolver().query(Constants.CONTENT_URI, projection,
-	                    "jrFormId = 'ZP02A__BiospecimenCollection' and displayName = 'Estudio ZIP Formulario para recoleccion de muestras biologicas'", null, null);
+	                    "jrFormId = 'ZPos02A__BiospecimenCollection' and displayName = 'Zika Positivas Formulario para recoleccion de muestras biologicas'", null, null);
 	            c.moveToFirst();
 	            //captura el id del formulario
 	            Integer id = Integer.parseInt(c.getString(0));

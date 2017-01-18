@@ -25,7 +25,7 @@
 
     <application
         android:allowBackup="false"
-        android:name=".MyZikaApplication"
+        android:name=".MyZikaPosApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
@@ -60,6 +60,10 @@
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosembarazo.UnscheduledVisitActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosembarazo.TwoWeekVisitActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosembarazo.DeliveryVisitActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosembarazo.PostPartumVisitActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name="ni.org.ics.zikapositivas.appmovil.preferences.PreferencesActivity" />
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp01StudyEntrySectionAtoDActivity"

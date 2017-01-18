@@ -37,7 +37,7 @@ public class Zp00ScreeningHelper {
 		cv.put(MainDBConstants.scrConsentD, screening.getScrConsentD());
 		cv.put(MainDBConstants.scrConsentE, screening.getScrConsentE());
 		cv.put(MainDBConstants.scrConsentF, screening.getScrConsentF());
-		cv.put(MainDBConstants.scrPreviousZip, screening.getScrPreviousZip());
+		cv.put(MainDBConstants.scrPreviousZikaPos, screening.getScrPreviousZikaPos());
 		cv.put(MainDBConstants.scrPreviousStudyId, screening.getScrPreviousStudyId());
 		cv.put(MainDBConstants.scrPreStudyNa, screening.getScrPreStudyNa());
 		cv.put(MainDBConstants.scrReasonNot, screening.getScrReasonNot());
@@ -90,7 +90,7 @@ public class Zp00ScreeningHelper {
 		mScreening.setScrConsentD(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrConsentD)));
 		mScreening.setScrConsentE(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrConsentE)));
 		mScreening.setScrConsentF(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrConsentF)));
-		mScreening.setScrPreviousZip(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrPreviousZip)));
+		mScreening.setScrPreviousZikaPos(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrPreviousZikaPos)));
 		mScreening.setScrPreviousStudyId(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrPreviousStudyId)));
 		mScreening.setScrPreStudyNa(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrPreStudyNa)));
 		mScreening.setScrReasonNot(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrReasonNot)));

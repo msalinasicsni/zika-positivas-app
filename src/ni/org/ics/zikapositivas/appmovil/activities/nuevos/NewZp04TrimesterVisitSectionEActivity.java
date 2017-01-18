@@ -188,7 +188,7 @@ public class NewZp04TrimesterVisitSectionEActivity extends AbstractAsyncActivity
 	                    "_id","jrFormId","displayName"};
 	            //cursor que busca el formulario
 	            Cursor c = getContentResolver().query(Constants.CONTENT_URI, projection,
-	                    "jrFormId = 'ZP04_Trimester_Visit_E' and displayName = 'Estudio ZIP Visita Cuestionario Trimestral_E'", null, null);
+	                    "jrFormId = 'ZPos04_Trimester_Visit_E' and displayName = 'Zika Positivas Visita Cuestionario Trimestral_E'", null, null);
 	            c.moveToFirst();
 	            //captura el id del formulario
 	            Integer id = Integer.parseInt(c.getString(0));
