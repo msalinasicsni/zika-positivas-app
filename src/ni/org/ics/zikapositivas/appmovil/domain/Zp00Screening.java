@@ -16,6 +16,7 @@ public class Zp00Screening extends BaseMetaData{
 	private String preScreenId;
 	private String redcapEventName;
     private Date scrVisitDate;
+    private String scrVerbalConsent;
     private String scrRemain;
     private Integer scrAge;
     private String scrAge15;
@@ -48,6 +49,7 @@ public class Zp00Screening extends BaseMetaData{
     private Date scrDateReviewed;
     private String scrIdDataEntry;
     private Date scrDateEntered;
+
     
     public String getRecordId() {
         return recordId;
@@ -79,6 +81,14 @@ public class Zp00Screening extends BaseMetaData{
 
     public void setScrVisitDate(Date scrVisitDate) {
         this.scrVisitDate = scrVisitDate;
+    }
+
+    public String getScrVerbalConsent() {
+        return scrVerbalConsent;
+    }
+
+    public void setScrVerbalConsent(String scrVerbalConsent) {
+        this.scrVerbalConsent = scrVerbalConsent;
     }
 
     public String getScrRemain() {
@@ -336,4 +346,8 @@ public class Zp00Screening extends BaseMetaData{
     public void setScrDateEntered(Date scrDateEntered) {
         this.scrDateEntered = scrDateEntered;
     }
+
+
+
+
 }

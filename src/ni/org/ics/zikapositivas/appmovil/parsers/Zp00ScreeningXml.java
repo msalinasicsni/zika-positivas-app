@@ -17,6 +17,8 @@ public class Zp00ScreeningXml {
 	 */
 	@Element(required=true)
     private Date scrVisitDate;
+	@Element(required=false)
+	private String scrVerbalConsent;
 	@Element(required=true)
     private String scrRemain;
 	@Element(required=false)
@@ -69,6 +71,7 @@ public class Zp00ScreeningXml {
     private String scrReasonNot;
 	@Element(required=false)
     private String scrReasonOther;
+
 	
 	
 	
@@ -121,13 +124,15 @@ public class Zp00ScreeningXml {
 	private String imei;
 	@Element(required=false)
 	private Date today;
-	@Element(required=false)
+
+	@Attribute(required=false)
 	private String version;
 
 	//Getters
 	public Date getScrVisitDate() {
 		return scrVisitDate;
 	}
+	public String getScrVerbalConsent() { return scrVerbalConsent; }
 	public String getScrRemain() {
 		return scrRemain;
 	}
@@ -260,6 +265,10 @@ public class Zp00ScreeningXml {
 	public void setToday(Date today) {
 		this.today = today;
 	}
-	
-	
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
 }

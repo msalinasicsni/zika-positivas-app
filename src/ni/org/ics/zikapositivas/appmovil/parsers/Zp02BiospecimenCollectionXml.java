@@ -473,7 +473,8 @@ public class Zp02BiospecimenCollectionXml{
     private String imei;
     @Element(required=false)
     private Date today;
-    @Element(required=false)
+
+    @Attribute(required=false)
     private String version;
 
     public Date getBscDov() {
@@ -1410,7 +1411,12 @@ public class Zp02BiospecimenCollectionXml{
 	public String getBarcode21() {
 		return barcode21;
 	}
-    
-    
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 }

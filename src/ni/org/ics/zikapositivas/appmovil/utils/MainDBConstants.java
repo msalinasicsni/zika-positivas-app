@@ -132,6 +132,7 @@ public class MainDBConstants {
 	public static final String scrDateReviewed = "scrDateReviewed";
 	public static final String scrIdDataEntry = "scrIdDataEntry";
 	public static final String scrDateEntered = "scrDateEntered";
+	public static final String scrVerbalConsent = "scrVerbalConsent";
 
 	//Crear tabla usuarios
 	public static final String CREATE_SCREENING_TABLE = "create table if not exists "
@@ -139,7 +140,8 @@ public class MainDBConstants {
 			+ recordId + " text not null, "
 			+ preScreenId + " text not null, "
 			+ redcapEventName + " text not null, "
-			+ scrVisitDate + " date, " 
+			+ scrVisitDate + " date, "
+			+ scrVerbalConsent + " text, "
 			+ scrRemain + " text, "
 			+ scrAge + " integer, "
 			+ scrAge15  + " text, " 
@@ -172,7 +174,7 @@ public class MainDBConstants {
 			+ scrDateReviewed + " date, "
 			+ scrIdDataEntry + " text, "
 			+ scrDateEntered + " date, "
-			+ recordDate + " date, " 
+			+ recordDate + " date, "
 			+ recordUser + " text, "
 			+ pasive + " text, "
 			+ ID_INSTANCIA + " integer," 

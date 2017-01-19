@@ -237,7 +237,8 @@ public class Zp01StudyEntrySectionFtoKXml{
     private String imei;
     @Element(required=false)
     private Date today;
-    @Element(required=false)
+
+    @Attribute(required=false)
     private String version;
 
     public String getSeaPreg() {
@@ -590,5 +591,10 @@ public class Zp01StudyEntrySectionFtoKXml{
     public void setToday(Date today) {
         this.today = today;
     }
-
+    public String getVersion() {
+        return version;
+    }
+    public void setVersion(String version) {
+        this.version = version;
+    }
 }

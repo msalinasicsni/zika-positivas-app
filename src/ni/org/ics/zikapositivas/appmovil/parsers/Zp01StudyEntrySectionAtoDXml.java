@@ -206,7 +206,8 @@ public class Zp01StudyEntrySectionAtoDXml{
     private String imei;
     @Element(required=false)
     private Date today;
-    @Element(required=false)
+
+    @Attribute(required=false)
     private String version;
 
     public Date getSeaVdate() {
@@ -492,6 +493,12 @@ public class Zp01StudyEntrySectionAtoDXml{
 	public String getSeaAddtOthDrugsBrand5() {
 		return seaAddtOthDrugsBrand5;
 	}
-    
-    
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 }

@@ -449,7 +449,8 @@ public class Zp03MonthlyVisitXml {
     private String imei;
     @Element(required=false)
     private Date today;
-    @Element(required=false)
+
+    @Attribute(required=false)
     private String version;
 
     public Date getMonVisitDate() {
@@ -1338,6 +1339,12 @@ public class Zp03MonthlyVisitXml {
 	public String getQuestion1() {
 		return question1;
 	}
-    
-    
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 }

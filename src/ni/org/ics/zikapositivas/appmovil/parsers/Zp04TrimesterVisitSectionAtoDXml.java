@@ -323,9 +323,9 @@ public class Zp04TrimesterVisitSectionAtoDXml {
     private String imei;
     @Element(required=false)
     private Date today;
-    @Element(required=false)
-    private String version;
 
+    @Attribute(required=false)
+    private String version;
 
     public Date getTriDov() {
         return triDov;
@@ -958,7 +958,12 @@ public class Zp04TrimesterVisitSectionAtoDXml {
 	public String getQuestion16() {
 		return question16;
 	}
-    
-    
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 }

@@ -238,9 +238,9 @@ public class Zp05UltrasoundExamXml {
     private String imei;
     @Element(required=false)
     private Date today;
-    @Element(required=false)
-    private String version;
 
+    @Attribute(required=false)
+    private String version;
 
     public Date getUltDate() {
         return ultDate;
@@ -615,5 +615,11 @@ public class Zp05UltrasoundExamXml {
     }
     public void setToday(Date today) {
         this.today = today;
+    }
+    public String getVersion() {
+        return version;
+    }
+    public void setVersion(String version) {
+        this.version = version;
     }
 }

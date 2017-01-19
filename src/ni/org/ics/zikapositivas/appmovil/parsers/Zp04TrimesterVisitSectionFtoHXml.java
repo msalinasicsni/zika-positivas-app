@@ -148,9 +148,9 @@ public class Zp04TrimesterVisitSectionFtoHXml {
     private String imei;
     @Element(required=false)
     private Date today;
-    @Element(required=false)
-    private String version;
 
+    @Attribute(required=false)
+    private String version;
 
     public String getTriBugNuisInd() {
         return triBugNuisInd;
@@ -362,5 +362,11 @@ public class Zp04TrimesterVisitSectionFtoHXml {
     }
     public void setToday(Date today) {
         this.today = today;
+    }
+    public String getVersion() {
+        return version;
+    }
+    public void setVersion(String version) {
+        this.version = version;
     }
 }

@@ -16,6 +16,7 @@ public class Zp00ScreeningHelper {
 		cv.put(MainDBConstants.preScreenId, screening.getPreScreenId());
 		cv.put(MainDBConstants.redcapEventName, screening.getRedcapEventName());
 		if (screening.getScrVisitDate() != null) cv.put(MainDBConstants.scrVisitDate, screening.getScrVisitDate().getTime());
+		cv.put(MainDBConstants.scrVerbalConsent, screening.getScrVerbalConsent());
 		cv.put(MainDBConstants.scrRemain, screening.getScrRemain());
 		cv.put(MainDBConstants.scrAge, screening.getScrAge());
 		cv.put(MainDBConstants.scrAge15, screening.getScrAge15());
@@ -69,6 +70,7 @@ public class Zp00ScreeningHelper {
 		mScreening.setPreScreenId(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.preScreenId)));
 		mScreening.setRedcapEventName(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.redcapEventName)));
 		if(cursorScreening.getLong(cursorScreening.getColumnIndex(MainDBConstants.scrVisitDate))>0) mScreening.setScrVisitDate(new Date(cursorScreening.getLong(cursorScreening.getColumnIndex(MainDBConstants.scrVisitDate))));
+		mScreening.setScrVerbalConsent(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrVerbalConsent)));
 		mScreening.setScrRemain(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrRemain)));
 		if (cursorScreening.getInt(cursorScreening.getColumnIndex(MainDBConstants.scrAge))>0) mScreening.setScrAge(cursorScreening.getInt(cursorScreening.getColumnIndex(MainDBConstants.scrAge)));
 		mScreening.setScrAge15(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrAge15)));

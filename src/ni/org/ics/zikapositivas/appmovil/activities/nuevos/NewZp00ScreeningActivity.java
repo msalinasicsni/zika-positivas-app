@@ -262,6 +262,7 @@ public class NewZp00ScreeningActivity extends AbstractAsyncActivity {
 			mTamizaje.setPreScreenId(mPreScreenId);
 			mTamizaje.setRedcapEventName(Constants.SCREENING);
 			mTamizaje.setScrVisitDate(zp00Xml.getScrVisitDate());
+			mTamizaje.setScrVerbalConsent(zp00Xml.getScrVerbalConsent());
 			mTamizaje.setScrRemain(zp00Xml.getScrRemain());
 			mTamizaje.setScrAge(zp00Xml.getScrAge());
 			mTamizaje.setScrAge15(zp00Xml.getScrAge15());
