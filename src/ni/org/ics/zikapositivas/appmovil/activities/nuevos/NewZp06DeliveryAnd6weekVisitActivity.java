@@ -162,7 +162,7 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
                 }
                 if (complete.matches("complete")){
                     //Parsear el resultado obteniendo un tamizaje si esta completo
-                    parseZp06DeliveryAnd6weekVisit(idInstancia, instanceFilePath);
+                    parseZp06DeliveryAnd6weekVisit(idInstancia, instanceFilePath, accion);
                 }
                 else{
                     Toast.makeText(getApplicationContext(),	getString(R.string.err_not_completed), Toast.LENGTH_LONG).show();
@@ -214,11 +214,12 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
         }
     }
 
-    private void parseZp06DeliveryAnd6weekVisit(Integer idInstancia, String instanceFilePath) {
+    private void parseZp06DeliveryAnd6weekVisit(Integer idInstancia, String instanceFilePath, Integer accion) {
         Serializer serializer = new Persister();
         File source = new File(instanceFilePath);
         try {
             Zp06DeliveryAnd6weekVisitXml zp06Xml = serializer.read(Zp06DeliveryAnd6weekVisitXml.class, source);
+            if (accion==ADD_ZP06_ODK) mDelivery = new Zp06DeliveryAnd6weekVisit();
             mDelivery.setRecordId(mRecordId);
             mDelivery.setRedcapEventName(event);
 
@@ -363,7 +364,7 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
             mDelivery.setPhonenumber(zp06Xml.getPhonenumber());
             mDelivery.setToday(zp06Xml.getToday());
 
-            new SaveDataTask().execute();
+            new SaveDataTask().execute(accion);
 
         } catch (Exception e) {
             // Presenta el error al parsear el xml

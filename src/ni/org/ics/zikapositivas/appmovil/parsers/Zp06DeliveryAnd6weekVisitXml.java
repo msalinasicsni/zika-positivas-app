@@ -344,20 +344,6 @@ public class Zp06DeliveryAnd6weekVisitXml {
     private String group37;
     @Element(required=false)
     private String group38;
-    @Element(required=false)
-    private String group39;
-    @Element(required=false)
-    private String group40;
-    @Element(required=false)
-    private String group41;
-    @Element(required=false)
-    private String group42;
-    @Element(required=false)
-    private String group43;
-    @Element(required=false)
-    private String group44;
-    @Element(required=false)
-    private String group45;
 
     @Element(required=false)
     private String note1;
@@ -366,10 +352,17 @@ public class Zp06DeliveryAnd6weekVisitXml {
 
     @Element(required=false)
     private String question1;
-
+    @Element(required=false)
+    private String question2;
+    @Element(required=false)
+    private String question3;
+    @Element(required=false)
+    private String question4;
 
     @Attribute
     private String id;
+    @Attribute(required = false)
+    private String version;
     @Element(required=false)
     private Meta meta;
 
@@ -387,9 +380,6 @@ public class Zp06DeliveryAnd6weekVisitXml {
     private String imei;
     @Element(required=false)
     private Date today;
-
-    @Attribute(required=false)
-    private String version;
 
     public Date getDeliVisitDate() {
         return deliVisitDate;
@@ -909,6 +899,12 @@ public class Zp06DeliveryAnd6weekVisitXml {
     public void setId(String id) {
         this.id = id;
     }
+    public String getVersion() {
+        return version;
+    }
+    public void setVersion(String version) {
+        this.version = version;
+    }
     public Meta getMeta() {
         return meta;
     }
@@ -956,11 +952,5 @@ public class Zp06DeliveryAnd6weekVisitXml {
     }
     public void setToday(Date today) {
         this.today = today;
-    }
-    public String getVersion() {
-        return version;
-    }
-    public void setVersion(String version) {
-        this.version = version;
     }
 }
