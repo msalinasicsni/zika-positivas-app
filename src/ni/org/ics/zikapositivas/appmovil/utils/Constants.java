@@ -38,6 +38,8 @@ public class Constants {
     public static final String OBJECTO_ZP05 = "zp05";
     public static final String OBJECTO_ZP06 = "zp06";
     public static final String OBJECTO_ZP08 = "zp08";
+    public static final String OBJECTO_ZP07 = "zp07";
+    public static final String OBJECTO_ZP02D = "zp02d";
 
 	public static final String OBJECTO_ZPEST = "zpestado";
 	public static final String OBJECTO_ZPDATA = "zpdatos";

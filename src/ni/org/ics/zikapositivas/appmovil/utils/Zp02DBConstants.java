@@ -282,4 +282,126 @@ public class Zp02DBConstants {
             + MainDBConstants.TODAY  + " date, "
             + "primary key (" + recordId + ", "+redcapEventName+"));";
 
+    //Tabla Zp02dInfantBiospecimenCollection
+    public static final String INFANT_BIOCOLLECTION_TABLE = "zp02d_infant_biospecimen_collection";
+
+    //Campos Zp02dInfantBiospecimenCollection
+    public static final String infantDov = "infantDov";
+    public static final String infantMatBldCol = "infantMatBldCol";
+    public static final String infantMatBldRsn = "infantMatBldRsn";
+    public static final String infantMatBldSpecify = "infantMatBldSpecify";
+    public static final String infantMatBldTyp1 = "infantMatBldTyp1";
+    public static final String infantMatBldId1 = "infantMatBldId1";
+    public static final String infantMatBldVol1 = "infantMatBldVol1";
+    public static final String infantMatBldTyp2 = "infantMatBldTyp2";
+    public static final String infantMatBldId2 = "infantMatBldId2";
+    public static final String infantMatBldVol2 = "infantMatBldVol2";
+    public static final String infantMatBldTyp3 = "infantMatBldTyp3";
+    public static final String infantMatBldId3 = "infantMatBldId3";
+    public static final String infantMatBldVol3 = "infantMatBldVol3";
+    public static final String infantMatBldTyp4 = "infantMatBldTyp4";
+    public static final String infantMatBldId4 = "infantMatBldId4";
+    public static final String infantMatBldVol4 = "infantMatBldVol4";
+    public static final String infantMatBldTyp5 = "infantMatBldTyp5";
+    public static final String infantMatBldId5 = "infantMatBldId5";
+    public static final String infantMatBldVol5 = "infantMatBldVol5";
+    public static final String infantMatBldTyp6 = "infantMatBldTyp6";
+    public static final String infantMatBldId6 = "infantMatBldId6";
+    public static final String infantMatBldVol6 = "infantMatBldVol6";
+    public static final String infantMatBldTyp7 = "infantMatBldTyp7";
+    public static final String infantMatBldId7 = "infantMatBldId7";
+    public static final String infantMatBldVol7 = "infantMatBldVol7";
+    public static final String infantMatBldTyp8 = "infantMatBldTyp8";
+    public static final String infantMatBldId8 = "infantMatBldId8";
+    public static final String infantMatBldVol8 = "infantMatBldVol8";
+    public static final String infantMatBldTotVol = "infantMatBldTotVol";
+    public static final String infantMatBldTime = "infantMatBldTime";
+    public static final String infantMatBldCom = "infantMatBldCom";
+    public static final String infantMatSlvaCol = "infantMatSlvaCol";
+    public static final String infantMatSlvaRsn = "infantMatSlvaRsn";
+    public static final String infantMatSlvaSpecify = "infantMatSlvaSpecify";
+    public static final String infantMatSlvaId = "infantMatSlvaId";
+    public static final String infantMatSlvaTime = "infantMatSlvaTime";
+    public static final String infantMatSlvaCom = "infantMatSlvaCom";
+    public static final String infantMatVstUrnCol = "infantMatVstUrnCol";
+    public static final String infantMatVstUrnRsn = "infantMatVstUrnRsn";
+    public static final String infantMatVstUrnSpecify = "infantMatVstUrnSpecify";
+    public static final String infantMatVstUrnId = "infantMatVstUrnId";
+    public static final String infantMatVstUrnTime = "infantMatVstUrnTime";
+    public static final String infantMatVstUrnCom = "infantMatVstUrnCom";
+    public static final String infantPerson1 = "infantPerson1";
+    public static final String infantCompleteDate1 = "infantCompleteDate1";
+    public static final String infantPerson2 = "infantPerson2";
+    public static final String infantCompleteDate2 = "infantCompleteDate2";
+    public static final String infantPerson3 = "infantPerson3";
+    public static final String infantCompleteDate3 = "infantCompleteDate3";
+
+    //Crear tabla Zp02dInfantBiospecimenCollection
+    public static final String CREATE_INFANTBIOCOLLECTION_TABLE = "create table if not exists "
+            + INFANT_BIOCOLLECTION_TABLE + " ("
+            + recordId + " text not null, "
+            + redcapEventName + " text, "
+            + infantDov + " date, "
+            + infantMatBldCol + " text, "
+            + infantMatBldRsn + " text, "
+            + infantMatBldSpecify + " text, "
+            + infantMatBldTyp1 + " text, "
+            + infantMatBldId1 + " text, "
+            + infantMatBldVol1 + " int, "
+            + infantMatBldTyp2 + " text, "
+            + infantMatBldId2 + " text, "
+            + infantMatBldVol2 + " int, "
+            + infantMatBldTyp3 + " text, "
+            + infantMatBldId3 + " text, "
+            + infantMatBldVol3 + " int, "
+            + infantMatBldTyp4 + " text, "
+            + infantMatBldId4 + " text, "
+            + infantMatBldVol4 + " int, "
+            + infantMatBldTyp5 + " text, "
+            + infantMatBldId5 + " text, "
+            + infantMatBldVol5 + " int, "
+            + infantMatBldTyp6 + " text, "
+            + infantMatBldId6 + " text, "
+            + infantMatBldVol6 + " int, "
+            + infantMatBldTyp7 + " text, "
+            + infantMatBldId7 + " text, "
+            + infantMatBldVol7 + " int, "
+            + infantMatBldTyp8 + " text, "
+            + infantMatBldId8 + " text, "
+            + infantMatBldVol8 + " int, "
+            + infantMatBldTotVol + " int, "
+            + infantMatBldTime + " text, "
+            + infantMatBldCom + " text, "
+            + infantMatSlvaCol + " text, "
+            + infantMatSlvaRsn + " text, "
+            + infantMatSlvaSpecify + " text, "
+            + infantMatSlvaId + " text, "
+            + infantMatSlvaTime + " text, "
+            + infantMatSlvaCom + " text, "
+            + infantMatVstUrnCol + " text, "
+            + infantMatVstUrnRsn + " text, "
+            + infantMatVstUrnSpecify + " text, "
+            + infantMatVstUrnId + " text, "
+            + infantMatVstUrnTime + " text, "
+            + infantMatVstUrnCom + " text, "
+            + infantPerson1 + " text, "
+            + infantCompleteDate1 + " date, "
+            + infantPerson2 + " text, "
+            + infantCompleteDate2 + " date, "
+            + infantPerson3 + " text, "
+            + infantCompleteDate3 + " date, "
+            + MainDBConstants.recordDate + " date, "
+            + MainDBConstants.recordUser + " text, "
+            + MainDBConstants.pasive + " text, "
+            + MainDBConstants.ID_INSTANCIA + " integer,"
+            + MainDBConstants.FILE_PATH + " text,"
+            + MainDBConstants.STATUS + " text not null, "
+            + MainDBConstants.START  + " text, "
+            + MainDBConstants.END  + " text, "
+            + MainDBConstants.DEVICE_ID  + " text, "
+            + MainDBConstants.SIM_SERIAL + " text, "
+            + MainDBConstants.PHONE_NUMBER  + " text, "
+            + MainDBConstants.TODAY  + " date, "
+            + "primary key (" + recordId + ", "+redcapEventName+"));";
+
 }

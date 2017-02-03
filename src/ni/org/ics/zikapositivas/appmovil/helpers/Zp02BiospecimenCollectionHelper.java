@@ -3,6 +3,7 @@ package ni.org.ics.zikapositivas.appmovil.helpers;
 import android.content.ContentValues;
 import android.database.Cursor;
 import ni.org.ics.zikapositivas.appmovil.domain.Zp02BiospecimenCollection;
+import ni.org.ics.zikapositivas.appmovil.domain.Zp02dInfantBiospecimenCollection;
 import ni.org.ics.zikapositivas.appmovil.utils.MainDBConstants;
 import ni.org.ics.zikapositivas.appmovil.utils.Zp02DBConstants;
 
@@ -309,4 +310,148 @@ public class Zp02BiospecimenCollectionHelper {
 
         return biospecimenCollection;
     }
+
+    public static ContentValues crearZp02dInfantBiospecimenCollection(Zp02dInfantBiospecimenCollection dInfantBiospecimenCollection){
+        ContentValues cv = new ContentValues();
+
+        cv.put(Zp02DBConstants.recordId, dInfantBiospecimenCollection.getRecordId());
+        cv.put(Zp02DBConstants.redcapEventName, dInfantBiospecimenCollection.getRedcapEventName());
+
+        if (dInfantBiospecimenCollection.getInfantDov()!=null) cv.put(Zp02DBConstants.infantDov, dInfantBiospecimenCollection.getInfantDov().getTime());
+        cv.put(Zp02DBConstants.infantMatBldCol, dInfantBiospecimenCollection.getInfantMatBldCol());
+        cv.put(Zp02DBConstants.infantMatBldRsn, dInfantBiospecimenCollection.getInfantMatBldRsn());
+        cv.put(Zp02DBConstants.infantMatBldSpecify, dInfantBiospecimenCollection.getInfantMatBldSpecify());
+        cv.put(Zp02DBConstants.infantMatBldTyp1, dInfantBiospecimenCollection.getInfantMatBldTyp1());
+        cv.put(Zp02DBConstants.infantMatBldId1, dInfantBiospecimenCollection.getInfantMatBldId1());
+        cv.put(Zp02DBConstants.infantMatBldVol1, dInfantBiospecimenCollection.getInfantMatBldVol1());
+        cv.put(Zp02DBConstants.infantMatBldTyp2, dInfantBiospecimenCollection.getInfantMatBldTyp2());
+        cv.put(Zp02DBConstants.infantMatBldId2, dInfantBiospecimenCollection.getInfantMatBldId2());
+        cv.put(Zp02DBConstants.infantMatBldVol2, dInfantBiospecimenCollection.getInfantMatBldVol2());
+        cv.put(Zp02DBConstants.infantMatBldTyp3, dInfantBiospecimenCollection.getInfantMatBldTyp3());
+        cv.put(Zp02DBConstants.infantMatBldId3, dInfantBiospecimenCollection.getInfantMatBldId3());
+        cv.put(Zp02DBConstants.infantMatBldVol3, dInfantBiospecimenCollection.getInfantMatBldVol3());
+        cv.put(Zp02DBConstants.infantMatBldTyp4, dInfantBiospecimenCollection.getInfantMatBldTyp4());
+        cv.put(Zp02DBConstants.infantMatBldId4, dInfantBiospecimenCollection.getInfantMatBldId4());
+        cv.put(Zp02DBConstants.infantMatBldVol4, dInfantBiospecimenCollection.getInfantMatBldVol4());
+        cv.put(Zp02DBConstants.infantMatBldTyp5, dInfantBiospecimenCollection.getInfantMatBldTyp5());
+        cv.put(Zp02DBConstants.infantMatBldId5, dInfantBiospecimenCollection.getInfantMatBldId5());
+        cv.put(Zp02DBConstants.infantMatBldVol5, dInfantBiospecimenCollection.getInfantMatBldVol5());
+        cv.put(Zp02DBConstants.infantMatBldTyp6, dInfantBiospecimenCollection.getInfantMatBldTyp6());
+        cv.put(Zp02DBConstants.infantMatBldId6, dInfantBiospecimenCollection.getInfantMatBldId6());
+        cv.put(Zp02DBConstants.infantMatBldVol6, dInfantBiospecimenCollection.getInfantMatBldVol6());
+        cv.put(Zp02DBConstants.infantMatBldTyp7, dInfantBiospecimenCollection.getInfantMatBldTyp7());
+        cv.put(Zp02DBConstants.infantMatBldId7, dInfantBiospecimenCollection.getInfantMatBldId7());
+        cv.put(Zp02DBConstants.infantMatBldVol7, dInfantBiospecimenCollection.getInfantMatBldVol7());
+        cv.put(Zp02DBConstants.infantMatBldTyp8, dInfantBiospecimenCollection.getInfantMatBldTyp8());
+        cv.put(Zp02DBConstants.infantMatBldId8, dInfantBiospecimenCollection.getInfantMatBldId8());
+        cv.put(Zp02DBConstants.infantMatBldVol8, dInfantBiospecimenCollection.getInfantMatBldVol8());
+        cv.put(Zp02DBConstants.infantMatBldTotVol, dInfantBiospecimenCollection.getInfantMatBldTotVol());
+        cv.put(Zp02DBConstants.infantMatBldTime, dInfantBiospecimenCollection.getInfantMatBldTime());
+        cv.put(Zp02DBConstants.infantMatBldCom, dInfantBiospecimenCollection.getInfantMatBldCom());
+        cv.put(Zp02DBConstants.infantMatSlvaCol, dInfantBiospecimenCollection.getInfantMatSlvaCol());
+        cv.put(Zp02DBConstants.infantMatSlvaRsn, dInfantBiospecimenCollection.getInfantMatSlvaRsn());
+        cv.put(Zp02DBConstants.infantMatSlvaSpecify, dInfantBiospecimenCollection.getInfantMatSlvaSpecify());
+        cv.put(Zp02DBConstants.infantMatSlvaId, dInfantBiospecimenCollection.getInfantMatSlvaId());
+        cv.put(Zp02DBConstants.infantMatSlvaTime, dInfantBiospecimenCollection.getInfantMatSlvaTime());
+        cv.put(Zp02DBConstants.infantMatSlvaCom, dInfantBiospecimenCollection.getInfantMatSlvaCom());
+        cv.put(Zp02DBConstants.infantMatVstUrnCol, dInfantBiospecimenCollection.getInfantMatVstUrnCol());
+        cv.put(Zp02DBConstants.infantMatVstUrnRsn, dInfantBiospecimenCollection.getInfantMatVstUrnRsn());
+        cv.put(Zp02DBConstants.infantMatVstUrnSpecify, dInfantBiospecimenCollection.getInfantMatVstUrnSpecify());
+        cv.put(Zp02DBConstants.infantMatVstUrnId, dInfantBiospecimenCollection.getInfantMatVstUrnId());
+        cv.put(Zp02DBConstants.infantMatVstUrnTime, dInfantBiospecimenCollection.getInfantMatVstUrnTime());
+        cv.put(Zp02DBConstants.infantMatVstUrnCom, dInfantBiospecimenCollection.getInfantMatVstUrnCom());
+        cv.put(Zp02DBConstants.infantPerson1, dInfantBiospecimenCollection.getInfantPerson1());
+        if (dInfantBiospecimenCollection.getInfantCompleteDate1()!=null) cv.put(Zp02DBConstants.infantCompleteDate1, dInfantBiospecimenCollection.getInfantCompleteDate1().getTime());
+        cv.put(Zp02DBConstants.infantPerson2, dInfantBiospecimenCollection.getInfantPerson2());
+        if (dInfantBiospecimenCollection.getInfantCompleteDate2()!=null) cv.put(Zp02DBConstants.infantCompleteDate2, dInfantBiospecimenCollection.getInfantCompleteDate2().getTime());
+        cv.put(Zp02DBConstants.infantPerson3, dInfantBiospecimenCollection.getInfantPerson3());
+        if (dInfantBiospecimenCollection.getInfantCompleteDate3()!=null) cv.put(Zp02DBConstants.infantCompleteDate3, dInfantBiospecimenCollection.getInfantCompleteDate3().getTime());
+
+        if (dInfantBiospecimenCollection.getRecordDate() != null) cv.put(MainDBConstants.recordDate, dInfantBiospecimenCollection.getRecordDate().getTime());
+        cv.put(MainDBConstants.recordUser, dInfantBiospecimenCollection.getRecordUser());
+        cv.put(MainDBConstants.pasive, String.valueOf(dInfantBiospecimenCollection.getPasive()));
+        cv.put(MainDBConstants.ID_INSTANCIA, dInfantBiospecimenCollection.getIdInstancia());
+        cv.put(MainDBConstants.FILE_PATH, dInfantBiospecimenCollection.getInstancePath());
+        cv.put(MainDBConstants.STATUS, dInfantBiospecimenCollection.getEstado());
+        cv.put(MainDBConstants.START, dInfantBiospecimenCollection.getStart());
+        cv.put(MainDBConstants.END, dInfantBiospecimenCollection.getEnd());
+        cv.put(MainDBConstants.DEVICE_ID, dInfantBiospecimenCollection.getDeviceid());
+        cv.put(MainDBConstants.SIM_SERIAL, dInfantBiospecimenCollection.getSimserial());
+        cv.put(MainDBConstants.PHONE_NUMBER, dInfantBiospecimenCollection.getPhonenumber());
+        if (dInfantBiospecimenCollection.getToday() != null) cv.put(MainDBConstants.TODAY, dInfantBiospecimenCollection.getToday().getTime());
+
+        return cv;
+    }
+
+    public static Zp02dInfantBiospecimenCollection crearZp02dInfantBiospecimenCollection(Cursor cursorBC){
+
+        Zp02dInfantBiospecimenCollection dInfantBiospecimenCollection = new Zp02dInfantBiospecimenCollection();
+        dInfantBiospecimenCollection.setRecordId(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.recordId)));
+        dInfantBiospecimenCollection.setRedcapEventName(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.redcapEventName)));
+        if (cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscDov))>0) dInfantBiospecimenCollection.setInfantDov(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantDov))));
+        dInfantBiospecimenCollection.setInfantMatBldCol(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldCol)));
+        dInfantBiospecimenCollection.setInfantMatBldRsn(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldRsn)));
+        dInfantBiospecimenCollection.setInfantMatBldSpecify(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldSpecify)));
+        dInfantBiospecimenCollection.setInfantMatBldTyp1(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldTyp1)));
+        dInfantBiospecimenCollection.setInfantMatBldId1(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldId1)));
+        if (cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol1))>0) dInfantBiospecimenCollection.setInfantMatBldVol1(cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol1)));
+        dInfantBiospecimenCollection.setInfantMatBldTyp2(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldTyp2)));
+        dInfantBiospecimenCollection.setInfantMatBldId2(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldId2)));
+        if (cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol2))>0) dInfantBiospecimenCollection.setInfantMatBldVol2(cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol2)));
+        dInfantBiospecimenCollection.setInfantMatBldTyp3(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldTyp3)));
+        dInfantBiospecimenCollection.setInfantMatBldId3(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldId3)));
+        if (cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol3))>0) dInfantBiospecimenCollection.setInfantMatBldVol3(cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol3)));
+        dInfantBiospecimenCollection.setInfantMatBldTyp4(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldTyp4)));
+        dInfantBiospecimenCollection.setInfantMatBldId4(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldId4)));
+        if (cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol4))>0) dInfantBiospecimenCollection.setInfantMatBldVol4(cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol4)));
+        dInfantBiospecimenCollection.setInfantMatBldTyp5(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldTyp5)));
+        dInfantBiospecimenCollection.setInfantMatBldId5(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldId5)));
+        if (cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol5))>0) dInfantBiospecimenCollection.setInfantMatBldVol5(cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol5)));
+        dInfantBiospecimenCollection.setInfantMatBldTyp6(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldTyp6)));
+        dInfantBiospecimenCollection.setInfantMatBldId6(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldId6)));
+        if (cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol6))>0) dInfantBiospecimenCollection.setInfantMatBldVol6(cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol6)));
+        dInfantBiospecimenCollection.setInfantMatBldTyp7(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldTyp7)));
+        dInfantBiospecimenCollection.setInfantMatBldId7(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldId7)));
+        if (cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol7))>0) dInfantBiospecimenCollection.setInfantMatBldVol7(cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol7)));
+        dInfantBiospecimenCollection.setInfantMatBldTyp8(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldTyp8)));
+        dInfantBiospecimenCollection.setInfantMatBldId8(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldId8)));
+        if (cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol8))>0) dInfantBiospecimenCollection.setInfantMatBldVol8(cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldVol8)));
+        if (cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldTotVol))>0) dInfantBiospecimenCollection.setInfantMatBldTotVol(cursorBC.getInt(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldTotVol)));
+        dInfantBiospecimenCollection.setInfantMatBldTime(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldTime)));
+        dInfantBiospecimenCollection.setInfantMatBldCom(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldCom)));
+        dInfantBiospecimenCollection.setInfantMatSlvaCol(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatSlvaCol)));
+        dInfantBiospecimenCollection.setInfantMatSlvaRsn(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatSlvaRsn)));
+        dInfantBiospecimenCollection.setInfantMatSlvaSpecify(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatSlvaSpecify)));
+        dInfantBiospecimenCollection.setInfantMatSlvaId(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatSlvaId)));
+        dInfantBiospecimenCollection.setInfantMatSlvaTime(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatSlvaTime)));
+        dInfantBiospecimenCollection.setInfantMatSlvaCom(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatSlvaCom)));
+        dInfantBiospecimenCollection.setInfantMatVstUrnCol(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatVstUrnCol)));
+        dInfantBiospecimenCollection.setInfantMatVstUrnRsn(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatVstUrnRsn)));
+        dInfantBiospecimenCollection.setInfantMatVstUrnSpecify(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatVstUrnSpecify)));
+        dInfantBiospecimenCollection.setInfantMatVstUrnId(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatVstUrnId)));
+        dInfantBiospecimenCollection.setInfantMatVstUrnTime(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatVstUrnTime)));
+        dInfantBiospecimenCollection.setInfantMatVstUrnCom(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatVstUrnCom)));
+        dInfantBiospecimenCollection.setInfantPerson1(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantPerson1)));
+        if(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantCompleteDate1))>0) dInfantBiospecimenCollection.setInfantCompleteDate1(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantCompleteDate1))));
+        dInfantBiospecimenCollection.setInfantPerson2(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantPerson2)));
+        if(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantCompleteDate2))>0) dInfantBiospecimenCollection.setInfantCompleteDate2(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantCompleteDate2))));
+        dInfantBiospecimenCollection.setInfantPerson3(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantPerson3)));
+        if(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantCompleteDate3))>0) dInfantBiospecimenCollection.setInfantCompleteDate3(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantCompleteDate3))));
+
+        if(cursorBC.getLong(cursorBC.getColumnIndex(MainDBConstants.recordDate))>0) dInfantBiospecimenCollection.setRecordDate(new Date(cursorBC.getLong(cursorBC.getColumnIndex(MainDBConstants.recordDate))));
+        dInfantBiospecimenCollection.setRecordUser(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.recordUser)));
+        dInfantBiospecimenCollection.setPasive(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.pasive)).charAt(0));
+        dInfantBiospecimenCollection.setIdInstancia(cursorBC.getInt(cursorBC.getColumnIndex(MainDBConstants.ID_INSTANCIA)));
+        dInfantBiospecimenCollection.setInstancePath(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.FILE_PATH)));
+        dInfantBiospecimenCollection.setEstado(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.STATUS)));
+        dInfantBiospecimenCollection.setStart(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.START)));
+        dInfantBiospecimenCollection.setEnd(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.END)));
+        dInfantBiospecimenCollection.setSimserial(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.SIM_SERIAL)));
+        dInfantBiospecimenCollection.setPhonenumber(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.PHONE_NUMBER)));
+        dInfantBiospecimenCollection.setDeviceid(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.DEVICE_ID)));
+        if(cursorBC.getLong(cursorBC.getColumnIndex(MainDBConstants.TODAY))>0) dInfantBiospecimenCollection.setToday(new Date(cursorBC.getLong(cursorBC.getColumnIndex(MainDBConstants.TODAY))));
+
+        return dInfantBiospecimenCollection;
+    }
+
 }
