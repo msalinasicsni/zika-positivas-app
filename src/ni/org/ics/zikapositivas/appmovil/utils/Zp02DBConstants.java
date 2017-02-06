@@ -287,6 +287,9 @@ public class Zp02DBConstants {
 
     //Campos Zp02dInfantBiospecimenCollection
     public static final String infantDov = "infantDov";
+    public static final String whomAddtVisit = "whomAddtVisit";
+    public static final String infantAddtVisit = "infantAddtVisit";
+    public static final String infantAddtVisitOther = "infantAddtVisitOther";
     public static final String infantMatBldCol = "infantMatBldCol";
     public static final String infantMatBldRsn = "infantMatBldRsn";
     public static final String infantMatBldSpecify = "infantMatBldSpecify";
@@ -342,6 +345,9 @@ public class Zp02DBConstants {
             + recordId + " text not null, "
             + redcapEventName + " text, "
             + infantDov + " date, "
+            + whomAddtVisit + " text, "
+            + infantAddtVisit + " text, "
+            + infantAddtVisitOther + " text, "
             + infantMatBldCol + " text, "
             + infantMatBldRsn + " text, "
             + infantMatBldSpecify + " text, "

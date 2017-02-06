@@ -14,6 +14,12 @@ public class Zp02dInfantBiospecimenCollectionXml {
     @Element(required=false)
     private Date infantDov;
     @Element(required=false)
+    private String whomAddtVisit;
+    @Element(required=false)
+    private String infantAddtVisit;
+    @Element(required=false)
+    private String infantAddtVisitOther;
+    @Element(required=false)
     private String infantMatBldCol;
     @Element(required=false)
     private String infantMatBldRsn;
@@ -228,6 +234,18 @@ public class Zp02dInfantBiospecimenCollectionXml {
 
     public Date getInfantDov() {
         return infantDov;
+    }
+
+    public String getWhomAddtVisit() {
+        return whomAddtVisit;
+    }
+
+    public String getInfantAddtVisit() {
+        return infantAddtVisit;
+    }
+
+    public String getInfantAddtVisitOther() {
+        return infantAddtVisitOther;
     }
 
     public String getInfantMatBldCol() {

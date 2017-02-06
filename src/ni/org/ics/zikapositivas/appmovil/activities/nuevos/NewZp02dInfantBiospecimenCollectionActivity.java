@@ -224,6 +224,9 @@ public class NewZp02dInfantBiospecimenCollectionActivity extends AbstractAsyncAc
             mInfantBioCollection.setRedcapEventName(event);
 
             mInfantBioCollection.setInfantDov(zp02dXml.getInfantDov());
+            mInfantBioCollection.setWhomAddtVisit(zp02dXml.getWhomAddtVisit());
+            mInfantBioCollection.setInfantAddtVisit(zp02dXml.getInfantAddtVisit());
+            mInfantBioCollection.setInfantAddtVisitOther(zp02dXml.getInfantAddtVisitOther());
             mInfantBioCollection.setInfantMatBldCol(zp02dXml.getInfantMatBldCol());
             mInfantBioCollection.setInfantMatBldRsn(zp02dXml.getInfantMatBldRsn());
             mInfantBioCollection.setInfantMatBldSpecify(zp02dXml.getInfantMatBldSpecify());

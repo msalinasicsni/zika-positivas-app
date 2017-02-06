@@ -318,6 +318,9 @@ public class Zp02BiospecimenCollectionHelper {
         cv.put(Zp02DBConstants.redcapEventName, dInfantBiospecimenCollection.getRedcapEventName());
 
         if (dInfantBiospecimenCollection.getInfantDov()!=null) cv.put(Zp02DBConstants.infantDov, dInfantBiospecimenCollection.getInfantDov().getTime());
+        cv.put(Zp02DBConstants.whomAddtVisit, dInfantBiospecimenCollection.getWhomAddtVisit());
+        cv.put(Zp02DBConstants.infantAddtVisit, dInfantBiospecimenCollection.getInfantAddtVisit());
+        cv.put(Zp02DBConstants.infantAddtVisitOther, dInfantBiospecimenCollection.getInfantAddtVisitOther());
         cv.put(Zp02DBConstants.infantMatBldCol, dInfantBiospecimenCollection.getInfantMatBldCol());
         cv.put(Zp02DBConstants.infantMatBldRsn, dInfantBiospecimenCollection.getInfantMatBldRsn());
         cv.put(Zp02DBConstants.infantMatBldSpecify, dInfantBiospecimenCollection.getInfantMatBldSpecify());
@@ -389,6 +392,9 @@ public class Zp02BiospecimenCollectionHelper {
         dInfantBiospecimenCollection.setRecordId(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.recordId)));
         dInfantBiospecimenCollection.setRedcapEventName(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.redcapEventName)));
         if (cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscDov))>0) dInfantBiospecimenCollection.setInfantDov(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantDov))));
+        dInfantBiospecimenCollection.setWhomAddtVisit(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.whomAddtVisit)));
+        dInfantBiospecimenCollection.setInfantAddtVisit(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantAddtVisit)));
+        dInfantBiospecimenCollection.setInfantAddtVisitOther(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantAddtVisitOther)));
         dInfantBiospecimenCollection.setInfantMatBldCol(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldCol)));
         dInfantBiospecimenCollection.setInfantMatBldRsn(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldRsn)));
         dInfantBiospecimenCollection.setInfantMatBldSpecify(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldSpecify)));

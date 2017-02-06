@@ -12,6 +12,9 @@ public class Zp02dInfantBiospecimenCollection extends BaseMetaData {
     private String recordId;
     private String redcapEventName;
     private Date infantDov;
+    private String whomAddtVisit;
+    private String infantAddtVisit;
+    private String infantAddtVisitOther;
     private String infantMatBldCol;
     private String infantMatBldRsn;
     private String infantMatBldSpecify;
@@ -83,6 +86,30 @@ public class Zp02dInfantBiospecimenCollection extends BaseMetaData {
 
     public void setInfantDov(Date infantDov) {
         this.infantDov = infantDov;
+    }
+
+    public String getWhomAddtVisit() {
+        return whomAddtVisit;
+    }
+
+    public void setWhomAddtVisit(String whomAddtVisit) {
+        this.whomAddtVisit = whomAddtVisit;
+    }
+
+    public String getInfantAddtVisit() {
+        return infantAddtVisit;
+    }
+
+    public void setInfantAddtVisit(String infantAddtVisit) {
+        this.infantAddtVisit = infantAddtVisit;
+    }
+
+    public String getInfantAddtVisitOther() {
+        return infantAddtVisitOther;
+    }
+
+    public void setInfantAddtVisitOther(String infantAddtVisitOther) {
+        this.infantAddtVisitOther = infantAddtVisitOther;
     }
 
     public String getInfantMatBldCol() {
