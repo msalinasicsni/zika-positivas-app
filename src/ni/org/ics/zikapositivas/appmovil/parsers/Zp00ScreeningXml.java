@@ -62,6 +62,8 @@ public class Zp00ScreeningXml {
 	@Element(required=false)
     private String scrConsentF;
 	@Element(required=false)
+	private String scrAddtConsentG;
+	@Element(required=false)
     private String scrPreviousZikaPos;
 	@Element(required=false)
     private String scrPreviousStudyId;
@@ -196,6 +198,11 @@ public class Zp00ScreeningXml {
 	public String getScrConsentF() {
 		return scrConsentF;
 	}
+
+	public String getScrAddtConsentG() {
+		return scrAddtConsentG;
+	}
+
 	public String getScrPreviousZikaPos() {
 		return scrPreviousZikaPos;
 	}

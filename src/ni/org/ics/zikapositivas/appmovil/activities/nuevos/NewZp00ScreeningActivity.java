@@ -284,6 +284,7 @@ public class NewZp00ScreeningActivity extends AbstractAsyncActivity {
 			mTamizaje.setScrConsentD(zp00Xml.getScrConsentD());
 			mTamizaje.setScrConsentE(zp00Xml.getScrConsentE());
 			mTamizaje.setScrConsentF(zp00Xml.getScrConsentF());
+			mTamizaje.setScrAddtConsentG(zp00Xml.getScrAddtConsentG());
 			mTamizaje.setScrPreviousZikaPos(zp00Xml.getScrPreviousZikaPos());
 			mTamizaje.setScrPreviousStudyId(zp00Xml.getScrPreviousStudyId());
 			mTamizaje.setScrPreStudyNa(zp00Xml.getScrPreStudyNa());
