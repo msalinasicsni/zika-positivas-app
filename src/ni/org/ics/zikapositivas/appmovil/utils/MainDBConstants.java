@@ -26,7 +26,7 @@ public class MainDBConstants {
 
 	//Base de datos y tablas
 	public static final String DATABASE_NAME = "zikaposcryp.sqlite3";
-	public static final int DATABASE_VERSION = 2;
+	public static final int DATABASE_VERSION = 3;
 	
 	//Tabla usuarios
 	public static final String USER_TABLE = "users";
@@ -362,13 +362,15 @@ public class MainDBConstants {
 				+ SIM_SERIAL + " text, "
 				+ PHONE_NUMBER  + " text, "
 				+ TODAY  + " date, "
-				+ "primary key (" + codigo + "," + fechaHoraSalida +"));";	
+				+ "primary key (" + codigo +"));";	
 		
 		//Tabla datos recepcion consentimientos
 		public static final String DATA_CONSREC_TABLE = "recepcion_consentimiento";
 		//Campos recepcion consentimientos
 		public static final String lugarLlegada = "lugarLlegada";
+		public static final String evento = "evento";
 		public static final String fechaHoraLLegada = "fechaHoraLLegada";
+		public static final String fechaDato = "fechaDato";
 		
 		//Crear tabla recepcion consentimientos
 		public static final String CREATE_DATA_CONSREC_TABLE = "create table if not exists "
@@ -389,7 +391,7 @@ public class MainDBConstants {
 				+ SIM_SERIAL + " text, "
 				+ PHONE_NUMBER  + " text, "
 				+ TODAY  + " date, "
-				+ "primary key (" + codigo + "," + fechaHoraLLegada +"));";
+				+ "primary key (" + codigo +"));";
 		
 		//Tabla datos salida reportes us
 		public static final String DATA_USSAL_TABLE = "salidas_us";
@@ -402,6 +404,8 @@ public class MainDBConstants {
 				+ codigo + " text not null, "
 				+ fechaHoraSalida + " date not null, " 
 				+ persona + " text not null, "
+				+ evento + " text, "
+				+ fechaDato  + " date, "
 				+ recordDate + " date, " 
 				+ recordUser + " text, "
 				+ pasive + " text, "
@@ -414,7 +418,7 @@ public class MainDBConstants {
 				+ SIM_SERIAL + " text, "
 				+ PHONE_NUMBER  + " text, "
 				+ TODAY  + " date, "
-				+ "primary key (" + codigo + "," + fechaHoraSalida +"));";
+				+ "primary key (" + codigo + "," + fechaDato +"));";
 		
 		//Tabla datos recepcion reportes us
 		public static final String DATA_USREC_TABLE = "recepcion_us";
@@ -427,6 +431,8 @@ public class MainDBConstants {
 				+ codigo + " text not null, "
 				+ fechaHoraLLegada + " date not null, " 
 				+ persona + " text not null, "
+				+ evento + " text, "
+				+ fechaDato  + " date, "
 				+ recordDate + " date, " 
 				+ recordUser + " text, "
 				+ pasive + " text, "
@@ -439,7 +445,7 @@ public class MainDBConstants {
 				+ SIM_SERIAL + " text, "
 				+ PHONE_NUMBER  + " text, "
 				+ TODAY  + " date, "
-				+ "primary key (" + codigo + "," + fechaHoraLLegada +"));";
+				+ "primary key (" + codigo + "," + fechaDato +"));";
 		
 
 }

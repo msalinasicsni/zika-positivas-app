@@ -132,6 +132,9 @@
         <item>Anna Gajewski</item>
         <item>Elsa Videa López</item>
         <item>Liliam Llufrío González</item>
+        <item>William Rivas</item>
+        <item>Josue Narvaez</item>
+        <item>Carmen Gisselle Arauz</item>
     </string-array>
     
    	<string-array name="list_personas_llegada_cons">
@@ -140,6 +143,9 @@
         <item>Elsa Videa López</item>
         <item>Liliam Llufrío González</item>
         <item>Ennio Sáenz Martínez</item>
+        <item>William Rivas</item>
+        <item>Josue Narvaez</item>
+        <item>Carmen Gisselle Arauz</item>
     </string-array>   
     
    	<string-array name="list_personas_salida_us">
@@ -154,6 +160,9 @@
         <item>Anna Gajewski</item>
         <item>Elsa Videa López</item>
         <item>Liliam Llufrío González</item>
+        <item>William Rivas</item>
+        <item>Josue Narvaez</item>
+        <item>Carmen Gisselle Arauz</item>
     </string-array>
     
    	<string-array name="list_personas_llegada_us">
@@ -163,6 +172,9 @@
         <item>Elsa Videa López</item>
         <item>Liliam Llufrío González</item>
         <item>Ennio Sáenz Martínez</item>
+        <item>William Rivas</item>
+        <item>Josue Narvaez</item>
+        <item>Carmen Gisselle Arauz</item>
     </string-array>
     
     <string-array name="list_lugares_salida">
@@ -180,7 +192,12 @@
         <item>Villa Libertad</item>
         <item>Edgard Lang</item>
         <item>Oficina ICS</item>
+    </string-array>   
+    
+    <string-array name="list_estados">
+        <item>@string/inm</item>
+        <item>@string/noimn</item>
+        <item>@string/no_def</item>
     </string-array>    
-   	
     
 </resources>

@@ -2,8 +2,9 @@
 <resources>
     <string name="consent_1">Salida de consentimientos</string>
 	<string name="consent_2">Recepción de consentimientos</string>
-	<string name="lugar">Lugar</string>
-	<string name="persona">Persona</string>
+	<string name="lugar">Lugar:</string>
+	<string name="persona">Persona:</string>
     <string name="error_lugar">Debe seleccionar un lugar válido!</string>
+    <string name="error_evento">Debe seleccionar un evento válido!</string>
     <string name="error_persona">Debe seleccionar una persona válida!</string>	
 </resources>

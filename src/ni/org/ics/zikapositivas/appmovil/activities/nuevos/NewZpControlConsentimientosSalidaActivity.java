@@ -213,7 +213,7 @@ public class NewZpControlConsentimientosSalidaActivity extends AbstractAsyncActi
 			showToast(this.getString( R.string.code_error));
 			return false;
 		}
-		if(!(mCodigo.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
+		if(!(mCodigo.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
 			showToast(mCodigo + " " + getString(R.string.code_error));
 			mCodigoView.setText(null);
 			mCodigo=null;
@@ -339,7 +339,7 @@ public class NewZpControlConsentimientosSalidaActivity extends AbstractAsyncActi
 			String sb = intent.getStringExtra("SCAN_RESULT");
 			if (sb != null && sb.length() > 0) {
 				try{
-					if(!(sb.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
+					if(!(sb.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
 						showToast(sb + " " + getString(R.string.scan_error));
 						mCodigoView.setText(null);
 						mCodigo=null;
@@ -389,14 +389,14 @@ public class NewZpControlConsentimientosSalidaActivity extends AbstractAsyncActi
 				mSalidaCons.setDeviceid(new DeviceInfo(NewZpControlConsentimientosSalidaActivity.this).getDeviceId());
 				mSalidaCons.setEstado(Constants.STATUS_NOT_SUBMITTED);
 				mSalidaCons.setToday(fecha);
-				zpVerificacion = zikaPosA.getZpControlConsentimientosSalida(MainDBConstants.codigo + "='" + mSalidaCons.getCodigo() + "' and " + MainDBConstants.fechaHoraSalida + "=" + mSalidaCons.getFechaHoraSalida().getTime(), null);
+				zpVerificacion = zikaPosA.getZpControlConsentimientosSalida(MainDBConstants.codigo + "='" + mSalidaCons.getCodigo() +"'", null);
 				if(zpVerificacion!=null){
-					return "Código ya fue ingresado hoy";
+					return "Código ya fue ingresado";
 				}
 				else{
 					zikaPosA.crearZpControlConsentimientosSalida(mSalidaCons);
 				}
-				zpVerificacion = zikaPosA.getZpControlConsentimientosSalida(MainDBConstants.codigo + "='" + mSalidaCons.getCodigo() + "' and " + MainDBConstants.fechaHoraSalida + "=" + mSalidaCons.getFechaHoraSalida().getTime(), null);
+				zpVerificacion = zikaPosA.getZpControlConsentimientosSalida(MainDBConstants.codigo + "='" + mSalidaCons.getCodigo() +"'", null);
 				if(zpVerificacion!=null){
 					return "exito";
 				}

@@ -16,6 +16,8 @@ public class ZpControlUSRecepcionHelper {
 		cv.put(MainDBConstants.codigo, datos.getCodigo());
 		if (datos.getFechaHoraLLegada() != null) cv.put(MainDBConstants.fechaHoraLLegada, datos.getFechaHoraLLegada().getTime());
 		cv.put(MainDBConstants.persona, datos.getPersona());
+		cv.put(MainDBConstants.evento, datos.getEvento());
+		if (datos.getFechaDato() != null) cv.put(MainDBConstants.fechaDato, datos.getFechaDato().getTime());
 		if (datos.getRecordDate() != null) cv.put(MainDBConstants.recordDate, datos.getRecordDate().getTime());
 		cv.put(MainDBConstants.recordUser, datos.getRecordUser());
 		cv.put(MainDBConstants.pasive, String.valueOf(datos.getPasive()));
@@ -37,6 +39,8 @@ public class ZpControlUSRecepcionHelper {
 		mDatos.setCodigo(cursorDatos.getString(cursorDatos.getColumnIndex(MainDBConstants.codigo)));
 		if(cursorDatos.getLong(cursorDatos.getColumnIndex(MainDBConstants.fechaHoraLLegada))>0) mDatos.setFechaHoraLLegada(new Date(cursorDatos.getLong(cursorDatos.getColumnIndex(MainDBConstants.fechaHoraLLegada))));
 		mDatos.setPersona(cursorDatos.getString(cursorDatos.getColumnIndex(MainDBConstants.persona)));
+		mDatos.setEvento(cursorDatos.getString(cursorDatos.getColumnIndex(MainDBConstants.evento)));
+		if(cursorDatos.getLong(cursorDatos.getColumnIndex(MainDBConstants.fechaDato))>0) mDatos.setFechaDato(new Date(cursorDatos.getLong(cursorDatos.getColumnIndex(MainDBConstants.fechaDato))));
 		if(cursorDatos.getLong(cursorDatos.getColumnIndex(MainDBConstants.recordDate))>0) mDatos.setRecordDate(new Date(cursorDatos.getLong(cursorDatos.getColumnIndex(MainDBConstants.recordDate))));
 		mDatos.setRecordUser(cursorDatos.getString(cursorDatos.getColumnIndex(MainDBConstants.recordUser)));
 		mDatos.setPasive(cursorDatos.getString(cursorDatos.getColumnIndex(MainDBConstants.pasive)).charAt(0));

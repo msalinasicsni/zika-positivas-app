@@ -215,7 +215,7 @@ public class NewZpControlConsentimientosRecepcionActivity extends AbstractAsyncA
 			showToast(this.getString( R.string.code_error));
 			return false;
 		}
-		if(!(mCodigo.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
+		if(!(mCodigo.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
 			showToast(mCodigo + " " + getString(R.string.code_error));
 			mCodigoView.setText(null);
 			mCodigo=null;
@@ -341,7 +341,7 @@ public class NewZpControlConsentimientosRecepcionActivity extends AbstractAsyncA
 			String sb = intent.getStringExtra("SCAN_RESULT");
 			if (sb != null && sb.length() > 0) {
 				try{
-					if(!(sb.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
+					if(!(sb.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
 						showToast(sb + " " + getString(R.string.scan_error));
 						mCodigoView.setText(null);
 						mCodigo=null;
@@ -391,14 +391,14 @@ public class NewZpControlConsentimientosRecepcionActivity extends AbstractAsyncA
 				mRecepcionCons.setDeviceid(new DeviceInfo(NewZpControlConsentimientosRecepcionActivity.this).getDeviceId());
 				mRecepcionCons.setEstado(Constants.STATUS_NOT_SUBMITTED);
 				mRecepcionCons.setToday(fecha);
-				zpVerificacion = zikaPosA.getZpControlConsentimientosRecepcion(MainDBConstants.codigo + "='" + mRecepcionCons.getCodigo() + "' and " + MainDBConstants.fechaHoraLLegada + "=" + mRecepcionCons.getFechaHoraLLegada().getTime(), null);
+				zpVerificacion = zikaPosA.getZpControlConsentimientosRecepcion(MainDBConstants.codigo + "='" + mRecepcionCons.getCodigo() + "'", null);
 				if(zpVerificacion!=null){
-					return "Código ya fue ingresado hoy";
+					return "Código ya fue ingresado";
 				}
 				else{
 					zikaPosA.crearZpControlConsentimientosRecepcion(mRecepcionCons);
 				}
-				zpVerificacion = zikaPosA.getZpControlConsentimientosRecepcion(MainDBConstants.codigo + "='" + mRecepcionCons.getCodigo() + "' and " + MainDBConstants.fechaHoraLLegada + "=" + mRecepcionCons.getFechaHoraLLegada().getTime(), null);
+				zpVerificacion = zikaPosA.getZpControlConsentimientosRecepcion(MainDBConstants.codigo + "='" + mRecepcionCons.getCodigo()+ "'" , null);
 				if(zpVerificacion!=null){
 					return "exito";
 				}

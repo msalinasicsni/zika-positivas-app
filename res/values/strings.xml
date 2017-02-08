@@ -18,7 +18,7 @@
     <string name="desc_barcode">Escanear código de barras</string>
     <string name="out_of_time">Este evento se encuentra fuera de calendario!!! Realmente desea ingresar información?</string>
     <string name="parametro">Parámetro de búsqueda</string>
-    <string name="method">Método de ingreso</string>
+    <string name="method">Método:</string>
     <string name="ok">Aceptar</string>
     <string name="cancel">Cancelar</string>
     <string name="edit">Editar</string>
@@ -67,5 +67,17 @@
     <string name="error_cons">Debe contestar si dió consentimiento!</string>
     <string name="error_cs">Centro de salud inválido!</string>
     <string name="no_cons">La mujer no dió consentimiento!</string>
+    
+    <string name="status">Estado</string>
+    <string name="inm">Inmunológico</string>
+    <string name="noimn">No inmunológico</string>
+    <string name="no_def">No definido!</string>
+    <string name="label_status">Definir estado de la participante</string>    
+    
+    <string name="evento">Evento</string>
+    <string name="SCREENING">Ingreso</string>
+    <string name="TRI2">2do Trimestre</string>
+    <string name="TRI3">3er Trimestre</string>
+    <string name="UNSCHED">No programado</string>    
     
 </resources>

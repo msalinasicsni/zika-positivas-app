@@ -5,8 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.ListIterator;
-
 import ni.org.ics.zikapositivas.appmovil.AbstractAsyncActivity;
 import ni.org.ics.zikapositivas.appmovil.MainActivity;
 import ni.org.ics.zikapositivas.appmovil.MyZikaPosApplication;
@@ -35,6 +33,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,6 +60,12 @@ public class NewZpControlUSRecepcionActivity extends AbstractAsyncActivity {
 	private String mCodigo;
 	private Date todayWithZeroTime = null;
 	private String mCodigosDeHoy;
+	
+	private String evento;
+	private RadioButton radioScreening;
+	private RadioButton radioTri2;
+	private RadioButton radioTri3;
+	private RadioButton radioUnscheduled;
 	
 	private static final int EXIT = 1;
 	private static final int HOME = 0;
@@ -165,7 +170,8 @@ public class NewZpControlUSRecepcionActivity extends AbstractAsyncActivity {
 				if(validarEntrada()){
 					new SaveDataTask().execute(mLugarView.getSelectedItem().toString(),
 							mPersonaView.getSelectedItem().toString(),
-							mCodigoView.getText().toString());
+							mCodigoView.getText().toString(),
+							evento);
 				}
 				
 			}
@@ -197,7 +203,36 @@ public class NewZpControlUSRecepcionActivity extends AbstractAsyncActivity {
 			}
 		});
 		
+		radioScreening = (RadioButton) findViewById(R.id.radio_ingreso);
+		radioTri2 = (RadioButton) findViewById(R.id.radio_tri2);
+		radioTri3 = (RadioButton) findViewById(R.id.radio_tri3);
+		radioUnscheduled = (RadioButton) findViewById(R.id.radio_sinprog);
+		
 
+	}
+	
+	public void onRadioButtonClicked(View view) {
+	    // Is the button now checked?
+	    boolean checked = ((RadioButton) view).isChecked();
+	    // Check which radio button was clicked
+	    switch(view.getId()) {
+	        case R.id.radio_ingreso:
+	            if (checked)
+	            	evento = "SCREENING";
+	            break;
+	        case R.id.radio_tri2:
+	            if (checked)
+	            	evento = "TRI2";
+	            break;
+	        case R.id.radio_tri3:
+	            if (checked)
+	            	evento = "TRI3";
+	            break;
+	        case R.id.radio_sinprog:
+	            if (checked)
+	            	evento = "UNSCHED";
+	            break;
+	    }
 	}
 	
 	private boolean validarEntrada() {
@@ -214,7 +249,11 @@ public class NewZpControlUSRecepcionActivity extends AbstractAsyncActivity {
 			showToast(this.getString( R.string.code_error));
 			return false;
 		}
-		if(!(mCodigo.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
+		if (evento==null || evento.matches("")){
+			showToast(this.getString( R.string.error_evento));
+			return false;
+		}
+		if(!(mCodigo.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
 			showToast(mCodigo + " " + getString(R.string.code_error));
 			mCodigoView.setText(null);
 			mCodigo=null;
@@ -340,7 +379,7 @@ public class NewZpControlUSRecepcionActivity extends AbstractAsyncActivity {
 			String sb = intent.getStringExtra("SCAN_RESULT");
 			if (sb != null && sb.length() > 0) {
 				try{
-					if(!(sb.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
+					if(!(sb.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
 						showToast(sb + " " + getString(R.string.scan_error));
 						mCodigoView.setText(null);
 						mCodigo=null;
@@ -366,6 +405,7 @@ public class NewZpControlUSRecepcionActivity extends AbstractAsyncActivity {
 		private String lugar = null;
 		private String persona = null;
 		private String codigo = null;
+		private String evento = null;
 		private ZpControlReporteUSRecepcion zpVerificacion = null;
 		@Override
 		protected void onPreExecute() {
@@ -378,11 +418,14 @@ public class NewZpControlUSRecepcionActivity extends AbstractAsyncActivity {
 			lugar = values[0];
 			persona = values[1];
 			codigo = values[2];
+			evento = values[3];
 			try {
 				Date fecha = new Date();
 				mRecepcionUS = new ZpControlReporteUSRecepcion();
 				mRecepcionUS.setLugarLlegada(lugar);
 				mRecepcionUS.setPersona(persona);
+				mRecepcionUS.setEvento(evento);
+				mRecepcionUS.setFechaDato(fecha);
 				mRecepcionUS.setCodigo(codigo);
 				mRecepcionUS.setFechaHoraLLegada(todayWithZeroTime);
 				mRecepcionUS.setRecordDate(fecha);
@@ -390,14 +433,16 @@ public class NewZpControlUSRecepcionActivity extends AbstractAsyncActivity {
 				mRecepcionUS.setDeviceid(new DeviceInfo(NewZpControlUSRecepcionActivity.this).getDeviceId());
 				mRecepcionUS.setEstado(Constants.STATUS_NOT_SUBMITTED);
 				mRecepcionUS.setToday(fecha);
-				zpVerificacion = zikaPosA.getZpControlReporteUSRecepcion(MainDBConstants.codigo + "='" + mRecepcionUS.getCodigo() + "' and " + MainDBConstants.fechaHoraLLegada + "=" + mRecepcionUS.getFechaHoraLLegada().getTime(), null);
+				if (!evento.matches("UNSCHED")){
+					zpVerificacion = zikaPosA.getZpControlReporteUSRecepcion(MainDBConstants.codigo + "='" + mRecepcionUS.getCodigo() + "' and " + MainDBConstants.evento + "='" + mRecepcionUS.getEvento() +"'", null);
+				}
 				if(zpVerificacion!=null){
-					return "Código ya fue ingresado hoy";
+					return "Evento para este código ya fue ingresado";
 				}
 				else{
 					zikaPosA.crearZpControlReporteUSRecepcion(mRecepcionUS);
 				}
-				zpVerificacion = zikaPosA.getZpControlReporteUSRecepcion(MainDBConstants.codigo + "='" + mRecepcionUS.getCodigo() + "' and " + MainDBConstants.fechaHoraLLegada + "=" + mRecepcionUS.getFechaHoraLLegada().getTime(), null);
+				zpVerificacion = zikaPosA.getZpControlReporteUSRecepcion(MainDBConstants.codigo + "='" + mRecepcionUS.getCodigo() + "' and " + MainDBConstants.fechaDato + "=" + mRecepcionUS.getFechaDato().getTime()+ " and " + MainDBConstants.evento + "='" + mRecepcionUS.getEvento() +"'", null);
 				if(zpVerificacion!=null){
 					return "exito";
 				}
@@ -426,6 +471,11 @@ public class NewZpControlUSRecepcionActivity extends AbstractAsyncActivity {
 			Toast.makeText(getApplicationContext(),	R.string.success, Toast.LENGTH_LONG).show();
 			mCodigoView.setText(null);
 			mCodigo=null;
+			evento = null;
+			radioScreening.setChecked(false);
+			radioTri2.setChecked(false);
+			radioTri3.setChecked(false);
+			radioUnscheduled.setChecked(false);
 		}		
 		else{
 			showToast(resultado);
@@ -468,10 +518,9 @@ public class NewZpControlUSRecepcionActivity extends AbstractAsyncActivity {
 	private void showResultados(List<ZpControlReporteUSRecepcion> resultado) {
 		if(resultado!=null){
 			mCodigosDeHoy = this.getString(R.string.today_items) + ": " + String.valueOf(resultado.size()) + "\n";
-			ListIterator<ZpControlReporteUSRecepcion> iter = resultado.listIterator();
-            while (iter.hasNext()){
-            	mCodigosDeHoy = mCodigosDeHoy + iter.next().getCodigo()+ "\n";
-            }
+			for (ZpControlReporteUSRecepcion res:resultado){
+				mCodigosDeHoy = mCodigosDeHoy + res.getCodigo()+ " - " + res.getEvento()+"\n";
+			}
 		}
 		else{
 			mCodigosDeHoy = this.getString(R.string.no_items);

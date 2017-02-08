@@ -16,6 +16,7 @@ import ni.org.ics.zikapositivas.appmovil.helpers.*;
 import ni.org.ics.zikapositivas.appmovil.utils.*;
 
 
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -126,7 +127,26 @@ public class ZikaPosAdapter {
                 db.execSQL("ALTER TABLE " + Zp02DBConstants.BIOCOLLECTION_TABLE + " ADD COLUMN " + Zp02DBConstants.addtAnemiaTestAv + " text");
                 db.execSQL("ALTER TABLE " + Zp02DBConstants.BIOCOLLECTION_TABLE + " ADD COLUMN " + Zp02DBConstants.addtHematocrit + " real");
                 db.execSQL("ALTER TABLE " + Zp02DBConstants.BIOCOLLECTION_TABLE + " ADD COLUMN " + Zp02DBConstants.addtHemoglobin + " real");
+                db.execSQL("DROP TABLE " + MainDBConstants.DATA_USREC_TABLE);
+				db.execSQL("DROP TABLE " + MainDBConstants.DATA_USSAL_TABLE);
+				db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSSAL_TABLE);
+				db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSREC_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_USSAL_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_USREC_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_CONSREC_TABLE);
+                
             }
+            if(oldVersion==2){
+				db.execSQL("DROP TABLE " + MainDBConstants.DATA_USREC_TABLE);
+				db.execSQL("DROP TABLE " + MainDBConstants.DATA_USSAL_TABLE);
+				db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSSAL_TABLE);
+				db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSREC_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_USSAL_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_USREC_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_CONSREC_TABLE);
+			}
         }
     }
 
@@ -476,8 +496,7 @@ public class ZikaPosAdapter {
     //Editar ZpControlConsentimientosSalida existente en la base de datos
     public boolean editarZpControlConsentimientosSalida(ZpControlConsentimientosSalida datos) {
         ContentValues cv = ZpControlConsentimientosSalidaHelper.crearZpControlConsentimientosSalida(datos);
-        return mDb.update(MainDBConstants.DATA_CONSSAL_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() + "' and " +
-                MainDBConstants.fechaHoraSalida + "=" + datos.getFechaHoraSalida().getTime(), null) > 0;
+        return mDb.update(MainDBConstants.DATA_CONSSAL_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() +"'", null) > 0;
     }
     //Limpiar la tabla de ZpControlConsentimientosSalida de la base de datos
     public boolean borrarZpControlConsentimientosSalida() {
@@ -526,8 +545,7 @@ public class ZikaPosAdapter {
     //Editar ZpControlConsentimientosRecepcion existente en la base de datos
     public boolean editarZpControlConsentimientosRecepcion(ZpControlConsentimientosRecepcion datos) {
         ContentValues cv = ZpControlConsentimientosRecepcionHelper.crearZpControlConsentimientosRecepcion(datos);
-        return mDb.update(MainDBConstants.DATA_CONSREC_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() + "' and " +
-                MainDBConstants.fechaHoraLLegada + "=" + datos.getFechaHoraLLegada().getTime(), null) > 0;
+        return mDb.update(MainDBConstants.DATA_CONSREC_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() +"'", null) > 0;
     }
     //Limpiar la tabla de ZpControlConsentimientosRecepcion de la base de datos
     public boolean borrarZpControlConsentimientosRecepcion() {
@@ -576,8 +594,8 @@ public class ZikaPosAdapter {
     //Editar ZpControlReporteUSSalida existente en la base de datos
     public boolean editarZpControlReporteUSSalida(ZpControlReporteUSSalida datos) {
         ContentValues cv = ZpControlUSSalidaHelper.crearZpControlReporteUSSalida(datos);
-        return mDb.update(MainDBConstants.DATA_USSAL_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() + "' and " +
-                MainDBConstants.fechaHoraSalida + "=" + datos.getFechaHoraSalida().getTime(), null) > 0;
+        return mDb.update(MainDBConstants.DATA_USSAL_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() + "' and " + 
+				MainDBConstants.fechaDato + "=" + datos.getFechaDato().getTime(), null) > 0;
     }
     //Limpiar la tabla de ZpControlReporteUSSalida de la base de datos
     public boolean borrarZpControlReporteUSSalida() {
@@ -626,8 +644,8 @@ public class ZikaPosAdapter {
     //Editar ZpControlReporteUSRecepcion existente en la base de datos
     public boolean editarZpControlReporteUSRecepcion(ZpControlReporteUSRecepcion datos) {
         ContentValues cv = ZpControlUSRecepcionHelper.crearZpControlReporteUSRecepcion(datos);
-        return mDb.update(MainDBConstants.DATA_USREC_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() + "' and " +
-                MainDBConstants.fechaHoraLLegada + "=" + datos.getFechaHoraLLegada().getTime(), null) > 0;
+        return mDb.update(MainDBConstants.DATA_USREC_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() + "' and " + 
+				MainDBConstants.fechaDato + "=" + datos.getFechaDato().getTime(), null) > 0;
     }
     //Limpiar la tabla de ZpControlReporteUSRecepcion de la base de datos
     public boolean borrarZpControlReporteUSRecepcion() {
