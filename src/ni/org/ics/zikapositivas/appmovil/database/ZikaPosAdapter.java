@@ -74,6 +74,7 @@ public class ZikaPosAdapter {
             db.execSQL(MainDBConstants.CREATE_DATA_USREC_TABLE);
             db.execSQL(Zp02DBConstants.CREATE_INFANTBIOCOLLECTION_TABLE);
             db.execSQL(Zp07DBConstants.CREATE_INFANTASSESSMENT_TABLE);
+            db.execSQL(MainDBConstants.CREATE_INFANTDATA_TABLE);
         }
 
         @Override
@@ -128,25 +129,25 @@ public class ZikaPosAdapter {
                 db.execSQL("ALTER TABLE " + Zp02DBConstants.BIOCOLLECTION_TABLE + " ADD COLUMN " + Zp02DBConstants.addtHematocrit + " real");
                 db.execSQL("ALTER TABLE " + Zp02DBConstants.BIOCOLLECTION_TABLE + " ADD COLUMN " + Zp02DBConstants.addtHemoglobin + " real");
                 db.execSQL("DROP TABLE " + MainDBConstants.DATA_USREC_TABLE);
-				db.execSQL("DROP TABLE " + MainDBConstants.DATA_USSAL_TABLE);
-				db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSSAL_TABLE);
-				db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSREC_TABLE);
-	            db.execSQL(MainDBConstants.CREATE_DATA_USSAL_TABLE);
-	            db.execSQL(MainDBConstants.CREATE_DATA_USREC_TABLE);
-	            db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
-	            db.execSQL(MainDBConstants.CREATE_DATA_CONSREC_TABLE);
-                
+                db.execSQL("DROP TABLE " + MainDBConstants.DATA_USSAL_TABLE);
+                db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSSAL_TABLE);
+                db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSREC_TABLE);
+                db.execSQL(MainDBConstants.CREATE_DATA_USSAL_TABLE);
+                db.execSQL(MainDBConstants.CREATE_DATA_USREC_TABLE);
+                db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
+                db.execSQL(MainDBConstants.CREATE_DATA_CONSREC_TABLE);
+
             }
             if(oldVersion==2){
-				db.execSQL("DROP TABLE " + MainDBConstants.DATA_USREC_TABLE);
-				db.execSQL("DROP TABLE " + MainDBConstants.DATA_USSAL_TABLE);
-				db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSSAL_TABLE);
-				db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSREC_TABLE);
-	            db.execSQL(MainDBConstants.CREATE_DATA_USSAL_TABLE);
-	            db.execSQL(MainDBConstants.CREATE_DATA_USREC_TABLE);
-	            db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
-	            db.execSQL(MainDBConstants.CREATE_DATA_CONSREC_TABLE);
-			}
+                db.execSQL("DROP TABLE " + MainDBConstants.DATA_USREC_TABLE);
+                db.execSQL("DROP TABLE " + MainDBConstants.DATA_USSAL_TABLE);
+                db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSSAL_TABLE);
+                db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSREC_TABLE);
+                db.execSQL(MainDBConstants.CREATE_DATA_USSAL_TABLE);
+                db.execSQL(MainDBConstants.CREATE_DATA_USREC_TABLE);
+                db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
+                db.execSQL(MainDBConstants.CREATE_DATA_CONSREC_TABLE);
+            }
         }
     }
 
@@ -594,8 +595,8 @@ public class ZikaPosAdapter {
     //Editar ZpControlReporteUSSalida existente en la base de datos
     public boolean editarZpControlReporteUSSalida(ZpControlReporteUSSalida datos) {
         ContentValues cv = ZpControlUSSalidaHelper.crearZpControlReporteUSSalida(datos);
-        return mDb.update(MainDBConstants.DATA_USSAL_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() + "' and " + 
-				MainDBConstants.fechaDato + "=" + datos.getFechaDato().getTime(), null) > 0;
+        return mDb.update(MainDBConstants.DATA_USSAL_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() + "' and " +
+                MainDBConstants.fechaDato + "=" + datos.getFechaDato().getTime(), null) > 0;
     }
     //Limpiar la tabla de ZpControlReporteUSSalida de la base de datos
     public boolean borrarZpControlReporteUSSalida() {
@@ -644,8 +645,8 @@ public class ZikaPosAdapter {
     //Editar ZpControlReporteUSRecepcion existente en la base de datos
     public boolean editarZpControlReporteUSRecepcion(ZpControlReporteUSRecepcion datos) {
         ContentValues cv = ZpControlUSRecepcionHelper.crearZpControlReporteUSRecepcion(datos);
-        return mDb.update(MainDBConstants.DATA_USREC_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() + "' and " + 
-				MainDBConstants.fechaDato + "=" + datos.getFechaDato().getTime(), null) > 0;
+        return mDb.update(MainDBConstants.DATA_USREC_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() + "' and " +
+                MainDBConstants.fechaDato + "=" + datos.getFechaDato().getTime(), null) > 0;
     }
     //Limpiar la tabla de ZpControlReporteUSRecepcion de la base de datos
     public boolean borrarZpControlReporteUSRecepcion() {
@@ -1290,6 +1291,53 @@ public class ZikaPosAdapter {
         return dInfantBiospecimenCollections;
     }
 
+    /**
+     * Metodos para ZpInfantData en la base de datos
+     *
+     */
+    //Crear nuevo ZpInfantData en la base de datos
+    public void crearZpInfantData(ZpInfantData mZpInfantData) {
+        ContentValues cv = ZpInfantDataHelper.crearZpInfantData(mZpInfantData);
+        mDb.insert(MainDBConstants.INFANTDATA_TABLE, null, cv);
+    }
+    //Editar ZpInfantData existente en la base de datos
+    public boolean editarZpInfantData(ZpInfantData mZpInfantData) {
+        ContentValues cv = ZpInfantDataHelper.crearZpInfantData(mZpInfantData);
+        return mDb.update(MainDBConstants.INFANTDATA_TABLE, cv, MainDBConstants.recordId + "='"
+                + mZpInfantData.getRecordId() +"'", null) > 0;
+    }
+    //Limpiar la tabla de ZpInfantData de la base de datos
+    public boolean borrarZpInfantData() {
+        return mDb.delete(MainDBConstants.INFANTDATA_TABLE, null, null) > 0;
+    }
+    //Obtener un ZpInfantData de la base de datos
+    public ZpInfantData getZpInfantData(String filtro, String orden) throws SQLException {
+        ZpInfantData mZpInfantData = null;
+        Cursor cursor = crearCursor(MainDBConstants.INFANTDATA_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            mZpInfantData=ZpInfantDataHelper.crearZpInfantData(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return mZpInfantData;
+    }
+    //Obtener una lista de ZpInfantData de la base de datos
+    public List<ZpInfantData> getZpInfantDatas(String filtro, String orden) throws SQLException {
+        List<ZpInfantData> mZpInfantDatas = new ArrayList<ZpInfantData>();
+        Cursor cursor = crearCursor(MainDBConstants.INFANTDATA_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            mZpInfantDatas.clear();
+            do{
+                ZpInfantData mZpInfantData = null;
+                mZpInfantData = ZpInfantDataHelper.crearZpInfantData(cursor);
+                mZpInfantDatas.add(mZpInfantData);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return mZpInfantDatas;
+    }
+
     public Boolean verificarData() throws SQLException{
         Cursor c = null;
         c = crearCursor(MainDBConstants.SCREENING_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
@@ -1333,6 +1381,8 @@ public class ZikaPosAdapter {
         c = crearCursor(Zp07DBConstants.INFANTASSESSMENT_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
         if (c != null && c.getCount()>0) {c.close();return true;}
         c = crearCursor(Zp02DBConstants.INFANT_BIOCOLLECTION_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(MainDBConstants.INFANTDATA_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
         if (c != null && c.getCount()>0) {c.close();return true;}
         c.close();
         return false;
