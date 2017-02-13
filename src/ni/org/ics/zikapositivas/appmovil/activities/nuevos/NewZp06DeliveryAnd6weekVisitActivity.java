@@ -22,10 +22,16 @@ import ni.org.ics.zikapositivas.appmovil.MyZikaPosApplication;
 import ni.org.ics.zikapositivas.appmovil.R;
 import ni.org.ics.zikapositivas.appmovil.database.ZikaPosAdapter;
 import ni.org.ics.zikapositivas.appmovil.domain.Zp06DeliveryAnd6weekVisit;
+import ni.org.ics.zikapositivas.appmovil.domain.ZpEstadoInfante;
+import ni.org.ics.zikapositivas.appmovil.domain.ZpInfantData;
 import ni.org.ics.zikapositivas.appmovil.parsers.Zp06DeliveryAnd6weekVisitXml;
 import ni.org.ics.zikapositivas.appmovil.preferences.PreferencesActivity;
 import ni.org.ics.zikapositivas.appmovil.utils.Constants;
 import ni.org.ics.zikapositivas.appmovil.utils.FileUtils;
+import ni.org.ics.zikapositivas.appmovil.utils.MainDBConstants;
+
+
+
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -42,6 +48,12 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
 
     private ZikaPosAdapter zikaPos;
     private static Zp06DeliveryAnd6weekVisit mDelivery = null;
+    private static ZpInfantData mZpInfantData1 = null;
+    private static ZpInfantData mZpInfantData2 = null;
+    private static ZpInfantData mZpInfantData3 = null;
+    private static ZpEstadoInfante mZpEstadoInfante1 = null;
+    private static ZpEstadoInfante mZpEstadoInfante2 = null;
+    private static ZpEstadoInfante mZpEstadoInfante3 = null;
 
     public static final int ADD_ZP06_ODK = 1;
 	public static final int EDIT_ZP06_ODK = 2;
@@ -363,6 +375,38 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
             mDelivery.setSimserial(zp06Xml.getSimserial());
             mDelivery.setPhonenumber(zp06Xml.getPhonenumber());
             mDelivery.setToday(zp06Xml.getToday());
+            
+            if(event.matches(Constants.DELIVERY) && zp06Xml.getDeliVisitType().matches("1")){
+                if(zp06Xml.getDeliNumBirth().matches("1")){
+                	mZpInfantData1 = completarDatosInfante(1);
+                	mZpEstadoInfante1 = new ZpEstadoInfante(mZpInfantData1.getRecordId(), '0', '0', '0', '0', new Date(),
+                			username,'0',idInstancia,instanceFilePath,Constants.STATUS_NOT_SUBMITTED,zp06Xml.getStart(),
+                			zp06Xml.getEnd(),zp06Xml.getDeviceid(),zp06Xml.getSimserial(),zp06Xml.getPhonenumber(),zp06Xml.getToday());
+                }
+                else if(zp06Xml.getDeliNumBirth().matches("2")){
+                	mZpInfantData1 = completarDatosInfante(1);
+                	mZpInfantData2 = completarDatosInfante(2);
+                	mZpEstadoInfante1 = new ZpEstadoInfante(mZpInfantData1.getRecordId(), '0', '0', '0', '0', new Date(),
+                			username,'0',idInstancia,instanceFilePath,Constants.STATUS_NOT_SUBMITTED,zp06Xml.getStart(),
+                			zp06Xml.getEnd(),zp06Xml.getDeviceid(),zp06Xml.getSimserial(),zp06Xml.getPhonenumber(),zp06Xml.getToday());
+                	mZpEstadoInfante2 = new ZpEstadoInfante(mZpInfantData2.getRecordId(), '0', '0', '0', '0', new Date(),
+                			username,'0',idInstancia,instanceFilePath,Constants.STATUS_NOT_SUBMITTED,zp06Xml.getStart(),
+                			zp06Xml.getEnd(),zp06Xml.getDeviceid(),zp06Xml.getSimserial(),zp06Xml.getPhonenumber(),zp06Xml.getToday());
+                }else{
+                	mZpInfantData1 = completarDatosInfante(1);
+                	mZpInfantData2 = completarDatosInfante(2);
+                	mZpInfantData3 = completarDatosInfante(3);
+                	mZpEstadoInfante1 = new ZpEstadoInfante(mZpInfantData1.getRecordId(), '0', '0', '0', '0', new Date(),
+                			username,'0',idInstancia,instanceFilePath,Constants.STATUS_NOT_SUBMITTED,zp06Xml.getStart(),
+                			zp06Xml.getEnd(),zp06Xml.getDeviceid(),zp06Xml.getSimserial(),zp06Xml.getPhonenumber(),zp06Xml.getToday());
+                	mZpEstadoInfante2 = new ZpEstadoInfante(mZpInfantData2.getRecordId(), '0', '0', '0', '0', new Date(),
+                			username,'0',idInstancia,instanceFilePath,Constants.STATUS_NOT_SUBMITTED,zp06Xml.getStart(),
+                			zp06Xml.getEnd(),zp06Xml.getDeviceid(),zp06Xml.getSimserial(),zp06Xml.getPhonenumber(),zp06Xml.getToday());
+                	mZpEstadoInfante3 = new ZpEstadoInfante(mZpInfantData3.getRecordId(), '0', '0', '0', '0', new Date(),
+                			username,'0',idInstancia,instanceFilePath,Constants.STATUS_NOT_SUBMITTED,zp06Xml.getStart(),
+                			zp06Xml.getEnd(),zp06Xml.getDeviceid(),zp06Xml.getSimserial(),zp06Xml.getPhonenumber(),zp06Xml.getToday());
+                }
+            }
 
             new SaveDataTask().execute(accion);
 
@@ -372,6 +416,48 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
             e.printStackTrace();
             finish();
         }
+    }
+    
+    private ZpInfantData completarDatosInfante(int numInfante) {
+        String madreId = mDelivery.getRecordId();
+        String bebeId = null;
+        String fetalOutcome = null;
+        String causeDeath = null;
+        String sexBaby = null;
+        if (numInfante == 1) {
+        	bebeId = madreId.substring(0, madreId.length() - 2) + "1" + madreId.substring(madreId.length() - 1, madreId.length());
+        	fetalOutcome = mDelivery.getDeliFetalOutcome1();
+        	causeDeath = mDelivery.getDeliCauseDeath1();
+        	sexBaby = mDelivery.getDeliSexBaby1();
+        }
+        else if (numInfante == 2) {
+        	bebeId = madreId.substring(0, madreId.length() - 2) + "2" + madreId.substring(madreId.length() - 1, madreId.length());
+        	fetalOutcome = mDelivery.getDeliFetalOutcome2();
+        	causeDeath = mDelivery.getDeliCauseDeath2();
+        	sexBaby = mDelivery.getDeliSexBaby2();
+        }
+        else if (numInfante == 3) {
+        	bebeId = madreId.substring(0, madreId.length() - 2) + "3" + madreId.substring(madreId.length() - 1, madreId.length());
+        	fetalOutcome = mDelivery.getDeliFetalOutcome3();
+        	causeDeath = mDelivery.getDeliCauseDeath3();
+        	sexBaby = mDelivery.getDeliSexBaby3();
+        }
+        ZpInfantData data = new ZpInfantData();
+        data.setRecordId(bebeId);
+        data.setPregnantId(madreId);
+        data.setInfantBirthDate(mDelivery.getDeliDeliveryDate());
+        data.setInfantMode(mDelivery.getDeliMode());
+        data.setInfantDeliveryWho(mDelivery.getDeliDeliveryWho());
+        data.setInfantDeliveryOccur(mDelivery.getDeliDeliveryOccur());
+        data.setInfantHospitalId(mDelivery.getDeliHospitalId());
+        data.setInfantClinicId(mDelivery.getDeliClinicId());
+        data.setInfantDeliveryOther(mDelivery.getDeliDeliveryOther());
+        data.setInfantNumBirth(mDelivery.getDeliNumBirth());
+        data.setInfantFetalOutcome(fetalOutcome);
+        data.setInfantCauseDeath(causeDeath);
+        data.setInfantSexBaby(sexBaby);
+        data.setEstado(Constants.STATUS_NOT_SUBMITTED);
+        return data;
     }
 
     // ***************************************
@@ -393,9 +479,36 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
     				zikaPos.open();
     				if (accionaRealizar == ADD_ZP06_ODK){
     					zikaPos.crearZp06DeliveryAnd6weekVisit(mDelivery);
+                        if (mZpInfantData1!=null)
+                        	zikaPos.crearZpInfantData(mZpInfantData1);
+                        if (mZpInfantData2!=null)
+                        	zikaPos.crearZpInfantData(mZpInfantData2);
+                        if (mZpInfantData3!=null)
+                        	zikaPos.crearZpInfantData(mZpInfantData3);
+                        if (mZpEstadoInfante1!=null)
+                        	zikaPos.crearZpEstadoInfante(mZpEstadoInfante1);
+                        if (mZpEstadoInfante2!=null)
+                        	zikaPos.crearZpEstadoInfante(mZpEstadoInfante2);
+                        if (mZpEstadoInfante3!=null)
+                        	zikaPos.crearZpEstadoInfante(mZpEstadoInfante3);
     				}
     				else{
     					zikaPos.editarZp06DeliveryAnd6weekVisit(mDelivery);
+                        if (mZpInfantData1!=null){
+                            if (zikaPos.getZpInfantData(MainDBConstants.recordId + "='" + mZpInfantData1.getRecordId() + "'",null)!=null)
+                            	zikaPos.editarZpInfantData(mZpInfantData1);
+                            else zikaPos.crearZpInfantData(mZpInfantData1);
+                        }
+                        if (mZpInfantData2!=null){
+                            if (zikaPos.getZpInfantData(MainDBConstants.recordId + "='" + mZpInfantData2.getRecordId() + "'",null)!=null)
+                            	zikaPos.editarZpInfantData(mZpInfantData2);
+                            else zikaPos.crearZpInfantData(mZpInfantData2);
+                        }
+                        if (mZpInfantData3!=null){
+                            if (zikaPos.getZpInfantData(MainDBConstants.recordId + "='" + mZpInfantData3.getRecordId() + "'",null)!=null)
+                            	zikaPos.editarZpInfantData(mZpInfantData3);
+                            else zikaPos.crearZpInfantData(mZpInfantData3);
+                        }
     				}
     				zikaPos.close();
     			} catch (Exception e) {
