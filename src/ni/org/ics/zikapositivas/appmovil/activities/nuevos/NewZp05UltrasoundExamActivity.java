@@ -168,7 +168,7 @@ public class NewZp05UltrasoundExamActivity extends AbstractAsyncActivity {
                 }
             }
             else{
-
+            	finish();
             }
         }
         super.onActivityResult(requestCode, resultCode, intent);

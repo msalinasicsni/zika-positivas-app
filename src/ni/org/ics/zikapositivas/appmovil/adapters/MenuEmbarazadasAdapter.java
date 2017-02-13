@@ -6,10 +6,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import ni.org.ics.zikapositivas.appmovil.R;
 import ni.org.ics.zikapositivas.appmovil.domain.Zp00Screening;
 import ni.org.ics.zikapositivas.appmovil.domain.Zp08StudyExit;
 import ni.org.ics.zikapositivas.appmovil.domain.ZpEstadoEmbarazada;
-import ni.org.ics.zikapositivas.appmovil.R;
+
+
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -225,7 +227,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				long dif = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
 				if(dif>15){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<1){
 					textView.setTextColor(Color.BLUE);
@@ -255,7 +257,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -286,7 +288,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -317,7 +319,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -348,7 +350,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -379,7 +381,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -410,7 +412,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -441,7 +443,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -472,7 +474,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -503,7 +505,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -534,7 +536,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -565,7 +567,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -596,7 +598,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -627,7 +629,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -658,7 +660,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -689,7 +691,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -720,7 +722,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -751,7 +753,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -782,7 +784,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -813,7 +815,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -844,7 +846,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>7){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -875,7 +877,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>28){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -906,7 +908,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>28){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -937,7 +939,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>77){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);
@@ -968,7 +970,7 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 				}
 				else if(dif>77){
 					textView.setTextColor(Color.GRAY);
-					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notavailable));
+					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}
 				else if(dif<=0){
 					textView.setTextColor(Color.BLUE);

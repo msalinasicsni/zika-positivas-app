@@ -86,10 +86,10 @@ public class NewZp02dInfantBiospecimenCollectionActivity extends AbstractAsyncAc
         //to set the message
         TextView message =(TextView) dialogInit.findViewById(R.id.yesnotext);
         if (mInfantBioCollection !=null){
-            message.setText(getString(R.string.edit)+ " " + getString(R.string.infant_2)+"?");
+            message.setText(getString(R.string.edit)+ " " + getString(R.string.infant_b_2)+"?");
         }
         else{
-            message.setText(getString(R.string.add)+ " " + getString(R.string.infant_2)+"?");
+            message.setText(getString(R.string.add)+ " " + getString(R.string.infant_b_2)+"?");
         }
 
         //add some action to the buttons
@@ -169,7 +169,7 @@ public class NewZp02dInfantBiospecimenCollectionActivity extends AbstractAsyncAc
                 }
             }
             else{
-
+            	finish();
             }
         }
         super.onActivityResult(requestCode, resultCode, intent);

@@ -87,9 +87,46 @@
         <item>@string/maternal_b_4</item>
     </string-array>
     
-    <string-array name="menu_infant">
-        <item>@string/infant_1</item>
-        <item>@string/infant_2</item>
+     <string-array name="menu_infant">
+        <item>@string/infant_a_1</item>
+        <item>@string/infant_a_2</item>
+        <item>@string/infant_a_3</item>
+        <item>@string/infant_a_4</item>
+        <item>@string/infant_a_5</item>
+        <item>@string/infant_a_6</item>
+        <item>@string/infant_a_7</item>
+        <item>@string/infant_a_8</item>
+        <item>@string/infant_a_9</item>
+        <item>@string/infant_a_10</item>
+    </string-array>
+
+    <string-array name="menu_infant_visit">
+        <item>@string/infant_b_1</item>
+        <item>@string/infant_b_2</item>
+    </string-array>    
+    
+    <string-array name="menu_infant_parto">
+        <item>@string/infant_b_1</item>
+        <item>@string/infant_b_2</item>
+    </string-array>
+    
+    <string-array name="menu_infant_3m">
+        <item>@string/infant_b_1</item>
+        <item>@string/infant_b_2</item>
+    </string-array>
+
+    <string-array name="menu_infant_6m">
+        <item>@string/infant_b_1</item>
+        <item>@string/infant_b_2</item>
+    </string-array>    
+    
+    <string-array name="menu_infant_12m">
+        <item>@string/infant_b_1</item>
+        <item>@string/infant_b_2</item>
+    </string-array>    
+    
+    <string-array name="menu_infant_unsched">
+        <item>@string/infant_b_2</item>
     </string-array>
     
     <string-array name="menu_specimen">

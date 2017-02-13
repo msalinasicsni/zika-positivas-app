@@ -34,6 +34,7 @@ public class UploadAllTask extends UploadTask {
 
     protected static final String TAG = UploadAllTask.class.getSimpleName();
     private ZikaPosAdapter zikaPosA = null;
+    private static final String TOTAL_TASK = "22";
     private List<ZpPreScreening> mPreTamizajes = new ArrayList<ZpPreScreening>();
     private List<Zp00Screening> mTamizajes = new ArrayList<Zp00Screening>();
     private List<Zp01StudyEntrySectionAtoD> mIngresosAD = new ArrayList<Zp01StudyEntrySectionAtoD>();
@@ -52,6 +53,9 @@ public class UploadAllTask extends UploadTask {
     private List<ZpControlConsentimientosRecepcion> mRecepcionesCons = new ArrayList<ZpControlConsentimientosRecepcion>();
     private List<ZpControlReporteUSSalida> mSalidasUS = new ArrayList<ZpControlReporteUSSalida>();
     private List<ZpControlReporteUSRecepcion> mRecepcionUS = new ArrayList<ZpControlReporteUSRecepcion>();
+
+    private List<ZpInfantData> mInfantData = new ArrayList<ZpInfantData>();
+    private List<ZpEstadoInfante> mEstadoInfante = new ArrayList<ZpEstadoInfante>();
     private List<Zp02dInfantBiospecimenCollection> mInfantCollections = new ArrayList<Zp02dInfantBiospecimenCollection>();
     private List<Zp07InfantAssessmentVisit> mInfantAssessment = new ArrayList<Zp07InfantAssessmentVisit>();
 
@@ -80,6 +84,8 @@ public class UploadAllTask extends UploadTask {
     public static final int USREC = 17;
     public static final int MUESTRAS_INFANTE = 18;
     public static final int EVAL_INFANTE = 19;
+    public static final int DAT_INFANTE = 20;
+    public static final int ESTADO_INFANTE = 21;
 
 
     @Override
@@ -111,8 +117,10 @@ public class UploadAllTask extends UploadTask {
             mRecepcionesCons = zikaPosA.getZpControlConsentimientosRecepciones(filtro, null);
             mSalidasUS = zikaPosA.getZpControlReporteUSSalidas(filtro, null);
             mRecepcionUS = zikaPosA.getZpControlReporteUSRecepciones(filtro, null);
+            mInfantData = zikaPosA.getZpInfantDatas(filtro,null);
             mInfantCollections = zikaPosA.getZp02dInfantBiospecimenCollections(filtro, MainDBConstants.recordId);
             mInfantAssessment = zikaPosA.getZp07InfantAssessmentVisits(filtro, MainDBConstants.recordId);
+            mEstadoInfante = zikaPosA.getZpEstadoInfantes(filtro, MainDBConstants.recordId);
             publishProgress("Datos completos!", "2", "2");
             actualizarBaseDatos(Constants.STATUS_SUBMITTED, PRE_TAMIZAJE);
             error = cargarPreTamizajes(url, username, password);
@@ -223,6 +231,12 @@ public class UploadAllTask extends UploadTask {
                 return error;
             }
             /********infante*******/
+            actualizarBaseDatos(Constants.STATUS_SUBMITTED, DAT_INFANTE);
+            error = uploadInfantData(url, username, password);
+            if (!error.matches("Datos recibidos!")){
+                actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, DAT_INFANTE);
+                return error;
+            }
             actualizarBaseDatos(Constants.STATUS_SUBMITTED, MUESTRAS_INFANTE);
             error = uploadInfantBiospecimenCollection(url, username, password);
             if (!error.matches("Datos recibidos!")){
@@ -233,6 +247,12 @@ public class UploadAllTask extends UploadTask {
             error = uploadInfantAssessment(url, username, password);
             if (!error.matches("Datos recibidos!")){
                 actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, EVAL_INFANTE);
+                return error;
+            }
+            actualizarBaseDatos(Constants.STATUS_SUBMITTED, ESTADO_INFANTE);
+            error = uploadInfantStatus(url, username, password);
+            if (!error.matches("Datos recibidos!")){
+                actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, ESTADO_INFANTE);
                 return error;
             }
             zikaPosA.close();
@@ -443,14 +463,15 @@ public class UploadAllTask extends UploadTask {
                             .valueOf(c).toString());
                 }
             }
-        } /***************INFANTES***********/
+        } 
+        /***************INFANTES***********/
         else if(opcion==MUESTRAS_INFANTE){
             c = mInfantCollections.size();
             if(c>0){
                 for (Zp02dInfantBiospecimenCollection biospecimenCollection : mInfantCollections) {
                     biospecimenCollection.setEstado(estado);
                     zikaPosA.editarZp02dInfantBiospecimenCollection(biospecimenCollection);
-                    publishProgress("Actualizando muestras de intantes base de datos local", Integer.valueOf(mInfantCollections.indexOf(biospecimenCollection)).toString(), Integer
+                    publishProgress("Actualizando muestras de infantes base de datos local", Integer.valueOf(mInfantCollections.indexOf(biospecimenCollection)).toString(), Integer
                             .valueOf(c).toString());
                 }
             }
@@ -461,11 +482,34 @@ public class UploadAllTask extends UploadTask {
                 for (Zp07InfantAssessmentVisit infantAssessmentVisit : mInfantAssessment) {
                     infantAssessmentVisit.setEstado(estado);
                     zikaPosA.editarZp07InfantAssessmentVisit(infantAssessmentVisit);
-                    publishProgress("Actualizando evaluaciones de intantes base de datos local", Integer.valueOf(mInfantAssessment.indexOf(infantAssessmentVisit)).toString(), Integer
+                    publishProgress("Actualizando evaluaciones de infantes base de datos local", Integer.valueOf(mInfantAssessment.indexOf(infantAssessmentVisit)).toString(), Integer
                             .valueOf(c).toString());
                 }
             }
         }
+        else if(opcion==DAT_INFANTE){
+            c = mInfantData.size();
+            if(c>0){
+                for (ZpInfantData infantData : mInfantData) {
+                    infantData.setEstado(estado);
+                    zikaPosA.editarZpInfantData(infantData);
+                    publishProgress("Actualizando datos de infantes base de datos local", Integer.valueOf(mInfantData.indexOf(infantData)).toString(), Integer
+                            .valueOf(c).toString());
+                }
+            }
+        }
+        else if(opcion==ESTADO_INFANTE){
+            c = mEstadoInfante.size();
+            if(c>0){
+                for (ZpEstadoInfante infantEstado : mEstadoInfante) {
+                    infantEstado.setEstado(estado);
+                    zikaPosA.editarZpEstadoInfante(infantEstado);
+                    publishProgress("Actualizando estado de infantes base de datos local", Integer.valueOf(mInfantData.indexOf(infantEstado)).toString(), Integer
+                            .valueOf(c).toString());
+                }
+            }
+        }
+        
     }
 
 
@@ -478,7 +522,7 @@ public class UploadAllTask extends UploadTask {
         try {
             if(mPreTamizajes.size()>0){
                 // La URL de la solicitud POST
-                publishProgress("Enviando pre-tamizajes!", "1", "20");
+                publishProgress("Enviando pre-tamizajes!", "1", TOTAL_TASK);
                 final String urlRequest = url + "/movil/zpPreScreening";
                 ZpPreScreening[] envio = mPreTamizajes.toArray(new ZpPreScreening[mPreTamizajes.size()]);
                 HttpHeaders requestHeaders = new HttpHeaders();
@@ -512,7 +556,7 @@ public class UploadAllTask extends UploadTask {
                                      String password) throws Exception {
         try {
             if(mTamizajes.size()>0){
-                publishProgress("Enviando tamizajes!", "2", "20");
+                publishProgress("Enviando tamizajes!", "2", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp00Screenings";
                 Zp00Screening[] envio = mTamizajes.toArray(new Zp00Screening[mTamizajes.size()]);
@@ -547,7 +591,7 @@ public class UploadAllTask extends UploadTask {
                                     String password) throws Exception {
         try {
             if(mIngresosAD.size()>0){
-                publishProgress("Enviando ingresos (1)!", "3", "20");
+                publishProgress("Enviando ingresos (1)!", "3", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp01StudyEntrySectionAtoDs";
                 Zp01StudyEntrySectionAtoD[] envio = mIngresosAD.toArray(new Zp01StudyEntrySectionAtoD[mIngresosAD.size()]);
@@ -582,7 +626,7 @@ public class UploadAllTask extends UploadTask {
                                        String password) throws Exception {
         try {
             if(mIngresosE.size()>0){
-                publishProgress("Enviando ingresos (2)!", "4", "20");
+                publishProgress("Enviando ingresos (2)!", "4", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp01StudyEntrySectionEs";
                 Zp01StudyEntrySectionE[] envio = mIngresosE.toArray(new Zp01StudyEntrySectionE[mIngresosE.size()]);
@@ -617,7 +661,7 @@ public class UploadAllTask extends UploadTask {
                                     String password) throws Exception {
         try {
             if(mIngresosFK.size()>0){
-                publishProgress("Enviando ingresos (3)!", "5", "20");
+                publishProgress("Enviando ingresos (3)!", "5", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp01StudyEntrySectionFtoKs";
                 Zp01StudyEntrySectionFtoK[] envio = mIngresosFK.toArray(new Zp01StudyEntrySectionFtoK[mIngresosFK.size()]);
@@ -652,7 +696,7 @@ public class UploadAllTask extends UploadTask {
                                           String password) throws Exception {
         try {
             if(mCollections.size()>0){
-                publishProgress("Enviando muestras!", "6", "20");
+                publishProgress("Enviando muestras!", "6", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp02BiospecimenCollections";
                 Zp02BiospecimenCollection[] envio = mCollections.toArray(new Zp02BiospecimenCollection[mCollections.size()]);
@@ -687,7 +731,7 @@ public class UploadAllTask extends UploadTask {
                                          String password) throws Exception {
         try {
             if(mMonthlyVisits.size()>0){
-                publishProgress("Enviando visitas mensuales!", "7", "20");
+                publishProgress("Enviando visitas mensuales!", "7", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp03MonthlyVisits";
                 Zp03MonthlyVisit[] envio = mMonthlyVisits.toArray(new Zp03MonthlyVisit[mMonthlyVisits.size()]);
@@ -722,7 +766,7 @@ public class UploadAllTask extends UploadTask {
                                             String password) throws Exception {
         try {
             if(mTrimesterVisitAD.size()>0){
-                publishProgress("Enviando visitas trimestrales (1)!", "8", "20");
+                publishProgress("Enviando visitas trimestrales (1)!", "8", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp04TrimesterVisitSectionAtoDs";
                 Zp04TrimesterVisitSectionAtoD[] envio = mTrimesterVisitAD.toArray(new Zp04TrimesterVisitSectionAtoD[mTrimesterVisitAD.size()]);
@@ -757,7 +801,7 @@ public class UploadAllTask extends UploadTask {
                                            String password) throws Exception {
         try {
             if(mTrimesterVisitE.size()>0){
-                publishProgress("Enviando visitas trimestrales (2)!", "9", "20");
+                publishProgress("Enviando visitas trimestrales (2)!", "9", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp04TrimesterVisitSectionEs";
                 Zp04TrimesterVisitSectionE[] envio = mTrimesterVisitE.toArray(new Zp04TrimesterVisitSectionE[mTrimesterVisitE.size()]);
@@ -792,7 +836,7 @@ public class UploadAllTask extends UploadTask {
                                             String password) throws Exception {
         try {
             if(mTrimesterVisitFH.size()>0){
-                publishProgress("Enviando visitas trimestrales (3)!", "10", "20");
+                publishProgress("Enviando visitas trimestrales (3)!", "10", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp04TrimesterVisitSectionFtoHs";
                 Zp04TrimesterVisitSectionFtoH[] envio = mTrimesterVisitFH.toArray(new Zp04TrimesterVisitSectionFtoH[mTrimesterVisitFH.size()]);
@@ -827,7 +871,7 @@ public class UploadAllTask extends UploadTask {
                                            String password) throws Exception {
         try {
             if(mUltrasounds.size()>0){
-                publishProgress("Enviando ultrasonidos!", "11", "20");
+                publishProgress("Enviando ultrasonidos!", "11", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp05UltrasoundExams";
                 Zp05UltrasoundExam[] envio = mUltrasounds.toArray(new Zp05UltrasoundExam[mUltrasounds.size()]);
@@ -862,7 +906,7 @@ public class UploadAllTask extends UploadTask {
                                      String password) throws Exception {
         try {
             if(mDeliverys.size()>0){
-                publishProgress("Enviando partos!", "12", "20");
+                publishProgress("Enviando partos!", "12", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp06DeliveryAnd6weekVisits";
                 Zp06DeliveryAnd6weekVisit[] envio = mDeliverys.toArray(new Zp06DeliveryAnd6weekVisit[mDeliverys.size()]);
@@ -897,7 +941,7 @@ public class UploadAllTask extends UploadTask {
                                  String password) throws Exception {
         try {
             if(mExits.size()>0){
-                publishProgress("Enviando salidas!", "13", "20");
+                publishProgress("Enviando salidas!", "13", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp08StudyExits";
                 Zp08StudyExit[] envio = mExits.toArray(new Zp08StudyExit[mExits.size()]);
@@ -932,7 +976,7 @@ public class UploadAllTask extends UploadTask {
                                       String password) throws Exception {
         try {
             if(mStatus.size()>0){
-                publishProgress("Enviando estado embarazadas!", "14", "20");
+                publishProgress("Enviando estado embarazadas!", "14", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zpEstadoEmb";
                 ZpEstadoEmbarazada[] envio = mStatus.toArray(new ZpEstadoEmbarazada[mStatus.size()]);
@@ -968,7 +1012,7 @@ public class UploadAllTask extends UploadTask {
                                                         String password) throws Exception {
         try {
             if(mSalidasCons.size()>0){
-                publishProgress("Enviando salidas de consentimientos!", "15", "20");
+                publishProgress("Enviando salidas de consentimientos!", "15", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zpSalidaCons";
                 ZpControlConsentimientosSalida[] envio = mSalidasCons.toArray(new ZpControlConsentimientosSalida[mSalidasCons.size()]);
@@ -1003,7 +1047,7 @@ public class UploadAllTask extends UploadTask {
                                                            String password) throws Exception {
         try {
             if(mRecepcionesCons.size()>0){
-                publishProgress("Enviando recepciones de consentimientos!", "16", "20");
+                publishProgress("Enviando recepciones de consentimientos!", "16", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zpRecepcionCons";
                 ZpControlConsentimientosRecepcion[] envio = mRecepcionesCons.toArray(new ZpControlConsentimientosRecepcion[mRecepcionesCons.size()]);
@@ -1038,7 +1082,7 @@ public class UploadAllTask extends UploadTask {
                                            String password) throws Exception {
         try {
             if(mSalidasUS.size()>0){
-                publishProgress("Enviando salidas de us!", "17", "20");
+                publishProgress("Enviando salidas de us!", "17", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zpSalidaUS";
                 ZpControlReporteUSSalida[] envio = mSalidasUS.toArray(new ZpControlReporteUSSalida[mSalidasUS.size()]);
@@ -1073,7 +1117,7 @@ public class UploadAllTask extends UploadTask {
                                                      String password) throws Exception {
         try {
             if(mRecepcionUS.size()>0){
-                publishProgress("Enviando recepciones de us!", "18", "20");
+                publishProgress("Enviando recepciones de us!", "18", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zpRecepcionUS";
                 ZpControlReporteUSRecepcion[] envio = mRecepcionUS.toArray(new ZpControlReporteUSRecepcion[mRecepcionUS.size()]);
@@ -1100,15 +1144,52 @@ public class UploadAllTask extends UploadTask {
         }
     }
 
+    /*******INFANTES*********/
+
+    /***************************************************/
+    /********************* ZpInfantData******/
+    /***************************************************/
+    // url, username, password
+    protected String uploadInfantData(String url, String username,
+                                      String password) throws Exception {
+        try {
+            if(mInfantData.size()>0){
+                publishProgress("Enviando datos de infantes!", "19", TOTAL_TASK);
+                // La URL de la solicitud POST
+                final String urlRequest = url + "/movil/zpInfants";
+                ZpInfantData[] envio = mInfantData.toArray(new ZpInfantData[mInfantData.size()]);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+                requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<ZpInfantData[]> requestEntity =
+                        new HttpEntity<ZpInfantData[]>(envio, requestHeaders);
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+                // Hace la solicitud a la red, pone la vivienda y espera un mensaje de respuesta del servidor
+                ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
+                        String.class);
+                return response.getBody();
+            }
+            else{
+                return "Datos recibidos!";
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            return e.getMessage();
+        }
+    }
+
     /***************************************************/
     /********************* Zp02dInfantBiospecimenCollection******/
     /***************************************************/
     // url, username, password
     protected String uploadInfantBiospecimenCollection(String url, String username,
-                                                       String password) throws Exception {
+                                                     String password) throws Exception {
         try {
             if(mRecepcionUS.size()>0){
-                publishProgress("Enviando muestras de infantes!", "19", "20");
+                publishProgress("Enviando muestras de infantes!", "20", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp02dInfantBiospecimenCollections";
                 Zp02dInfantBiospecimenCollection[] envio = mInfantCollections.toArray(new Zp02dInfantBiospecimenCollection[mInfantCollections.size()]);
@@ -1140,10 +1221,10 @@ public class UploadAllTask extends UploadTask {
     /***************************************************/
     // url, username, password
     protected String uploadInfantAssessment(String url, String username,
-                                            String password) throws Exception {
+                                                       String password) throws Exception {
         try {
-            if(mRecepcionUS.size()>0){
-                publishProgress("Enviando evaluaciones de infantes!", "20", "20");
+            if(mInfantAssessment.size()>0){
+                publishProgress("Enviando evaluaciones de infantes!", "21", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp07InfantAssessmentVisits";
                 Zp07InfantAssessmentVisit[] envio = mInfantAssessment.toArray(new Zp07InfantAssessmentVisit[mInfantAssessment.size()]);
@@ -1169,4 +1250,39 @@ public class UploadAllTask extends UploadTask {
             return e.getMessage();
         }
     }
+    
+    /***************************************************/
+    /********************* ZpEstadoInfante******/
+    /***************************************************/
+    // url, username, password
+    protected String uploadInfantStatus(String url, String username,
+                                      String password) throws Exception {
+        try {
+            if(mEstadoInfante.size()>0){
+                publishProgress("Enviando datos de estado de infantes!", "22", TOTAL_TASK);
+                // La URL de la solicitud POST
+                final String urlRequest = url + "/movil/zpEstadoInfantes";
+                ZpEstadoInfante[] envio = mEstadoInfante.toArray(new ZpEstadoInfante[mEstadoInfante.size()]);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+                requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<ZpEstadoInfante[]> requestEntity =
+                        new HttpEntity<ZpEstadoInfante[]>(envio, requestHeaders);
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+                // Hace la solicitud a la red, pone la vivienda y espera un mensaje de respuesta del servidor
+                ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
+                        String.class);
+                return response.getBody();
+            }
+            else{
+                return "Datos recibidos!";
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            return e.getMessage();
+        }
+    }    
 }

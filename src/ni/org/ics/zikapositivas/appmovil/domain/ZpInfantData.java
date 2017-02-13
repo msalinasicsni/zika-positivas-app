@@ -130,27 +130,29 @@ public class ZpInfantData extends BaseMetaData {
         this.infantSexBaby = infantSexBaby;
     }
 
-    public String getInfantConsentInfant() {
-        return infantConsentInfant;
-    }
+	public String getInfantConsentInfant() {
+		return infantConsentInfant;
+	}
 
-    public void setInfantConsentInfant(String infantConsentInfant) {
-        this.infantConsentInfant = infantConsentInfant;
-    }
+	public void setInfantConsentInfant(String infantConsentInfant) {
+		this.infantConsentInfant = infantConsentInfant;
+	}
 
-    public String getInfantReasonNoconsent() {
-        return infantReasonNoconsent;
-    }
+	public String getInfantReasonNoconsent() {
+		return infantReasonNoconsent;
+	}
 
-    public void setInfantReasonNoconsent(String infantReasonNoconsent) {
-        this.infantReasonNoconsent = infantReasonNoconsent;
-    }
+	public void setInfantReasonNoconsent(String infantReasonNoconsent) {
+		this.infantReasonNoconsent = infantReasonNoconsent;
+	}
 
-    public String getInfantNoconsentOther() {
-        return infantNoconsentOther;
-    }
+	public String getInfantNoconsentOther() {
+		return infantNoconsentOther;
+	}
 
-    public void setInfantNoconsentOther(String infantNoconsentOther) {
-        this.infantNoconsentOther = infantNoconsentOther;
-    }
+	public void setInfantNoconsentOther(String infantNoconsentOther) {
+		this.infantNoconsentOther = infantNoconsentOther;
+	}
+
+    
 }

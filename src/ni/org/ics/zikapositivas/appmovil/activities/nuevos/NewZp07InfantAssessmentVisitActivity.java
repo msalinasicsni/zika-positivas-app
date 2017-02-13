@@ -85,10 +85,10 @@ public class NewZp07InfantAssessmentVisitActivity extends AbstractAsyncActivity 
         //to set the message
         TextView message =(TextView) dialogInit.findViewById(R.id.yesnotext);
         if (mInfantAssessment !=null){
-            message.setText(getString(R.string.edit)+ " " + getString(R.string.infant_1)+"?");
+            message.setText(getString(R.string.edit)+ " " + getString(R.string.infant_b_1)+"?");
         }
         else{
-            message.setText(getString(R.string.add)+ " " + getString(R.string.infant_1)+"?");
+            message.setText(getString(R.string.add)+ " " + getString(R.string.infant_b_1)+"?");
         }
 
         //add some action to the buttons
@@ -168,7 +168,7 @@ public class NewZp07InfantAssessmentVisitActivity extends AbstractAsyncActivity 
                 }
             }
             else{
-
+            	finish();
             }
         }
         super.onActivityResult(requestCode, resultCode, intent);

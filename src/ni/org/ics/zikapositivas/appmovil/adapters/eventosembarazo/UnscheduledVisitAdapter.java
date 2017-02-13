@@ -75,7 +75,7 @@ public class UnscheduledVisitAdapter extends ArrayAdapter<String> {
 			else{
 				textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.notdone));
 			}
-			img=getContext().getResources().getDrawable( R.drawable.ic_sample);
+			img=getContext().getResources().getDrawable( R.drawable.ic_monthly);
 			textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 			break;
 		case 2: 

@@ -45,6 +45,8 @@
             android:screenOrientation="portrait" />
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.buscar.BuscarEmbarazadaActivity"
             android:screenOrientation="portrait" />
+                <activity android:name="ni.org.ics.zip.appmovil.activities.buscar.BuscarInfanteActivity"
+            android:screenOrientation="portrait" />
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp00ScreeningActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.server.UploadAllActivity"
@@ -52,6 +54,8 @@
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.server.DownloadAllActivity"
             android:screenOrientation="portrait" />
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.paginas.MenuEmbarazadasActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zip.appmovil.activities.paginas.MenuInfantesActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosembarazo.IngresoActivity"
             android:screenOrientation="portrait"></activity>
@@ -64,6 +68,10 @@
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosembarazo.DeliveryVisitActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosembarazo.PostPartumVisitActivity"
+            android:screenOrientation="portrait"></activity>
+                <activity android:name="ni.org.ics.zip.appmovil.activities.paginas.eventosinfante.UnscheduledInfantVisitActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zip.appmovil.activities.paginas.eventosinfante.InfantVisitActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name="ni.org.ics.zikapositivas.appmovil.preferences.PreferencesActivity" />
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp01StudyEntrySectionAtoDActivity"

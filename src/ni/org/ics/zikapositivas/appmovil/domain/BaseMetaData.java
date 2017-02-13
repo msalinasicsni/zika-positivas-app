@@ -35,6 +35,27 @@ public class BaseMetaData implements Serializable
 		this.recordUser = recordUser;
 	}
 	
+	
+	
+	public BaseMetaData(Date recordDate, String recordUser, char pasive,
+			Integer idInstancia, String instancePath, String estado,
+			String start, String end, String deviceid, String simserial,
+			String phonenumber, Date today) {
+		super();
+		this.recordDate = recordDate;
+		this.recordUser = recordUser;
+		this.pasive = pasive;
+		this.idInstancia = idInstancia;
+		this.instancePath = instancePath;
+		this.estado = estado;
+		this.start = start;
+		this.end = end;
+		this.deviceid = deviceid;
+		this.simserial = simserial;
+		this.phonenumber = phonenumber;
+		this.today = today;
+	}
+
 	public Date getRecordDate() {
 		return recordDate;
 	}

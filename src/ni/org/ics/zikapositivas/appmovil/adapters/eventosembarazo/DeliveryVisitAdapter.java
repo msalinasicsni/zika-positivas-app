@@ -80,7 +80,7 @@ public class DeliveryVisitAdapter extends ArrayAdapter<String> {
 				textView.setTextColor(Color.RED);
 				textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.pending));
 			}
-			img=getContext().getResources().getDrawable( R.drawable.ic_sample);
+			img=getContext().getResources().getDrawable( R.drawable.ic_monthly);
 			textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 			break;
 		case 2: 

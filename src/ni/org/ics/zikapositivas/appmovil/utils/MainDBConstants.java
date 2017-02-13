@@ -16,6 +16,8 @@
 
 package ni.org.ics.zikapositivas.appmovil.utils;
 
+
+
 /**
  * Constantes usadas en la base de datos de la aplicacion
  * 
@@ -26,7 +28,7 @@ public class MainDBConstants {
 
 	//Base de datos y tablas
 	public static final String DATABASE_NAME = "zikaposcryp.sqlite3";
-	public static final int DATABASE_VERSION = 3;
+	public static final int DATABASE_VERSION = 4;
 	
 	//Tabla usuarios
 	public static final String USER_TABLE = "users";
@@ -450,55 +452,86 @@ public class MainDBConstants {
 				+ "primary key (" + codigo + "," + fechaDato +"));";
 
 
-    //Tabla ZpInfantData
-    public static String INFANTDATA_TABLE = "zp_datos_infante";
+		//Tabla ZpInfantData
+	    public static String INFANTDATA_TABLE = "zp_datos_infante";
 
-    public static final String pregnantId = "pregnantId";
-    public static final String infantBirthDate = "infantBirthDate";
-    public static final String infantMode = "infantMode";
-    public static final String infantDeliveryWho = "infantDeliveryWho";
-    public static final String infantDeliveryOccur = "infantDeliveryOccur";
-    public static final String infantHospitalId = "infantHospitalId";
-    public static final String infantClinicId = "infantClinicId";
-    public static final String infantDeliveryOther = "infantDeliveryOther";
-    public static final String infantNumBirth = "infantNumBirth";
-    public static final String infantFetalOutcome = "infantFetalOutcome";
-    public static final String infantCauseDeath = "infantCauseDeath";
-    public static final String infantSexBaby = "infantSexBaby";
-    public static final String infantConsentInfant = "infantConsentInfant";
-    public static final String infantReasonNoconsent = "infantReasonNoconsent";
-    public static final String infantNoconsentOther = "infantNoconsentOther";
+	    public static final String pregnantId = "pregnantId";
+	    public static final String infantBirthDate = "infantBirthDate";
+	    public static final String infantMode = "infantMode";
+	    public static final String infantDeliveryWho = "infantDeliveryWho";
+	    public static final String infantDeliveryOccur = "infantDeliveryOccur";
+	    public static final String infantHospitalId = "infantHospitalId";
+	    public static final String infantClinicId = "infantClinicId";
+	    public static final String infantDeliveryOther = "infantDeliveryOther";
+	    public static final String infantNumBirth = "infantNumBirth";
+	    public static final String infantFetalOutcome = "infantFetalOutcome";
+	    public static final String infantCauseDeath = "infantCauseDeath";
+	    public static final String infantSexBaby = "infantSexBaby";
+	    public static final String infantConsentInfant = "infantConsentInfant";
+	    public static final String infantReasonNoconsent = "infantReasonNoconsent";
+	    public static final String infantNoconsentOther = "infantNoconsentOther";
 
-    //Crear tabla ZpInfantData
-    public static final String CREATE_INFANTDATA_TABLE = "create table if not exists "
-            + INFANTDATA_TABLE + " ("
-            + recordId + " text not null, "
-            + pregnantId + " text, "
-            + infantBirthDate + " date, "
-            + infantMode + " text, "
-            + infantDeliveryWho + " text, "
-            + infantDeliveryOccur + " text, "
-            + infantHospitalId + " text, "
-            + infantClinicId + " text, "
-            + infantDeliveryOther + " text, "
-            + infantNumBirth + " text, "
-            + infantFetalOutcome + " text, "
-            + infantCauseDeath + " text, "
-            + infantSexBaby + " text, "
-            + infantConsentInfant + " text, "
-            + infantReasonNoconsent + " text, "
-            + infantNoconsentOther + " text, "
-            + MainDBConstants.recordDate + " date, "
-            + MainDBConstants.recordUser + " text, "
-            + MainDBConstants.pasive + " text, "
-            + MainDBConstants.ID_INSTANCIA + " integer,"
-            + MainDBConstants.FILE_PATH + " text,"
-            + MainDBConstants.STATUS + " text not null, "
-            + MainDBConstants.START  + " text, "
-            + MainDBConstants.END  + " text, "
-            + MainDBConstants.DEVICE_ID  + " text, "
-            + MainDBConstants.SIM_SERIAL + " text, "
-            + MainDBConstants.PHONE_NUMBER  + " text, "
-            + MainDBConstants.TODAY  + " date, "
-            + "primary key (" + recordId + "));";
+	    //Crear tabla ZpInfantData
+	    public static final String CREATE_INFANTDATA_TABLE = "create table if not exists "
+	            + INFANTDATA_TABLE + " ("
+	            + recordId + " text not null, "
+	            + pregnantId + " text, "
+	            + infantBirthDate + " date, "
+	            + infantMode + " text, "
+	            + infantDeliveryWho + " text, "
+	            + infantDeliveryOccur + " text, "
+	            + infantHospitalId + " text, "
+	            + infantClinicId + " text, "
+	            + infantDeliveryOther + " text, "
+	            + infantNumBirth + " text, "
+	            + infantFetalOutcome + " text, "
+	            + infantCauseDeath + " text, "
+	            + infantSexBaby + " text, "
+	            + infantConsentInfant + " text, "
+	            + infantReasonNoconsent + " text, "
+	            + infantNoconsentOther + " text, "
+	            + MainDBConstants.recordDate + " date, "
+	            + MainDBConstants.recordUser + " text, "
+	            + MainDBConstants.pasive + " text, "
+	            + MainDBConstants.ID_INSTANCIA + " integer,"
+	            + MainDBConstants.FILE_PATH + " text,"
+	            + MainDBConstants.STATUS + " text not null, "
+	            + MainDBConstants.START  + " text, "
+	            + MainDBConstants.END  + " text, "
+	            + MainDBConstants.DEVICE_ID  + " text, "
+	            + MainDBConstants.SIM_SERIAL + " text, "
+	            + MainDBConstants.PHONE_NUMBER  + " text, "
+	            + MainDBConstants.TODAY  + " date, "
+	            + "primary key (" + recordId + "));";
+
+	    //Tabla ZpInfantData
+	    public static String INFANTSTATUS_TABLE = "zp_estado_infante";
+
+	    public static final String nacimiento = "nacimiento";
+	    public static final String mes3 = "mes3";
+	    public static final String mes6 = "mes6";
+	    public static final String mes12 = "mes12";
+
+
+	    //Crear tabla ZpInfantData
+	    public static final String CREATE_INFANTSTATUS_TABLE = "create table if not exists "
+	            + INFANTSTATUS_TABLE + " ("
+	            + recordId + " text not null, "
+	            + nacimiento + " text, "
+	            + mes3 + " text, "
+	            + mes6 + " text, "
+	            + mes12 + " text, "
+	            + MainDBConstants.recordDate + " date, "
+	            + MainDBConstants.recordUser + " text, "
+	            + MainDBConstants.pasive + " text, "
+	            + MainDBConstants.ID_INSTANCIA + " integer,"
+	            + MainDBConstants.FILE_PATH + " text,"
+	            + MainDBConstants.STATUS + " text not null, "
+	            + MainDBConstants.START  + " text, "
+	            + MainDBConstants.END  + " text, "
+	            + MainDBConstants.DEVICE_ID  + " text, "
+	            + MainDBConstants.SIM_SERIAL + " text, "
+	            + MainDBConstants.PHONE_NUMBER  + " text, "
+	            + MainDBConstants.TODAY  + " date, "
+	            + "primary key (" + recordId + "));";   
 }

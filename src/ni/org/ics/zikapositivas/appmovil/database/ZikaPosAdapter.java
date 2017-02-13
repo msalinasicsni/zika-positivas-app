@@ -17,6 +17,7 @@ import ni.org.ics.zikapositivas.appmovil.utils.*;
 
 
 
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -75,6 +76,7 @@ public class ZikaPosAdapter {
             db.execSQL(Zp02DBConstants.CREATE_INFANTBIOCOLLECTION_TABLE);
             db.execSQL(Zp07DBConstants.CREATE_INFANTASSESSMENT_TABLE);
             db.execSQL(MainDBConstants.CREATE_INFANTDATA_TABLE);
+            db.execSQL(MainDBConstants.CREATE_INFANTSTATUS_TABLE);
         }
 
         @Override
@@ -147,6 +149,20 @@ public class ZikaPosAdapter {
                 db.execSQL(MainDBConstants.CREATE_DATA_USREC_TABLE);
                 db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
                 db.execSQL(MainDBConstants.CREATE_DATA_CONSREC_TABLE);
+            }
+            if(oldVersion==3){
+				db.execSQL("DROP TABLE " + MainDBConstants.DATA_USREC_TABLE);
+				db.execSQL("DROP TABLE " + MainDBConstants.DATA_USSAL_TABLE);
+				db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSSAL_TABLE);
+				db.execSQL("DROP TABLE " + MainDBConstants.DATA_CONSREC_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_USSAL_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_USREC_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_DATA_CONSREC_TABLE);
+	            db.execSQL(Zp02DBConstants.CREATE_INFANTBIOCOLLECTION_TABLE);
+	            db.execSQL(Zp07DBConstants.CREATE_INFANTASSESSMENT_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_INFANTDATA_TABLE);
+	            db.execSQL(MainDBConstants.CREATE_INFANTSTATUS_TABLE);
             }
         }
     }
@@ -1312,7 +1328,7 @@ public class ZikaPosAdapter {
     }
     //Obtener un ZpInfantData de la base de datos
     public ZpInfantData getZpInfantData(String filtro, String orden) throws SQLException {
-        ZpInfantData mZpInfantData = null;
+    	ZpInfantData mZpInfantData = null;
         Cursor cursor = crearCursor(MainDBConstants.INFANTDATA_TABLE, filtro, null, orden);
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -1329,13 +1345,60 @@ public class ZikaPosAdapter {
             cursor.moveToFirst();
             mZpInfantDatas.clear();
             do{
-                ZpInfantData mZpInfantData = null;
+            	ZpInfantData mZpInfantData = null;
                 mZpInfantData = ZpInfantDataHelper.crearZpInfantData(cursor);
                 mZpInfantDatas.add(mZpInfantData);
             } while (cursor.moveToNext());
         }
         if (!cursor.isClosed()) cursor.close();
         return mZpInfantDatas;
+    }   
+    
+    /**
+     * Metodos para ZpEstadoInfante en la base de datos
+     *
+     */
+    //Crear nuevo ZpEstadoInfante en la base de datos
+    public void crearZpEstadoInfante(ZpEstadoInfante mZpEstadoInfante) {
+        ContentValues cv = ZpEstadoInfanteHelper.crearZpEstadoInfante(mZpEstadoInfante);
+        mDb.insert(MainDBConstants.INFANTSTATUS_TABLE, null, cv);
+    }
+    //Editar ZpEstadoInfante existente en la base de datos
+    public boolean editarZpEstadoInfante(ZpEstadoInfante mZpEstadoInfante) {
+        ContentValues cv = ZpEstadoInfanteHelper.crearZpEstadoInfante(mZpEstadoInfante);
+        return mDb.update(MainDBConstants.INFANTSTATUS_TABLE, cv, MainDBConstants.recordId + "='"
+                + mZpEstadoInfante.getRecordId() +"'", null) > 0;
+    }
+    //Limpiar la tabla de ZpEstadoInfante de la base de datos
+    public boolean borrarZpEstadoInfante() {
+        return mDb.delete(MainDBConstants.INFANTSTATUS_TABLE, null, null) > 0;
+    }
+    //Obtener un ZpEstadoInfante de la base de datos
+    public ZpEstadoInfante getZpEstadoInfante(String filtro, String orden) throws SQLException {
+    	ZpEstadoInfante mZpEstadoInfante = null;
+        Cursor cursor = crearCursor(MainDBConstants.INFANTSTATUS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            mZpEstadoInfante=ZpEstadoInfanteHelper.crearZpEstadoInfante(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return mZpEstadoInfante;
+    }
+    //Obtener una lista de ZpEstadoInfante de la base de datos
+    public List<ZpEstadoInfante> getZpEstadoInfantes(String filtro, String orden) throws SQLException {
+        List<ZpEstadoInfante> mZpEstadoInfantes = new ArrayList<ZpEstadoInfante>();
+        Cursor cursor = crearCursor(MainDBConstants.INFANTSTATUS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            mZpEstadoInfantes.clear();
+            do{
+            	ZpEstadoInfante mZpEstadoInfanteData = null;
+                mZpEstadoInfanteData = ZpEstadoInfanteHelper.crearZpEstadoInfante(cursor);
+                mZpEstadoInfantes.add(mZpEstadoInfanteData);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return mZpEstadoInfantes;
     }
 
     public Boolean verificarData() throws SQLException{
@@ -1382,9 +1445,11 @@ public class ZikaPosAdapter {
         if (c != null && c.getCount()>0) {c.close();return true;}
         c = crearCursor(Zp02DBConstants.INFANT_BIOCOLLECTION_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
         if (c != null && c.getCount()>0) {c.close();return true;}
-        c = crearCursor(MainDBConstants.INFANTDATA_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
-        if (c != null && c.getCount()>0) {c.close();return true;}
-        c.close();
+		c = crearCursor(MainDBConstants.INFANTDATA_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+		if (c != null && c.getCount()>0) {c.close();return true;}
+		c = crearCursor(MainDBConstants.INFANTSTATUS_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+		if (c != null && c.getCount()>0) {c.close();return true;}
+		c.close();
         return false;
     }
 }

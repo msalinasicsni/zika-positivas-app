@@ -45,6 +45,9 @@ public class Constants {
 	public static final String OBJECTO_ZPDATA = "zpdatos";
 	public static final String DONE = "hecho";
 	
+	public static final String OBJECTO_ZPINFDATA = "zpdatosinfante";
+	public static final String OBJECTO_ZPESTINF = "zpestadoinfante";
+	
 	//Eventos
 	public static final String EVENT = "event";
 	public static final String SCREENING = "screening_arm_1";
@@ -79,6 +82,16 @@ public class Constants {
 	public static final String UNSHED4 = "unscheduled_visit_arm_1d";
 	public static final String UNSHED5 = "unscheduled_visit_arm_1e";
 	public static final String EXIT = "study_exit_arm_1";
+	
+	public static final String BIRTH = "birth_arm_2";
+	public static final String MONTH3 = "3_months_arm_2";
+	public static final String MONTH6 = "6_months_arm_2";
+	public static final String MONTH12 = "12_months_arm_2";
+	public static final String UNSHEDINF1 = "unscheduled_visit_arm_2";
+	public static final String UNSHEDINF2 = "unscheduled_visit_arm_2b";
+	public static final String UNSHEDINF3 = "unscheduled_visit_arm_2c";
+	public static final String UNSHEDINF4 = "unscheduled_visit_arm_2d";
+	public static final String UNSHEDINF5 = "unscheduled_visit_arm_2e";
 
 	public static final String PRESCREENID = "preScreeningId";
     public static final String RECORDID = "recordId";
