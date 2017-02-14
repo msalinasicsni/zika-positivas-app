@@ -425,19 +425,19 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
         String causeDeath = null;
         String sexBaby = null;
         if (numInfante == 1) {
-        	bebeId = madreId.substring(0, madreId.length() - 2) + "1" + madreId.substring(madreId.length() - 1, madreId.length());
+        	bebeId = madreId.substring(0, madreId.length() - 1) + "1" ;
         	fetalOutcome = mDelivery.getDeliFetalOutcome1();
         	causeDeath = mDelivery.getDeliCauseDeath1();
         	sexBaby = mDelivery.getDeliSexBaby1();
         }
         else if (numInfante == 2) {
-        	bebeId = madreId.substring(0, madreId.length() - 2) + "2" + madreId.substring(madreId.length() - 1, madreId.length());
+        	bebeId = madreId.substring(0, madreId.length() - 1) + "2" ;
         	fetalOutcome = mDelivery.getDeliFetalOutcome2();
         	causeDeath = mDelivery.getDeliCauseDeath2();
         	sexBaby = mDelivery.getDeliSexBaby2();
         }
         else if (numInfante == 3) {
-        	bebeId = madreId.substring(0, madreId.length() - 2) + "3" + madreId.substring(madreId.length() - 1, madreId.length());
+        	bebeId = madreId.substring(0, madreId.length() - 1) + "3" ;
         	fetalOutcome = mDelivery.getDeliFetalOutcome3();
         	causeDeath = mDelivery.getDeliCauseDeath3();
         	sexBaby = mDelivery.getDeliSexBaby3();
@@ -457,6 +457,17 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
         data.setInfantCauseDeath(causeDeath);
         data.setInfantSexBaby(sexBaby);
         data.setEstado(Constants.STATUS_NOT_SUBMITTED);
+        data.setInfantConsentInfant(mDelivery.getDeliConsentInfant());
+        data.setInfantReasonNoconsent(mDelivery.getDeliReasonNoconsent());
+        data.setInfantNoconsentOther(mDelivery.getDeliNoconsentOther());
+        data.setStart(mDelivery.getStart());
+        data.setEnd(mDelivery.getEnd());
+        data.setDeviceid(mDelivery.getDeviceid());
+        data.setSimserial(mDelivery.getSimserial());
+        data.setPhonenumber(mDelivery.getPhonenumber());
+        data.setToday(mDelivery.getToday());
+        data.setRecordDate(new Date());
+        data.setRecordUser(username);
         return data;
     }
 

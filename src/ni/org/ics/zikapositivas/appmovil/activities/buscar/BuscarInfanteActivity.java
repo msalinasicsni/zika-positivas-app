@@ -131,7 +131,7 @@ public class BuscarInfanteActivity extends AbstractAsyncListActivity {
 					mParametroView.setError(getString(R.string.search_hint));
 					return;
 				}
-				if(!mParametroView.getText().toString().matches("^07[0-9][0-9][0-9][0-9][1-3][A-Y]$")){
+				if(!mParametroView.getText().toString().matches("^ZP[0-9][0-9][0-9][1-3]$")){
 					mParametroView.requestFocus();
 					mParametroView.setError(getString(R.string.code_error));
 					return;
@@ -220,7 +220,7 @@ public class BuscarInfanteActivity extends AbstractAsyncListActivity {
 			String sb = intent.getStringExtra("SCAN_RESULT");
 			if (sb != null && sb.length() > 0) {
 				try{
-					if(!(sb.matches("^07[0-9][0-9][0-9][0-9][1-3][A-Y]$"))){
+					if(!(sb.matches("^ZP[0-9][0-9][0-9][1-3]$"))){
 						showToast(getString(R.string.scan_error));
 						return;
 					}

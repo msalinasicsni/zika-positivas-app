@@ -1188,7 +1188,7 @@ public class UploadAllTask extends UploadTask {
     protected String uploadInfantBiospecimenCollection(String url, String username,
                                                      String password) throws Exception {
         try {
-            if(mRecepcionUS.size()>0){
+            if(mInfantCollections.size()>0){
                 publishProgress("Enviando muestras de infantes!", "20", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp02dInfantBiospecimenCollections";

@@ -391,7 +391,7 @@ public class Zp02BiospecimenCollectionHelper {
         Zp02dInfantBiospecimenCollection dInfantBiospecimenCollection = new Zp02dInfantBiospecimenCollection();
         dInfantBiospecimenCollection.setRecordId(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.recordId)));
         dInfantBiospecimenCollection.setRedcapEventName(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.redcapEventName)));
-        if (cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscDov))>0) dInfantBiospecimenCollection.setInfantDov(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantDov))));
+        if (cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantDov))>0) dInfantBiospecimenCollection.setInfantDov(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantDov))));
         dInfantBiospecimenCollection.setWhomAddtVisit(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.whomAddtVisit)));
         dInfantBiospecimenCollection.setInfantAddtVisit(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantAddtVisit)));
         dInfantBiospecimenCollection.setInfantAddtVisitOther(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.infantAddtVisitOther)));
