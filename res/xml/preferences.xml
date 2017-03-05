@@ -16,4 +16,6 @@
 		            android:data="http://nicaumich.miserver.it.umich.edu/zika-positivas/resources/apk/zika-positivas-app.apk" />
 		</Preference>
 	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/version_app_preferences"></PreferenceCategory>
+	<PreferenceCategory android:title="@string/versiondate_app_preferences"></PreferenceCategory>
 </PreferenceScreen>
