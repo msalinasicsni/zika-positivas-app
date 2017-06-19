@@ -29,7 +29,7 @@ public class MainDBConstants {
 	//Base de datos y tablas
 	public static final String DATABASE_NAME = "zikaposcryp.sqlite3";
 	public static final int DATABASE_VERSION = 4;
-	
+
 	//Tabla usuarios
 	public static final String USER_TABLE = "users";
 	//Campos usuarios

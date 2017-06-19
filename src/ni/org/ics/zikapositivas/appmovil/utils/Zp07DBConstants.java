@@ -16,6 +16,14 @@ public class Zp07DBConstants {
     public static final String infantStatus = "infantStatus";
     public static final String infantDeathDt = "infantDeathDt";
     public static final String infantVisit = "infantVisit";
+    public static final String infantVisitDate2 = "infantVisitDate2";
+    public static final String infantStatus2 = "infantStatus2";
+    public static final String infantDeathDt2 = "infantDeathDt2";
+    public static final String infantVisit2 = "infantVisit2";
+    public static final String infantVisitDate3 = "infantVisitDate3";
+    public static final String infantStatus3 = "infantStatus3";
+    public static final String infantDeathDt3 = "infantDeathDt3";
+    public static final String infantVisit3 = "infantVisit3";
     public static final String infantTemp = "infantTemp";
     public static final String infantTmpUnit = "infantTmpUnit";
     public static final String infantWt = "infantWt";
@@ -139,12 +147,33 @@ public class Zp07DBConstants {
     public static final String infantOtherLab = "infantOtherLab";
     public static final String infantCommentsYn = "infantCommentsYn";
     public static final String infantComments2 = "infantComments2";
+    public static final String infantCommentsYn2 = "infantCommentsYn2";
+    public static final String infantComments2_2 = "infantComments2_2";
+    public static final String infantCommentsYn3 = "infantCommentsYn3";
+    public static final String infantComments2_3 = "infantComments2_3";
     public static final String infantIdCompleting = "infantIdCompleting";
     public static final String infantDtComp = "infantDtComp";
     public static final String infantIdReviewer = "infantIdReviewer";
     public static final String infantDtReview = "infantDtReview";
     public static final String infantIdDataEntry= "infantIdDataEntry";
     public static final String infantDtEnter = "infantDtEnter";
+    public static final String infantIdCompleting2 = "infantIdCompleting2";
+    public static final String infantDtComp2 = "infantDtComp2";
+    public static final String infantIdReviewer2 = "infantIdReviewer2";
+    public static final String infantDtReview2 = "infantDtReview2";
+    public static final String infantIdDataEntry2= "infantIdDataEntry2";
+    public static final String infantDtEnter2 = "infantDtEnter2";
+    public static final String infantIdCompleting3 = "infantIdCompleting3";
+    public static final String infantDtComp3 = "infantDtComp3";
+    public static final String infantIdReviewer3 = "infantIdReviewer3";
+    public static final String infantDtReview3 = "infantDtReview3";
+    public static final String infantIdDataEntry3= "infantIdDataEntry3";
+    public static final String infantDtEnter3 = "infantDtEnter3";
+    public static final String part1 = "part1";
+    public static final String part2 = "part2";
+    public static final String part3 = "part3";
+    public static final String idInstancia2 = "idInstancia2";
+    public static final String idInstancia3 = "idInstancia3";
 
     //Crear tabla Zp07InfantAssessmentVisit
     public static final String CREATE_INFANTASSESSMENT_TABLE = "create table if not exists "
@@ -155,6 +184,14 @@ public class Zp07DBConstants {
             + infantStatus + " text, "
             + infantDeathDt + " date, "
             + infantVisit + " text, "
+            + infantVisitDate2 + " date, "
+            + infantStatus2 + " text, "
+            + infantDeathDt2 + " date, "
+            + infantVisit2 + " text, "
+            + infantVisitDate3 + " date, "
+            + infantStatus3 + " text, "
+            + infantDeathDt3 + " date, "
+            + infantVisit3 + " text, "
             + infantTemp + " real, "
             + infantTmpUnit + " text, "
             + infantWt + " real, "
@@ -278,12 +315,33 @@ public class Zp07DBConstants {
             + infantOtherLab + " text, "
             + infantCommentsYn + " text, "
             + infantComments2 + " text, "
+            + infantCommentsYn2 + " text, "
+            + infantComments2_2 + " text, "
+            + infantCommentsYn3 + " text, "
+            + infantComments2_3 + " text, "
             + infantIdCompleting + " text, "
             + infantDtComp + " date, "
             + infantIdReviewer + " text, "
             + infantDtReview + " date, "
             + infantIdDataEntry + " text, "
             + infantDtEnter + " date, "
+            + infantIdCompleting2 + " text, "
+            + infantDtComp2 + " date, "
+            + infantIdReviewer2 + " text, "
+            + infantDtReview2 + " date, "
+            + infantIdDataEntry2 + " text, "
+            + infantDtEnter2 + " date, "
+            + infantIdCompleting3 + " text, "
+            + infantDtComp3 + " date, "
+            + infantIdReviewer3 + " text, "
+            + infantDtReview3 + " date, "
+            + infantIdDataEntry3 + " text, "
+            + infantDtEnter3 + " date, "
+            + part1 + " integer, "
+            + part2 + " integer, "
+            + part3 + " integer, "
+            + idInstancia2 + " integer, "
+            + idInstancia3 + " integer, "
 
             + MainDBConstants.recordDate + " date, "
             + MainDBConstants.recordUser + " text, "

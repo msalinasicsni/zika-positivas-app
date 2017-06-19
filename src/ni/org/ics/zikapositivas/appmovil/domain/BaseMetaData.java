@@ -152,4 +152,4 @@ public class BaseMetaData implements Serializable
 		this.today = today;
 	}
 
-}  
+}

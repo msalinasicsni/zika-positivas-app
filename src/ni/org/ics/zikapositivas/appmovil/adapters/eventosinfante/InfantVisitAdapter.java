@@ -41,36 +41,70 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 		textView.setTypeface(null, Typeface.BOLD);
 		textView.setTextColor(Color.BLACK);
 		textView.setText(values[position]);
-		
+
 		// Change icon based on position
 		Drawable img = null;
-		switch (position){
-		case 1: 
-			if(mZp02d!=null){
-				textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.done));
-			}
-			else{
-				textView.setTextColor(Color.RED);
-				textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.pending));
-			}
-			img=getContext().getResources().getDrawable( R.drawable.ic_sample);
-			textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
-			break;
-		case 0: 
-			if(mZp07!=null){
-				textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.done));
-			}
-			else{
-				textView.setTextColor(Color.RED);
-				textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.pending));
-			}
-			img=getContext().getResources().getDrawable( R.drawable.ic_monthly);
-			textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
-			break;
-		default:
-			img=getContext().getResources().getDrawable( R.drawable.ic_launcher);
-			textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
-			break;
+		switch (position) {
+			case 3:
+				if (mZp02d != null) {
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
+				} else {
+					textView.setTextColor(Color.RED);
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				}
+				img = getContext().getResources().getDrawable(R.drawable.ic_sample);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+			case 0:
+                if (mZp07 != null) {
+                    if (mZp07.getPart1() != null) {
+                        textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
+
+                    }else{
+						textView.setTextColor(Color.RED);
+						textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+					}
+                }else {
+					textView.setTextColor(Color.RED);
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				}
+				img = getContext().getResources().getDrawable(R.drawable.ic_monthly);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+			case 1:
+				if (mZp07 != null) {
+                  if (mZp07.getPart2() != null){
+                      textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
+                  }else{
+					  textView.setTextColor(Color.RED);
+					  textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				  }
+                }else{
+					textView.setTextColor(Color.RED);
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				}
+				img = getContext().getResources().getDrawable(R.drawable.ic_monthly);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+			case 2:
+				if (mZp07 != null) {
+                    if (mZp07.getPart3() != null){
+                        textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
+                    }else{
+						textView.setTextColor(Color.RED);
+						textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+					}
+				}else{
+					textView.setTextColor(Color.RED);
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				}
+				img = getContext().getResources().getDrawable(R.drawable.ic_monthly);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+			default:
+				img = getContext().getResources().getDrawable(R.drawable.ic_launcher);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
 		}
 
 		return v;

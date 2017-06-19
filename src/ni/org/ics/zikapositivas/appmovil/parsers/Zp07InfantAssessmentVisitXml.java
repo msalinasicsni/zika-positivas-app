@@ -20,6 +20,22 @@ public class Zp07InfantAssessmentVisitXml {
     @Element(required = false)
     private String infantVisit;
     @Element(required = false)
+    private Date infantVisitDate2;
+    @Element(required = false)
+    private String infantStatus2;
+    @Element(required = false)
+    private Date infantDeathDt2;
+    @Element(required = false)
+    private String infantVisit2;
+    @Element(required = false)
+    private Date infantVisitDate3;
+    @Element(required = false)
+    private String infantStatus3;
+    @Element(required = false)
+    private Date infantDeathDt3;
+    @Element(required = false)
+    private String infantVisit3;
+    @Element(required = false)
     private Float infantTemp;
     @Element(required = false)
     private String infantTmpUnit;
@@ -266,6 +282,14 @@ public class Zp07InfantAssessmentVisitXml {
     @Element(required=false)
     private String infantComments2;
     @Element(required=false)
+    private String infantCommentsYn2;
+    @Element(required=false)
+    private String infantComments2_2;
+    @Element(required=false)
+    private String infantCommentsYn3;
+    @Element(required=false)
+    private String infantComments2_3;
+    @Element(required=false)
     private String infantIdCompleting;
     @Element(required=false)
     private Date infantDtComp;
@@ -277,6 +301,40 @@ public class Zp07InfantAssessmentVisitXml {
     private String infantIdDataEntry;
     @Element(required=false)
     private Date infantDtEnter;
+    @Element(required=false)
+    private String infantIdCompleting2;
+    @Element(required=false)
+    private Date infantDtComp2;
+    @Element(required=false)
+    private String infantIdReviewer2;
+    @Element(required=false)
+    private Date infantDtReview2;
+    @Element(required=false)
+    private String infantIdDataEntry2;
+    @Element(required=false)
+    private Date infantDtEnter2;
+    @Element(required=false)
+    private String infantIdCompleting3;
+    @Element(required=false)
+    private Date infantDtComp3;
+    @Element(required=false)
+    private String infantIdReviewer3;
+    @Element(required=false)
+    private Date infantDtReview3;
+    @Element(required=false)
+    private String infantIdDataEntry3;
+    @Element(required=false)
+    private Date infantDtEnter3;
+    @Element(required=false)
+    private Integer part1;
+    @Element(required=false)
+    private Integer part2;
+    @Element(required=false)
+    private Integer part3;
+    @Element(required=false)
+    private Integer idInstancia2;
+    @Element(required=false)
+    private Integer idInstancia3;
 
 
     @Element(required=false)
@@ -295,11 +353,48 @@ public class Zp07InfantAssessmentVisitXml {
     private String group7;
     @Element(required=false)
     private String group8;
+    @Element(required=false)
+    private String group9;
+    @Element(required=false)
+    private String group10;
+    @Element(required=false)
+    private String group11;
+    @Element(required=false)
+    private String group12;
+    @Element(required=false)
+    private String group13;
+    @Element(required=false)
+    private String group14;
+    @Element(required=false)
+    private String group15;
+    @Element(required=false)
+    private String group16;
+    @Element(required=false)
+    private String group17;
+    @Element(required=false)
+    private String group18;
+    @Element(required=false)
+    private String group19;
+    @Element(required=false)
+    private String group20;
+    @Element(required=false)
+    private String group21;
+    @Element(required=false)
+    private String group22;
+
 
     @Element(required=false)
     private String note1;
     @Element(required=false)
     private String note2;
+    @Element(required=false)
+    private String note3;
+    @Element(required=false)
+    private String note4;
+    @Element(required=false)
+    private String note5;
+    @Element(required=false)
+    private String note6;
 
     @Element(required=false)
     private String question1;
@@ -307,6 +402,8 @@ public class Zp07InfantAssessmentVisitXml {
     private String question2;
     @Element(required=false)
     private String question3;
+    @Element(required=false)
+    private String question4;
 
     @Attribute
     private String id;
@@ -860,6 +957,258 @@ public class Zp07InfantAssessmentVisitXml {
 
     public Date getInfantDtEnter() {
         return infantDtEnter;
+    }
+
+    public Date getInfantVisitDate2() {
+        return infantVisitDate2;
+    }
+
+    public String getInfantStatus2() {
+        return infantStatus2;
+    }
+
+    public Date getInfantDeathDt2() {
+        return infantDeathDt2;
+    }
+
+    public String getInfantVisit2() {
+        return infantVisit2;
+    }
+
+    public Date getInfantVisitDate3() {
+        return infantVisitDate3;
+    }
+
+    public String getInfantStatus3() {
+        return infantStatus3;
+    }
+
+    public Date getInfantDeathDt3() {
+        return infantDeathDt3;
+    }
+
+    public String getInfantVisit3() {
+        return infantVisit3;
+    }
+
+    public String getInfantCommentsYn2() {
+        return infantCommentsYn2;
+    }
+
+    public String getInfantComments2_2() {
+        return infantComments2_2;
+    }
+
+    public String getInfantCommentsYn3() {
+        return infantCommentsYn3;
+    }
+
+    public String getInfantComments2_3() {
+        return infantComments2_3;
+    }
+
+    public String getInfantIdCompleting2() {
+        return infantIdCompleting2;
+    }
+
+    public Date getInfantDtComp2() {
+        return infantDtComp2;
+    }
+
+    public String getInfantIdReviewer2() {
+        return infantIdReviewer2;
+    }
+
+    public Date getInfantDtReview2() {
+        return infantDtReview2;
+    }
+
+    public String getInfantIdDataEntry2() {
+        return infantIdDataEntry2;
+    }
+
+    public Date getInfantDtEnter2() {
+        return infantDtEnter2;
+    }
+
+    public String getInfantIdCompleting3() {
+        return infantIdCompleting3;
+    }
+
+    public Date getInfantDtComp3() {
+        return infantDtComp3;
+    }
+
+    public String getInfantIdReviewer3() {
+        return infantIdReviewer3;
+    }
+
+    public Date getInfantDtReview3() {
+        return infantDtReview3;
+    }
+
+    public String getInfantIdDataEntry3() {
+        return infantIdDataEntry3;
+    }
+
+    public Date getInfantDtEnter3() {
+        return infantDtEnter3;
+    }
+
+    public Integer getPart1() {
+        return part1;
+    }
+
+    public Integer getPart2() {
+        return part2;
+    }
+
+    public Integer getPart3() {
+        return part3;
+    }
+
+    public String getGroup1() {
+        return group1;
+    }
+
+    public String getGroup2() {
+        return group2;
+    }
+
+    public String getGroup3() {
+        return group3;
+    }
+
+    public String getGroup4() {
+        return group4;
+    }
+
+    public String getGroup5() {
+        return group5;
+    }
+
+    public String getGroup6() {
+        return group6;
+    }
+
+    public String getGroup7() {
+        return group7;
+    }
+
+    public String getGroup8() {
+        return group8;
+    }
+
+    public String getGroup9() {
+        return group9;
+    }
+
+    public String getGroup10() {
+        return group10;
+    }
+
+    public String getGroup11() {
+        return group11;
+    }
+
+    public String getGroup12() {
+        return group12;
+    }
+
+    public String getGroup13() {
+        return group13;
+    }
+
+    public String getGroup14() {
+        return group14;
+    }
+
+    public String getGroup15() {
+        return group15;
+    }
+
+    public String getGroup16() {
+        return group16;
+    }
+
+    public String getGroup17() {
+        return group17;
+    }
+
+    public String getGroup18() {
+        return group18;
+    }
+
+    public String getGroup19() {
+        return group19;
+    }
+
+    public String getGroup20() {
+        return group20;
+    }
+
+    public String getGroup21() {
+        return group21;
+    }
+
+    public String getGroup22() {
+        return group22;
+    }
+
+    public String getNote1() {
+        return note1;
+    }
+
+    public String getNote2() {
+        return note2;
+    }
+
+    public String getNote3() {
+        return note3;
+    }
+
+    public String getNote4() {
+        return note4;
+    }
+
+    public String getNote5() {
+        return note5;
+    }
+
+    public String getNote6() {
+        return note6;
+    }
+
+    public String getQuestion1() {
+        return question1;
+    }
+
+    public String getQuestion2() {
+        return question2;
+    }
+
+    public String getQuestion3() {
+        return question3;
+    }
+
+    public String getQuestion4() {
+        return question4;
+    }
+
+    public Integer getIdInstancia2() {
+        return idInstancia2;
+    }
+
+    public void setIdInstancia2(Integer idInstancia2) {
+        this.idInstancia2 = idInstancia2;
+    }
+
+    public Integer getIdInstancia3() {
+        return idInstancia3;
+    }
+
+    public void setIdInstancia3(Integer idInstancia3) {
+        this.idInstancia3 = idInstancia3;
     }
 
     public String getId() {

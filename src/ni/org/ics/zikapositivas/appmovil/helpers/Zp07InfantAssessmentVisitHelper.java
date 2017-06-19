@@ -20,8 +20,16 @@ public class Zp07InfantAssessmentVisitHelper {
         cv.put(Zp07DBConstants.redcapEventName, zp07InfantAssessmentVisit.getRedcapEventName());
         if (zp07InfantAssessmentVisit.getInfantVisitDate()!=null) cv.put(Zp07DBConstants.infantVisitDate, zp07InfantAssessmentVisit.getInfantVisitDate().getTime());
         cv.put(Zp07DBConstants.infantStatus, zp07InfantAssessmentVisit.getInfantStatus());
-        if (zp07InfantAssessmentVisit.getInfantDeathDt() !=null) cv.put(Zp07DBConstants.infantVisitDate, zp07InfantAssessmentVisit.getInfantDeathDt().getTime());
+        if (zp07InfantAssessmentVisit.getInfantDeathDt() !=null) cv.put(Zp07DBConstants.infantDeathDt, zp07InfantAssessmentVisit.getInfantDeathDt().getTime());
         cv.put(Zp07DBConstants.infantVisit, zp07InfantAssessmentVisit.getInfantVisit());
+        if (zp07InfantAssessmentVisit.getInfantVisitDate2()!=null) cv.put(Zp07DBConstants.infantVisitDate2, zp07InfantAssessmentVisit.getInfantVisitDate2().getTime());
+        cv.put(Zp07DBConstants.infantStatus2, zp07InfantAssessmentVisit.getInfantStatus2());
+        if (zp07InfantAssessmentVisit.getInfantDeathDt2() !=null) cv.put(Zp07DBConstants.infantDeathDt2, zp07InfantAssessmentVisit.getInfantDeathDt2().getTime());
+        cv.put(Zp07DBConstants.infantVisit2, zp07InfantAssessmentVisit.getInfantVisit2());
+        if (zp07InfantAssessmentVisit.getInfantVisitDate3()!=null) cv.put(Zp07DBConstants.infantVisitDate3, zp07InfantAssessmentVisit.getInfantVisitDate3().getTime());
+        cv.put(Zp07DBConstants.infantStatus3, zp07InfantAssessmentVisit.getInfantStatus3());
+        if (zp07InfantAssessmentVisit.getInfantDeathDt3() !=null) cv.put(Zp07DBConstants.infantDeathDt3, zp07InfantAssessmentVisit.getInfantDeathDt3().getTime());
+        cv.put(Zp07DBConstants.infantVisit3, zp07InfantAssessmentVisit.getInfantVisit3());
         cv.put(Zp07DBConstants.infantTemp, zp07InfantAssessmentVisit.getInfantTemp());
         cv.put(Zp07DBConstants.infantTmpUnit, zp07InfantAssessmentVisit.getInfantTmpUnit());
         cv.put(Zp07DBConstants.infantWt, zp07InfantAssessmentVisit.getInfantWt());
@@ -146,7 +154,10 @@ public class Zp07InfantAssessmentVisitHelper {
         cv.put(Zp07DBConstants.infantOtherLab, zp07InfantAssessmentVisit.getInfantOtherLab());
         cv.put(Zp07DBConstants.infantCommentsYn, zp07InfantAssessmentVisit.getInfantCommentsYn());
         cv.put(Zp07DBConstants.infantComments2, zp07InfantAssessmentVisit.getInfantComments2());
-
+        cv.put(Zp07DBConstants.infantCommentsYn2, zp07InfantAssessmentVisit.getInfantCommentsYn2());
+        cv.put(Zp07DBConstants.infantComments2_2, zp07InfantAssessmentVisit.getInfantComments2_2());
+        cv.put(Zp07DBConstants.infantCommentsYn3, zp07InfantAssessmentVisit.getInfantCommentsYn3());
+        cv.put(Zp07DBConstants.infantComments2_3, zp07InfantAssessmentVisit.getInfantComments2_3());
         cv.put(Zp07DBConstants.infantIdCompleting, zp07InfantAssessmentVisit.getInfantIdCompleting());
         if (zp07InfantAssessmentVisit.getInfantDtComp()!=null) cv.put(Zp07DBConstants.infantDtComp, zp07InfantAssessmentVisit.getInfantDtComp().getTime());
         cv.put(Zp07DBConstants.infantIdReviewer, zp07InfantAssessmentVisit.getInfantIdReviewer());
@@ -154,11 +165,30 @@ public class Zp07InfantAssessmentVisitHelper {
         cv.put(Zp07DBConstants.infantIdDataEntry, zp07InfantAssessmentVisit.getInfantIdDataEntry());
         if (zp07InfantAssessmentVisit.getInfantDtEnter()!=null) cv.put(Zp07DBConstants.infantDtEnter, zp07InfantAssessmentVisit.getInfantDtEnter().getTime());
 
+        cv.put(Zp07DBConstants.infantIdCompleting2, zp07InfantAssessmentVisit.getInfantIdCompleting2());
+        if (zp07InfantAssessmentVisit.getInfantDtComp2()!=null) cv.put(Zp07DBConstants.infantDtComp2, zp07InfantAssessmentVisit.getInfantDtComp2().getTime());
+        cv.put(Zp07DBConstants.infantIdReviewer2, zp07InfantAssessmentVisit.getInfantIdReviewer2());
+        if (zp07InfantAssessmentVisit.getInfantDtReview2()!=null) cv.put(Zp07DBConstants.infantDtReview2, zp07InfantAssessmentVisit.getInfantDtReview2().getTime());
+        cv.put(Zp07DBConstants.infantIdDataEntry2, zp07InfantAssessmentVisit.getInfantIdDataEntry2());
+        if (zp07InfantAssessmentVisit.getInfantDtEnter2()!=null) cv.put(Zp07DBConstants.infantDtEnter2, zp07InfantAssessmentVisit.getInfantDtEnter2().getTime());
+
+        cv.put(Zp07DBConstants.infantIdCompleting3, zp07InfantAssessmentVisit.getInfantIdCompleting3());
+        if (zp07InfantAssessmentVisit.getInfantDtComp3()!=null) cv.put(Zp07DBConstants.infantDtComp3, zp07InfantAssessmentVisit.getInfantDtComp3().getTime());
+        cv.put(Zp07DBConstants.infantIdReviewer3, zp07InfantAssessmentVisit.getInfantIdReviewer3());
+        if (zp07InfantAssessmentVisit.getInfantDtReview3()!=null) cv.put(Zp07DBConstants.infantDtReview3, zp07InfantAssessmentVisit.getInfantDtReview3().getTime());
+        cv.put(Zp07DBConstants.infantIdDataEntry3, zp07InfantAssessmentVisit.getInfantIdDataEntry3());
+        if (zp07InfantAssessmentVisit.getInfantDtEnter3()!=null) cv.put(Zp07DBConstants.infantDtEnter3, zp07InfantAssessmentVisit.getInfantDtEnter3().getTime());
+
+        if (zp07InfantAssessmentVisit.getPart1()!=null) cv.put(Zp07DBConstants.part1, zp07InfantAssessmentVisit.getPart1());
+        if (zp07InfantAssessmentVisit.getPart2()!=null) cv.put(Zp07DBConstants.part2, zp07InfantAssessmentVisit.getPart2());
+        if (zp07InfantAssessmentVisit.getPart3()!=null) cv.put(Zp07DBConstants.part3, zp07InfantAssessmentVisit.getPart3());
 
         if (zp07InfantAssessmentVisit.getRecordDate() != null) cv.put(MainDBConstants.recordDate, zp07InfantAssessmentVisit.getRecordDate().getTime());
         cv.put(MainDBConstants.recordUser, zp07InfantAssessmentVisit.getRecordUser());
         cv.put(MainDBConstants.pasive, String.valueOf(zp07InfantAssessmentVisit.getPasive()));
         cv.put(MainDBConstants.ID_INSTANCIA, zp07InfantAssessmentVisit.getIdInstancia());
+        cv.put(Zp07DBConstants.idInstancia2, zp07InfantAssessmentVisit.getIdInstancia2());
+        cv.put(Zp07DBConstants.idInstancia3, zp07InfantAssessmentVisit.getIdInstancia3());
         cv.put(MainDBConstants.FILE_PATH, zp07InfantAssessmentVisit.getInstancePath());
         cv.put(MainDBConstants.STATUS, zp07InfantAssessmentVisit.getEstado());
         cv.put(MainDBConstants.START, zp07InfantAssessmentVisit.getStart());
@@ -178,6 +208,18 @@ public class Zp07InfantAssessmentVisitHelper {
         infantAssessmentVisit.setInfantStatus(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantStatus)));
         if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDeathDt))>0) infantAssessmentVisit.setInfantDeathDt(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDeathDt))));
         infantAssessmentVisit.setInfantVisit(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantVisit)));
+
+        if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantVisitDate2))>0) infantAssessmentVisit.setInfantVisitDate2(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantVisitDate2))));
+        infantAssessmentVisit.setInfantStatus2(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantStatus2)));
+        if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDeathDt2))>0) infantAssessmentVisit.setInfantDeathDt2(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDeathDt2))));
+        infantAssessmentVisit.setInfantVisit2(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantVisit2)));
+
+        if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantVisitDate3))>0) infantAssessmentVisit.setInfantVisitDate3(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantVisitDate3))));
+        infantAssessmentVisit.setInfantStatus3(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantStatus3)));
+        if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDeathDt3))>0) infantAssessmentVisit.setInfantDeathDt3(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDeathDt3))));
+        infantAssessmentVisit.setInfantVisit3(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantVisit3)));
+
+
         if (cursorIA.getFloat(cursorIA.getColumnIndex(Zp07DBConstants.infantTemp))>0) infantAssessmentVisit.setInfantTemp(cursorIA.getFloat(cursorIA.getColumnIndex(Zp07DBConstants.infantTemp)));
         infantAssessmentVisit.setInfantTmpUnit(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantTmpUnit)));
         if (cursorIA.getFloat(cursorIA.getColumnIndex(Zp07DBConstants.infantWt))>0) infantAssessmentVisit.setInfantWt(cursorIA.getFloat(cursorIA.getColumnIndex(Zp07DBConstants.infantWt)));
@@ -302,6 +344,10 @@ public class Zp07InfantAssessmentVisitHelper {
         infantAssessmentVisit.setInfantOtherLab(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantOtherLab)));
         infantAssessmentVisit.setInfantCommentsYn(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantCommentsYn)));
         infantAssessmentVisit.setInfantComments2(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantComments2)));
+        infantAssessmentVisit.setInfantCommentsYn2(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantCommentsYn2)));
+        infantAssessmentVisit.setInfantComments2_2(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantComments2_2)));
+        infantAssessmentVisit.setInfantCommentsYn3(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantCommentsYn3)));
+        infantAssessmentVisit.setInfantComments2_3(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantComments2_3)));
 
         infantAssessmentVisit.setInfantIdCompleting(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantIdCompleting)));
         if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtComp))>0) infantAssessmentVisit.setInfantDtComp(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtComp))));
@@ -310,10 +356,30 @@ public class Zp07InfantAssessmentVisitHelper {
         infantAssessmentVisit.setInfantIdDataEntry(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantIdDataEntry)));
         if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtEnter))>0) infantAssessmentVisit.setInfantDtEnter(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtEnter))));
 
+        infantAssessmentVisit.setInfantIdCompleting2(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantIdCompleting2)));
+        if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtComp2))>0) infantAssessmentVisit.setInfantDtComp2(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtComp2))));
+        infantAssessmentVisit.setInfantIdReviewer2(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantIdReviewer2)));
+        if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtReview2))>0) infantAssessmentVisit.setInfantDtReview2(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtReview2))));
+        infantAssessmentVisit.setInfantIdDataEntry2(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantIdDataEntry2)));
+        if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtEnter2))>0) infantAssessmentVisit.setInfantDtEnter2(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtEnter2))));
+
+        infantAssessmentVisit.setInfantIdCompleting3(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantIdCompleting3)));
+        if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtComp3))>0) infantAssessmentVisit.setInfantDtComp3(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtComp3))));
+        infantAssessmentVisit.setInfantIdReviewer3(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantIdReviewer3)));
+        if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtReview3))>0) infantAssessmentVisit.setInfantDtReview3(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtReview3))));
+        infantAssessmentVisit.setInfantIdDataEntry3(cursorIA.getString(cursorIA.getColumnIndex(Zp07DBConstants.infantIdDataEntry3)));
+        if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtEnter3))>0) infantAssessmentVisit.setInfantDtEnter3(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDtEnter3))));
+
+        if (cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.part1))>0) infantAssessmentVisit.setPart1(cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.part1)));
+        if (cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.part2))>0) infantAssessmentVisit.setPart2(cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.part2)));
+        if (cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.part3))>0) infantAssessmentVisit.setPart3(cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.part3)));
+
         if(cursorIA.getLong(cursorIA.getColumnIndex(MainDBConstants.recordDate))>0) infantAssessmentVisit.setRecordDate(new Date(cursorIA.getLong(cursorIA.getColumnIndex(MainDBConstants.recordDate))));
         infantAssessmentVisit.setRecordUser(cursorIA.getString(cursorIA.getColumnIndex(MainDBConstants.recordUser)));
         infantAssessmentVisit.setPasive(cursorIA.getString(cursorIA.getColumnIndex(MainDBConstants.pasive)).charAt(0));
         infantAssessmentVisit.setIdInstancia(cursorIA.getInt(cursorIA.getColumnIndex(MainDBConstants.ID_INSTANCIA)));
+        infantAssessmentVisit.setIdInstancia2(cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.idInstancia2)));
+        infantAssessmentVisit.setIdInstancia3(cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.idInstancia3)));
         infantAssessmentVisit.setInstancePath(cursorIA.getString(cursorIA.getColumnIndex(MainDBConstants.FILE_PATH)));
         infantAssessmentVisit.setEstado(cursorIA.getString(cursorIA.getColumnIndex(MainDBConstants.STATUS)));
         infantAssessmentVisit.setStart(cursorIA.getString(cursorIA.getColumnIndex(MainDBConstants.START)));

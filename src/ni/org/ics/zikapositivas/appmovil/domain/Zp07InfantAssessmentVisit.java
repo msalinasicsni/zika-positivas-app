@@ -16,6 +16,14 @@ public class Zp07InfantAssessmentVisit extends BaseMetaData {
     private String infantStatus;
     private Date infantDeathDt;
     private String infantVisit;
+    private Date infantVisitDate2;
+    private String infantStatus2;
+    private Date infantDeathDt2;
+    private String infantVisit2;
+    private Date infantVisitDate3;
+    private String infantStatus3;
+    private Date infantDeathDt3;
+    private String infantVisit3;
     private Float infantTemp;
     private String infantTmpUnit;
     private Float infantWt;
@@ -139,12 +147,33 @@ public class Zp07InfantAssessmentVisit extends BaseMetaData {
     private String infantOtherLab;
     private String infantCommentsYn;
     private String infantComments2;
+    private String infantCommentsYn2; //nuevo
+    private String infantComments2_2; //nuevo
+    private String infantCommentsYn3; //nuevo
+    private String infantComments2_3; //nuevo
     private String infantIdCompleting;
     private Date infantDtComp;
     private String infantIdReviewer;
     private Date infantDtReview;
     private String infantIdDataEntry;
     private Date infantDtEnter;
+    private String infantIdCompleting2;
+    private Date infantDtComp2; //cambio nombre
+    private String infantIdReviewer2;
+    private Date infantDtReview2; //cambio nombre
+    private String infantIdDataEntry2;
+    private Date infantDtEnter2; //cambio nombre
+    private String infantIdCompleting3;
+    private Date infantDtComp3; //cambio nombre
+    private String infantIdReviewer3;
+    private Date infantDtReview3; //cambio nombre
+    private String infantIdDataEntry3;
+    private Date infantDtEnter3; //cambio nombre
+    private Integer part1;
+    private Integer part2;
+    private Integer part3;
+    private Integer idInstancia2;
+    private Integer idInstancia3;
 
     public String getRecordId() {
         return recordId;
@@ -1224,5 +1253,237 @@ public class Zp07InfantAssessmentVisit extends BaseMetaData {
 
     public void setInfantDtEnter(Date infantDtEnter) {
         this.infantDtEnter = infantDtEnter;
+    }
+
+    public String getInfantStatus2() {
+        return infantStatus2;
+    }
+
+    public void setInfantStatus2(String infantStatus2) {
+        this.infantStatus2 = infantStatus2;
+    }
+
+    public Date getInfantDeathDt2() {
+        return infantDeathDt2;
+    }
+
+    public void setInfantDeathDt2(Date infantDeathDt2) {
+        this.infantDeathDt2 = infantDeathDt2;
+    }
+
+    public String getInfantVisit2() {
+        return infantVisit2;
+    }
+
+    public void setInfantVisit2(String infantVisit2) {
+        this.infantVisit2 = infantVisit2;
+    }
+
+    public Date getInfantVisitDate3() {
+        return infantVisitDate3;
+    }
+
+    public void setInfantVisitDate3(Date infantVisitDate3) {
+        this.infantVisitDate3 = infantVisitDate3;
+    }
+
+    public String getInfantStatus3() {
+        return infantStatus3;
+    }
+
+    public void setInfantStatus3(String infantStatus3) {
+        this.infantStatus3 = infantStatus3;
+    }
+
+    public Date getInfantDeathDt3() {
+        return infantDeathDt3;
+    }
+
+    public void setInfantDeathDt3(Date infantDeathDt3) {
+        this.infantDeathDt3 = infantDeathDt3;
+    }
+
+    public String getInfantVisit3() {
+        return infantVisit3;
+    }
+
+    public void setInfantVisit3(String infantVisit3) {
+        this.infantVisit3 = infantVisit3;
+    }
+
+    public String getInfantCommentsYn2() {
+        return infantCommentsYn2;
+    }
+
+    public void setInfantCommentsYn2(String infantCommentsYn2) {
+        this.infantCommentsYn2 = infantCommentsYn2;
+    }
+
+    public String getInfantComments2_2() {
+        return infantComments2_2;
+    }
+
+    public void setInfantComments2_2(String infantComments2_2) {
+        this.infantComments2_2 = infantComments2_2;
+    }
+
+    public String getInfantCommentsYn3() {
+        return infantCommentsYn3;
+    }
+
+    public void setInfantCommentsYn3(String infantCommentsYn3) {
+        this.infantCommentsYn3 = infantCommentsYn3;
+    }
+
+    public String getInfantComments2_3() {
+        return infantComments2_3;
+    }
+
+    public void setInfantComments2_3(String infantComments2_3) {
+        this.infantComments2_3 = infantComments2_3;
+    }
+
+    public String getInfantIdCompleting2() {
+        return infantIdCompleting2;
+    }
+
+    public void setInfantIdCompleting2(String infantIdCompleting2) {
+        this.infantIdCompleting2 = infantIdCompleting2;
+    }
+
+    public Date getInfantDtComp2() {
+        return infantDtComp2;
+    }
+
+    public void setInfantDtComp2(Date infantDtComp2) {
+        this.infantDtComp2 = infantDtComp2;
+    }
+
+    public String getInfantIdReviewer2() {
+        return infantIdReviewer2;
+    }
+
+    public void setInfantIdReviewer2(String infantIdReviewer2) {
+        this.infantIdReviewer2 = infantIdReviewer2;
+    }
+
+    public Date getInfantDtReview2() {
+        return infantDtReview2;
+    }
+
+    public void setInfantDtReview2(Date infantDtReview2) {
+        this.infantDtReview2 = infantDtReview2;
+    }
+
+    public String getInfantIdDataEntry2() {
+        return infantIdDataEntry2;
+    }
+
+    public void setInfantIdDataEntry2(String infantIdDataEntry2) {
+        this.infantIdDataEntry2 = infantIdDataEntry2;
+    }
+
+    public Date getInfantDtEnter2() {
+        return infantDtEnter2;
+    }
+
+    public void setInfantDtEnter2(Date infantDtEnter2) {
+        this.infantDtEnter2 = infantDtEnter2;
+    }
+
+    public String getInfantIdCompleting3() {
+        return infantIdCompleting3;
+    }
+
+    public void setInfantIdCompleting3(String infantIdCompleting3) {
+        this.infantIdCompleting3 = infantIdCompleting3;
+    }
+
+    public Date getInfantDtComp3() {
+        return infantDtComp3;
+    }
+
+    public void setInfantDtComp3(Date infantDtComp3) {
+        this.infantDtComp3 = infantDtComp3;
+    }
+
+    public String getInfantIdReviewer3() {
+        return infantIdReviewer3;
+    }
+
+    public void setInfantIdReviewer3(String infantIdReviewer3) {
+        this.infantIdReviewer3 = infantIdReviewer3;
+    }
+
+    public Date getInfantDtReview3() {
+        return infantDtReview3;
+    }
+
+    public void setInfantDtReview3(Date infantDtReview3) {
+        this.infantDtReview3 = infantDtReview3;
+    }
+
+    public String getInfantIdDataEntry3() {
+        return infantIdDataEntry3;
+    }
+
+    public void setInfantIdDataEntry3(String infantIdDataEntry3) {
+        this.infantIdDataEntry3 = infantIdDataEntry3;
+    }
+
+    public Date getInfantDtEnter3() {
+        return infantDtEnter3;
+    }
+
+    public void setInfantDtEnter3(Date infantDtEnter3) {
+        this.infantDtEnter3 = infantDtEnter3;
+    }
+
+    public Integer getPart1() {
+        return part1;
+    }
+
+    public void setPart1(Integer part1) {
+        this.part1 = part1;
+    }
+
+    public Integer getPart2() {
+        return part2;
+    }
+
+    public void setPart2(Integer part2) {
+        this.part2 = part2;
+    }
+
+    public Integer getPart3() {
+        return part3;
+    }
+
+    public void setPart3(Integer part3) {
+        this.part3 = part3;
+    }
+
+    public Date getInfantVisitDate2() {
+        return infantVisitDate2;
+    }
+
+    public void setInfantVisitDate2(Date infantVisitDate2) {
+        this.infantVisitDate2 = infantVisitDate2;
+    }
+
+    public Integer getIdInstancia2() {
+        return idInstancia2;
+    }
+
+    public void setIdInstancia2(Integer idInstancia2) {
+        this.idInstancia2 = idInstancia2;
+    }
+
+    public Integer getIdInstancia3() {
+        return idInstancia3;
+    }
+
+    public void setIdInstancia3(Integer idInstancia3) {
+        this.idInstancia3 = idInstancia3;
     }
 }

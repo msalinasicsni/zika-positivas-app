@@ -8,6 +8,8 @@ import ni.org.ics.zikapositivas.appmovil.MyZikaPosApplication;
 import ni.org.ics.zikapositivas.appmovil.R;
 import ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp02dInfantBiospecimenCollectionActivity;
 import ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07InfantAssessmentVisitActivity;
+import ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07InfantAssessmentVisitOphtActivity;
+import ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07InfantAssessmentVisitPsyActivity;
 import ni.org.ics.zikapositivas.appmovil.adapters.eventosinfante.InfantVisitAdapter;
 import ni.org.ics.zikapositivas.appmovil.database.ZikaPosAdapter;
 import ni.org.ics.zikapositivas.appmovil.domain.Zp02dInfantBiospecimenCollection;
@@ -90,23 +92,37 @@ public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
 				Intent i;
 				arguments.putString(Constants.EVENT, evento);
                 arguments.putString(Constants.RECORDID, zpInfante.getRecordId());
-				switch(position){ 
-                case 0: //EVALUACION
-                	i = new Intent(getApplicationContext(),
-                			NewZp07InfantAssessmentVisitActivity.class);
-                    if (zp07!=null) arguments.putSerializable(Constants.OBJECTO_ZP07 , zp07);
-                    i.putExtras(arguments);
-                    startActivity(i);
-                    break;
-                case 1: //MUESTRAS
-                	i = new Intent(getApplicationContext(),
-                    		NewZp02dInfantBiospecimenCollectionActivity.class);
-                    if (zp02d!=null) arguments.putSerializable(Constants.OBJECTO_ZP02D , zp02d);
-                    i.putExtras(arguments);
-                    startActivity(i);
-                    break;
-				default:					
-					break;
+				switch(position){
+					case 0: //EVALUACION
+						i = new Intent(getApplicationContext(),
+								NewZp07InfantAssessmentVisitActivity.class);
+						if (zp07 != null) arguments.putSerializable(Constants.OBJECTO_ZP07, zp07);
+						i.putExtras(arguments);
+						startActivity(i);
+						break;
+					case 1: //EVALUACION OFTALMOLOGICA
+						i = new Intent(getApplicationContext(),
+								NewZp07InfantAssessmentVisitOphtActivity.class);
+						if (zp07 != null) arguments.putSerializable(Constants.OBJECTO_ZP07, zp07);
+						i.putExtras(arguments);
+						startActivity(i);
+						break;
+					case 2: //EVALUACION PSICOLOGICA
+						i = new Intent(getApplicationContext(),
+								NewZp07InfantAssessmentVisitPsyActivity.class);
+						if (zp07 != null) arguments.putSerializable(Constants.OBJECTO_ZP07, zp07);
+						i.putExtras(arguments);
+						startActivity(i);
+						break;
+					case 3: //MUESTRAS
+						i = new Intent(getApplicationContext(),
+								NewZp02dInfantBiospecimenCollectionActivity.class);
+						if (zp02d != null) arguments.putSerializable(Constants.OBJECTO_ZP02D, zp02d);
+						i.putExtras(arguments);
+						startActivity(i);
+						break;
+					default:
+						break;
 				}
 			}
 		});

@@ -8,6 +8,8 @@ import ni.org.ics.zikapositivas.appmovil.AbstractAsyncActivity;
 import ni.org.ics.zikapositivas.appmovil.R;
 import ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp02dInfantBiospecimenCollectionActivity;
 import ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07InfantAssessmentVisitActivity;
+import ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07InfantAssessmentVisitOphtActivity;
+import ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07InfantAssessmentVisitPsyActivity;
 import ni.org.ics.zikapositivas.appmovil.adapters.eventosinfante.InfantVisitAdapter;
 import ni.org.ics.zikapositivas.appmovil.database.ZikaPosAdapter;
 import ni.org.ics.zikapositivas.appmovil.domain.Zp02dInfantBiospecimenCollection;
@@ -35,6 +37,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
+import ni.org.ics.zikapositivas.appmovil.utils.Zp07DBConstants;
 
 public class InfantVisitActivity extends AbstractAsyncActivity {
 	private ZikaPosAdapter zikaPosA;
@@ -42,7 +45,6 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 	private static ZpEstadoInfante zpEstado = new ZpEstadoInfante();
 	private static Zp02dInfantBiospecimenCollection zp02d = null;
 	private static Zp07InfantAssessmentVisit zp07 = null;
-
 
 	
 	private SimpleDateFormat mDateFormat = new SimpleDateFormat("MMM dd, yyyy");
@@ -73,7 +75,7 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 			}
 		}
 		String mPass = ((MyZikaPosApplication) this.getApplication()).getPassApp();
-		zikaPosA = new ZikaPosAdapter(this.getApplicationContext(),mPass,false,false);
+		zikaPosA = new ZikaPosAdapter(this.getApplicationContext(), mPass, false, false);
 		/*Aca se recupera evento, tamizaje y estado*/
 		evento = getIntent().getStringExtra(Constants.EVENT);
 		zpInfante = (ZpInfantData) getIntent().getExtras().getSerializable(Constants.OBJECTO_ZPINFDATA);
@@ -81,36 +83,50 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 		//Aca se recupera los datos de los formularios para ver si estan realizados o no...
 		new FetchVisitInfanteTask().execute(evento);
 		textView = (TextView) findViewById(R.id.label);
-		textView.setText(getString(R.string.forms)+"\n"+
-				getString(R.string.inf_id)+": "+zpInfante.getRecordId()+"\n"+
-						getString(R.string.inf_dob)+": "+ mDateFormat.format(zpInfante.getInfantBirthDate()));
+		textView.setText(getString(R.string.forms) + "\n" +
+				getString(R.string.inf_id) + ": " + zpInfante.getRecordId() + "\n" +
+				getString(R.string.inf_dob) + ": " + mDateFormat.format(zpInfante.getInfantBirthDate()));
 		menu_infante_info = getResources().getStringArray(R.array.menu_infant_visit);
 		gridView = (GridView) findViewById(R.id.gridView1);
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v,
-					int position, long id) {
+									int position, long id) {
 				Bundle arguments = new Bundle();
 				Intent i;
 				arguments.putString(Constants.EVENT, evento);
-                arguments.putString(Constants.RECORDID, zpInfante.getRecordId());
-				switch(position){ 
-                case 0: //EVALUACION
-                	i = new Intent(getApplicationContext(),
-                			NewZp07InfantAssessmentVisitActivity.class);
-                    if (zp07!=null) arguments.putSerializable(Constants.OBJECTO_ZP07 , zp07);
-                    i.putExtras(arguments);
-                    startActivity(i);
-                    break;
-                case 1: //MUESTRAS
-                	i = new Intent(getApplicationContext(),
-                    		NewZp02dInfantBiospecimenCollectionActivity.class);
-                    if (zp02d!=null) arguments.putSerializable(Constants.OBJECTO_ZP02D , zp02d);
-                    i.putExtras(arguments);
-                    startActivity(i);
-                    break;
-				default:					
-					break;
+				arguments.putString(Constants.RECORDID, zpInfante.getRecordId());
+				switch (position) {
+					case 0: //EVALUACION
+						i = new Intent(getApplicationContext(),
+								NewZp07InfantAssessmentVisitActivity.class);
+						if (zp07 != null) arguments.putSerializable(Constants.OBJECTO_ZP07, zp07);
+						i.putExtras(arguments);
+						startActivity(i);
+						break;
+					case 1: //EVALUACION OFTALMOLOGICA
+						i = new Intent(getApplicationContext(),
+								NewZp07InfantAssessmentVisitOphtActivity.class);
+						if (zp07 != null) arguments.putSerializable(Constants.OBJECTO_ZP07, zp07);
+						i.putExtras(arguments);
+						startActivity(i);
+						break;
+					case 2: //EVALUACION PSICOLOGICA
+						i = new Intent(getApplicationContext(),
+								NewZp07InfantAssessmentVisitPsyActivity.class);
+						if (zp07 != null) arguments.putSerializable(Constants.OBJECTO_ZP07, zp07);
+						i.putExtras(arguments);
+						startActivity(i);
+						break;
+					case 3: //MUESTRAS
+						i = new Intent(getApplicationContext(),
+								NewZp02dInfantBiospecimenCollectionActivity.class);
+						if (zp02d != null) arguments.putSerializable(Constants.OBJECTO_ZP02D, zp02d);
+						i.putExtras(arguments);
+						startActivity(i);
+						break;
+					default:
+						break;
 				}
 			}
 		});
@@ -229,9 +245,12 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 	// ***************************************
 		// Private classes
 		// ***************************************
-		private class FetchVisitInfanteTask extends AsyncTask<String, Void, String> {
-			private String eventoaFiltrar = null;
-			private String filtro = null;
+	private class FetchVisitInfanteTask extends AsyncTask<String, Void, String> {
+		private String eventoaFiltrar = null;
+		private String filtro = null;
+		private String filtro1 = null;
+		private String filtro2 = null;
+		private String filtro3 = null;
 			@Override
 			protected void onPreExecute() {
 				// before the request begins, show a progress indicator
@@ -244,8 +263,10 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 				try {
 					zikaPosA.open();
 					filtro = MainDBConstants.recordId + "='" + zpInfante.getRecordId() + "' and " + Zp02DBConstants.redcapEventName + "='" + eventoaFiltrar +"'";
+
 					zp02d = zikaPosA.getZp02dInfantBiospecimenCollection(filtro, MainDBConstants.recordId);
 					zp07 = zikaPosA.getZp07InfantAssessmentVisit(filtro, MainDBConstants.recordId);
+
 					if (zp02d!=null && zp07!=null){
 						if(eventoaFiltrar.matches(Constants.BIRTH)){
 							zpEstado.setNacimiento('1');

@@ -16,6 +16,8 @@
     <!-- Formularios -->
     <string name="infant_b_1">Evaluación</string>
     <string name="infant_b_2">Muestras</string>
+    <string name="infant_b_3">Evaluación Oftalmológica</string>
+    <string name="infant_b_4">Evaluación Psicológica</string>
     
     <string name="inf_id">Código del bebé</string>
     <string name="inf_search">Buscar bebé</string>

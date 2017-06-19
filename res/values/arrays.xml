@@ -102,6 +102,8 @@
 
     <string-array name="menu_infant_visit">
         <item>@string/infant_b_1</item>
+        <item>@string/infant_b_3</item>
+        <item>@string/infant_b_4</item>
         <item>@string/infant_b_2</item>
     </string-array>    
     

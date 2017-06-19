@@ -116,6 +116,10 @@
                   android:screenOrientation="portrait"></activity>
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp02dInfantBiospecimenCollectionActivity"
                   android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07InfantAssessmentVisitPsyActivity"
+                  android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07InfantAssessmentVisitOphtActivity"
+                  android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
