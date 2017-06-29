@@ -105,6 +105,10 @@
         <item>@string/infant_b_3</item>
         <item>@string/infant_b_4</item>
         <item>@string/infant_b_2</item>
+        <item>@string/infant_b_5</item>
+        <item>@string/infant_b_6</item>
+        <item>@string/infant_b_7</item>
+        <item>@string/infant_b_8</item>
     </string-array>    
     
     <string-array name="menu_infant_parto">

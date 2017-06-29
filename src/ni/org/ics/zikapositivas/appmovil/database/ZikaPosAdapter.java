@@ -77,6 +77,10 @@ public class ZikaPosAdapter {
             db.execSQL(Zp07DBConstants.CREATE_INFANTASSESSMENT_TABLE);
             db.execSQL(MainDBConstants.CREATE_INFANTDATA_TABLE);
             db.execSQL(MainDBConstants.CREATE_INFANTSTATUS_TABLE);
+            db.execSQL(Zp07aDBConstants.CREATE_AINFANT_OPHTRESULTS_TABLE);
+            db.execSQL(Zp07bDBConstants.CREATE_BINFANT_AUDIORESULTS_TABLE);
+            db.execSQL(Zp07cDBConstants.CREATE_CINFANT_IMAGESTUDIES_TABLE);
+            db.execSQL(Zp07dDBConstants.CREATE_DINFANT_BAYLEYSCALES_TABLE);
         }
 
         @Override
@@ -163,6 +167,10 @@ public class ZikaPosAdapter {
 	            db.execSQL(Zp07DBConstants.CREATE_INFANTASSESSMENT_TABLE);
 	            db.execSQL(MainDBConstants.CREATE_INFANTDATA_TABLE);
 	            db.execSQL(MainDBConstants.CREATE_INFANTSTATUS_TABLE);
+                db.execSQL(Zp07aDBConstants.CREATE_AINFANT_OPHTRESULTS_TABLE);
+                db.execSQL(Zp07bDBConstants.CREATE_BINFANT_AUDIORESULTS_TABLE);
+                db.execSQL(Zp07cDBConstants.CREATE_CINFANT_IMAGESTUDIES_TABLE);
+                db.execSQL(Zp07dDBConstants.CREATE_DINFANT_BAYLEYSCALES_TABLE);
             }
         }
     }
@@ -1258,6 +1266,194 @@ public class ZikaPosAdapter {
         }
         if (!cursor.isClosed()) cursor.close();
         return infantAssessmentVisits;
+    }
+
+    /**
+     * Metodos para Zp07aInfantOphtResults en la base de datos
+     *
+     */
+    //Crear nuevo Zp07AInfantOphtResults en la base de datos
+    public void crearZp07aInfantOphtResults(Zp07aInfantOphtResults aInfantOpthResults) {
+        ContentValues cv = Zp07aInfantOphtResultsHelper.crearZp07AInfantOpthResults(aInfantOpthResults);
+        mDb.insert(Zp07aDBConstants.AINFANT_OPHTRESULTS_TABLE, null, cv);
+    }
+    //Editar Zp07AInfantOphtResults existente en la base de datos
+    public boolean editarZp07aInfantOphtResults(Zp07aInfantOphtResults aInfantOpthResults) {
+        ContentValues cv = Zp07aInfantOphtResultsHelper.crearZp07AInfantOpthResults(aInfantOpthResults);
+        return mDb.update(Zp07aDBConstants.AINFANT_OPHTRESULTS_TABLE, cv, Zp07DBConstants.recordId + "='"
+                + aInfantOpthResults.getRecordId() + "' and " + Zp07DBConstants.redcapEventName + "='" + aInfantOpthResults.getRedcapEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zp07InfantAssessmentVisit de la base de datos
+    public boolean borrarZp07aInfantOphtResults() {
+        return mDb.delete(Zp07aDBConstants.AINFANT_OPHTRESULTS_TABLE, null, null) > 0;
+    }
+    //Obtener un Zp07InfantAssessmentVisit de la base de datos
+    public Zp07aInfantOphtResults getZp07aInfantOphtResult(String filtro, String orden) throws SQLException {
+        Zp07aInfantOphtResults aInfantOpthResults = null;
+        Cursor cursor = crearCursor(Zp07aDBConstants.AINFANT_OPHTRESULTS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            aInfantOpthResults= Zp07aInfantOphtResultsHelper.crearZp07AInfantOphtResults(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return aInfantOpthResults;
+    }
+    //Obtener una lista de Zp07InfantAssessmentVisit de la base de datos
+    public List<Zp07aInfantOphtResults> getZp07aInfantOphtResults(String filtro, String orden) throws SQLException {
+        List<Zp07aInfantOphtResults> aInfantOpthResults = new ArrayList<Zp07aInfantOphtResults>();
+        Cursor cursor = crearCursor(Zp07aDBConstants.AINFANT_OPHTRESULTS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            aInfantOpthResults.clear();
+            do{
+                Zp07aInfantOphtResults aInfantOpthResult = null;
+                aInfantOpthResult = Zp07aInfantOphtResultsHelper.crearZp07AInfantOphtResults(cursor);
+                aInfantOpthResults.add(aInfantOpthResult);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return aInfantOpthResults;
+    }
+
+    /**
+     * Metodos para Zp07bInfantAudioResults en la base de datos
+     *
+     */
+    //Crear nuevo Zp07bInfantAudioResults en la base de datos
+    public void crearZp07bInfantAudioResults(Zp07bInfantAudioResults bInfantAudioResults) {
+        ContentValues cv = Zp07bInfantAudioResultsHelper.crearZp07bInfantAudioResults(bInfantAudioResults);
+        mDb.insert(Zp07bDBConstants.BINFANT_AUDIORESULTS_TABLE, null, cv);
+    }
+    //Editar Zp07bInfantAudioResults existente en la base de datos
+    public boolean editarZp07bInfantAudioResults(Zp07bInfantAudioResults bInfantAudioResults) {
+        ContentValues cv = Zp07bInfantAudioResultsHelper.crearZp07bInfantAudioResults(bInfantAudioResults);
+        return mDb.update(Zp07bDBConstants.BINFANT_AUDIORESULTS_TABLE, cv, Zp07DBConstants.recordId + "='"
+                + bInfantAudioResults.getRecordId() + "' and " + Zp07DBConstants.redcapEventName + "='" + bInfantAudioResults.getRedcapEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zp07bInfantAudioResults de la base de datos
+    public boolean borrarZp07bInfantAudioResults() {
+        return mDb.delete(Zp07bDBConstants.BINFANT_AUDIORESULTS_TABLE, null, null) > 0;
+    }
+    //Obtener un Zp07bInfantAudioResults de la base de datos
+    public Zp07bInfantAudioResults getZp07bInfantAudioResult(String filtro, String orden) throws SQLException {
+        Zp07bInfantAudioResults bInfantAudioResults = null;
+        Cursor cursor = crearCursor(Zp07bDBConstants.BINFANT_AUDIORESULTS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            bInfantAudioResults= Zp07bInfantAudioResultsHelper.crearZp07bInfantAudioResults(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return bInfantAudioResults;
+    }
+    //Obtener una lista de Zp07bInfantAudioResults de la base de datos
+    public List<Zp07bInfantAudioResults> getZp07bInfantAudioResults(String filtro, String orden) throws SQLException {
+        List<Zp07bInfantAudioResults> bInfantAudioResults = new ArrayList<Zp07bInfantAudioResults>();
+        Cursor cursor = crearCursor(Zp07bDBConstants.BINFANT_AUDIORESULTS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            bInfantAudioResults.clear();
+            do{
+                Zp07bInfantAudioResults bInfantAudioResult = null;
+                bInfantAudioResult = Zp07bInfantAudioResultsHelper.crearZp07bInfantAudioResults(cursor);
+                bInfantAudioResults.add(bInfantAudioResult);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return bInfantAudioResults;
+    }
+
+    /**
+     * Metodos para Zp07cInfantImageStudies en la base de datos
+     *
+     */
+    //Crear nuevo Zp07cInfantImageStudies en la base de datos
+    public void crearZp07cInfantImageStudies(Zp07cInfantImageStudies cInfantImageStudies) {
+        ContentValues cv = Zp07cInfantImageStudiesHelper.crearZp07cInfantImageStudies(cInfantImageStudies);
+        mDb.insert(Zp07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, null, cv);
+    }
+    //Editar Zp07cInfantImageStudies existente en la base de datos
+    public boolean editarZp07cInfantImageStudies(Zp07cInfantImageStudies cInfantImageStudies) {
+        ContentValues cv = Zp07cInfantImageStudiesHelper.crearZp07cInfantImageStudies(cInfantImageStudies);
+        return mDb.update(Zp07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, cv, Zp07DBConstants.recordId + "='"
+                + cInfantImageStudies.getRecordId() + "' and " + Zp07DBConstants.redcapEventName + "='" + cInfantImageStudies.getRedcapEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zp07cInfantImageStudies de la base de datos
+    public boolean borrarZp07cInfantImageStudies() {
+        return mDb.delete(Zp07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, null, null) > 0;
+    }
+    //Obtener un Zp07cInfantImageStudies de la base de datos
+    public Zp07cInfantImageStudies getZp07cInfantImageSt(String filtro, String orden) throws SQLException {
+        Zp07cInfantImageStudies cInfantImageStudies = null;
+        Cursor cursor = crearCursor(Zp07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            cInfantImageStudies= Zp07cInfantImageStudiesHelper.crearZp07cInfantImageStudies(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return cInfantImageStudies;
+    }
+    //Obtener una lista de Zp07cInfantImageStudies de la base de datos
+    public List<Zp07cInfantImageStudies> getZp07cInfantImageStudies(String filtro, String orden) throws SQLException {
+        List<Zp07cInfantImageStudies> cInfantImageStudies = new ArrayList<Zp07cInfantImageStudies>();
+        Cursor cursor = crearCursor(Zp07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            cInfantImageStudies.clear();
+            do{
+                Zp07cInfantImageStudies cInfantImageSt = null;
+                cInfantImageSt = Zp07cInfantImageStudiesHelper.crearZp07cInfantImageStudies(cursor);
+                cInfantImageStudies.add(cInfantImageSt);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return cInfantImageStudies;
+    }
+
+    /**
+     * Metodos para Zp07dInfantBayleyScales en la base de datos
+     *
+     */
+    //Crear nuevo Zp07dInfantBayleyScales en la base de datos
+    public void crearZp07dInfantBayleyScales(Zp07dInfantBayleyScales dInfantBayleyScales) {
+        ContentValues cv = Zp07dInfantBayleyScalesHelper.crearZp07dInfantBayleyScales(dInfantBayleyScales);
+        mDb.insert(Zp07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, null, cv);
+    }
+    //Editar Zp07dInfantBayleyScales existente en la base de datos
+    public boolean editarZp07dInfantBayleyScales(Zp07dInfantBayleyScales dInfantBayleyScales) {
+        ContentValues cv = Zp07dInfantBayleyScalesHelper.crearZp07dInfantBayleyScales(dInfantBayleyScales);
+        return mDb.update(Zp07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, cv, Zp07DBConstants.recordId + "='"
+                + dInfantBayleyScales.getRecordId() + "' and " + Zp07DBConstants.redcapEventName + "='" + dInfantBayleyScales.getRedcapEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zp07dInfantBayleyScales de la base de datos
+    public boolean borrarZp07dInfantBayleyScales() {
+        return mDb.delete(Zp07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, null, null) > 0;
+    }
+    //Obtener un Zp07dInfantBayleyScales de la base de datos
+    public Zp07dInfantBayleyScales getZp07dInfantBayleySc(String filtro, String orden) throws SQLException {
+        Zp07dInfantBayleyScales dInfantBayleyScales = null;
+        Cursor cursor = crearCursor(Zp07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            dInfantBayleyScales= Zp07dInfantBayleyScalesHelper.crearZp07dInfantBayleyScales(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return dInfantBayleyScales;
+    }
+    //Obtener una lista de Zp07dInfantBayleyScales de la base de datos
+    public List<Zp07dInfantBayleyScales> getZp07dInfantBayleyScales(String filtro, String orden) throws SQLException {
+        List<Zp07dInfantBayleyScales> dInfantBayleyScales = new ArrayList<Zp07dInfantBayleyScales>();
+        Cursor cursor = crearCursor(Zp07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            dInfantBayleyScales.clear();
+            do{
+                Zp07dInfantBayleyScales dInfantBayleySc = null;
+                dInfantBayleySc = Zp07dInfantBayleyScalesHelper.crearZp07dInfantBayleyScales(cursor);
+                dInfantBayleyScales.add(dInfantBayleySc);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return dInfantBayleyScales;
     }
 
     /**

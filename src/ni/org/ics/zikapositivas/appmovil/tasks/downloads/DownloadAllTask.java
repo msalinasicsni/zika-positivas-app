@@ -33,7 +33,7 @@ public class DownloadAllTask extends DownloadTask {
     }
 
     protected static final String TAG = DownloadAllTask.class.getSimpleName();
-    private static final String TOTAL_TASK = "22";
+    private static final String TOTAL_TASK = "26";
     private ZikaPosAdapter zikaPosA = null;
     private List<ZpPreScreening> mPreTamizajes = null;
     private List<Zp00Screening> mTamizajes = null;
@@ -59,6 +59,11 @@ public class DownloadAllTask extends DownloadTask {
     private List<ZpEstadoInfante> mEstadoInfante = null;
     private List<Zp02dInfantBiospecimenCollection> mInfantCollections = null;
     private List<Zp07InfantAssessmentVisit> mInfantAssessment = null;
+    private List<Zp07aInfantOphtResults> mAInfantOphtResult = null;
+    private List<Zp07bInfantAudioResults> mbInfantAudioResult = null;
+    private List<Zp07cInfantImageStudies> mcInfantImageSt = null;
+    private List<Zp07dInfantBayleyScales> mdInfantBayleySc = null;
+
 
     private String error = null;
     private String url = null;
@@ -105,6 +110,10 @@ public class DownloadAllTask extends DownloadTask {
         
         zikaPosA.borrarZp02dInfantBiospecimenCollection();
         zikaPosA.borrarZp07InfantAssessmentVisit();
+        zikaPosA.borrarZp07aInfantOphtResults();
+        zikaPosA.borrarZp07bInfantAudioResults();
+        zikaPosA.borrarZp07cInfantImageStudies();
+        zikaPosA.borrarZp07dInfantBayleyScales();
         
         zikaPosA.borrarZpInfantData();
         zikaPosA.borrarZpEstadoInfante();
@@ -305,6 +314,46 @@ public class DownloadAllTask extends DownloadTask {
                 while (iter.hasNext()){
                 	zikaPosA.crearZp07InfantAssessmentVisit(iter.next());
                     publishProgress("Insertando evaluaciones de infantes en la base de datos...", Integer.valueOf(iter.nextIndex()).toString(), Integer
+                            .valueOf(v).toString());
+                }
+            }
+
+            if (mAInfantOphtResult != null){
+                v = mAInfantOphtResult.size();
+                ListIterator<Zp07aInfantOphtResults> iter = mAInfantOphtResult.listIterator();
+                while (iter.hasNext()){
+                    zikaPosA.crearZp07aInfantOphtResults(iter.next());
+                    publishProgress("Insertando resultados oftalmologicos de infantes...", Integer.valueOf(iter.nextIndex()).toString(), Integer
+                            .valueOf(v).toString());
+                }
+            }
+
+            if (mbInfantAudioResult != null){
+                v = mbInfantAudioResult.size();
+                ListIterator<Zp07bInfantAudioResults> iter = mbInfantAudioResult.listIterator();
+                while (iter.hasNext()){
+                    zikaPosA.crearZp07bInfantAudioResults(iter.next());
+                    publishProgress("Insertando resultados audiologicos de infantes...", Integer.valueOf(iter.nextIndex()).toString(), Integer
+                            .valueOf(v).toString());
+                }
+            }
+
+            if (mcInfantImageSt != null){
+                v = mcInfantImageSt.size();
+                ListIterator<Zp07cInfantImageStudies> iter = mcInfantImageSt.listIterator();
+                while (iter.hasNext()){
+                    zikaPosA.crearZp07cInfantImageStudies(iter.next());
+                    publishProgress("Insertando estudios de imagenes...", Integer.valueOf(iter.nextIndex()).toString(), Integer
+                            .valueOf(v).toString());
+                }
+            }
+
+            if (mdInfantBayleySc != null){
+                v = mdInfantBayleySc.size();
+                ListIterator<Zp07dInfantBayleyScales> iter = mdInfantBayleySc.listIterator();
+                while (iter.hasNext()){
+                    zikaPosA.crearZp07dInfantBayleyScales(iter.next());
+                    publishProgress("Insertando escala Bayley...", Integer.valueOf(iter.nextIndex()).toString(), Integer
                             .valueOf(v).toString());
                 }
             }
@@ -514,6 +563,43 @@ public class DownloadAllTask extends DownloadTask {
                     Zp07InfantAssessmentVisit[].class, username);
             // convert the array to a list and return it
             mInfantAssessment = Arrays.asList(responseZp07InfantAssessmentVisit.getBody());
+
+            //Descargar resultados oftalmologicos
+            urlRequest = url + "/movil/zp07aInfantOphtResults/{username}";
+            publishProgress("Solicitando resultados oftalmologicos de infantes","23",TOTAL_TASK);
+            // Perform the HTTP GET request
+            ResponseEntity<Zp07aInfantOphtResults[]> responseZp07aOphtResults = restTemplate.exchange(urlRequest, HttpMethod.GET, requestEntity,
+                    Zp07aInfantOphtResults[].class, username);
+            // convert the array to a list and return it
+            mAInfantOphtResult = Arrays.asList(responseZp07aOphtResults.getBody());
+
+            //Descargar resultados audiologicos
+            urlRequest = url + "/movil/zp07bInfantAudioResults/{username}";
+            publishProgress("Solicitando resultados audiologicos de infantes","24",TOTAL_TASK);
+            // Perform the HTTP GET request
+            ResponseEntity<Zp07bInfantAudioResults[]> responseZp07bAudioResults = restTemplate.exchange(urlRequest, HttpMethod.GET, requestEntity,
+                    Zp07bInfantAudioResults[].class, username);
+            // convert the array to a list and return it
+            mbInfantAudioResult = Arrays.asList(responseZp07bAudioResults.getBody());
+
+            //Descargar estudios de imagenes
+            urlRequest = url + "/movil/zp07cInfantImageStudies/{username}";
+            publishProgress("Solicitando estudios de imagenes de infantes","25",TOTAL_TASK);
+            // Perform the HTTP GET request
+            ResponseEntity<Zp07cInfantImageStudies[]> responseZp07cImageStudies = restTemplate.exchange(urlRequest, HttpMethod.GET, requestEntity,
+                    Zp07cInfantImageStudies[].class, username);
+            // convert the array to a list and return it
+            mcInfantImageSt = Arrays.asList(responseZp07cImageStudies.getBody());
+
+            //Descargar escala de bayley
+            urlRequest = url + "/movil/zp07dInfantBayleyScales/{username}";
+            publishProgress("Solicitando escala de Bayley de infantes","26",TOTAL_TASK);
+            // Perform the HTTP GET request
+            ResponseEntity<Zp07dInfantBayleyScales[]> responseZp07dBayleyScales = restTemplate.exchange(urlRequest, HttpMethod.GET, requestEntity,
+                    Zp07dInfantBayleyScales[].class, username);
+            // convert the array to a list and return it
+            mdInfantBayleySc = Arrays.asList(responseZp07dBayleyScales.getBody());
+
             return null;
         } catch (Exception e) {
             Log.e(TAG, e.getMessage(), e);

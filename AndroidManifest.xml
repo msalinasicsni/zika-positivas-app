@@ -120,6 +120,14 @@
                   android:screenOrientation="portrait"></activity>
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07InfantAssessmentVisitOphtActivity"
                   android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07aInfantOphtResultsActivity"
+                  android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07bInfantAudioResultsActivity"
+                  android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07cInfantImageStudiesActivity"
+                  android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07dInfantBayleyScalesActivity"
+                  android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

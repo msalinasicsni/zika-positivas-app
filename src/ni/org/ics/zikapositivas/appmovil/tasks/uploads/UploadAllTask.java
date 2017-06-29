@@ -34,7 +34,7 @@ public class UploadAllTask extends UploadTask {
 
     protected static final String TAG = UploadAllTask.class.getSimpleName();
     private ZikaPosAdapter zikaPosA = null;
-    private static final String TOTAL_TASK = "22";
+    private static final String TOTAL_TASK = "26";
     private List<ZpPreScreening> mPreTamizajes = new ArrayList<ZpPreScreening>();
     private List<Zp00Screening> mTamizajes = new ArrayList<Zp00Screening>();
     private List<Zp01StudyEntrySectionAtoD> mIngresosAD = new ArrayList<Zp01StudyEntrySectionAtoD>();
@@ -58,6 +58,10 @@ public class UploadAllTask extends UploadTask {
     private List<ZpEstadoInfante> mEstadoInfante = new ArrayList<ZpEstadoInfante>();
     private List<Zp02dInfantBiospecimenCollection> mInfantCollections = new ArrayList<Zp02dInfantBiospecimenCollection>();
     private List<Zp07InfantAssessmentVisit> mInfantAssessment = new ArrayList<Zp07InfantAssessmentVisit>();
+    private List<Zp07aInfantOphtResults> mAInfantOphtResults = new ArrayList<Zp07aInfantOphtResults>();
+    private List<Zp07bInfantAudioResults> mbInfantAudioResults = new ArrayList<Zp07bInfantAudioResults>();
+    private List<Zp07cInfantImageStudies> mcInfantImageStudies = new ArrayList<Zp07cInfantImageStudies>();
+    private List<Zp07dInfantBayleyScales> mdInfantBayleyScales = new ArrayList<Zp07dInfantBayleyScales>();
 
     private String url = null;
     private String username = null;
@@ -86,7 +90,10 @@ public class UploadAllTask extends UploadTask {
     public static final int EVAL_INFANTE = 19;
     public static final int DAT_INFANTE = 20;
     public static final int ESTADO_INFANTE = 21;
-
+    public static final int OPHTH_RESULTS = 23;
+    public static final int AUDIO_RESULTS = 24;
+    public static final int IMAGE_STUDIES = 25;
+    public static final int BAYLEY_SCALES = 26;
 
     @Override
     protected String doInBackground(String... values) {
@@ -120,6 +127,10 @@ public class UploadAllTask extends UploadTask {
             mInfantData = zikaPosA.getZpInfantDatas(filtro,null);
             mInfantCollections = zikaPosA.getZp02dInfantBiospecimenCollections(filtro, MainDBConstants.recordId);
             mInfantAssessment = zikaPosA.getZp07InfantAssessmentVisits(filtro, MainDBConstants.recordId);
+            mAInfantOphtResults = zikaPosA.getZp07aInfantOphtResults(filtro, MainDBConstants.recordId);
+            mbInfantAudioResults = zikaPosA.getZp07bInfantAudioResults(filtro, MainDBConstants.recordId);
+            mcInfantImageStudies = zikaPosA.getZp07cInfantImageStudies(filtro, MainDBConstants.recordId);
+            mdInfantBayleyScales = zikaPosA.getZp07dInfantBayleyScales(filtro, MainDBConstants.recordId);
             mEstadoInfante = zikaPosA.getZpEstadoInfantes(filtro, MainDBConstants.recordId);
             publishProgress("Datos completos!", "2", "2");
             actualizarBaseDatos(Constants.STATUS_SUBMITTED, PRE_TAMIZAJE);
@@ -255,6 +266,35 @@ public class UploadAllTask extends UploadTask {
                 actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, ESTADO_INFANTE);
                 return error;
             }
+            actualizarBaseDatos(Constants.STATUS_SUBMITTED, OPHTH_RESULTS);
+            error = uploadInfantOphtResults(url, username, password);
+            if (!error.matches("Datos recibidos!")){
+                actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, OPHTH_RESULTS);
+                return error;
+            }
+
+            actualizarBaseDatos(Constants.STATUS_SUBMITTED, AUDIO_RESULTS);
+            error = uploadInfantAudioResults(url, username, password);
+            if (!error.matches("Datos recibidos!")){
+                actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, AUDIO_RESULTS);
+                return error;
+            }
+
+            actualizarBaseDatos(Constants.STATUS_SUBMITTED, IMAGE_STUDIES);
+            error = uploadInfantImageStudies(url, username, password);
+            if (!error.matches("Datos recibidos!")){
+                actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, IMAGE_STUDIES);
+                return error;
+            }
+
+            actualizarBaseDatos(Constants.STATUS_SUBMITTED, BAYLEY_SCALES);
+            error = uploadInfantBayleyScales(url, username, password);
+            if (!error.matches("Datos recibidos!")){
+                actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, BAYLEY_SCALES);
+                return error;
+            }
+
+
             zikaPosA.close();
         } catch (Exception e1) {
             zikaPosA.close();
@@ -505,6 +545,54 @@ public class UploadAllTask extends UploadTask {
                     infantEstado.setEstado(estado);
                     zikaPosA.editarZpEstadoInfante(infantEstado);
                     publishProgress("Actualizando estado de infantes base de datos local", Integer.valueOf(mInfantData.indexOf(infantEstado)).toString(), Integer
+                            .valueOf(c).toString());
+                }
+            }
+        }
+
+        else if(opcion==OPHTH_RESULTS){
+            c = mAInfantOphtResults.size();
+            if(c>0){
+                for (Zp07aInfantOphtResults aInfantOphtResult : mAInfantOphtResults) {
+                    aInfantOphtResult.setEstado(estado);
+                    zikaPosA.editarZp07aInfantOphtResults(aInfantOphtResult);
+                    publishProgress("Actualizando resultados oftalmologicos de infantes de base de datos local", Integer.valueOf(mAInfantOphtResults.indexOf(aInfantOphtResult)).toString(), Integer
+                            .valueOf(c).toString());
+                }
+            }
+        }
+
+        else if(opcion==AUDIO_RESULTS){
+            c = mbInfantAudioResults.size();
+            if(c>0){
+                for (Zp07bInfantAudioResults bInfantAudioResult : mbInfantAudioResults) {
+                    bInfantAudioResult.setEstado(estado);
+                    zikaPosA.editarZp07bInfantAudioResults(bInfantAudioResult);
+                    publishProgress("Actualizando resultados audiologicos de infantes de base de datos local", Integer.valueOf(mbInfantAudioResults.indexOf(bInfantAudioResult)).toString(), Integer
+                            .valueOf(c).toString());
+                }
+            }
+        }
+
+        else if(opcion==IMAGE_STUDIES){
+            c = mcInfantImageStudies.size();
+            if(c>0){
+                for (Zp07cInfantImageStudies cInfantImageSt : mcInfantImageStudies) {
+                    cInfantImageSt.setEstado(estado);
+                    zikaPosA.editarZp07cInfantImageStudies(cInfantImageSt);
+                    publishProgress("Actualizando estudios de imagenes de infantes de base de datos local", Integer.valueOf(mcInfantImageStudies.indexOf(cInfantImageSt)).toString(), Integer
+                            .valueOf(c).toString());
+                }
+            }
+        }
+
+        else if(opcion==BAYLEY_SCALES){
+            c = mdInfantBayleyScales.size();
+            if(c>0){
+                for (Zp07dInfantBayleyScales dInfantBayleySc : mdInfantBayleyScales) {
+                    dInfantBayleySc.setEstado(estado);
+                    zikaPosA.editarZp07dInfantBayleyScales(dInfantBayleySc);
+                    publishProgress("Actualizando escala de Bayley de base de datos local", Integer.valueOf(mdInfantBayleyScales.indexOf(dInfantBayleySc)).toString(), Integer
                             .valueOf(c).toString());
                 }
             }
@@ -1250,7 +1338,150 @@ public class UploadAllTask extends UploadTask {
             return e.getMessage();
         }
     }
-    
+
+    /***************************************************/
+    /********************* Zp07aInfantOpthResults******/
+    /***************************************************/
+    // url, username, password
+    protected String uploadInfantOphtResults(String url, String username,
+                                            String password) throws Exception {
+        try {
+            if( mAInfantOphtResults.size()>0){
+                publishProgress("Enviando resultado oftalmológico infantes!", "23", TOTAL_TASK);
+                // La URL de la solicitud POST
+                final String urlRequest = url + "/movil/zp07aInfantOphtResults";
+                Zp07aInfantOphtResults[] envio = mAInfantOphtResults.toArray(new Zp07aInfantOphtResults[mAInfantOphtResults.size()]);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+                requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<Zp07aInfantOphtResults[]> requestEntity =
+                        new HttpEntity<Zp07aInfantOphtResults[]>(envio, requestHeaders);
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+                // Hace la solicitud a la red, pone la vivienda y espera un mensaje de respuesta del servidor
+                ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
+                        String.class);
+                return response.getBody();
+            }
+            else{
+                return "Datos recibidos!";
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            return e.getMessage();
+        }
+    }
+
+
+    /***************************************************/
+    /********************* Zp07bInfantAudioResults******/
+    /***************************************************/
+    // url, username, password
+    protected String uploadInfantAudioResults(String url, String username,
+                                             String password) throws Exception {
+        try {
+            if( mbInfantAudioResults.size()>0){
+                publishProgress("Enviando resultado audiologico infantes!", "24", TOTAL_TASK);
+                // La URL de la solicitud POST
+                final String urlRequest = url + "/movil/zp07bInfantAudioResults";
+                Zp07bInfantAudioResults[] envio = mbInfantAudioResults.toArray(new Zp07bInfantAudioResults[mbInfantAudioResults.size()]);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+                requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<Zp07bInfantAudioResults[]> requestEntity =
+                        new HttpEntity<Zp07bInfantAudioResults[]>(envio, requestHeaders);
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+                // Hace la solicitud a la red, pone la vivienda y espera un mensaje de respuesta del servidor
+                ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
+                        String.class);
+                return response.getBody();
+            }
+            else{
+                return "Datos recibidos!";
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            return e.getMessage();
+        }
+    }
+
+    /***************************************************/
+    /********************* Zp07cInfantImageStudies******/
+    /***************************************************/
+    // url, username, password
+    protected String uploadInfantImageStudies(String url, String username,
+                                              String password) throws Exception {
+        try {
+            if( mcInfantImageStudies.size()>0){
+                publishProgress("Enviando estudios de imagen!", "25", TOTAL_TASK);
+                // La URL de la solicitud POST
+                final String urlRequest = url + "/movil/zp07cInfantImageStudies";
+                Zp07cInfantImageStudies[] envio = mcInfantImageStudies.toArray(new Zp07cInfantImageStudies[mcInfantImageStudies.size()]);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+                requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<Zp07cInfantImageStudies[]> requestEntity =
+                        new HttpEntity<Zp07cInfantImageStudies[]>(envio, requestHeaders);
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+                // Hace la solicitud a la red, pone la vivienda y espera un mensaje de respuesta del servidor
+                ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
+                        String.class);
+                return response.getBody();
+            }
+            else{
+                return "Datos recibidos!";
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            return e.getMessage();
+        }
+    }
+
+
+    /***************************************************/
+    /********************* Zp07dInfantBayleyScales******/
+    /***************************************************/
+    // url, username, password
+    protected String uploadInfantBayleyScales(String url, String username,
+                                              String password) throws Exception {
+        try {
+            if( mdInfantBayleyScales.size()>0){
+                publishProgress("Enviando escala de Bayley!", "26", TOTAL_TASK);
+                // La URL de la solicitud POST
+                final String urlRequest = url + "/movil/zp07dInfantBayleyScales";
+                Zp07dInfantBayleyScales[] envio = mdInfantBayleyScales.toArray(new Zp07dInfantBayleyScales[mdInfantBayleyScales.size()]);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+                requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<Zp07dInfantBayleyScales[]> requestEntity =
+                        new HttpEntity<Zp07dInfantBayleyScales[]>(envio, requestHeaders);
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+                // Hace la solicitud a la red, pone la vivienda y espera un mensaje de respuesta del servidor
+                ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
+                        String.class);
+                return response.getBody();
+            }
+            else{
+                return "Datos recibidos!";
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            return e.getMessage();
+        }
+    }
+
+
     /***************************************************/
     /********************* ZpEstadoInfante******/
     /***************************************************/

@@ -1,8 +1,7 @@
 package ni.org.ics.zikapositivas.appmovil.adapters.eventosinfante;
 
 import ni.org.ics.zikapositivas.appmovil.R;
-import ni.org.ics.zikapositivas.appmovil.domain.Zp02dInfantBiospecimenCollection;
-import ni.org.ics.zikapositivas.appmovil.domain.Zp07InfantAssessmentVisit;
+import ni.org.ics.zikapositivas.appmovil.domain.*;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -19,14 +18,22 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 	private final String[] values;
 	private final Zp02dInfantBiospecimenCollection mZp02d;
 	private final Zp07InfantAssessmentVisit mZp07;
+	private final Zp07aInfantOphtResults mZp07a;
+	private final Zp07bInfantAudioResults mZp07b;
+	private final Zp07cInfantImageStudies mZp07c;
+	private final Zp07dInfantBayleyScales mZp07d;
 	
 	public InfantVisitAdapter(Context context, int textViewResourceId,
-			String[] values, Zp02dInfantBiospecimenCollection zp02, Zp07InfantAssessmentVisit zp07) {
+							  String[] values, Zp02dInfantBiospecimenCollection zp02, Zp07InfantAssessmentVisit zp07, Zp07aInfantOphtResults zp07a, Zp07bInfantAudioResults zp07b, Zp07cInfantImageStudies zp07c, Zp07dInfantBayleyScales zp07d) {
 		super(context, textViewResourceId, values);
 		this.context = context;
 		this.values = values;
 		this.mZp02d = zp02;
 		this.mZp07 = zp07;
+		this.mZp07a = zp07a;
+		this.mZp07b = zp07b;
+		this.mZp07c = zp07c;
+		this.mZp07d = zp07d;
 	}
 
 	@Override
@@ -99,6 +106,47 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
 				}
 				img = getContext().getResources().getDrawable(R.drawable.ic_monthly);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+			case 4:
+				if (mZp07a != null) {
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
+				} else {
+					textView.setTextColor(Color.RED);
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				}
+				img = getContext().getResources().getDrawable(R.drawable.ic_opht);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+			case 5:
+				if (mZp07b != null) {
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
+				} else {
+					textView.setTextColor(Color.RED);
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				}
+				img = getContext().getResources().getDrawable(R.drawable.ic_audio);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+
+			case 6:
+				if (mZp07c != null) {
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
+				} else {
+					textView.setTextColor(Color.RED);
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				}
+				img = getContext().getResources().getDrawable(R.drawable.ic_image);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+			case 7:
+				if (mZp07d != null) {
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
+				} else {
+					textView.setTextColor(Color.RED);
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				}
+				img = getContext().getResources().getDrawable(R.drawable.ic_bayley);
 				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 				break;
 			default:
