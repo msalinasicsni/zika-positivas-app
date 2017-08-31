@@ -33,6 +33,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,6 +60,7 @@ public class MenuEmbarazadasActivity extends AbstractAsyncActivity {
 	private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	private AlertDialog alertDialog;
 	private static final int FUERA = 1;
+	private static final int CONSENTS = 2;
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
@@ -232,13 +234,15 @@ public class MenuEmbarazadasActivity extends AbstractAsyncActivity {
 				}
 			}
 		});
+		
+		createDialog(CONSENTS,0);
 
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.general, menu);
+		getMenuInflater().inflate(R.menu.embarazo, menu);
 		return true;
 	}
 
@@ -280,6 +284,9 @@ public class MenuEmbarazadasActivity extends AbstractAsyncActivity {
 			startActivity(i);
 			finish();
 			return true;
+		case R.id.MENU_VIEWCONSENTS:
+			createDialog(CONSENTS,0);
+			return true;			
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -288,6 +295,38 @@ public class MenuEmbarazadasActivity extends AbstractAsyncActivity {
 	private void createDialog(int dialog,final int position) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		switch(dialog){
+		
+		case CONSENTS:
+			builder.setTitle(this.getString(R.string.consents));
+			String labelHeader = "";
+			
+			if (zp00.getScrConsentA().equals("1")) labelHeader = labelHeader + "<br/><font color='blue'>"+ this.getString(R.string.c2aAlmTej) + " " + this.getString(R.string.yes)+"</font>";
+			if (!zp00.getScrConsentA().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ this.getString(R.string.c2aAlmTej) + " " + this.getString(R.string.no)+"</font>";
+					
+			if (zp00.getScrConsentB().equals("1")) labelHeader = labelHeader + "<br/><font color='black'>"+ this.getString(R.string.c2bEnvMue) + " " + this.getString(R.string.yes)+"</font>";
+			if (!zp00.getScrConsentB().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ this.getString(R.string.c2bEnvMue) + " " + this.getString(R.string.no)+"</font>";
+			
+			if (zp00.getScrConsentC().equals("1")) labelHeader = labelHeader + "<br/><font color='blue'>"+ this.getString(R.string.c2cAlmMue) + " " + this.getString(R.string.yes)+"</font>";
+			if (!zp00.getScrConsentC().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ this.getString(R.string.c2cAlmMue) + " " + this.getString(R.string.no)+"</font>";
+			
+			if (zp00.getScrConsentD().equals("1")) labelHeader = labelHeader + "<br/><font color='black'>"+ this.getString(R.string.c2dContact) + " " + this.getString(R.string.yes)+"</font>";
+			if (!zp00.getScrConsentD().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ this.getString(R.string.c2dContact) + " " + this.getString(R.string.no)+"</font>";
+			
+			if (zp00.getScrConsentE().equals("1")) labelHeader = labelHeader + "<br/><font color='blue'>"+ this.getString(R.string.c2eExp) + " " + this.getString(R.string.yes)+"</font>";
+			if (!zp00.getScrConsentE().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ this.getString(R.string.c2eExp) + " " + this.getString(R.string.no)+"</font>";
+			
+			if (zp00.getScrConsentE().equals("1")) labelHeader = labelHeader + "<br/><font color='black'>"+ this.getString(R.string.c2fOport) + " " + this.getString(R.string.yes)+"</font>";
+			if (!zp00.getScrConsentE().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ this.getString(R.string.c2fOport) + " " + this.getString(R.string.no)+"</font>";
+			
+			
+			builder.setMessage(Html.fromHtml(labelHeader));
+			builder.setPositiveButton(this.getString(R.string.ok), new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			});
+			break;
+			
 		case FUERA:
 			builder.setTitle(this.getString(R.string.confirm));
 			builder.setMessage(this.getString(R.string.out_of_time));
@@ -457,6 +496,18 @@ public class MenuEmbarazadasActivity extends AbstractAsyncActivity {
 			textView.setText(getString(R.string.maternal_events)+"\n"+
 								getString(R.string.mat_id)+": "+zp00.getRecordId()+"\n"+
 										getString(R.string.mat_fec)+": "+ mDateFormat.format(zp00.getScrVisitDate()));
+			
+			String labelHeader = "";
+			
+			
+			if (!zp00.getScrConsentA().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ getString(R.string.c2aAlmTej) + " " + getString(R.string.no)+"</font>";
+			if (!zp00.getScrConsentB().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ getString(R.string.c2bEnvMue) + " " + getString(R.string.no)+"</font>";
+			if (!zp00.getScrConsentC().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ getString(R.string.c2cAlmMue) + " " + getString(R.string.no)+"</font>";
+			if (!zp00.getScrConsentD().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ getString(R.string.c2dContact) + " " + getString(R.string.no)+"</font>";
+			if (!zp00.getScrConsentE().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ getString(R.string.c2eExp) + " " + getString(R.string.no)+"</font>";
+			if (!zp00.getScrConsentE().equals("1")) labelHeader = labelHeader + "<br/><font color='red'>"+ getString(R.string.c2fOport) + " " + getString(R.string.no)+"</font>";
+			
+			textView.setText(Html.fromHtml(textView.getText().toString()+ labelHeader));
 			gridView.setAdapter(new MenuEmbarazadasAdapter(getApplicationContext(), R.layout.menu_item_2, menu_maternal_info, zp00, zpEstado, zpSalida));
 			if (zpSalida != null){
 				textView.setTextColor(Color.RED);

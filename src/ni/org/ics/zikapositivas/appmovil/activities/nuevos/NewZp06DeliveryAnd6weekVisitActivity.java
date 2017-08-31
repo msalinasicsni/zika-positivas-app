@@ -363,6 +363,13 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
             mDelivery.setDeliDateReviewed(new Date());
             mDelivery.setDeliIdDataEntry(username);
             mDelivery.setDeliDateEntered(new Date());
+            
+            
+            mDelivery.setDeliHyperDisease(zp06Xml.getDeliHyperDisease());
+            mDelivery.setDeliPreterm1(zp06Xml.getDeliPreterm1());
+            mDelivery.setDeliPreterm2(zp06Xml.getDeliPreterm2());
+            mDelivery.setDeliPreterm3(zp06Xml.getDeliPreterm3());
+            mDelivery.setDeliDeliverEarly(zp06Xml.getDeliDeliverEarly());            
 
             mDelivery.setRecordDate(new Date());
             mDelivery.setRecordUser(username);
@@ -376,7 +383,7 @@ public class NewZp06DeliveryAnd6weekVisitActivity extends AbstractAsyncActivity 
             mDelivery.setPhonenumber(zp06Xml.getPhonenumber());
             mDelivery.setToday(zp06Xml.getToday());
             
-            if(event.matches(Constants.DELIVERY) && zp06Xml.getDeliVisitType().matches("1")){
+            if(event.matches(Constants.DELIVERY) && zp06Xml.getDeliVisitType().matches("1") && !zp06Xml.getDeliMode().equals("4")){
                 if(zp06Xml.getDeliNumBirth().matches("1")){
                 	mZpInfantData1 = completarDatosInfante(1);
                 	mZpEstadoInfante1 = new ZpEstadoInfante(mZpInfantData1.getRecordId(), '0', '0', '0', '0', new Date(),

@@ -267,6 +267,17 @@ public class Zp06DeliveryAnd6weekVisitXml {
     private String deliIdDataEntry;
     @Element(required=false)
     private Date deliDateEntered;
+    
+    @Element(required=false)
+    private String deliHyperDisease;
+    @Element(required=false)
+    private String deliPreterm1;
+    @Element(required=false)
+    private String deliPreterm2;
+    @Element(required=false)
+    private String deliPreterm3;
+    @Element(required=false)
+    private String deliDeliverEarly;
 
     @Element(required=false)
     private String group1;
@@ -344,6 +355,21 @@ public class Zp06DeliveryAnd6weekVisitXml {
     private String group37;
     @Element(required=false)
     private String group38;
+    
+    @Element(required=false)
+    private String group39;
+    @Element(required=false)
+    private String group40;
+    @Element(required=false)
+    private String group41;
+    @Element(required=false)
+    private String group42;
+    @Element(required=false)
+    private String group43;
+    @Element(required=false)
+    private String group44;
+    @Element(required=false)
+    private String group45;
 
     @Element(required=false)
     private String note1;
@@ -953,4 +979,44 @@ public class Zp06DeliveryAnd6weekVisitXml {
     public void setToday(Date today) {
         this.today = today;
     }
+    
+    public String getDeliPreterm1() {
+		return deliPreterm1;
+	}
+
+	public String getDeliPreterm2() {
+		return deliPreterm2;
+	}
+
+	public String getDeliPreterm3() {
+		return deliPreterm3;
+	}
+
+	public void setDeliPreterm1(String deliPreterm1) {
+		this.deliPreterm1 = deliPreterm1;
+	}
+
+	public void setDeliPreterm2(String deliPreterm2) {
+		this.deliPreterm2 = deliPreterm2;
+	}
+
+	public void setDeliPreterm3(String deliPreterm3) {
+		this.deliPreterm3 = deliPreterm3;
+	}
+
+	public String getDeliHyperDisease() {
+		return deliHyperDisease;
+	}
+
+	public String getDeliDeliverEarly() {
+		return deliDeliverEarly;
+	}
+
+	public void setDeliHyperDisease(String deliHyperDisease) {
+		this.deliHyperDisease = deliHyperDisease;
+	}
+
+	public void setDeliDeliverEarly(String deliDeliverEarly) {
+		this.deliDeliverEarly = deliDeliverEarly;
+	}
 }

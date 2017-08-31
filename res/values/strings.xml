@@ -78,6 +78,15 @@
     <string name="SCREENING">Ingreso</string>
     <string name="TRI2">2do Trimestre</string>
     <string name="TRI3">3er Trimestre</string>
-    <string name="UNSCHED">No programado</string>    
+    <string name="UNSCHED">No programado</string>  
+    
+    <string name="consents">Consentimientos:</string>
+    <string name="c2aAlmTej">a. Los tejidos fetales pueden ser almacenados y examinados:</string>
+    <string name="c2bEnvMue">b. Las muestras pueden ser enviadas a Estados Unidos:</string>
+    <string name="c2cAlmMue">c. Permiso para almacenar muestras y datos para investigaciones en el futuro:</string>
+    <string name="c2dContact">d. Quiere ser contactada para dar consentimiento para investigaciones en el futuro:</string>
+    <string name="c2eExp">e. Autoriza el acceso a los registros médicos:</string>
+    <string name="c2fOport">f. Permiso de ser re-contactada sobre oportunidades de participar en otras investigaciones en el futuro:</string>
+    
     
 </resources>

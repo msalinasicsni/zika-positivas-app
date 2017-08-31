@@ -140,6 +140,12 @@ public class Zp06DBConstants {
     public static final String deliDateReviewed = "deliDateReviewed";
     public static final String deliIdDataEntry = "deliIdDataEntry";
     public static final String deliDateEntered = "deliDateEntered";
+    
+    public static final String deliHyperDisease = "deliHyperDisease";
+    public static final String deliPreterm1 = "deliPreterm1";
+    public static final String deliPreterm2 = "deliPreterm2";
+    public static final String deliPreterm3 = "deliPreterm3";
+    public static final String deliDeliverEarly = "deliDeliverEarly";
 
     //Crear tabla Zp06DeliveryAnd6weekVisit
     public static final String CREATE_DELIVERY6WVISIT_TABLE = "create table if not exists "
@@ -274,6 +280,11 @@ public class Zp06DBConstants {
             + deliDateReviewed + " date, "
             + deliIdDataEntry + " text, "
             + deliDateEntered + " date, "
+            + deliHyperDisease + " text, "
+            + deliPreterm1 + " text, "
+            + deliPreterm2 + " text, "
+            + deliPreterm3 + " text, "
+            + deliDeliverEarly + " text, "
             + MainDBConstants.recordDate + " date, "
             + MainDBConstants.recordUser + " text, "
             + MainDBConstants.pasive + " text, "

@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+        
+    <item android:id="@+id/MENU_VIEWCONSENTS" 
+        android:title="@string/consents" 
+        android:showAsAction="always|withText"
+        android:icon="@android:drawable/ic_menu_view"></item>  
+        
+    <item android:id="@+id/MENU_HOME" 
+        android:title="@string/home" 
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_menu_home"></item>
+    
+    <item android:id="@+id/MENU_BACK" 
+        android:title="@string/back" 
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_menu_revert"></item>
+
+</menu>

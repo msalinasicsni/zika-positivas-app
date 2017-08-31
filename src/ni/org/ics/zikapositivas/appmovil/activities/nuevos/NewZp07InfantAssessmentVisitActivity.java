@@ -388,6 +388,10 @@ public class NewZp07InfantAssessmentVisitActivity extends AbstractAsyncActivity 
             mInfantAssessment.setInfantDtEnter(new Date());
             mInfantAssessment.setIdInstancia(idInstancia);
             mInfantAssessment.setPart1(1);
+            
+            mInfantAssessment.setInfantDob(zp07Xml.getInfantDob());
+            mInfantAssessment.setInfantWeeks(zp07Xml.getInfantWeeks());
+            mInfantAssessment.setInfantDays(zp07Xml.getInfantDays());
 
             mInfantAssessment.setRecordDate(new Date());
             mInfantAssessment.setRecordUser(username);

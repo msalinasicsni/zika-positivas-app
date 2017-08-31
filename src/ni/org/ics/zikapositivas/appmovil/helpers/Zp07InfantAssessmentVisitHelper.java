@@ -182,6 +182,10 @@ public class Zp07InfantAssessmentVisitHelper {
         if (zp07InfantAssessmentVisit.getPart1()!=null) cv.put(Zp07DBConstants.part1, zp07InfantAssessmentVisit.getPart1());
         if (zp07InfantAssessmentVisit.getPart2()!=null) cv.put(Zp07DBConstants.part2, zp07InfantAssessmentVisit.getPart2());
         if (zp07InfantAssessmentVisit.getPart3()!=null) cv.put(Zp07DBConstants.part3, zp07InfantAssessmentVisit.getPart3());
+        
+        if (zp07InfantAssessmentVisit.getInfantDob() != null) cv.put(Zp07DBConstants.infantDob, zp07InfantAssessmentVisit.getInfantDob().getTime());
+        cv.put(Zp07DBConstants.infantWeeks, zp07InfantAssessmentVisit.getInfantWeeks());
+        cv.put(Zp07DBConstants.infantDays, zp07InfantAssessmentVisit.getInfantDays());
 
         if (zp07InfantAssessmentVisit.getRecordDate() != null) cv.put(MainDBConstants.recordDate, zp07InfantAssessmentVisit.getRecordDate().getTime());
         cv.put(MainDBConstants.recordUser, zp07InfantAssessmentVisit.getRecordUser());
@@ -374,6 +378,10 @@ public class Zp07InfantAssessmentVisitHelper {
         if (cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.part2))>0) infantAssessmentVisit.setPart2(cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.part2)));
         if (cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.part3))>0) infantAssessmentVisit.setPart3(cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.part3)));
 
+        if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDob))>0) infantAssessmentVisit.setInfantDob(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07DBConstants.infantDob))));
+        infantAssessmentVisit.setInfantWeeks(cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.infantWeeks)));
+        infantAssessmentVisit.setInfantDays(cursorIA.getInt(cursorIA.getColumnIndex(Zp07DBConstants.infantDays)));
+        
         if(cursorIA.getLong(cursorIA.getColumnIndex(MainDBConstants.recordDate))>0) infantAssessmentVisit.setRecordDate(new Date(cursorIA.getLong(cursorIA.getColumnIndex(MainDBConstants.recordDate))));
         infantAssessmentVisit.setRecordUser(cursorIA.getString(cursorIA.getColumnIndex(MainDBConstants.recordUser)));
         infantAssessmentVisit.setPasive(cursorIA.getString(cursorIA.getColumnIndex(MainDBConstants.pasive)).charAt(0));

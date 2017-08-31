@@ -174,6 +174,9 @@ public class Zp07DBConstants {
     public static final String part3 = "part3";
     public static final String idInstancia2 = "idInstancia2";
     public static final String idInstancia3 = "idInstancia3";
+    public static final String infantDob = "infantDob";
+    public static final String infantWeeks = "infantWeeks";
+    public static final String infantDays = "infantDays";
 
     //Crear tabla Zp07InfantAssessmentVisit
     public static final String CREATE_INFANTASSESSMENT_TABLE = "create table if not exists "
@@ -342,7 +345,9 @@ public class Zp07DBConstants {
             + part3 + " integer, "
             + idInstancia2 + " integer, "
             + idInstancia3 + " integer, "
-
+            + infantDob + " date, "
+            + infantWeeks + " integer, "
+            + infantDays + " integer, "
             + MainDBConstants.recordDate + " date, "
             + MainDBConstants.recordUser + " text, "
             + MainDBConstants.pasive + " text, "

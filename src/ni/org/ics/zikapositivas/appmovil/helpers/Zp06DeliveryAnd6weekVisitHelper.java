@@ -148,6 +148,12 @@ public class Zp06DeliveryAnd6weekVisitHelper {
         cv.put(Zp06DBConstants.deliIdDataEntry, deliveryAnd6weekVisit.getDeliIdDataEntry());
         if (deliveryAnd6weekVisit.getDeliDateEntered()!=null) cv.put(Zp06DBConstants.deliDateEntered, deliveryAnd6weekVisit.getDeliDateEntered().getTime());
 
+        cv.put(Zp06DBConstants.deliHyperDisease, deliveryAnd6weekVisit.getDeliHyperDisease());
+        cv.put(Zp06DBConstants.deliPreterm1, deliveryAnd6weekVisit.getDeliPreterm1());
+        cv.put(Zp06DBConstants.deliPreterm2, deliveryAnd6weekVisit.getDeliPreterm2());
+        cv.put(Zp06DBConstants.deliPreterm3, deliveryAnd6weekVisit.getDeliPreterm3());
+        cv.put(Zp06DBConstants.deliDeliverEarly, deliveryAnd6weekVisit.getDeliDeliverEarly());
+        
         if (deliveryAnd6weekVisit.getRecordDate() != null) cv.put(MainDBConstants.recordDate, deliveryAnd6weekVisit.getRecordDate().getTime());
         cv.put(MainDBConstants.recordUser, deliveryAnd6weekVisit.getRecordUser());
         cv.put(MainDBConstants.pasive, String.valueOf(deliveryAnd6weekVisit.getPasive()));
@@ -301,6 +307,12 @@ public class Zp06DeliveryAnd6weekVisitHelper {
         if (cursor.getLong(cursor.getColumnIndex(Zp06DBConstants.deliDateReviewed))>0) deliveryAnd6weekVisit.setDeliDateReviewed(new Date(cursor.getLong(cursor.getColumnIndex(Zp06DBConstants.deliDateReviewed))));
         deliveryAnd6weekVisit.setDeliIdDataEntry(cursor.getString(cursor.getColumnIndex(Zp06DBConstants.deliIdDataEntry)));
         if (cursor.getLong(cursor.getColumnIndex(Zp06DBConstants.deliDateEntered))>0) deliveryAnd6weekVisit.setDeliDateEntered(new Date(cursor.getLong(cursor.getColumnIndex(Zp06DBConstants.deliDateEntered))));
+        
+        deliveryAnd6weekVisit.setDeliHyperDisease(cursor.getString(cursor.getColumnIndex(Zp06DBConstants.deliHyperDisease)));
+        deliveryAnd6weekVisit.setDeliPreterm1(cursor.getString(cursor.getColumnIndex(Zp06DBConstants.deliPreterm1)));
+        deliveryAnd6weekVisit.setDeliPreterm2(cursor.getString(cursor.getColumnIndex(Zp06DBConstants.deliPreterm2)));
+        deliveryAnd6weekVisit.setDeliPreterm3(cursor.getString(cursor.getColumnIndex(Zp06DBConstants.deliPreterm3)));
+        deliveryAnd6weekVisit.setDeliDeliverEarly(cursor.getString(cursor.getColumnIndex(Zp06DBConstants.deliDeliverEarly)));
 
         if(cursor.getLong(cursor.getColumnIndex(MainDBConstants.recordDate))>0) deliveryAnd6weekVisit.setRecordDate(new Date(cursor.getLong(cursor.getColumnIndex(MainDBConstants.recordDate))));
         deliveryAnd6weekVisit.setRecordUser(cursor.getString(cursor.getColumnIndex(MainDBConstants.recordUser)));
