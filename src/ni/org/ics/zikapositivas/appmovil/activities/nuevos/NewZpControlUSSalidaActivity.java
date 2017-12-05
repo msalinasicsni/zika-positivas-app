@@ -253,7 +253,7 @@ public class NewZpControlUSSalidaActivity extends AbstractAsyncActivity {
 			showToast(this.getString( R.string.error_evento));
 			return false;
 		}
-		if(!(mCodigo.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
+		if(!(mCodigo.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
 			showToast(mCodigo + " " + getString(R.string.code_error));
 			mCodigoView.setText(null);
 			mCodigo=null;
@@ -379,7 +379,7 @@ public class NewZpControlUSSalidaActivity extends AbstractAsyncActivity {
 			String sb = intent.getStringExtra("SCAN_RESULT");
 			if (sb != null && sb.length() > 0) {
 				try{
-					if(!(sb.matches("^07[0-9][0-9][0-9][0-9][0-3][A-Y]$"))){
+					if(!(sb.matches("^ZP[0-9][0-9][0-9][0-3]$"))){
 						showToast(sb + " " + getString(R.string.scan_error));
 						mCodigoView.setText(null);
 						mCodigo=null;
@@ -437,7 +437,7 @@ public class NewZpControlUSSalidaActivity extends AbstractAsyncActivity {
 					zpVerificacion = zikaPosA.getZpControlReporteUSSalida(MainDBConstants.codigo + "='" + mSalidaUS.getCodigo() + "' and " + MainDBConstants.evento + "='" + mSalidaUS.getEvento() +"'", null);
 				}
 				if(zpVerificacion!=null){
-					return "Evento para este código ya fue ingresado";
+					return "Evento para este cï¿½digo ya fue ingresado";
 				}
 				else{
 					zikaPosA.crearZpControlReporteUSSalida(mSalidaUS);
