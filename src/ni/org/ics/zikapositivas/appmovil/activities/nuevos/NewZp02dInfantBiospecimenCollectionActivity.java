@@ -8,11 +8,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,7 +56,7 @@ public class NewZp02dInfantBiospecimenCollectionActivity extends AbstractAsyncAc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (!FileUtils.storageReady()) {
-            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.error, R.string.storage_error),Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.error) + ","+ getString(R.string.storage_error),Toast.LENGTH_LONG);
             toast.show();
             finish();
         }
@@ -288,6 +287,122 @@ public class NewZp02dInfantBiospecimenCollectionActivity extends AbstractAsyncAc
             mInfantBioCollection.setPhonenumber(zp02dXml.getPhonenumber());
             mInfantBioCollection.setToday(zp02dXml.getToday());
 
+            //validations
+            Integer tubes = 0;
+            Integer codEvent = 0;
+            String msj;
+            String tb = zp02dXml.getQuestion1();
+
+            if (tb != null){
+                tubes = Integer.parseInt(tb);
+            }
+
+            if (mInfantBioCollection.getRedcapEventName() != null) {
+                String eventName = mInfantBioCollection.getRedcapEventName();
+                if (eventName.equals(Constants.BIRTH))  {
+                    codEvent = 15;
+                } else if (eventName.equals(Constants.MONTH3) ) {
+                    codEvent = 16;
+                } else if (eventName.equals(Constants.MONTH6)) {
+                    codEvent = 17;
+                } else if (eventName.equals(Constants.MONTH12)) {
+                    codEvent = 18;
+                }else if (eventName.equals(Constants.UNSHEDINF1)|| eventName.equals(Constants.UNSHEDINF2) || eventName.equals(Constants.UNSHEDINF3) || eventName.equals(Constants.UNSHEDINF4) || eventName.equals(Constants.UNSHEDINF5) ) {
+                    codEvent = 19;
+                }
+            }
+
+            if (codEvent != 0) {
+                //blood samples
+                if (tubes > 0 ) {
+                    for (int i = 1; i <= tubes; i++) {
+                        String sampleID = null;
+                        switch (i) {
+                            case 1:
+                                sampleID = mInfantBioCollection.getInfantMatBldId1();
+                                break;
+                            case 2:
+                                sampleID = mInfantBioCollection.getInfantMatBldId2();
+                                break;
+                            case 3:
+                                sampleID = mInfantBioCollection.getInfantMatBldId3();
+                                break;
+                            case 4:
+                                sampleID = mInfantBioCollection.getInfantMatBldId4();
+                                break;
+                            case 5:
+                                sampleID = mInfantBioCollection.getInfantMatBldId5();
+                                break;
+                            case 6:
+                                sampleID = mInfantBioCollection.getInfantMatBldId6();
+                                break;
+                            case 7:
+                                sampleID = mInfantBioCollection.getInfantMatBldId7();
+                                break;
+                            case 8:
+                                sampleID = mInfantBioCollection.getInfantMatBldId8();
+                                break;
+                        }
+
+                        if (sampleID != null) {
+                            //validate codes
+                            msj = validateCodes(codEvent, sampleID);
+
+                            if (msj != null) {
+                                showToast(msj);
+                            }
+                        }
+                    }
+                }
+
+                //saliva sample
+                String saliva = mInfantBioCollection.getInfantMatSlvaId();
+                if (saliva != null) {
+                    //validate codes
+                    msj = validateCodes(codEvent, saliva);
+
+                    if (msj != null) {
+                        showToast(msj);
+                    }
+                }
+
+                //urine sample
+                String urineId = mInfantBioCollection.getInfantMatVstUrnId();
+                if (urineId != null) {
+                    //validate codes
+                    msj = validateCodes(codEvent, urineId);
+
+                    if (msj != null) {
+                        showToast(msj);
+                    }
+                }
+
+            }
+
+            //validation event form
+            String infantVisit = mInfantBioCollection.getInfantAddtVisit();
+            if (infantVisit!= null && codEvent != 0){
+                Integer eventForm = Integer.valueOf(infantVisit);
+
+                switch (codEvent) {
+                    case 15:
+                        if(eventForm != 1) showToast(getString(R.string.code_error_event_form));
+                        break;
+                    case 16:
+                        if(eventForm != 2) showToast(getString(R.string.code_error_event_form));
+                        break;
+                    case 17:
+                        if(eventForm != 3) showToast(getString(R.string.code_error_event_form));
+                        break;
+                    case 18:
+                        if(eventForm != 4) showToast(getString(R.string.code_error_event_form));
+                        break;
+                    case 19:
+                        if(eventForm != 5) showToast(getString(R.string.code_error_event_form));
+                        break;
+                }
+            }
+
             new SaveDataTask().execute(accion);
 
         } catch (Exception e) {
@@ -296,6 +411,54 @@ public class NewZp02dInfantBiospecimenCollectionActivity extends AbstractAsyncAc
             e.printStackTrace();
             finish();
         }
+    }
+
+    private String validateCodes(int codEvent, String idMx) {
+        String pregnantId = idMx.substring(0, 6);
+        String event = idMx.substring(7, 9);
+        String msj = null;
+
+        //validate pregnantId
+        if (!(pregnantId.matches(mRecordId))) {
+            msj = idMx + " " + getString(R.string.code_error_mx);
+        }
+
+        //validate event
+        if (!(event.matches(String.valueOf(codEvent)) || event.matches("[5-9][0-9]"))) {
+            if (msj != null) {
+                msj = msj + " " + getString(R.string.code_error_event_mx1);
+            } else {
+                msj = idMx + " " + getString(R.string.code_error_event_mx);
+            }
+        }
+
+        return msj;
+    }
+
+    private void showToast(String mensaje) {
+        LayoutInflater inflater = getLayoutInflater();
+
+        View layout = inflater.inflate(R.layout.toast,
+                (ViewGroup) findViewById(R.id.toast_layout_root));
+
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText(mensaje);
+
+        final Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        }, 1000 * 25);
+
+
     }
 
     // ***************************************

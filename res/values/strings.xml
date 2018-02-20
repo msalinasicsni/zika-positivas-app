@@ -90,5 +90,10 @@
 
     <string name="err_duplicated2">Se han encontrado registros de consentimiento de infantes asociados a la embarazada!</string>
 
+    <!-- /////////////////////////Muestras//////////////////// -->
+    <string name="code_error_mx">No coincide con el código de la participante</string>
+    <string name="code_error_event_mx">No coincide con el evento</string>
+    <string name="code_error_event_mx1">y evento</string>
+    <string name="code_error_event_form">Visita ingresada en el formulario no coincide con el evento</string>
 
 </resources>

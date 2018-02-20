@@ -8,11 +8,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,7 +56,7 @@ public class NewZp02BiospecimenCollectionActivity extends AbstractAsyncActivity 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (!FileUtils.storageReady()) {
-            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.error, R.string.storage_error),Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.error) + "," +  getString(R.string.storage_error),Toast.LENGTH_LONG);
             toast.show();
             finish();
         }
@@ -362,7 +361,232 @@ public class NewZp02BiospecimenCollectionActivity extends AbstractAsyncActivity 
             mZp02.setPhonenumber(zp02Xml.getPhonenumber());
             mZp02.setToday(zp02Xml.getToday());
 
+            //validations
+            Integer tubes = 0;
+            Integer codEvent = 0;
+            String msj = null;
+            String tb = zp02Xml.getQuestion1();
+            if (tb != null){
+                tubes = Integer.parseInt(tb);
+            }
+
+
+            if (mZp02.getRedcapEventName() != null) {
+
+                if (mZp02.getRedcapEventName().equals(Constants.SCREENING) || mZp02.getRedcapEventName().equals(Constants.ENTRY)) {
+                    codEvent = 1;
+                } else if (mZp02.getRedcapEventName().equals(Constants.WEEK2) || mZp02.getRedcapEventName().equals(Constants.WEEK4)) {
+                    codEvent = 2;
+                } else if (mZp02.getRedcapEventName().equals(Constants.WEEK6) || mZp02.getRedcapEventName().equals(Constants.WEEK8)) {
+                    codEvent = 3;
+                } else if (mZp02.getRedcapEventName().equals(Constants.WEEK10) || mZp02.getRedcapEventName().equals(Constants.WEEK12)) {
+                    codEvent = 4;
+                } else if (mZp02.getRedcapEventName().equals(Constants.WEEK14) || mZp02.getRedcapEventName().equals(Constants.WEEK16)) {
+                    codEvent = 5;
+                } else if (mZp02.getRedcapEventName().equals(Constants.WEEK18) || mZp02.getRedcapEventName().equals(Constants.WEEK20)) {
+                    codEvent = 6;
+                } else if (mZp02.getRedcapEventName().equals(Constants.WEEK22) || mZp02.getRedcapEventName().equals(Constants.WEEK24)) {
+                    codEvent = 7;
+                } else if (mZp02.getRedcapEventName().equals(Constants.WEEK26) || mZp02.getRedcapEventName().equals(Constants.WEEK28)) {
+                    codEvent = 8;
+                } else if (mZp02.getRedcapEventName().equals(Constants.WEEK30) || mZp02.getRedcapEventName().equals(Constants.WEEK32)) {
+                    codEvent = 9;
+                } else if (mZp02.getRedcapEventName().equals(Constants.WEEK34) || mZp02.getRedcapEventName().equals(Constants.WEEK36)) {
+                    codEvent = 10;
+                } else if (mZp02.getRedcapEventName().equals(Constants.WEEK38) || mZp02.getRedcapEventName().equals(Constants.WEEK40)) {
+                    codEvent = 11;
+                } else if (mZp02.getRedcapEventName().equals(Constants.WEEK42) || mZp02.getRedcapEventName().equals(Constants.WEEK44)) {
+                    codEvent = 12;
+                } else if (mZp02.getRedcapEventName().equals(Constants.DELIVERY)) {
+                    codEvent = 13;
+                } else if (mZp02.getRedcapEventName().equals(Constants.AFTERDELIVERY)) {
+                    codEvent = 14;
+                }
+
+            }
+
+            if (codEvent != 0) {
+                //blood samples
+                if (tubes > 0) {
+                    for (int i = 1; i <= tubes; i++) {
+                        String sampleID = null;
+                        switch (i) {
+                            case 1:
+                                sampleID = mZp02.getBscMatBldId1();
+                                break;
+                            case 2:
+                                sampleID = mZp02.getBscMatBldId2();
+                                break;
+                            case 3:
+                                sampleID = mZp02.getBscMatBldId3();
+                                break;
+                            case 4:
+                                sampleID = mZp02.getBscMatBldId4();
+                                break;
+                            case 5:
+                                sampleID = mZp02.getBscMatBldId5();
+                                break;
+                            case 6:
+                                sampleID = mZp02.getBscMatBldId6();
+                                break;
+                            case 7:
+                                sampleID = mZp02.getBscMatBldId7();
+                                break;
+                            case 8:
+                                sampleID = mZp02.getBscMatBldId8();
+                                break;
+                        }
+
+                        if (sampleID != null) {
+                            //validate codes
+                            msj = validateCodes(codEvent, sampleID);
+
+                            if (msj != null) {
+                                showToast(msj);
+                            }
+                        }
+
+                    }
+                }
+
+
+                //saliva sample
+                String saliva = mZp02.getBscMatSlvaId();
+                if (saliva != null) {
+                    //validate codes
+                    msj = validateCodes(codEvent, saliva);
+
+                    if (msj != null) {
+                        showToast(msj);
+                    }
+                }
+
+                //vaginal swab
+                String swabId = mZp02.getBscMatVagId();
+                if (swabId != null) {
+                    //vslidate codes
+                    msj = validateCodes(codEvent, swabId);
+
+                    if (msj != null) {
+                        showToast(msj);
+                    }
+                }
+
+                //urine sample
+                String urineId = mZp02.getBscMatVstUrnId();
+                if (urineId != null) {
+                    //validate codes
+                    msj = validateCodes(codEvent, urineId);
+
+                    if (msj != null) {
+                        showToast(msj);
+                    }
+                }
+
+
+                //home urine samples
+                Integer numMx = mZp02.getBscMatHomUrnNum();
+                if (numMx != null) {
+                    for (int i = 1; i <= numMx; i++) {
+                        String homUrnId = null;
+                        switch (i) {
+                            case 1:
+                                homUrnId = mZp02.getBscMatHomUrnId1();
+                                break;
+                            case 2:
+                                homUrnId = mZp02.getBscMatHomUrnId2();
+                                break;
+                            case 3:
+                                homUrnId = mZp02.getBscMatHomUrnId3();
+                                break;
+                            case 4:
+                                homUrnId = mZp02.getBscMatHomUrnId4();
+                                break;
+                        }
+
+                        if (homUrnId != null) {
+                            //validate codes
+                            msj = validateCodes(codEvent, homUrnId);
+                        }
+                        if (msj != null) {
+                            showToast(msj);
+                        }
+                    }
+                }
+
+                //amniotic fluid
+                String amnioticFluidId = mZp02.getBscMatAmfId();
+                if (amnioticFluidId != null) {
+                    //validate codes
+                    msj = validateCodes(codEvent, amnioticFluidId);
+
+                    if (msj != null) {
+                        showToast(msj);
+                    }
+
+                }
+
+                //cord blood
+                String cordBloodId = mZp02.getBscMatCordId();
+                if (cordBloodId != null) {
+                    //validate codes
+                    msj = validateCodes(codEvent, cordBloodId);
+
+                    if (msj != null) {
+                        showToast(msj);
+                    }
+                }
+
+                //placenta
+                String placentaId = mZp02.getBscMatPlacenId();
+                if (placentaId != null) {
+                    //validate codes
+                    msj = validateCodes(codEvent, placentaId);
+
+                    if (msj != null) {
+                        showToast(msj);
+                    }
+                }
+
+                //breastmilk
+                String breastmilkId = mZp02.getBscMatBreastmId();
+                if (breastmilkId != null){
+                    //validate codes
+                    msj = validateCodes(codEvent, breastmilkId);
+
+                    if (msj != null) {
+                        showToast(msj);
+                    }
+                }
+
+                //fetal
+                String fetalId = mZp02.getBscMatFetaltId();
+                if (fetalId != null){
+                    //validate codes
+                    msj = validateCodes(codEvent, fetalId);
+
+                    if (msj != null) {
+                        showToast(msj);
+                    }
+                }
+
+                //breastmilk2
+                String brestmilkId2 = mZp02.getBscMatdBreastmId();
+
+                if(brestmilkId2!= null){
+                    //validate codes
+                    msj = validateCodes(codEvent, brestmilkId2);
+
+                    if (msj != null) {
+                        showToast(msj);
+                    }
+                }
+
+            }
+
             new SaveDataTask().execute(accion);
+
+
 
         } catch (Exception e) {
             // Presenta el error al parsear el xml
@@ -371,6 +595,66 @@ public class NewZp02BiospecimenCollectionActivity extends AbstractAsyncActivity 
             finish();
         }
     }
+
+    private String validateCodes(int codEvent, String idMx) {
+        String pregnantId = idMx.substring(0, 6);
+        String event = idMx.substring(7, 9);
+        String msj = null;
+
+        //validate pregnantId
+        if (!(pregnantId.matches(mRecordId))) {
+            msj = idMx + " " + getString(R.string.code_error_mx);
+        }
+
+        //validate event
+        if (codEvent < 10) {
+            if (!(event.matches("0" + codEvent) || event.matches("[5-9][0-9]"))) {
+                if (msj != null) {
+                    msj = msj + " " + getString(R.string.code_error_event_mx1);
+                } else {
+                    msj = idMx + " " + getString(R.string.code_error_event_mx);
+                }
+            }
+        } else {
+            if (!(event.matches(String.valueOf(codEvent)) || event.matches("[5-9][0-9]"))) {
+                if (msj != null) {
+                    msj = msj + " " + getString(R.string.code_error_event_mx1);
+                } else {
+                    msj = idMx + " " + getString(R.string.code_error_event_mx);
+                }
+            }
+        }
+
+        return msj;
+    }
+
+    private void showToast(String mensaje) {
+        LayoutInflater inflater = getLayoutInflater();
+
+        View layout = inflater.inflate(R.layout.toast,
+                (ViewGroup) findViewById(R.id.toast_layout_root));
+
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText(mensaje);
+
+        final Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        }, 1000 * 25);
+
+
+    }
+
+
 
     // ***************************************
     // Private classes
