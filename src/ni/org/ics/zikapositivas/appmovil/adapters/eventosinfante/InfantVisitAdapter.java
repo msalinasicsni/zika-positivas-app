@@ -22,9 +22,10 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 	private final Zp07bInfantAudioResults mZp07b;
 	private final Zp07cInfantImageStudies mZp07c;
 	private final Zp07dInfantBayleyScales mZp07d;
+	private final Zp07InfantOtoacousticEmissions mZp07OtoE;
 	
 	public InfantVisitAdapter(Context context, int textViewResourceId,
-							  String[] values, Zp02dInfantBiospecimenCollection zp02, Zp07InfantAssessmentVisit zp07, Zp07aInfantOphtResults zp07a, Zp07bInfantAudioResults zp07b, Zp07cInfantImageStudies zp07c, Zp07dInfantBayleyScales zp07d) {
+							  String[] values, Zp02dInfantBiospecimenCollection zp02, Zp07InfantAssessmentVisit zp07, Zp07aInfantOphtResults zp07a, Zp07bInfantAudioResults zp07b, Zp07cInfantImageStudies zp07c, Zp07dInfantBayleyScales zp07d, Zp07InfantOtoacousticEmissions zp07OtoE) {
 		super(context, textViewResourceId, values);
 		this.context = context;
 		this.values = values;
@@ -34,6 +35,7 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 		this.mZp07b = zp07b;
 		this.mZp07c = zp07c;
 		this.mZp07d = zp07d;
+		this.mZp07OtoE = zp07OtoE;
 	}
 
 	@Override
@@ -52,7 +54,7 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 		// Change icon based on position
 		Drawable img = null;
 		switch (position) {
-			case 3:
+			case 0:
 				if (mZp02d != null) {
 					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
 				} else {
@@ -62,7 +64,7 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 				img = getContext().getResources().getDrawable(R.drawable.ic_sample);
 				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 				break;
-			case 0:
+			case 1:
                 if (mZp07 != null) {
                     if (mZp07.getPart1() != null) {
                         textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
@@ -78,7 +80,7 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 				img = getContext().getResources().getDrawable(R.drawable.ic_monthly);
 				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 				break;
-			case 1:
+			case 2:
 				if (mZp07 != null) {
                   if (mZp07.getPart2() != null){
                       textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
@@ -93,7 +95,7 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 				img = getContext().getResources().getDrawable(R.drawable.ic_monthly);
 				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 				break;
-			case 2:
+			case 8:
 				if (mZp07 != null) {
                     if (mZp07.getPart3() != null){
                         textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
@@ -108,7 +110,7 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 				img = getContext().getResources().getDrawable(R.drawable.ic_monthly);
 				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 				break;
-			case 4:
+			case 3:
 				if (mZp07a != null) {
 					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
 				} else {
@@ -118,7 +120,7 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 				img = getContext().getResources().getDrawable(R.drawable.ic_opht);
 				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 				break;
-			case 5:
+			case 4:
 				if (mZp07b != null) {
 					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
 				} else {
@@ -129,7 +131,7 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 				break;
 
-			case 6:
+			case 5:
 				if (mZp07c != null) {
 					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
 				} else {
@@ -147,6 +149,16 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
 				}
 				img = getContext().getResources().getDrawable(R.drawable.ic_bayley);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+			case 6:
+				if (mZp07OtoE != null) {
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
+				} else {
+					textView.setTextColor(Color.RED);
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				}
+				img = getContext().getResources().getDrawable(R.drawable.ic_oae);
 				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 				break;
 			default:

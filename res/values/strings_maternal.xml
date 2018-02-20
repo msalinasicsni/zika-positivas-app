@@ -33,7 +33,7 @@
     <string name="maternal_a_18">No programada 3</string>
     <string name="maternal_a_19">No programada 4</string>
     <string name="maternal_a_20">No programada 5</string>
-    
+    <string name="maternal_a_21">Tamizaje Infantes</string>
     <!-- Formularios -->
     <string name="maternal_b_1">Demografía</string>
     <string name="maternal_b_2">Estado de Salud</string>
@@ -53,6 +53,7 @@
     <string name="mat_data">Datos Embarazada</string>
     <string name="mat_tam">Tamizaje</string>
     <string name="mat_cons_title">Consentimiento verbal embarazada</string>
+    <string name="inf_tam">Consentimiento de Infantes</string>
     <!-- Campos materna -->
     <string name="mat_id">Código de la participante</string>
     <string name="mat_ini">Iniciales de la participante</string>

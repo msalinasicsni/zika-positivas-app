@@ -1024,14 +1024,20 @@ public class MenuEmbarazadasAdapter extends ArrayAdapter<String> {
 			img=getContext().getResources().getDrawable( R.drawable.ic_addvisit);
 			textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 			break;
-		case 30: 
+		case 30:
 			textView.setTextColor(Color.BLACK);
-			textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.available)+"\n\n");
-			img=getContext().getResources().getDrawable( R.drawable.ic_addvisit);
+			textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.available) + "\n\n");
+			img = getContext().getResources().getDrawable(R.drawable.ic_addvisit);
 			textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 			break;
-		default:
-			img=getContext().getResources().getDrawable( R.drawable.logo);
+		case 31:
+				textView.setTextColor(Color.BLACK);
+				//	textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.inf_tam)+"\n\n");
+				img = getContext().getResources().getDrawable(R.drawable.ic_scr);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+			default:
+				img = getContext().getResources().getDrawable(R.drawable.logo);
 			textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 			break;
 		}

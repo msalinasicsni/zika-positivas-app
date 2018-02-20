@@ -1,7 +1,21 @@
 package ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosinfante;
 
-import java.text.SimpleDateFormat;
-
+import android.annotation.TargetApi;
+import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import android.widget.TextView;
 import ni.org.ics.zikapositivas.appmovil.AbstractAsyncActivity;
 import ni.org.ics.zikapositivas.appmovil.MainActivity;
 import ni.org.ics.zikapositivas.appmovil.MyZikaPosApplication;
@@ -14,32 +28,17 @@ import ni.org.ics.zikapositivas.appmovil.utils.Constants;
 import ni.org.ics.zikapositivas.appmovil.utils.MainDBConstants;
 import ni.org.ics.zikapositivas.appmovil.utils.Zp02DBConstants;
 
-import android.os.AsyncTask;
-import android.os.Build;
-import android.os.Bundle;
-import android.annotation.TargetApi;
-import android.app.ActionBar;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
-import android.widget.TextView;
+import java.text.SimpleDateFormat;
 
-public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
-	private ZikaPosAdapter zipA;
+public class BirthVisitActivity extends AbstractAsyncActivity {
+	private ZikaPosAdapter zikaPosA;
 	private static ZpInfantData zpInfante = new ZpInfantData();
+	private static ZpEstadoInfante zpEstado = new ZpEstadoInfante();
 	private static Zp02dInfantBiospecimenCollection zp02d = null;
 	private static Zp07InfantAssessmentVisit zp07 = null;
 	private static Zp07aInfantOphtResults zp07a = null;
 	private static Zp07bInfantAudioResults zp07b = null;
 	private static Zp07cInfantImageStudies zp07c = null;
-	private static Zp07dInfantBayleyScales zp07d = null;
 	private static Zp07InfantOtoacousticEmissions zp07OtoE = null;
 	
 	private SimpleDateFormat mDateFormat = new SimpleDateFormat("MMM dd, yyyy");
@@ -70,27 +69,28 @@ public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
 			}
 		}
 		String mPass = ((MyZikaPosApplication) this.getApplication()).getPassApp();
-		zipA = new ZikaPosAdapter(this.getApplicationContext(),mPass,false,false);
+		zikaPosA = new ZikaPosAdapter(this.getApplicationContext(), mPass, false, false);
 		/*Aca se recupera evento, tamizaje y estado*/
 		evento = getIntent().getStringExtra(Constants.EVENT);
 		zpInfante = (ZpInfantData) getIntent().getExtras().getSerializable(Constants.OBJECTO_ZPINFDATA);
+		zpEstado = (ZpEstadoInfante) getIntent().getExtras().getSerializable(Constants.OBJECTO_ZPESTINF);
 		//Aca se recupera los datos de los formularios para ver si estan realizados o no...
-		new FetchUnshedVisitaInfanteTask().execute(evento);
+		new FetchVisitInfanteTask().execute(evento);
 		textView = (TextView) findViewById(R.id.label);
-		textView.setText(getString(R.string.forms)+"\n"+
-				getString(R.string.inf_id)+": "+zpInfante.getRecordId()+"\n"+
-						getString(R.string.inf_dob)+": "+ mDateFormat.format(zpInfante.getInfantBirthDate()));
-		menu_infante_info = getResources().getStringArray(R.array.menu_infant_visit);
+		textView.setText(getString(R.string.forms) + "\n" +
+				getString(R.string.inf_id) + ": " + zpInfante.getRecordId() + "\n" +
+				getString(R.string.inf_dob) + ": " + mDateFormat.format(zpInfante.getInfantBirthDate()));
+		menu_infante_info = getResources().getStringArray(R.array.menu_infant_visit1);
 		gridView = (GridView) findViewById(R.id.gridView1);
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v,
-					int position, long id) {
+									int position, long id) {
 				Bundle arguments = new Bundle();
 				Intent i;
 				arguments.putString(Constants.EVENT, evento);
-                arguments.putString(Constants.RECORDID, zpInfante.getRecordId());
-				switch(position){
+				arguments.putString(Constants.RECORDID, zpInfante.getRecordId());
+				switch (position) {
 					case 0: //MUESTRAS
 						i = new Intent(getApplicationContext(),
 								NewZp02dInfantBiospecimenCollectionActivity.class);
@@ -140,20 +140,6 @@ public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
 						i.putExtras(arguments);
 						startActivity(i);
 						break;
-					case 7: //ESCALA BAYLEY
-						i = new Intent(getApplicationContext(),
-								NewZp07dInfantBayleyScalesActivity.class);
-						if (zp07d != null) arguments.putSerializable(Constants.OBJECTO_ZP07D, zp07d);
-						i.putExtras(arguments);
-						startActivity(i);
-						break;
-					case 8: //EVALUACION PSICOLOGICA
-						i = new Intent(getApplicationContext(),
-								NewZp07InfantAssessmentVisitPsyActivity.class);
-						if (zp07 != null) arguments.putSerializable(Constants.OBJECTO_ZP07, zp07);
-						i.putExtras(arguments);
-						startActivity(i);
-						break;
 					default:
 						break;
 				}
@@ -186,7 +172,7 @@ public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
 		if (mExitShowing) {
 			createDialog(EXIT);
 		}
-		new FetchUnshedVisitaInfanteTask().execute(evento);
+		new FetchVisitInfanteTask().execute(evento);
 		super.onResume();
 	}
 
@@ -274,9 +260,10 @@ public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
 	// ***************************************
 		// Private classes
 		// ***************************************
-		private class FetchUnshedVisitaInfanteTask extends AsyncTask<String, Void, String> {
-			private String eventoaFiltrar = null;
-			private String filtro = null;
+	private class FetchVisitInfanteTask extends AsyncTask<String, Void, String> {
+		private String eventoaFiltrar = null;
+		private String filtro = null;
+
 			@Override
 			protected void onPreExecute() {
 				// before the request begins, show a progress indicator
@@ -287,16 +274,32 @@ public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
 			protected String doInBackground(String... values) {
 				eventoaFiltrar = values[0];
 				try {
-					zipA.open();
+					zikaPosA.open();
 					filtro = MainDBConstants.recordId + "='" + zpInfante.getRecordId() + "' and " + Zp02DBConstants.redcapEventName + "='" + eventoaFiltrar +"'";
-					zp02d = zipA.getZp02dInfantBiospecimenCollection(filtro, MainDBConstants.recordId);
-					zp07 = zipA.getZp07InfantAssessmentVisit(filtro, MainDBConstants.recordId);
-					zp07a = zipA.getZp07aInfantOphtResult(filtro, MainDBConstants.recordId);
-					zp07b = zipA.getZp07bInfantAudioResult(filtro, MainDBConstants.recordId);
-					zp07c = zipA.getZp07cInfantImageSt(filtro, MainDBConstants.recordId);
-					zp07d = zipA.getZp07dInfantBayleySc(filtro, MainDBConstants.recordId);
-					zp07OtoE = zipA.getZp07InfantOtoacousticE(filtro, MainDBConstants.recordId);
-					zipA.close();
+
+					zp02d = zikaPosA.getZp02dInfantBiospecimenCollection(filtro, MainDBConstants.recordId);
+					zp07 = zikaPosA.getZp07InfantAssessmentVisit(filtro, MainDBConstants.recordId);
+					zp07a = zikaPosA.getZp07aInfantOphtResult(filtro, MainDBConstants.recordId);
+					zp07b = zikaPosA.getZp07bInfantAudioResult(filtro, MainDBConstants.recordId);
+					zp07c = zikaPosA.getZp07cInfantImageSt(filtro, MainDBConstants.recordId);
+					zp07OtoE = zikaPosA.getZp07InfantOtoacousticE(filtro, MainDBConstants.recordId);
+
+					if (zp02d!=null && zp07!=null && zp07a!=null && zp07b!=null && zp07c!=null && zp07OtoE!=null){
+						if(eventoaFiltrar.matches(Constants.BIRTH)){
+							zpEstado.setNacimiento('1');
+						}
+						if(eventoaFiltrar.matches(Constants.MONTH3)){
+							zpEstado.setMes3('1');
+						}
+						if(eventoaFiltrar.matches(Constants.MONTH6)){
+							zpEstado.setMes6('1');
+						}
+						if(eventoaFiltrar.matches(Constants.MONTH12)){
+							zpEstado.setMes12('1');
+						}
+						zikaPosA.editarZpEstadoInfante(zpEstado);
+					}
+					zikaPosA.close();
 				} catch (Exception e) {
 					Log.e(TAG, e.getLocalizedMessage(), e);
 					return "Error";
@@ -307,7 +310,7 @@ public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
 			protected void onPostExecute(String resultado) {
 				// after the network request completes, hide the progress indicator
 				gridView.setAdapter(new InfantVisitAdapter(getApplicationContext(), R.layout.menu_item_2, menu_infante_info, 
-						zp02d, zp07, zp07a, zp07b, zp07c, zp07d, zp07OtoE));
+						zp02d, zp07, zp07a, zp07b, zp07c, null, zp07OtoE));
 				dismissProgressDialog();
 			}
 

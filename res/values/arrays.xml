@@ -41,6 +41,7 @@
         <item>@string/maternal_a_18</item>
         <item>@string/maternal_a_19</item>
         <item>@string/maternal_a_20</item>
+        <item>@string/maternal_a_21</item>
     </string-array>
     
     <string-array name="menu_maternal_ingreso">
@@ -101,15 +102,26 @@
     </string-array>
 
     <string-array name="menu_infant_visit">
+        <item>@string/infant_b_2</item>
         <item>@string/infant_b_1</item>
         <item>@string/infant_b_3</item>
-        <item>@string/infant_b_4</item>
-        <item>@string/infant_b_2</item>
         <item>@string/infant_b_5</item>
         <item>@string/infant_b_6</item>
         <item>@string/infant_b_7</item>
+        <item>@string/infant_b_9</item>
         <item>@string/infant_b_8</item>
-    </string-array>    
+        <item>@string/infant_b_4</item>
+    </string-array>
+
+    <string-array name="menu_infant_visit1">
+        <item>@string/infant_b_2</item>
+        <item>@string/infant_b_1</item>
+        <item>@string/infant_b_3</item>
+        <item>@string/infant_b_5</item>
+        <item>@string/infant_b_6</item>
+        <item>@string/infant_b_7</item>
+        <item>@string/infant_b_9</item>
+    </string-array>
     
     <string-array name="menu_infant_parto">
         <item>@string/infant_b_1</item>

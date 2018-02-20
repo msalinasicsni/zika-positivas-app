@@ -533,5 +533,61 @@ public class MainDBConstants {
 	            + MainDBConstants.SIM_SERIAL + " text, "
 	            + MainDBConstants.PHONE_NUMBER  + " text, "
 	            + MainDBConstants.TODAY  + " date, "
-	            + "primary key (" + recordId + "));";   
+	            + "primary key (" + recordId + "));";
+
+	//Tabla Zp00aInfantScreening
+	public static String INFANTSCREENING_TABLE = "zp00a_infant_screening";
+
+	public static final String infVisitDt = "infVisitDt";
+	public static final String infRemain = "infRemain";
+	public static final String infConsent = "infConsent";
+	public static final String infConsenta = "infConsenta";
+	public static final String infConsentb = "infConsentb";
+	public static final String infConsentc = "infConsentc";
+	public static final String infConsentd = "infConsentd";
+	public static final String infInfid = "infInfid";
+	public static final String infReasonno = "infReasonno";
+	public static final String infReasonOther = "infReasonOther";
+	public static final String infIdCompleting = "infIdCompleting";
+	public static final String infDateCompleted = "infDateCompleted";
+	public static final String infIdReviewer = "infIdReviewer";
+	public static final String infDateReviewed = "infDateReviewed";
+	public static final String infIdDataEntry = "infIdDataEntry";
+	public static final String infDateEntered = "infDateEntered";
+
+	//Crear tabla Zp00aInfantScreening
+	public static final String CREATE_INF_SCREENING_TABLE = "create table if not exists "
+			+ INFANTSCREENING_TABLE + " ("
+			+ recordId + " text not null, "
+			+ pregnantId + " text not null, "
+			+ redcapEventName + " text not null, "
+			+ infVisitDt + " date, "
+			+ infRemain + " text, "
+			+ infConsent + " text, "
+			+ infConsenta + " text, "
+			+ infConsentb + " text, "
+			+ infConsentc + " text, "
+			+ infConsentd + " text, "
+			+ infInfid + " text, "
+			+ infReasonno + " text, "
+			+ infReasonOther + " text, "
+			+ infIdCompleting + " text, "
+			+ infDateCompleted + " date, "
+			+ infIdReviewer + " text, "
+			+ infDateReviewed + " date, "
+			+ infIdDataEntry + " text, "
+			+ infDateEntered + " date, "
+			+ MainDBConstants.recordDate + " date, "
+			+ MainDBConstants.recordUser + " text, "
+			+ MainDBConstants.pasive + " text, "
+			+ MainDBConstants.ID_INSTANCIA + " integer,"
+			+ MainDBConstants.FILE_PATH + " text,"
+			+ MainDBConstants.STATUS + " text not null, "
+			+ MainDBConstants.START  + " text, "
+			+ MainDBConstants.END  + " text, "
+			+ MainDBConstants.DEVICE_ID  + " text, "
+			+ MainDBConstants.SIM_SERIAL + " text, "
+			+ MainDBConstants.PHONE_NUMBER  + " text, "
+			+ MainDBConstants.TODAY  + " date, "
+			+ "primary key (" + recordId + "));";
 }

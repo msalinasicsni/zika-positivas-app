@@ -81,7 +81,8 @@ public class MenuInfantesAdapter extends ArrayAdapter<String> {
 			if(String.valueOf(mZpEstado.getNacimiento()).equals("0")){
 				textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.pending));
 				long dif = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
-				if(dif>15){
+				//Se realizó el cambio porque existen formularios que son completados al mes de nacido del infante
+				if(dif>35){
 					textView.setTextColor(Color.RED);
 					textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.delayed));
 				}

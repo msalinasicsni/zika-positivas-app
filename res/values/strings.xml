@@ -87,6 +87,8 @@
     <string name="c2dContact">d. Quiere ser contactada para dar consentimiento para investigaciones en el futuro:</string>
     <string name="c2eExp">e. Autoriza el acceso a los registros médicos:</string>
     <string name="c2fOport">f. Permiso de ser re-contactada sobre oportunidades de participar en otras investigaciones en el futuro:</string>
-    
-    
+
+    <string name="err_duplicated2">Se han encontrado registros de consentimiento de infantes asociados a la embarazada!</string>
+
+
 </resources>

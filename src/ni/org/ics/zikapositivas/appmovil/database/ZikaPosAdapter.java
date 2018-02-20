@@ -81,6 +81,8 @@ public class ZikaPosAdapter {
             db.execSQL(Zp07bDBConstants.CREATE_BINFANT_AUDIORESULTS_TABLE);
             db.execSQL(Zp07cDBConstants.CREATE_CINFANT_IMAGESTUDIES_TABLE);
             db.execSQL(Zp07dDBConstants.CREATE_DINFANT_BAYLEYSCALES_TABLE);
+            db.execSQL(Zp07OtoEDBConstants.CREATE_INFANT_OTO_EMS_TABLE);
+            db.execSQL(MainDBConstants.CREATE_INF_SCREENING_TABLE);
         }
 
         @Override
@@ -1127,6 +1129,18 @@ public class ZikaPosAdapter {
         return ultrasoundExams;
     }
 
+    //Obtener un Zp05UltrasoundExam de la base de datos
+    public Zp05UltrasoundExam getZp05UltrasoundExam1(String filtro, String orden) throws SQLException {
+        Zp05UltrasoundExam ultrasoundExam = null;
+        Cursor cursor = crearCursor(Zp05DBConstants.ULTRASOUNDEXAM_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToLast();
+            ultrasoundExam=Zp05UltrasoundExamHelper.crearZp05UltrasoundExam(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return ultrasoundExam;
+    }
+
     /**
      * Metodos para Zp06DeliveryAnd6weekVisit en la base de datos
      *
@@ -1596,6 +1610,101 @@ public class ZikaPosAdapter {
         if (!cursor.isClosed()) cursor.close();
         return mZpEstadoInfantes;
     }
+
+    /**
+     * Metodos para Zp00aInfantScreening en la base de datos
+     *
+     */
+    //Crear nuevo Zp00aInfantScreening en la base de datos
+    public void crearZp00aInfantScreening(Zp00aInfantScreening dInfantScreening) {
+        ContentValues cv = Zp00aInfantScreeningHelper.crearZp00aInfantScreeningValues(dInfantScreening);
+        mDb.insert(MainDBConstants.INFANTSCREENING_TABLE, null, cv);
+    }
+    //Editar Zp00aInfantScreening existente en la base de datos
+    public boolean editarZp00aInfantScreening(Zp00aInfantScreening dInfantScreening) {
+        ContentValues cv = Zp00aInfantScreeningHelper.crearZp00aInfantScreeningValues(dInfantScreening);
+        return mDb.update(MainDBConstants.INFANTSCREENING_TABLE, cv, MainDBConstants.recordId + "='"
+                + dInfantScreening.getRecordId() + "' and " + MainDBConstants.redcapEventName + "='" + dInfantScreening.getRedcapEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zp00aInfantScreening de la base de datos
+    public boolean borrarZp00aInfantScreening() {
+        return mDb.delete(MainDBConstants.INFANTSCREENING_TABLE, null, null) > 0;
+    }
+    //Obtener un Zp00aInfantScreening de la base de datos
+    public Zp00aInfantScreening getZp00aInfantScreening(String filtro, String orden) throws SQLException {
+        Zp00aInfantScreening dInfantScreening = null;
+        Cursor cursor = crearCursor(MainDBConstants.INFANTSCREENING_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            dInfantScreening=Zp00aInfantScreeningHelper.crearZp00aInfantScreening(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return dInfantScreening;
+    }
+    //Obtener una lista de Zp00aInfantScreening de la base de datos
+    public List<Zp00aInfantScreening> getZp00aInfantScreenings(String filtro, String orden) throws SQLException {
+        List<Zp00aInfantScreening> dInfantScreenings = new ArrayList<Zp00aInfantScreening>();
+        Cursor cursor = crearCursor(MainDBConstants.INFANTSCREENING_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            dInfantScreenings.clear();
+            do{
+                Zp00aInfantScreening dInfantScreeningData = null;
+                dInfantScreeningData = Zp00aInfantScreeningHelper.crearZp00aInfantScreening(cursor);
+                dInfantScreenings.add(dInfantScreeningData);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return dInfantScreenings;
+    }
+
+    /**
+     * Metodos para Zp07InfantOtoacousticEmissions en la base de datos
+     *
+     */
+    //Crear nuevo Zp07InfantOtoacousticEmissions en la base de datos
+    public void crearZp07InfantOtoacousticEm(Zp07InfantOtoacousticEmissions infantOtoEm) {
+        ContentValues cv = Zp07InfantOtoacousticEmissionsHelper.crearZp07InfantOtoacousticEmissions(infantOtoEm);
+        mDb.insert(Zp07OtoEDBConstants.INFANT_OTO_EMS_TABLE, null, cv);
+    }
+    //Editar Zp07InfantOtoacousticEmissions existente en la base de datos
+    public boolean editarcrearZp07InfantOtoacousticEm(Zp07InfantOtoacousticEmissions infantOtoEms) {
+        ContentValues cv = Zp07InfantOtoacousticEmissionsHelper.crearZp07InfantOtoacousticEmissions(infantOtoEms);
+        return mDb.update(Zp07OtoEDBConstants.INFANT_OTO_EMS_TABLE, cv, Zp07OtoEDBConstants.recordId + "='"
+                + infantOtoEms.getRecordId() + "' and " + Zp07OtoEDBConstants.redcapEventName + "='" + infantOtoEms.getRedcapEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zp07InfantOtoacousticEmissions de la base de datos
+    public boolean borrarZp07InfantOtoacousticE() {
+        return mDb.delete(Zp07OtoEDBConstants.INFANT_OTO_EMS_TABLE, null, null) > 0;
+    }
+    //Obtener un Zp07InfantOtoacousticEmissions de la base de datos
+    public Zp07InfantOtoacousticEmissions getZp07InfantOtoacousticE(String filtro, String orden) throws SQLException {
+        Zp07InfantOtoacousticEmissions infantOtoEm = null;
+        Cursor cursor = crearCursor(Zp07OtoEDBConstants.INFANT_OTO_EMS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            infantOtoEm = Zp07InfantOtoacousticEmissionsHelper.crearZp07InfantOtoacousticEmissions(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return infantOtoEm;
+    }
+    //Obtener una lista de Zp07InfantOtoacousticEmissions de la base de datos
+    public List<Zp07InfantOtoacousticEmissions> getZp07InfantOtoacousticEms(String filtro, String orden) throws SQLException {
+        List<Zp07InfantOtoacousticEmissions> infantOtoEms = new ArrayList<Zp07InfantOtoacousticEmissions>();
+        Cursor cursor = crearCursor(Zp07OtoEDBConstants.INFANT_OTO_EMS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            infantOtoEms.clear();
+            do{
+                Zp07InfantOtoacousticEmissions infantOtoE = null;
+                infantOtoE = Zp07InfantOtoacousticEmissionsHelper.crearZp07InfantOtoacousticEmissions(cursor);
+                infantOtoEms.add(infantOtoE);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return infantOtoEms;
+    }
+
 
     public Boolean verificarData() throws SQLException{
         Cursor c = null;

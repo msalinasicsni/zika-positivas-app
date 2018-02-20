@@ -34,7 +34,7 @@ public class UploadAllTask extends UploadTask {
 
     protected static final String TAG = UploadAllTask.class.getSimpleName();
     private ZikaPosAdapter zikaPosA = null;
-    private static final String TOTAL_TASK = "26";
+    private static final String TOTAL_TASK = "27";
     private List<ZpPreScreening> mPreTamizajes = new ArrayList<ZpPreScreening>();
     private List<Zp00Screening> mTamizajes = new ArrayList<Zp00Screening>();
     private List<Zp01StudyEntrySectionAtoD> mIngresosAD = new ArrayList<Zp01StudyEntrySectionAtoD>();
@@ -62,6 +62,9 @@ public class UploadAllTask extends UploadTask {
     private List<Zp07bInfantAudioResults> mbInfantAudioResults = new ArrayList<Zp07bInfantAudioResults>();
     private List<Zp07cInfantImageStudies> mcInfantImageStudies = new ArrayList<Zp07cInfantImageStudies>();
     private List<Zp07dInfantBayleyScales> mdInfantBayleyScales = new ArrayList<Zp07dInfantBayleyScales>();
+    private List<Zp07InfantOtoacousticEmissions> infantOtoE = new ArrayList<Zp07InfantOtoacousticEmissions>();
+    private List<Zp00aInfantScreening> infantScreeening = new ArrayList<Zp00aInfantScreening>();
+
 
     private String url = null;
     private String username = null;
@@ -94,6 +97,8 @@ public class UploadAllTask extends UploadTask {
     public static final int AUDIO_RESULTS = 24;
     public static final int IMAGE_STUDIES = 25;
     public static final int BAYLEY_SCALES = 26;
+    public static  final int INFANT_OTOE = 27;
+    public static  final int INFSCREENING = 28;
 
     @Override
     protected String doInBackground(String... values) {
@@ -132,6 +137,9 @@ public class UploadAllTask extends UploadTask {
             mcInfantImageStudies = zikaPosA.getZp07cInfantImageStudies(filtro, MainDBConstants.recordId);
             mdInfantBayleyScales = zikaPosA.getZp07dInfantBayleyScales(filtro, MainDBConstants.recordId);
             mEstadoInfante = zikaPosA.getZpEstadoInfantes(filtro, MainDBConstants.recordId);
+            infantOtoE = zikaPosA.getZp07InfantOtoacousticEms(filtro, MainDBConstants.recordId);
+            infantScreeening = zikaPosA.getZp00aInfantScreenings(filtro, null);
+
             publishProgress("Datos completos!", "2", "2");
             actualizarBaseDatos(Constants.STATUS_SUBMITTED, PRE_TAMIZAJE);
             error = cargarPreTamizajes(url, username, password);
@@ -291,6 +299,20 @@ public class UploadAllTask extends UploadTask {
             error = uploadInfantBayleyScales(url, username, password);
             if (!error.matches("Datos recibidos!")){
                 actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, BAYLEY_SCALES);
+                return error;
+            }
+
+            actualizarBaseDatos(Constants.STATUS_SUBMITTED, INFANT_OTOE);
+            error = uploadInfantOtoE(url, username, password);
+            if (!error.matches("Datos recibidos!")){
+                actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, INFANT_OTOE);
+                return error;
+            }
+
+            actualizarBaseDatos(Constants.STATUS_SUBMITTED, INFSCREENING);
+            error = uploadInfantScreening(url, username, password);
+            if (!error.matches("Datos recibidos!")){
+                actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, INFSCREENING);
                 return error;
             }
 
@@ -593,6 +615,30 @@ public class UploadAllTask extends UploadTask {
                     dInfantBayleySc.setEstado(estado);
                     zikaPosA.editarZp07dInfantBayleyScales(dInfantBayleySc);
                     publishProgress("Actualizando escala de Bayley de base de datos local", Integer.valueOf(mdInfantBayleyScales.indexOf(dInfantBayleySc)).toString(), Integer
+                            .valueOf(c).toString());
+                }
+            }
+        }
+
+        else if(opcion==INFANT_OTOE){
+            c = infantOtoE.size();
+            if(c>0){
+                for (Zp07InfantOtoacousticEmissions dInfOtoE : infantOtoE) {
+                    dInfOtoE.setEstado(estado);
+                    zikaPosA.editarcrearZp07InfantOtoacousticEm(dInfOtoE);
+                    publishProgress("Actualizando evaluaciones otoacusticas", Integer.valueOf(infantOtoE.indexOf(dInfOtoE)).toString(), Integer
+                            .valueOf(c).toString());
+                }
+            }
+        }
+
+        else if(opcion==INFSCREENING){
+            c = infantScreeening.size();
+            if(c>0){
+                for (Zp00aInfantScreening dInfScr : infantScreeening) {
+                    dInfScr.setEstado(estado);
+                    zikaPosA.editarZp00aInfantScreening(dInfScr);
+                    publishProgress("Actualizando consentimiento de infantes", Integer.valueOf(infantScreeening.indexOf(dInfScr)).toString(), Integer
                             .valueOf(c).toString());
                 }
             }
@@ -1515,5 +1561,76 @@ public class UploadAllTask extends UploadTask {
             Log.e(TAG, e.getMessage(), e);
             return e.getMessage();
         }
-    }    
+    }
+
+    /***************************************************/
+    /********************* Zp00aInfantOtoE******/
+    /***************************************************/
+    // url, username, password
+    protected String uploadInfantOtoE(String url, String username,
+                                      String password) throws Exception {
+        try {
+            if(infantOtoE.size()>0){
+                publishProgress("Enviando datos de evaluacion otoacustica de infantes!", "27", TOTAL_TASK);
+                // La URL de la solicitud POST
+                final String urlRequest = url + "/movil/zp07InfantOtoacousticEms";
+                Zp07InfantOtoacousticEmissions[] envio = infantOtoE.toArray(new Zp07InfantOtoacousticEmissions[infantOtoE.size()]);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+                requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<Zp07InfantOtoacousticEmissions[]> requestEntity =
+                        new HttpEntity<Zp07InfantOtoacousticEmissions[]>(envio, requestHeaders);
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+                // Hace la solicitud a la red, pone la vivienda y espera un mensaje de respuesta del servidor
+                ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
+                        String.class);
+                return response.getBody();
+            }
+            else{
+                return "Datos recibidos!";
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            return e.getMessage();
+        }
+    }
+
+
+    /***************************************************/
+    /********************* Zp00aInfantScreening******/
+    /***************************************************/
+    // url, username, password
+    protected String uploadInfantScreening(String url, String username,
+                                           String password) throws Exception {
+        try {
+            if(infantScreeening.size()>0){
+                publishProgress("Enviando datos de consentimiento de infantes!", "28", TOTAL_TASK);
+                // La URL de la solicitud POST
+                final String urlRequest = url + "/movil/zp00aInfantScreenings";
+                Zp00aInfantScreening[] envio = infantScreeening.toArray(new Zp00aInfantScreening[infantScreeening.size()]);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+                requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<Zp00aInfantScreening[]> requestEntity =
+                        new HttpEntity<Zp00aInfantScreening[]>(envio, requestHeaders);
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+                // Hace la solicitud a la red, pone la vivienda y espera un mensaje de respuesta del servidor
+                ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
+                        String.class);
+                return response.getBody();
+            }
+            else{
+                return "Datos recibidos!";
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            return e.getMessage();
+        }
+    }
 }

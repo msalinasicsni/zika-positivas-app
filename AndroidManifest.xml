@@ -73,6 +73,8 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosinfante.InfantVisitActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".activities.paginas.eventosinfante.BirthVisitActivity"
+                  android:screenOrientation="portrait"></activity>
         <activity android:name="ni.org.ics.zikapositivas.appmovil.preferences.PreferencesActivity" />
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp01StudyEntrySectionAtoDActivity"
             android:screenOrientation="portrait"></activity>
@@ -127,6 +129,10 @@
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07cInfantImageStudiesActivity"
                   android:screenOrientation="portrait"></activity>
         <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07dInfantBayleyScalesActivity"
+                  android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp07InfantOtoacousticEmissionsActivity"
+                  android:screenOrientation="portrait"></activity>
+        <activity android:name="ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp00aInfantScreeningActivity"
                   android:screenOrientation="portrait"></activity>
     </application>
 

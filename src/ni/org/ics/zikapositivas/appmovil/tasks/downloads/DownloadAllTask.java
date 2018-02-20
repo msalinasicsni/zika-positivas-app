@@ -33,7 +33,7 @@ public class DownloadAllTask extends DownloadTask {
     }
 
     protected static final String TAG = DownloadAllTask.class.getSimpleName();
-    private static final String TOTAL_TASK = "26";
+    private static final String TOTAL_TASK = "28";
     private ZikaPosAdapter zikaPosA = null;
     private List<ZpPreScreening> mPreTamizajes = null;
     private List<Zp00Screening> mTamizajes = null;
@@ -63,6 +63,8 @@ public class DownloadAllTask extends DownloadTask {
     private List<Zp07bInfantAudioResults> mbInfantAudioResult = null;
     private List<Zp07cInfantImageStudies> mcInfantImageSt = null;
     private List<Zp07dInfantBayleyScales> mdInfantBayleySc = null;
+    private List<Zp00aInfantScreening> mInfantScreening = null;
+    private List<Zp07InfantOtoacousticEmissions> mInfantOtoE = null;
 
 
     private String error = null;
@@ -114,6 +116,8 @@ public class DownloadAllTask extends DownloadTask {
         zikaPosA.borrarZp07bInfantAudioResults();
         zikaPosA.borrarZp07cInfantImageStudies();
         zikaPosA.borrarZp07dInfantBayleyScales();
+        zikaPosA.borrarZp07InfantOtoacousticE();
+        zikaPosA.borrarZp00aInfantScreening();
         
         zikaPosA.borrarZpInfantData();
         zikaPosA.borrarZpEstadoInfante();
@@ -354,6 +358,26 @@ public class DownloadAllTask extends DownloadTask {
                 while (iter.hasNext()){
                     zikaPosA.crearZp07dInfantBayleyScales(iter.next());
                     publishProgress("Insertando escala Bayley...", Integer.valueOf(iter.nextIndex()).toString(), Integer
+                            .valueOf(v).toString());
+                }
+            }
+
+            if (mInfantOtoE != null){
+                v = mInfantOtoE.size();
+                ListIterator<Zp07InfantOtoacousticEmissions> iter = mInfantOtoE.listIterator();
+                while (iter.hasNext()){
+                    zikaPosA.crearZp07InfantOtoacousticEm(iter.next());
+                    publishProgress("Insertando Evaluaciones Otoacusticas...", Integer.valueOf(iter.nextIndex()).toString(), Integer
+                            .valueOf(v).toString());
+                }
+            }
+
+            if (mInfantScreening != null){
+                v = mInfantScreening.size();
+                ListIterator<Zp00aInfantScreening> iter =mInfantScreening.listIterator();
+                while (iter.hasNext()){
+                    zikaPosA.crearZp00aInfantScreening(iter.next());
+                    publishProgress("Insertando Tamizaje de infantes...", Integer.valueOf(iter.nextIndex()).toString(), Integer
                             .valueOf(v).toString());
                 }
             }
@@ -599,6 +623,24 @@ public class DownloadAllTask extends DownloadTask {
                     Zp07dInfantBayleyScales[].class, username);
             // convert the array to a list and return it
             mdInfantBayleySc = Arrays.asList(responseZp07dBayleyScales.getBody());
+
+            //Descargar evaluacion otoacustica
+            urlRequest = url + "/movil/zp07InfantOtoacousticEms/{username}";
+            publishProgress("Solicitando Evaluacion Otoacustica de infantes","27",TOTAL_TASK);
+            // Perform the HTTP GET request
+            ResponseEntity<Zp07InfantOtoacousticEmissions[]> responseZp07OtoE = restTemplate.exchange(urlRequest, HttpMethod.GET, requestEntity,
+                    Zp07InfantOtoacousticEmissions[].class, username);
+            // convert the array to a list and return it
+            mInfantOtoE = Arrays.asList(responseZp07OtoE.getBody());
+
+            //Descargar tamizaje infantes
+            urlRequest = url + "/movil/zp00aInfantScreenings/{username}";
+            publishProgress("Solicitando Tamizaje de infantes","28",TOTAL_TASK);
+            // Perform the HTTP GET request
+            ResponseEntity<Zp00aInfantScreening[]> responseZp00aInfantScr = restTemplate.exchange(urlRequest, HttpMethod.GET, requestEntity,
+                    Zp00aInfantScreening[].class, username);
+            // convert the array to a list and return it
+            mInfantScreening = Arrays.asList(responseZp00aInfantScr.getBody());
 
             return null;
         } catch (Exception e) {

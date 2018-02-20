@@ -11,6 +11,7 @@ import ni.org.ics.zikapositivas.appmovil.MainActivity;
 import ni.org.ics.zikapositivas.appmovil.R;
 import ni.org.ics.zikapositivas.appmovil.MyZikaPosApplication;
 import ni.org.ics.zikapositivas.appmovil.activities.nuevos.NewZp08StudyExitActivity;
+import ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosinfante.BirthVisitActivity;
 import ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosinfante.InfantVisitActivity;
 import ni.org.ics.zikapositivas.appmovil.activities.paginas.eventosinfante.UnscheduledInfantVisitActivity;
 import ni.org.ics.zikapositivas.appmovil.adapters.MenuInfantesAdapter;
@@ -207,8 +208,17 @@ public class MenuInfantesActivity extends AbstractAsyncActivity {
 		Bundle arguments = new Bundle();
 		Intent i;
 		switch(position){
-		
-		case 0: case 1: case 2: case 3:
+			case 0:
+				i = new Intent(getApplicationContext(),
+						BirthVisitActivity.class);
+				//Aca se pasa evento, infante y estado
+				if(position==0)	arguments.putString(Constants.EVENT, Constants.BIRTH);
+				if (zpInfante!=null) arguments.putSerializable(Constants.OBJECTO_ZPINFDATA , zpInfante);
+				if (zpEstado!=null) arguments.putSerializable(Constants.OBJECTO_ZPESTINF , zpEstado);
+				i.putExtras(arguments);
+				startActivity(i);
+				break;
+		case 1: case 2: case 3:
 			i = new Intent(getApplicationContext(),
 					InfantVisitActivity.class);
 			//Aca se pasa evento, infante y estado

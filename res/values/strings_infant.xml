@@ -19,10 +19,10 @@
     <string name="infant_b_3">Evaluación Oftalmológica</string>
     <string name="infant_b_4">Evaluación Psicológica</string>
     <string name="infant_b_5">Resultados Oftalmológicos</string>
-    <string name="infant_b_6">Resultados Audiológicos</string>
+    <string name="infant_b_6">Resultados audiológicos anormales</string>
     <string name="infant_b_7">Estudios de Imágenes</string>
     <string name="infant_b_8">Escala de Bayley</string>
-
+    <string name="infant_b_9">Emisiones Otoacústicas</string>
     
     <string name="inf_id">Código del bebé</string>
     <string name="inf_search">Buscar bebé</string>
