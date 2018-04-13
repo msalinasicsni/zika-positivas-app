@@ -60,7 +60,7 @@ public class Zp07InfantAssessmentVisit extends BaseMetaData {
     private String infantBreastReason;
     private String infantBreastOther;
     private String infantNeurodeve;
-    private String infantExhibited;
+  //  private String infantExhibited; no utilizado en v2.5
     private String infantAsymType;
     private String infantOtherMove;
     private String infantExhibitOther;
@@ -174,6 +174,27 @@ public class Zp07InfantAssessmentVisit extends BaseMetaData {
     private Integer part3;
     private Integer idInstancia2;
     private Integer idInstancia3;
+
+    //v2.5
+    private Date infantNeuroDt;
+    private String infantExhibited1;
+    private String infantExhibited2;
+    private String infantExhibited3;
+    private String infantExhibited4;
+    private String infantExhibited5;
+    private String infantExhibited6;
+    private String infantExhibited7;
+    private String infantExhibited8;
+    private String infantExhibited9;
+    private String infantExhibited10;
+    private String infantExhibited11;
+    private String infantExhibited12;
+    private String infantExhibited13;
+    private String infantExhibited14;
+    private Date infantHearDt;
+    private Date infantNedeveDt;
+    private Date infantOpDt;
+
 
     public String getRecordId() {
         return recordId;
@@ -511,13 +532,13 @@ public class Zp07InfantAssessmentVisit extends BaseMetaData {
         this.infantNeurodeve = infantNeurodeve;
     }
 
-    public String getInfantExhibited() {
+   /* public String getInfantExhibited() {
         return infantExhibited;
     }
 
     public void setInfantExhibited(String infantExhibited) {
         this.infantExhibited = infantExhibited;
-    }
+    }*/
 
     public String getInfantAsymType() {
         return infantAsymType;
@@ -1516,4 +1537,150 @@ public class Zp07InfantAssessmentVisit extends BaseMetaData {
 	public void setInfantDays(Integer infantDays) {
 		this.infantDays = infantDays;
 	}
+
+	//v2.5
+
+    public Date getInfantNeuroDt() {
+        return infantNeuroDt;
+    }
+
+    public void setInfantNeuroDt(Date infantNeuroDt) {
+        this.infantNeuroDt = infantNeuroDt;
+    }
+
+    public String getInfantExhibited1() {
+        return infantExhibited1;
+    }
+
+    public void setInfantExhibited1(String infantExhibited1) {
+        this.infantExhibited1 = infantExhibited1;
+    }
+
+    public String getInfantExhibited2() {
+        return infantExhibited2;
+    }
+
+    public void setInfantExhibited2(String infantExhibited2) {
+        this.infantExhibited2 = infantExhibited2;
+    }
+
+    public String getInfantExhibited3() {
+        return infantExhibited3;
+    }
+
+    public void setInfantExhibited3(String infantExhibited3) {
+        this.infantExhibited3 = infantExhibited3;
+    }
+
+    public String getInfantExhibited4() {
+        return infantExhibited4;
+    }
+
+    public void setInfantExhibited4(String infantExhibited4) {
+        this.infantExhibited4 = infantExhibited4;
+    }
+
+    public String getInfantExhibited5() {
+        return infantExhibited5;
+    }
+
+    public void setInfantExhibited5(String infantExhibited5) {
+        this.infantExhibited5 = infantExhibited5;
+    }
+
+    public String getInfantExhibited6() {
+        return infantExhibited6;
+    }
+
+    public void setInfantExhibited6(String infantExhibited6) {
+        this.infantExhibited6 = infantExhibited6;
+    }
+
+    public String getInfantExhibited7() {
+        return infantExhibited7;
+    }
+
+    public void setInfantExhibited7(String infantExhibited7) {
+        this.infantExhibited7 = infantExhibited7;
+    }
+
+    public String getInfantExhibited8() {
+        return infantExhibited8;
+    }
+
+    public void setInfantExhibited8(String infantExhibited8) {
+        this.infantExhibited8 = infantExhibited8;
+    }
+
+    public String getInfantExhibited9() {
+        return infantExhibited9;
+    }
+
+    public void setInfantExhibited9(String infantExhibited9) {
+        this.infantExhibited9 = infantExhibited9;
+    }
+
+    public String getInfantExhibited10() {
+        return infantExhibited10;
+    }
+
+    public void setInfantExhibited10(String infantExhibited10) {
+        this.infantExhibited10 = infantExhibited10;
+    }
+
+    public String getInfantExhibited11() {
+        return infantExhibited11;
+    }
+
+    public void setInfantExhibited11(String infantExhibited11) {
+        this.infantExhibited11 = infantExhibited11;
+    }
+
+    public String getInfantExhibited12() {
+        return infantExhibited12;
+    }
+
+    public void setInfantExhibited12(String infantExhibited12) {
+        this.infantExhibited12 = infantExhibited12;
+    }
+
+    public String getInfantExhibited13() {
+        return infantExhibited13;
+    }
+
+    public void setInfantExhibited13(String infantExhibited13) {
+        this.infantExhibited13 = infantExhibited13;
+    }
+
+    public String getInfantExhibited14() {
+        return infantExhibited14;
+    }
+
+    public void setInfantExhibited14(String infantExhibited14) {
+        this.infantExhibited14 = infantExhibited14;
+    }
+
+    public Date getInfantHearDt() {
+        return infantHearDt;
+    }
+
+    public void setInfantHearDt(Date infantHearDt) {
+        this.infantHearDt = infantHearDt;
+    }
+
+    public Date getInfantNedeveDt() {
+        return infantNedeveDt;
+    }
+
+    public void setInfantNedeveDt(Date infantNedeveDt) {
+        this.infantNedeveDt = infantNedeveDt;
+    }
+
+    public Date getInfantOpDt() {
+        return infantOpDt;
+    }
+
+    public void setInfantOpDt(Date infantOpDt) {
+        this.infantOpDt = infantOpDt;
+    }
 }

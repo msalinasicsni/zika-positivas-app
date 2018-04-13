@@ -178,6 +178,27 @@ public class Zp07DBConstants {
     public static final String infantWeeks = "infantWeeks";
     public static final String infantDays = "infantDays";
 
+
+    //v2.5
+    public static final String infantHearDt = "infantHearDt";
+    public static final String infantNeuroDt = "infantNeuroDt";
+    public static final String infantExhibited1 = "infantExhibited1";
+    public static final String infantExhibited2 = "infantExhibited2";
+    public static final String infantExhibited3 = "infantExhibited3";
+    public static final String infantExhibited4 = "infantExhibited4";
+    public static final String infantExhibited5 = "infantExhibited5";
+    public static final String infantExhibited6 = "infantExhibited6";
+    public static final String infantExhibited7 = "infantExhibited7";
+    public static final String infantExhibited8 = "infantExhibited8";
+    public static final String infantExhibited9 = "infantExhibited9";
+    public static final String infantExhibited10 = "infantExhibited10";
+    public static final String infantExhibited11 = "infantExhibited11";
+    public static final String infantExhibited12 = "infantExhibited12";
+    public static final String infantExhibited13 = "infantExhibited13";
+    public static final String infantExhibited14 = "infantExhibited14";
+    public static final String infantNedeveDt = "infantNedeveDt";
+    public static final String infantOpDt = "infantOpDt";
+
     //Crear tabla Zp07InfantAssessmentVisit
     public static final String CREATE_INFANTASSESSMENT_TABLE = "create table if not exists "
             + INFANTASSESSMENT_TABLE + " ("
@@ -348,6 +369,24 @@ public class Zp07DBConstants {
             + infantDob + " date, "
             + infantWeeks + " integer, "
             + infantDays + " integer, "
+            + infantHearDt + " date, "
+            + infantNeuroDt + " date, "
+            + infantExhibited1 + " text, "
+            + infantExhibited2 + " text, "
+            + infantExhibited3 + " text, "
+            + infantExhibited4 + " text, "
+            + infantExhibited5 + " text, "
+            + infantExhibited6 + " text, "
+            + infantExhibited7 + " text, "
+            + infantExhibited8 + " text, "
+            + infantExhibited9 + " text, "
+            + infantExhibited10 + " text, "
+            + infantExhibited11 + " text, "
+            + infantExhibited12 + " text, "
+            + infantExhibited13 + " text, "
+            + infantExhibited14 + " text, "
+            + infantNedeveDt + " date, "
+            + infantOpDt + " date, "
             + MainDBConstants.recordDate + " date, "
             + MainDBConstants.recordUser + " text, "
             + MainDBConstants.pasive + " text, "

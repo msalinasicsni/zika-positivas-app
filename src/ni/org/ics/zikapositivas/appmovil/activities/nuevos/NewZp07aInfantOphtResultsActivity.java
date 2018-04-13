@@ -56,7 +56,7 @@ public class NewZp07aInfantOphtResultsActivity extends AbstractAsyncActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (!FileUtils.storageReady()) {
-            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.error, R.string.storage_error),Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.error) + "," + getString(R.string.storage_error),Toast.LENGTH_LONG);
             toast.show();
             finish();
         }
@@ -183,7 +183,7 @@ public class NewZp07aInfantOphtResultsActivity extends AbstractAsyncActivity {
                         "_id", "jrFormId", "displayName"};
                 //cursor que busca el formulario
                 Cursor c = getContentResolver().query(Constants.CONTENT_URI, projection,
-                        "jrFormId = 'ZPos07a_Infant_Ophthalmologic_Results' and displayName = 'Zika Positivas Consentimiento del Infante - Resultados Oftalmologicos'", null, null);
+                        "jrFormId = 'ZPos07a_Infant_Ophthalmologic_Results' and displayName = 'Zika Positivas Evaluacion del Infante - Resultados Oftalmologicos'", null, null);
                 c.moveToFirst();
                 //captura el id del formulario
                 Integer id = Integer.parseInt(c.getString(0));
@@ -255,6 +255,38 @@ public class NewZp07aInfantOphtResultsActivity extends AbstractAsyncActivity {
             mInfantAssessment.setSimserial(zp07aXml.getSimserial());
             mInfantAssessment.setPhonenumber(zp07aXml.getPhonenumber());
             mInfantAssessment.setToday(zp07aXml.getToday());
+
+            //v2.6
+            mInfantAssessment.setInfantMicrocep(zp07aXml.getInfantMicrocep());
+            mInfantAssessment.setInfantCongCataract(zp07aXml.getInfantCongCataract());
+            mInfantAssessment.setInfantGlaucoma(zp07aXml.getInfantGlaucoma());
+            mInfantAssessment.setInfantMyopia(zp07aXml.getInfantMyopia());
+            mInfantAssessment.setInfantBlindness(zp07aXml.getInfantBlindness());
+            mInfantAssessment.setInfantOtherDisease(zp07aXml.getInfantOtherDisease());
+            mInfantAssessment.setInfantOtherSpecify(zp07aXml.getInfantOtherSpecify());
+            mInfantAssessment.setInfantGestAge(zp07aXml.getInfantGestAge());
+            mInfantAssessment.setInfantLight(zp07aXml.getInfantLight());
+            mInfantAssessment.setInfantFixFollow(zp07aXml.getInfantFixFollow());
+            mInfantAssessment.setInfantFacialExpression(zp07aXml.getInfantFacialExpression());
+            mInfantAssessment.setInfantSmile(zp07aXml.getInfantSmile());
+            mInfantAssessment.setInfantPtosis(zp07aXml.getInfantPtosis());
+            mInfantAssessment.setInfantCataract(zp07aXml.getInfantCataract());
+            mInfantAssessment.setInfantOtherLens(zp07aXml.getInfantOtherLens());
+            mInfantAssessment.setInfantLenOhterSpec(zp07aXml.getInfantLenOhterSpec());
+            mInfantAssessment.setInfantNystagmus(zp07aXml.getInfantNystagmus());
+            mInfantAssessment.setInfantIntraPress(zp07aXml.getInfantIntraPress());
+            mInfantAssessment.setInfantTonoLeft(zp07aXml.getInfantTonoLeft());
+            mInfantAssessment.setInfantTonoRight(zp07aXml.getInfantTonoRight());
+            mInfantAssessment.setInfantFocalSpecify(zp07aXml.getInfantFocalSpecify());
+            mInfantAssessment.setInfantAbnoVascu(zp07aXml.getInfantAbnoVascu());
+            mInfantAssessment.setInfantFovealLoss(zp07aXml.getInfantFovealLoss());
+            mInfantAssessment.setInfantRetinaColoboma(zp07aXml.getInfantRetinaColoboma());
+            mInfantAssessment.setInfantAtrophy(zp07aXml.getInfantAtrophy());
+            mInfantAssessment.setInfantColoboma(zp07aXml.getInfantColoboma());
+            mInfantAssessment.setInfantDiscLeft(zp07aXml.getInfantDiscLeft());
+            mInfantAssessment.setInfantDiscRight(zp07aXml.getInfantDiscRight());
+            mInfantAssessment.setInfantHypoplasia(zp07aXml.getInfantHypoplasia());
+
 
 
 

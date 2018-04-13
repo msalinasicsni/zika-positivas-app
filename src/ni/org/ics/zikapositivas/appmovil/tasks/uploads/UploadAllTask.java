@@ -267,6 +267,20 @@ public class UploadAllTask extends UploadTask {
             if (!error.matches("Datos recibidos!")){
                 actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, EVAL_INFANTE);
                 return error;
+            }else{
+                for (Zp07InfantAssessmentVisit infantAssessmentVisit : mInfantAssessment) {
+                    if (infantAssessmentVisit.getPart1() != null){
+                        infantAssessmentVisit.setPart1(1);
+                    }
+                    if (infantAssessmentVisit.getPart2() != null){
+                        infantAssessmentVisit.setPart2(1);
+                    }
+                    if (infantAssessmentVisit.getPart3() != null){
+                        infantAssessmentVisit.setPart3(1);
+                    }
+                    zikaPosA.editarZp07InfantAssessmentVisit(infantAssessmentVisit);
+
+                }
             }
             actualizarBaseDatos(Constants.STATUS_SUBMITTED, ESTADO_INFANTE);
             error = uploadInfantStatus(url, username, password);
@@ -1393,7 +1407,7 @@ public class UploadAllTask extends UploadTask {
                                             String password) throws Exception {
         try {
             if( mAInfantOphtResults.size()>0){
-                publishProgress("Enviando resultado oftalmológico infantes!", "23", TOTAL_TASK);
+                publishProgress("Enviando resultado oftalmolï¿½gico infantes!", "23", TOTAL_TASK);
                 // La URL de la solicitud POST
                 final String urlRequest = url + "/movil/zp07aInfantOphtResults";
                 Zp07aInfantOphtResults[] envio = mAInfantOphtResults.toArray(new Zp07aInfantOphtResults[mAInfantOphtResults.size()]);

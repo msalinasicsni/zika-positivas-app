@@ -287,6 +287,11 @@ public class NewZp02dInfantBiospecimenCollectionActivity extends AbstractAsyncAc
             mInfantBioCollection.setPhonenumber(zp02dXml.getPhonenumber());
             mInfantBioCollection.setToday(zp02dXml.getToday());
 
+            //v2.5
+            mInfantBioCollection.setInfantMatBldDt(zp02dXml.getInfantMatBldDt());
+            mInfantBioCollection.setInfantMatSlvaDt(zp02dXml.getInfantMatSlvaDt());
+            mInfantBioCollection.setInfantMatUrineDt(zp02dXml.getInfantMatUrineDt());
+
             //validations
             Integer tubes = 0;
             Integer codEvent = 0;

@@ -46,6 +46,38 @@ public class Zp07aInfantOphtResultsHelper {
         cv.put(Zp07aDBConstants.infantEyidEntry, zp07AInfantOphtResults.getInfantEyidEntry());
         if (zp07AInfantOphtResults.getInfantEydtEnt()!=null) cv.put(Zp07aDBConstants.infantEydtEnt, zp07AInfantOphtResults.getInfantEydtEnt().getTime());
 
+        //v2.6
+        cv.put(Zp07aDBConstants.infantMicrocep, zp07AInfantOphtResults.getInfantMicrocep());
+        cv.put(Zp07aDBConstants.infantCongCataract, zp07AInfantOphtResults.getInfantCongCataract());
+        cv.put(Zp07aDBConstants.infantGlaucoma, zp07AInfantOphtResults.getInfantGlaucoma());
+        cv.put(Zp07aDBConstants.infantMyopia, zp07AInfantOphtResults.getInfantMyopia());
+        cv.put(Zp07aDBConstants.infantBlindness, zp07AInfantOphtResults.getInfantBlindness());
+        cv.put(Zp07aDBConstants.infantOtherDisease, zp07AInfantOphtResults.getInfantOtherDisease());
+        cv.put(Zp07aDBConstants.infantOtherSpecify, zp07AInfantOphtResults.getInfantOtherSpecify());
+        cv.put(Zp07aDBConstants.infantGestAge, zp07AInfantOphtResults.getInfantOtherSpecify());
+        cv.put(Zp07aDBConstants.infantLight, zp07AInfantOphtResults.getInfantLight());
+        cv.put(Zp07aDBConstants.infantFixFollow, zp07AInfantOphtResults.getInfantFixFollow());
+        cv.put(Zp07aDBConstants.infantFacialExpression, zp07AInfantOphtResults.getInfantFacialExpression());
+        cv.put(Zp07aDBConstants.infantSmile, zp07AInfantOphtResults.getInfantSmile());
+        cv.put(Zp07aDBConstants.infantPtosis, zp07AInfantOphtResults.getInfantPtosis());
+        cv.put(Zp07aDBConstants.infantCataract, zp07AInfantOphtResults.getInfantCataract());
+        cv.put(Zp07aDBConstants.infantOtherLens, zp07AInfantOphtResults.getInfantOtherLens());
+        cv.put(Zp07aDBConstants.infantLenOhterSpec, zp07AInfantOphtResults.getInfantLenOhterSpec());
+        cv.put(Zp07aDBConstants.infantNystagmus, zp07AInfantOphtResults.getInfantNystagmus());
+        cv.put(Zp07aDBConstants.infantIntraPress, zp07AInfantOphtResults.getInfantIntraPress());
+        cv.put(Zp07aDBConstants.infantTonoLeft, zp07AInfantOphtResults.getInfantTonoLeft());
+        cv.put(Zp07aDBConstants.infantTonoRight, zp07AInfantOphtResults.getInfantTonoRight());
+        cv.put(Zp07aDBConstants.infantFocalSpecify, zp07AInfantOphtResults.getInfantFocalSpecify());
+        cv.put(Zp07aDBConstants.infantAbnoVascu, zp07AInfantOphtResults.getInfantAbnoVascu());
+        cv.put(Zp07aDBConstants.infantFovealLoss, zp07AInfantOphtResults.getInfantFovealLoss());
+        cv.put(Zp07aDBConstants.infantRetinaColoboma, zp07AInfantOphtResults.getInfantRetinaColoboma());
+        cv.put(Zp07aDBConstants.infantAtrophy, zp07AInfantOphtResults.getInfantAtrophy());
+        cv.put(Zp07aDBConstants.infantColoboma, zp07AInfantOphtResults.getInfantColoboma());
+        cv.put(Zp07aDBConstants.infantDiscLeft, zp07AInfantOphtResults.getInfantDiscLeft());
+        cv.put(Zp07aDBConstants.infantDiscRight, zp07AInfantOphtResults.getInfantDiscRight());
+        cv.put(Zp07aDBConstants.infantHypoplasia, zp07AInfantOphtResults.getInfantHypoplasia());
+
+
         if (zp07AInfantOphtResults.getRecordDate() != null) cv.put(MainDBConstants.recordDate, zp07AInfantOphtResults.getRecordDate().getTime());
         cv.put(MainDBConstants.recordUser, zp07AInfantOphtResults.getRecordUser());
         cv.put(MainDBConstants.pasive, String.valueOf(zp07AInfantOphtResults.getPasive()));
@@ -92,6 +124,39 @@ public class Zp07aInfantOphtResultsHelper {
         if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07aDBConstants.infantEydtRevi))>0) aInfantOphtResult.setInfantEydtRevi(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07aDBConstants.infantEydtRevi))));
         aInfantOphtResult.setInfantEyidEntry(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantEyidEntry)));
         if (cursorIA.getLong(cursorIA.getColumnIndex(Zp07aDBConstants.infantEydtEnt))>0) aInfantOphtResult.setInfantEydtEnt(new Date(cursorIA.getLong(cursorIA.getColumnIndex(Zp07aDBConstants.infantEydtEnt))));
+
+        //v2.6
+        aInfantOphtResult.setInfantMicrocep(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantMicrocep)));
+        aInfantOphtResult.setInfantCongCataract(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantCongCataract)));
+        aInfantOphtResult.setInfantGlaucoma(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantGlaucoma)));
+        aInfantOphtResult.setInfantMyopia(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantMyopia)));
+        aInfantOphtResult.setInfantBlindness(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantBlindness)));
+        aInfantOphtResult.setInfantOtherDisease(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantOtherDisease)));
+        aInfantOphtResult.setInfantOtherSpecify(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantOtherSpecify)));
+        if (cursorIA.getFloat(cursorIA.getColumnIndex(Zp07aDBConstants.infantGestAge))>0) aInfantOphtResult.setInfantGestAge(cursorIA.getFloat(cursorIA.getColumnIndex(Zp07aDBConstants.infantGestAge)));
+        aInfantOphtResult.setInfantLight(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantLight)));
+        aInfantOphtResult.setInfantFixFollow(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantFixFollow)));
+        aInfantOphtResult.setInfantFacialExpression(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantFacialExpression)));
+        aInfantOphtResult.setInfantSmile(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantSmile)));
+        aInfantOphtResult.setInfantPtosis(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantPtosis)));
+        aInfantOphtResult.setInfantCataract(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantCataract)));
+        aInfantOphtResult.setInfantOtherLens(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantOtherLens)));
+        aInfantOphtResult.setInfantLenOhterSpec(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantLenOhterSpec)));
+        aInfantOphtResult.setInfantNystagmus(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantNystagmus)));
+        aInfantOphtResult.setInfantIntraPress(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantIntraPress)));
+        if (cursorIA.getInt(cursorIA.getColumnIndex(Zp07aDBConstants.infantTonoLeft))>0) aInfantOphtResult.setInfantTonoLeft(cursorIA.getInt(cursorIA.getColumnIndex(Zp07aDBConstants.infantTonoLeft)));
+        if (cursorIA.getInt(cursorIA.getColumnIndex(Zp07aDBConstants.infantTonoRight))>0) aInfantOphtResult.setInfantTonoRight(cursorIA.getInt(cursorIA.getColumnIndex(Zp07aDBConstants.infantTonoRight)));
+        aInfantOphtResult.setInfantFocalSpecify(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantFocalSpecify)));
+        aInfantOphtResult.setInfantAbnoVascu(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantAbnoVascu)));
+        aInfantOphtResult.setInfantFovealLoss(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantFovealLoss)));
+        aInfantOphtResult.setInfantRetinaColoboma(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantRetinaColoboma)));
+        aInfantOphtResult.setInfantAtrophy(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantAtrophy)));
+        aInfantOphtResult.setInfantColoboma(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantColoboma)));
+        if (cursorIA.getFloat(cursorIA.getColumnIndex(Zp07aDBConstants.infantDiscLeft))>0) aInfantOphtResult.setInfantDiscLeft(cursorIA.getFloat(cursorIA.getColumnIndex(Zp07aDBConstants.infantDiscLeft)));
+        if (cursorIA.getFloat(cursorIA.getColumnIndex(Zp07aDBConstants.infantDiscRight))>0) aInfantOphtResult.setInfantDiscRight(cursorIA.getFloat(cursorIA.getColumnIndex(Zp07aDBConstants.infantDiscRight)));
+        aInfantOphtResult.setInfantHypoplasia(cursorIA.getString(cursorIA.getColumnIndex(Zp07aDBConstants.infantHypoplasia)));
+
+
 
         if(cursorIA.getLong(cursorIA.getColumnIndex(MainDBConstants.recordDate))>0) aInfantOphtResult.setRecordDate(new Date(cursorIA.getLong(cursorIA.getColumnIndex(MainDBConstants.recordDate))));
         aInfantOphtResult.setRecordUser(cursorIA.getString(cursorIA.getColumnIndex(MainDBConstants.recordUser)));

@@ -137,6 +137,30 @@ public class Zp02BiospecimenCollection extends BaseMetaData{
     private Float addtHematocrit;
     private Float addtHemoglobin;
 
+    //v2.7
+    private String bscMatOamfId1;
+    private Date bscMatOamfDt1;
+    private String bscMatOamfTm1;
+    private String bscMatOamfId2;
+    private Date bscMatOamfDt2;
+    private String bscMatOamfTm2;
+    private String bscMatOtherId1;
+    private Date bscMatOtherDt1;
+    private String bscMatOtherTm1;
+    private String bscMatOtherId2;
+    private Date bscMatOtherDt2;
+    private String bscMatOtherTm2;
+    private String bscMatOtherId3;
+    private Date bscMatOtherDt3;
+    private String bscMatOtherTm3;
+    private String bscMatOtherId4;
+    private Date bscMatOtherDt4;
+    private String bscMatOtherTm4;
+    private String bscMatOtherTyp2;
+    private String bscMatOtherTyp3;
+    private String bscMatOtherTyp4;
+
+
 
     public String getRecordId() {
         return recordId;
@@ -1152,5 +1176,175 @@ public class Zp02BiospecimenCollection extends BaseMetaData{
 
     public void setAddtHemoglobin(Float addtHemoglobin) {
         this.addtHemoglobin = addtHemoglobin;
+    }
+
+    //v2.7
+
+    public String getBscMatOamfId1() {
+        return bscMatOamfId1;
+    }
+
+    public void setBscMatOamfId1(String bscMatOamfId1) {
+        this.bscMatOamfId1 = bscMatOamfId1;
+    }
+
+    public Date getBscMatOamfDt1() {
+        return bscMatOamfDt1;
+    }
+
+    public void setBscMatOamfDt1(Date bscMatOamfDt1) {
+        this.bscMatOamfDt1 = bscMatOamfDt1;
+    }
+
+    public String getBscMatOamfTm1() {
+        return bscMatOamfTm1;
+    }
+
+    public void setBscMatOamfTm1(String bscMatOamfTm1) {
+        this.bscMatOamfTm1 = bscMatOamfTm1;
+    }
+
+    public String getBscMatOamfId2() {
+        return bscMatOamfId2;
+    }
+
+    public void setBscMatOamfId2(String bscMatOamfId2) {
+        this.bscMatOamfId2 = bscMatOamfId2;
+    }
+
+    public Date getBscMatOamfDt2() {
+        return bscMatOamfDt2;
+    }
+
+    public void setBscMatOamfDt2(Date bscMatOamfDt2) {
+        this.bscMatOamfDt2 = bscMatOamfDt2;
+    }
+
+    public String getBscMatOamfTm2() {
+        return bscMatOamfTm2;
+    }
+
+    public void setBscMatOamfTm2(String bscMatOamfTm2) {
+        this.bscMatOamfTm2 = bscMatOamfTm2;
+    }
+
+    public String getBscMatOtherId1() {
+        return bscMatOtherId1;
+    }
+
+    public void setBscMatOtherId1(String bscMatOtherId1) {
+        this.bscMatOtherId1 = bscMatOtherId1;
+    }
+
+    public Date getBscMatOtherDt1() {
+        return bscMatOtherDt1;
+    }
+
+    public void setBscMatOtherDt1(Date bscMatOtherDt1) {
+        this.bscMatOtherDt1 = bscMatOtherDt1;
+    }
+
+    public String getBscMatOtherTm1() {
+        return bscMatOtherTm1;
+    }
+
+    public void setBscMatOtherTm1(String bscMatOtherTm1) {
+        this.bscMatOtherTm1 = bscMatOtherTm1;
+    }
+
+    public String getBscMatOtherId2() {
+        return bscMatOtherId2;
+    }
+
+    public void setBscMatOtherId2(String bscMatOtherId2) {
+        this.bscMatOtherId2 = bscMatOtherId2;
+    }
+
+    public Date getBscMatOtherDt2() {
+        return bscMatOtherDt2;
+    }
+
+    public void setBscMatOtherDt2(Date bscMatOtherDt2) {
+        this.bscMatOtherDt2 = bscMatOtherDt2;
+    }
+
+    public String getBscMatOtherTm2() {
+        return bscMatOtherTm2;
+    }
+
+    public void setBscMatOtherTm2(String bscMatOtherTm2) {
+        this.bscMatOtherTm2 = bscMatOtherTm2;
+    }
+
+    public String getBscMatOtherId3() {
+        return bscMatOtherId3;
+    }
+
+    public void setBscMatOtherId3(String bscMatOtherId3) {
+        this.bscMatOtherId3 = bscMatOtherId3;
+    }
+
+    public Date getBscMatOtherDt3() {
+        return bscMatOtherDt3;
+    }
+
+    public void setBscMatOtherDt3(Date bscMatOtherDt3) {
+        this.bscMatOtherDt3 = bscMatOtherDt3;
+    }
+
+    public String getBscMatOtherTm3() {
+        return bscMatOtherTm3;
+    }
+
+    public void setBscMatOtherTm3(String bscMatOtherTm3) {
+        this.bscMatOtherTm3 = bscMatOtherTm3;
+    }
+
+    public String getBscMatOtherId4() {
+        return bscMatOtherId4;
+    }
+
+    public void setBscMatOtherId4(String bscMatOtherId4) {
+        this.bscMatOtherId4 = bscMatOtherId4;
+    }
+
+    public Date getBscMatOtherDt4() {
+        return bscMatOtherDt4;
+    }
+
+    public void setBscMatOtherDt4(Date bscMatOtherDt4) {
+        this.bscMatOtherDt4 = bscMatOtherDt4;
+    }
+
+    public String getBscMatOtherTm4() {
+        return bscMatOtherTm4;
+    }
+
+    public void setBscMatOtherTm4(String bscMatOtherTm4) {
+        this.bscMatOtherTm4 = bscMatOtherTm4;
+    }
+
+    public String getBscMatOtherTyp2() {
+        return bscMatOtherTyp2;
+    }
+
+    public void setBscMatOtherTyp2(String bscMatOtherTyp2) {
+        this.bscMatOtherTyp2 = bscMatOtherTyp2;
+    }
+
+    public String getBscMatOtherTyp3() {
+        return bscMatOtherTyp3;
+    }
+
+    public void setBscMatOtherTyp3(String bscMatOtherTyp3) {
+        this.bscMatOtherTyp3 = bscMatOtherTyp3;
+    }
+
+    public String getBscMatOtherTyp4() {
+        return bscMatOtherTyp4;
+    }
+
+    public void setBscMatOtherTyp4(String bscMatOtherTyp4) {
+        this.bscMatOtherTyp4 = bscMatOtherTyp4;
     }
 }

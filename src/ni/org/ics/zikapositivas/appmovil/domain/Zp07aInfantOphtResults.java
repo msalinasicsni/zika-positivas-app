@@ -35,6 +35,37 @@ public class Zp07aInfantOphtResults extends BaseMetaData {
     private String infantEyidEntry;
     private Date infantEydtEnt;
 
+    //v2.6
+    private String infantMicrocep;
+    private String infantCongCataract;
+    private String infantGlaucoma;
+    private String infantMyopia;
+    private String infantBlindness;
+    private String infantOtherDisease;
+    private String infantOtherSpecify;
+    private Float infantGestAge;
+    private String infantLight;
+    private String infantFixFollow;
+    private String infantFacialExpression;
+    private String infantSmile;
+    private String infantPtosis;
+    private String infantCataract;
+    private String infantOtherLens;
+    private String infantLenOhterSpec;
+    private String infantNystagmus;
+    private String infantIntraPress;
+    private Integer infantTonoLeft;
+    private Integer infantTonoRight;
+    private String infantFocalSpecify;
+    private String infantAbnoVascu;
+    private String infantFovealLoss;
+    private String infantRetinaColoboma;
+    private String infantAtrophy;
+    private String infantColoboma;
+    private Float infantDiscLeft;
+    private Float infantDiscRight;
+    private String infantHypoplasia;
+
     public String getRecordId() {
         return recordId;
     }
@@ -241,5 +272,240 @@ public class Zp07aInfantOphtResults extends BaseMetaData {
 
     public void setInfantEydtEnt(Date infantEydtEnt) {
         this.infantEydtEnt = infantEydtEnt;
+    }
+
+    //v2.6
+
+
+    public String getInfantMicrocep() {
+        return infantMicrocep;
+    }
+
+    public void setInfantMicrocep(String infantMicrocep) {
+        this.infantMicrocep = infantMicrocep;
+    }
+
+    public String getInfantCongCataract() {
+        return infantCongCataract;
+    }
+
+    public void setInfantCongCataract(String infantCongCataract) {
+        this.infantCongCataract = infantCongCataract;
+    }
+
+    public String getInfantGlaucoma() {
+        return infantGlaucoma;
+    }
+
+    public void setInfantGlaucoma(String infantGlaucoma) {
+        this.infantGlaucoma = infantGlaucoma;
+    }
+
+    public String getInfantMyopia() {
+        return infantMyopia;
+    }
+
+    public void setInfantMyopia(String infantMyopia) {
+        this.infantMyopia = infantMyopia;
+    }
+
+    public String getInfantBlindness() {
+        return infantBlindness;
+    }
+
+    public void setInfantBlindness(String infantBlindness) {
+        this.infantBlindness = infantBlindness;
+    }
+
+    public String getInfantOtherDisease() {
+        return infantOtherDisease;
+    }
+
+    public void setInfantOtherDisease(String infantOtherDisease) {
+        this.infantOtherDisease = infantOtherDisease;
+    }
+
+    public String getInfantOtherSpecify() {
+        return infantOtherSpecify;
+    }
+
+    public void setInfantOtherSpecify(String infantOtherSpecify) {
+        this.infantOtherSpecify = infantOtherSpecify;
+    }
+
+    public Float getInfantGestAge() {
+        return infantGestAge;
+    }
+
+    public void setInfantGestAge(Float infantGestAge) {
+        this.infantGestAge = infantGestAge;
+    }
+
+    public String getInfantLight() {
+        return infantLight;
+    }
+
+    public void setInfantLight(String infantLight) {
+        this.infantLight = infantLight;
+    }
+
+    public String getInfantFixFollow() {
+        return infantFixFollow;
+    }
+
+    public void setInfantFixFollow(String infantFixFollow) {
+        this.infantFixFollow = infantFixFollow;
+    }
+
+    public String getInfantFacialExpression() {
+        return infantFacialExpression;
+    }
+
+    public void setInfantFacialExpression(String infantFacialExpression) {
+        this.infantFacialExpression = infantFacialExpression;
+    }
+
+    public String getInfantSmile() {
+        return infantSmile;
+    }
+
+    public void setInfantSmile(String infantSmile) {
+        this.infantSmile = infantSmile;
+    }
+
+    public String getInfantPtosis() {
+        return infantPtosis;
+    }
+
+    public void setInfantPtosis(String infantPtosis) {
+        this.infantPtosis = infantPtosis;
+    }
+
+    public String getInfantCataract() {
+        return infantCataract;
+    }
+
+    public void setInfantCataract(String infantCataract) {
+        this.infantCataract = infantCataract;
+    }
+
+    public String getInfantOtherLens() {
+        return infantOtherLens;
+    }
+
+    public void setInfantOtherLens(String infantOtherLens) {
+        this.infantOtherLens = infantOtherLens;
+    }
+
+    public String getInfantLenOhterSpec() {
+        return infantLenOhterSpec;
+    }
+
+    public void setInfantLenOhterSpec(String infantLenOhterSpec) {
+        this.infantLenOhterSpec = infantLenOhterSpec;
+    }
+
+    public String getInfantNystagmus() {
+        return infantNystagmus;
+    }
+
+    public void setInfantNystagmus(String infantNystagmus) {
+        this.infantNystagmus = infantNystagmus;
+    }
+
+    public String getInfantIntraPress() {
+        return infantIntraPress;
+    }
+
+    public void setInfantIntraPress(String infantIntraPress) {
+        this.infantIntraPress = infantIntraPress;
+    }
+
+    public Integer getInfantTonoLeft() {
+        return infantTonoLeft;
+    }
+
+    public void setInfantTonoLeft(Integer infantTonoLeft) {
+        this.infantTonoLeft = infantTonoLeft;
+    }
+
+    public Integer getInfantTonoRight() {
+        return infantTonoRight;
+    }
+
+    public void setInfantTonoRight(Integer infantTonoRight) {
+        this.infantTonoRight = infantTonoRight;
+    }
+
+    public String getInfantFocalSpecify() {
+        return infantFocalSpecify;
+    }
+
+    public void setInfantFocalSpecify(String infantFocalSpecify) {
+        this.infantFocalSpecify = infantFocalSpecify;
+    }
+
+    public String getInfantAbnoVascu() {
+        return infantAbnoVascu;
+    }
+
+    public void setInfantAbnoVascu(String infantAbnoVascu) {
+        this.infantAbnoVascu = infantAbnoVascu;
+    }
+
+    public String getInfantFovealLoss() {
+        return infantFovealLoss;
+    }
+
+    public void setInfantFovealLoss(String infantFovealLoss) {
+        this.infantFovealLoss = infantFovealLoss;
+    }
+
+    public String getInfantRetinaColoboma() {
+        return infantRetinaColoboma;
+    }
+
+    public void setInfantRetinaColoboma(String infantRetinaColoboma) {
+        this.infantRetinaColoboma = infantRetinaColoboma;
+    }
+
+    public String getInfantAtrophy() {
+        return infantAtrophy;
+    }
+
+    public void setInfantAtrophy(String infantAtrophy) {
+        this.infantAtrophy = infantAtrophy;
+    }
+
+    public String getInfantColoboma() {
+        return infantColoboma;
+    }
+
+    public void setInfantColoboma(String infantColoboma) {
+        this.infantColoboma = infantColoboma;
+    }
+
+    public Float getInfantDiscLeft() {
+        return infantDiscLeft;
+    }
+
+    public void setInfantDiscLeft(Float infantDiscLeft) {
+        this.infantDiscLeft = infantDiscLeft;
+    }
+
+    public Float getInfantDiscRight() {
+        return infantDiscRight;
+    }
+
+    public void setInfantDiscRight(Float infantDiscRight) {
+        this.infantDiscRight = infantDiscRight;
+    }
+
+    public String getInfantHypoplasia() {
+        return infantHypoplasia;
+    }
+
+    public void setInfantHypoplasia(String infantHypoplasia) {
+        this.infantHypoplasia = infantHypoplasia;
     }
 }

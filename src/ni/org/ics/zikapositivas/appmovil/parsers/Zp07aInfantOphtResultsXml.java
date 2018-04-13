@@ -61,6 +61,66 @@ public class Zp07aInfantOphtResultsXml {
     @Element(required = false)
     private Date infantEydtEnt;
 
+    //v2.6
+    @Element(required = false)
+    private String infantMicrocep;
+    @Element(required = false)
+    private String infantCongCataract;
+    @Element(required = false)
+    private String infantGlaucoma;
+    @Element(required = false)
+    private String infantMyopia;
+    @Element(required = false)
+    private String infantBlindness;
+    @Element(required = false)
+    private String infantOtherDisease;
+    @Element(required = false)
+    private String infantOtherSpecify;
+    @Element(required = false)
+    private Float infantGestAge;
+    @Element(required = false)
+    private String infantLight;
+    @Element(required = false)
+    private String infantFixFollow;
+    @Element(required = false)
+    private String infantFacialExpression;
+    @Element(required = false)
+    private String infantSmile;
+    @Element(required = false)
+    private String infantPtosis;
+    @Element(required = false)
+    private String infantCataract;
+    @Element(required = false)
+    private String infantOtherLens;
+    @Element(required = false)
+    private String infantLenOhterSpec;
+    @Element(required = false)
+    private String infantNystagmus;
+    @Element(required = false)
+    private String infantIntraPress;
+    @Element(required = false)
+    private Integer infantTonoLeft;
+    @Element(required = false)
+    private Integer infantTonoRight;
+    @Element(required = false)
+    private String infantFocalSpecify;
+    @Element(required = false)
+    private String infantAbnoVascu;
+    @Element(required = false)
+    private String infantFovealLoss;
+    @Element(required = false)
+    private String infantRetinaColoboma;
+    @Element(required = false)
+    private String infantAtrophy;
+    @Element(required = false)
+    private String infantColoboma;
+    @Element(required = false)
+    private Float infantDiscLeft;
+    @Element(required = false)
+    private Float infantDiscRight;
+    @Element(required = false)
+    private String infantHypoplasia;
+
 
     @Element(required=false)
     private String group1;
@@ -71,8 +131,38 @@ public class Zp07aInfantOphtResultsXml {
     @Element(required=false)
     private String group4;
 
+    //v2.6
+    @Element(required=false)
+    private String group5;
+    @Element(required=false)
+    private String group6;
+    @Element(required=false)
+    private String group7;
+    @Element(required=false)
+    private String group8;
+    @Element(required=false)
+    private String group9;
+    @Element(required=false)
+    private String group10;
+    @Element(required=false)
+    private String group11;
+    @Element(required=false)
+    private String group12;
+    @Element(required=false)
+    private String group13;
+    @Element(required=false)
+    private String group14;
+    @Element(required=false)
+    private String group15;
+
+
     @Element(required=false)
     private String note1;
+
+    //2.6
+    @Element(required=false)
+    private String note2;
+
 
     @Attribute
     private String id;
@@ -191,6 +281,122 @@ public class Zp07aInfantOphtResultsXml {
 
     public Date getInfantEydtEnt() {
         return infantEydtEnt;
+    }
+
+    public String getInfantMicrocep() {
+        return infantMicrocep;
+    }
+
+    public String getInfantCongCataract() {
+        return infantCongCataract;
+    }
+
+    public String getInfantGlaucoma() {
+        return infantGlaucoma;
+    }
+
+    public String getInfantMyopia() {
+        return infantMyopia;
+    }
+
+    public String getInfantBlindness() {
+        return infantBlindness;
+    }
+
+    public String getInfantOtherDisease() {
+        return infantOtherDisease;
+    }
+
+    public String getInfantOtherSpecify() {
+        return infantOtherSpecify;
+    }
+
+    public Float getInfantGestAge() {
+        return infantGestAge;
+    }
+
+    public String getInfantLight() {
+        return infantLight;
+    }
+
+    public String getInfantFixFollow() {
+        return infantFixFollow;
+    }
+
+    public String getInfantFacialExpression() {
+        return infantFacialExpression;
+    }
+
+    public String getInfantSmile() {
+        return infantSmile;
+    }
+
+    public String getInfantPtosis() {
+        return infantPtosis;
+    }
+
+    public String getInfantCataract() {
+        return infantCataract;
+    }
+
+    public String getInfantOtherLens() {
+        return infantOtherLens;
+    }
+
+    public String getInfantLenOhterSpec() {
+        return infantLenOhterSpec;
+    }
+
+    public String getInfantNystagmus() {
+        return infantNystagmus;
+    }
+
+    public String getInfantIntraPress() {
+        return infantIntraPress;
+    }
+
+    public Integer getInfantTonoLeft() {
+        return infantTonoLeft;
+    }
+
+    public Integer getInfantTonoRight() {
+        return infantTonoRight;
+    }
+
+    public String getInfantFocalSpecify() {
+        return infantFocalSpecify;
+    }
+
+    public String getInfantAbnoVascu() {
+        return infantAbnoVascu;
+    }
+
+    public String getInfantFovealLoss() {
+        return infantFovealLoss;
+    }
+
+    public String getInfantRetinaColoboma() {
+        return infantRetinaColoboma;
+    }
+
+    public String getInfantAtrophy() {
+        return infantAtrophy;
+    }
+
+    public String getInfantColoboma() {
+        return infantColoboma;
+    }
+
+    public Float getInfantDiscLeft() {
+        return infantDiscLeft;
+    }
+
+    public Float getInfantDiscRight() {
+        return infantDiscRight;
+    }
+
+    public String getInfantHypoplasia() {
+        return infantHypoplasia;
     }
 
     public String getId() {

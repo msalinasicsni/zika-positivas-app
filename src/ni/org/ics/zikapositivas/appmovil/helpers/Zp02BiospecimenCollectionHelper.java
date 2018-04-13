@@ -140,6 +140,29 @@ public class Zp02BiospecimenCollectionHelper {
         cv.put(Zp02DBConstants.addtHematocrit, biospecimenCollection.getAddtHematocrit());
         cv.put(Zp02DBConstants.addtHemoglobin, biospecimenCollection.getAddtHemoglobin());
 
+        //2.7
+        if (biospecimenCollection.getBscMatOamfDt1()!=null) cv.put(Zp02DBConstants.bscMatOamfDt1, biospecimenCollection.getBscMatOamfDt1().getTime());
+        if (biospecimenCollection.getBscMatOamfDt2()!=null) cv.put(Zp02DBConstants.bscMatOamfDt2, biospecimenCollection.getBscMatOamfDt2().getTime());
+        if (biospecimenCollection.getBscMatOtherDt1()!=null) cv.put(Zp02DBConstants.bscMatOtherDt1, biospecimenCollection.getBscMatOtherDt1().getTime());
+        if (biospecimenCollection.getBscMatOtherDt2()!=null) cv.put(Zp02DBConstants.bscMatOtherDt2, biospecimenCollection.getBscMatOtherDt2().getTime());
+        if (biospecimenCollection.getBscMatOtherDt3()!=null) cv.put(Zp02DBConstants.bscMatOtherDt3, biospecimenCollection.getBscMatOtherDt3().getTime());
+        if (biospecimenCollection.getBscMatOtherDt4()!=null) cv.put(Zp02DBConstants.bscMatOtherDt4, biospecimenCollection.getBscMatOtherDt4().getTime());
+        cv.put(Zp02DBConstants.bscMatOamfId1, biospecimenCollection.getBscMatOamfId1());
+        cv.put(Zp02DBConstants.bscMatOamfTm1, biospecimenCollection.getBscMatOamfTm1());
+        cv.put(Zp02DBConstants.bscMatOamfId2, biospecimenCollection.getBscMatOamfId2());
+        cv.put(Zp02DBConstants.bscMatOamfTm2, biospecimenCollection.getBscMatOamfTm2());
+        cv.put(Zp02DBConstants.bscMatOtherId1, biospecimenCollection.getBscMatOtherId1());
+        cv.put(Zp02DBConstants.bscMatOtherTm1, biospecimenCollection.getBscMatOtherTm1());
+        cv.put(Zp02DBConstants.bscMatOtherId2, biospecimenCollection.getBscMatOtherId2());
+        cv.put(Zp02DBConstants.bscMatOtherTm2, biospecimenCollection.getBscMatOtherTm2());
+        cv.put(Zp02DBConstants.bscMatOtherId3, biospecimenCollection.getBscMatOtherId3());
+        cv.put(Zp02DBConstants.bscMatOtherTm3, biospecimenCollection.getBscMatOtherTm3());
+        cv.put(Zp02DBConstants.bscMatOtherId4, biospecimenCollection.getBscMatOtherId4());
+        cv.put(Zp02DBConstants.bscMatOtherTm4, biospecimenCollection.getBscMatOtherTm4());
+        cv.put(Zp02DBConstants.bscMatOtherTyp2, biospecimenCollection.getBscMatOtherTyp2());
+        cv.put(Zp02DBConstants.bscMatOtherTyp3, biospecimenCollection.getBscMatOtherTyp3());
+        cv.put(Zp02DBConstants.bscMatOtherTyp4, biospecimenCollection.getBscMatOtherTyp4());
+
 
         cv.put(Zp02DBConstants.bscPerson1, biospecimenCollection.getBscPerson1());
         if (biospecimenCollection.getBscCompleteDate1()!=null)cv.put(Zp02DBConstants.bscCompleteDate1, biospecimenCollection.getBscCompleteDate1().getTime());
@@ -308,6 +331,29 @@ public class Zp02BiospecimenCollectionHelper {
         biospecimenCollection.setDeviceid(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.DEVICE_ID)));
         if(cursorBC.getLong(cursorBC.getColumnIndex(MainDBConstants.TODAY))>0) biospecimenCollection.setToday(new Date(cursorBC.getLong(cursorBC.getColumnIndex(MainDBConstants.TODAY))));
 
+        //2.7
+        if (cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOamfDt1))>0) biospecimenCollection.setBscMatOamfDt1(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOamfDt1))));
+        if (cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOamfDt2))>0) biospecimenCollection.setBscMatOamfDt2(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOamfDt2))));
+        if (cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherDt1))>0) biospecimenCollection.setBscMatOtherDt1(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherDt1))));
+        if (cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherDt2))>0) biospecimenCollection.setBscMatOtherDt2(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherDt2))));
+        if (cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherDt3))>0) biospecimenCollection.setBscMatOtherDt3(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherDt3))));
+        if (cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherDt4))>0) biospecimenCollection.setBscMatOtherDt4(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherDt4))));
+        biospecimenCollection.setBscMatOamfId1(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOamfId1)));
+        biospecimenCollection.setBscMatOamfTm1(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOamfTm1)));
+        biospecimenCollection.setBscMatOamfId2(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOamfId2)));
+        biospecimenCollection.setBscMatOamfTm2(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOamfTm2)));
+        biospecimenCollection.setBscMatOtherId1(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherId1)));
+        biospecimenCollection.setBscMatOtherTm1(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherTm1)));
+        biospecimenCollection.setBscMatOtherId2(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherId2)));
+        biospecimenCollection.setBscMatOtherTm2(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherTm2)));
+        biospecimenCollection.setBscMatOtherId3(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherId3)));
+        biospecimenCollection.setBscMatOtherTm3(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherTm3)));
+        biospecimenCollection.setBscMatOtherId4(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherId4)));
+        biospecimenCollection.setBscMatOtherTm4(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherTm4)));
+        biospecimenCollection.setBscMatOtherTyp2(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherTyp2)));
+        biospecimenCollection.setBscMatOtherTyp3(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherTyp3)));
+        biospecimenCollection.setBscMatOtherTyp4(cursorBC.getString(cursorBC.getColumnIndex(Zp02DBConstants.bscMatOtherTyp4)));
+
         return biospecimenCollection;
     }
 
@@ -383,6 +429,11 @@ public class Zp02BiospecimenCollectionHelper {
         cv.put(MainDBConstants.PHONE_NUMBER, dInfantBiospecimenCollection.getPhonenumber());
         if (dInfantBiospecimenCollection.getToday() != null) cv.put(MainDBConstants.TODAY, dInfantBiospecimenCollection.getToday().getTime());
 
+        //v2.5
+        if (dInfantBiospecimenCollection.getInfantMatBldDt()!=null) cv.put(Zp02DBConstants.infantMatBldDt, dInfantBiospecimenCollection.getInfantMatBldDt().getTime());
+        if (dInfantBiospecimenCollection.getInfantMatSlvaDt()!=null) cv.put(Zp02DBConstants.infantMatSlvaDt, dInfantBiospecimenCollection.getInfantMatSlvaDt().getTime());
+        if (dInfantBiospecimenCollection.getInfantMatUrineDt()!=null) cv.put(Zp02DBConstants.infantMatUrineDt, dInfantBiospecimenCollection.getInfantMatUrineDt().getTime());
+
         return cv;
     }
 
@@ -456,6 +507,11 @@ public class Zp02BiospecimenCollectionHelper {
         dInfantBiospecimenCollection.setPhonenumber(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.PHONE_NUMBER)));
         dInfantBiospecimenCollection.setDeviceid(cursorBC.getString(cursorBC.getColumnIndex(MainDBConstants.DEVICE_ID)));
         if(cursorBC.getLong(cursorBC.getColumnIndex(MainDBConstants.TODAY))>0) dInfantBiospecimenCollection.setToday(new Date(cursorBC.getLong(cursorBC.getColumnIndex(MainDBConstants.TODAY))));
+
+        //v2.5
+        if(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldDt))>0) dInfantBiospecimenCollection.setInfantMatBldDt(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantMatBldDt))));
+        if(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantMatSlvaDt))>0) dInfantBiospecimenCollection.setInfantMatSlvaDt(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantMatSlvaDt))));
+        if(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantMatUrineDt))>0) dInfantBiospecimenCollection.setInfantMatUrineDt(new Date(cursorBC.getLong(cursorBC.getColumnIndex(Zp02DBConstants.infantMatUrineDt))));
 
         return dInfantBiospecimenCollection;
     }

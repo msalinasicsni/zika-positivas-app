@@ -262,6 +262,51 @@ public class Zp02BiospecimenCollectionXml{
     @Element(required=false)
     private Float addtHemoglobin;
 
+    //v2.7
+    @Element(required=false)
+    private String bscMatOamfId1;
+    @Element(required=false)
+    private Date bscMatOamfDt1;
+    @Element(required=false)
+    private String bscMatOamfTm1;
+    @Element(required=false)
+    private String bscMatOamfId2;
+    @Element(required=false)
+    private Date bscMatOamfDt2;
+    @Element(required=false)
+    private String bscMatOamfTm2;
+    @Element(required=false)
+    private String bscMatOtherId1;
+    @Element(required=false)
+    private Date bscMatOtherDt1;
+    @Element(required=false)
+    private String bscMatOtherTm1;
+    @Element(required=false)
+    private String bscMatOtherId2;
+    @Element(required=false)
+    private Date bscMatOtherDt2;
+    @Element(required=false)
+    private String bscMatOtherTm2;
+    @Element(required=false)
+    private String bscMatOtherId3;
+    @Element(required=false)
+    private Date bscMatOtherDt3;
+    @Element(required=false)
+    private String bscMatOtherTm3;
+    @Element(required=false)
+    private String bscMatOtherId4;
+    @Element(required=false)
+    private Date bscMatOtherDt4;
+    @Element(required=false)
+    private String bscMatOtherTm4;
+    @Element(required=false)
+    private String bscMatOtherTyp2;
+    @Element(required=false)
+    private String bscMatOtherTyp3;
+    @Element(required=false)
+    private String bscMatOtherTyp4;
+
+
     @Element(required=false)
     private String group1;
     @Element(required=false)
@@ -312,6 +357,24 @@ public class Zp02BiospecimenCollectionXml{
     private String group24;
     @Element(required=false)
     private String group25;
+
+    //v2.7
+    @Element(required=false)
+    private String group26;
+    @Element(required=false)
+    private String group27;
+    @Element(required=false)
+    private String group28;
+    @Element(required=false)
+    private String group29;
+    @Element(required=false)
+    private String group30;
+    @Element(required=false)
+    private String group31;
+    @Element(required=false)
+    private String group32;
+    @Element(required=false)
+    private String group33;
 
     @Element(required=false)
     private String note1;
@@ -369,6 +432,25 @@ public class Zp02BiospecimenCollectionXml{
     private String question21;
     @Element(required=false)
     private String question22;
+
+    //v2.7
+    @Element(required=false)
+    private String question23;
+    @Element(required=false)
+    private String question24;
+    @Element(required=false)
+    private String question25;
+    @Element(required=false)
+    private String question26;
+    @Element(required=false)
+    private String question27;
+    @Element(required=false)
+    private String question28;
+    @Element(required=false)
+    private String question29;
+    @Element(required=false)
+    private String question30;
+
     @Element(required=false)
     private String text1;
     @Element(required=false)
@@ -411,6 +493,22 @@ public class Zp02BiospecimenCollectionXml{
     private String text20;
     @Element(required=false)
     private String text21;
+
+    //v2.7
+    @Element(required=false)
+    private String text22;
+    @Element(required=false)
+    private String text23;
+    @Element(required=false)
+    private String text24;
+    @Element(required=false)
+    private String text25;
+    @Element(required=false)
+    private String text26;
+    @Element(required=false)
+    private String text27;
+
+
     @Element(required=false)
     private String barcode1;
     @Element(required=false)
@@ -453,6 +551,20 @@ public class Zp02BiospecimenCollectionXml{
     private String barcode20;
     @Element(required=false)
     private String barcode21;
+
+    //v2.7
+    @Element(required=false)
+    private String barcode22;
+    @Element(required=false)
+    private String barcode23;
+    @Element(required=false)
+    private String barcode24;
+    @Element(required=false)
+    private String barcode25;
+    @Element(required=false)
+    private String barcode26;
+    @Element(required=false)
+    private String barcode27;
 
     @Attribute
     private String id;
@@ -1411,6 +1523,98 @@ public class Zp02BiospecimenCollectionXml{
 	public String getBarcode21() {
 		return barcode21;
 	}
+
+    public String getQuestion24() {
+        return question24;
+    }
+
+    public String getQuestion26() {
+        return question26;
+    }
+
+    public String getBscMatOamfId1() {
+        return bscMatOamfId1;
+    }
+
+    public Date getBscMatOamfDt1() {
+        return bscMatOamfDt1;
+    }
+
+    public String getBscMatOamfTm1() {
+        return bscMatOamfTm1;
+    }
+
+    public String getBscMatOamfId2() {
+        return bscMatOamfId2;
+    }
+
+    public Date getBscMatOamfDt2() {
+        return bscMatOamfDt2;
+    }
+
+    public String getBscMatOamfTm2() {
+        return bscMatOamfTm2;
+    }
+
+    public String getBscMatOtherId1() {
+        return bscMatOtherId1;
+    }
+
+    public Date getBscMatOtherDt1() {
+        return bscMatOtherDt1;
+    }
+
+    public String getBscMatOtherTm1() {
+        return bscMatOtherTm1;
+    }
+
+    public String getBscMatOtherId2() {
+        return bscMatOtherId2;
+    }
+
+    public Date getBscMatOtherDt2() {
+        return bscMatOtherDt2;
+    }
+
+    public String getBscMatOtherTm2() {
+        return bscMatOtherTm2;
+    }
+
+    public String getBscMatOtherId3() {
+        return bscMatOtherId3;
+    }
+
+    public Date getBscMatOtherDt3() {
+        return bscMatOtherDt3;
+    }
+
+    public String getBscMatOtherTm3() {
+        return bscMatOtherTm3;
+    }
+
+    public String getBscMatOtherId4() {
+        return bscMatOtherId4;
+    }
+
+    public Date getBscMatOtherDt4() {
+        return bscMatOtherDt4;
+    }
+
+    public String getBscMatOtherTm4() {
+        return bscMatOtherTm4;
+    }
+
+    public String getBscMatOtherTyp2() {
+        return bscMatOtherTyp2;
+    }
+
+    public String getBscMatOtherTyp3() {
+        return bscMatOtherTyp3;
+    }
+
+    public String getBscMatOtherTyp4() {
+        return bscMatOtherTyp4;
+    }
 
     public String getVersion() {
         return version;

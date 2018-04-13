@@ -56,7 +56,7 @@ public class NewZp07InfantAssessmentVisitActivity extends AbstractAsyncActivity 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (!FileUtils.storageReady()) {
-            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.error, R.string.storage_error),Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.error) + "," + getString(R.string.storage_error),Toast.LENGTH_LONG);
             toast.show();
             finish();
         }
@@ -292,7 +292,7 @@ public class NewZp07InfantAssessmentVisitActivity extends AbstractAsyncActivity 
             mInfantAssessment.setInfantBreastReason(zp07Xml.getInfantBreastReason());
             mInfantAssessment.setInfantBreastOther(zp07Xml.getInfantBreastOther());
             mInfantAssessment.setInfantNeurodeve(zp07Xml.getInfantNeurodeve());
-            mInfantAssessment.setInfantExhibited(zp07Xml.getInfantExhibited());
+         //   mInfantAssessment.setInfantExhibited(zp07Xml.getInfantExhibited()); no utilizado v2.5
             mInfantAssessment.setInfantAsymType(zp07Xml.getInfantAsymType());
             mInfantAssessment.setInfantOtherMove(zp07Xml.getInfantOtherMove());
             mInfantAssessment.setInfantExhibitOther(zp07Xml.getInfantExhibitOther());
@@ -404,7 +404,23 @@ public class NewZp07InfantAssessmentVisitActivity extends AbstractAsyncActivity 
             mInfantAssessment.setPhonenumber(zp07Xml.getPhonenumber());
             mInfantAssessment.setToday(zp07Xml.getToday());
 
-
+            //v2.5
+            mInfantAssessment.setInfantNeuroDt(zp07Xml.getInfantNeuroDt());
+            mInfantAssessment.setInfantHearDt(zp07Xml.getInfantHearDt());
+            mInfantAssessment.setInfantExhibited1(zp07Xml.getInfantExhibited1());
+            mInfantAssessment.setInfantExhibited2(zp07Xml.getInfantExhibited2());
+            mInfantAssessment.setInfantExhibited3(zp07Xml.getInfantExhibited3());
+            mInfantAssessment.setInfantExhibited4(zp07Xml.getInfantExhibited4());
+            mInfantAssessment.setInfantExhibited5(zp07Xml.getInfantExhibited5());
+            mInfantAssessment.setInfantExhibited6(zp07Xml.getInfantExhibited6());
+            mInfantAssessment.setInfantExhibited7(zp07Xml.getInfantExhibited7());
+            mInfantAssessment.setInfantExhibited8(zp07Xml.getInfantExhibited8());
+            mInfantAssessment.setInfantExhibited9(zp07Xml.getInfantExhibited9());
+            mInfantAssessment.setInfantExhibited10(zp07Xml.getInfantExhibited10());
+            mInfantAssessment.setInfantExhibited11(zp07Xml.getInfantExhibited11());
+            mInfantAssessment.setInfantExhibited12(zp07Xml.getInfantExhibited12());
+            mInfantAssessment.setInfantExhibited13(zp07Xml.getInfantExhibited13());
+            mInfantAssessment.setInfantExhibited14(zp07Xml.getInfantExhibited14());
 
             new SaveDataTask().execute(accion);
 
@@ -434,9 +450,13 @@ public class NewZp07InfantAssessmentVisitActivity extends AbstractAsyncActivity 
                 try {
                     zikaPos.open();
                     if (accionaRealizar == ADD_ZP07_ODK){
+                        mInfantAssessment.setPart1(1);
                         zikaPos.crearZp07InfantAssessmentVisit(mInfantAssessment);
+
+
                     }
                     else{
+                        mInfantAssessment.setPart1(2);
                         zikaPos.editarZp07InfantAssessmentVisit(mInfantAssessment);
                     }
                     zikaPos.close();

@@ -138,6 +138,29 @@ public class Zp02DBConstants {
     public static final String addtHematocrit = "addtHematocrit";
     public static final String addtHemoglobin = "addtHemoglobin";
 
+    //v2.7
+    public static final String bscMatOamfId1 = "bscMatOamfId1";
+    public static final String bscMatOamfDt1 = "bscMatOamfDt1";
+    public static final String bscMatOamfTm1 = "bscMatOamfTm1";
+    public static final String bscMatOamfId2 = "bscMatOamfId2";
+    public static final String bscMatOamfDt2 = "bscMatOamfDt2";
+    public static final String bscMatOamfTm2 = "bscMatOamfTm2";
+    public static final String bscMatOtherId1 = "bscMatOtherId1";
+    public static final String bscMatOtherDt1 = "bscMatOtherDt1";
+    public static final String bscMatOtherTm1 = "bscMatOtherTm1";
+    public static final String bscMatOtherId2 = "bscMatOtherId2";
+    public static final String bscMatOtherDt2 = "bscMatOtherDt2";
+    public static final String bscMatOtherTm2 = "bscMatOtherTm2";
+    public static final String bscMatOtherId3 = "bscMatOtherId3";
+    public static final String bscMatOtherDt3 = "bscMatOtherDt3";
+    public static final String bscMatOtherTm3 = "bscMatOtherTm3";
+    public static final String bscMatOtherId4 = "bscMatOtherId4";
+    public static final String bscMatOtherDt4 = "bscMatOtherDt4";
+    public static final String bscMatOtherTm4 = "bscMatOtherTm4";
+    public static final String bscMatOtherTyp2 = "bscMatOtherTyp2";
+    public static final String bscMatOtherTyp3 = "bscMatOtherTyp3";
+    public static final String bscMatOtherTyp4 = "bscMatOtherTyp4";
+
     //Crear tabla Zp02BiospecimenCollection
     public static final String CREATE_BIOCOLLECTION_TABLE = "create table if not exists "
             + BIOCOLLECTION_TABLE + " ("
@@ -268,6 +291,27 @@ public class Zp02DBConstants {
             + addtAnemiaTestAv + " text, "
             + addtHematocrit + " real, "
             + addtHemoglobin + " real, "
+            + bscMatOamfDt1 + " date, "
+            + bscMatOamfDt2 + " date, "
+            + bscMatOtherDt1 + " date, "
+            + bscMatOtherDt2 + " date, "
+            + bscMatOtherDt3  + " date, "
+            + bscMatOtherDt4 + " date, "
+            + bscMatOamfId1 + " text, "
+            + bscMatOamfTm1 + " text, "
+            + bscMatOamfId2 + " text, "
+            + bscMatOamfTm2 + " text, "
+            + bscMatOtherId1 + " text, "
+            + bscMatOtherTm1 + " text, "
+            + bscMatOtherId2 + " text, "
+            + bscMatOtherTm2 + " text, "
+            + bscMatOtherId3 + " text, "
+            + bscMatOtherTm3 + " text, "
+            + bscMatOtherId4 + " text, "
+            + bscMatOtherTm4 + " text, "
+            + bscMatOtherTyp2 + " text, "
+            + bscMatOtherTyp3 + " text, "
+            + bscMatOtherTyp4 + " text, "
             + MainDBConstants.recordDate + " date, "
             + MainDBConstants.recordUser + " text, "
             + MainDBConstants.pasive + " text, "
@@ -339,6 +383,11 @@ public class Zp02DBConstants {
     public static final String infantPerson3 = "infantPerson3";
     public static final String infantCompleteDate3 = "infantCompleteDate3";
 
+    //v2.5
+    public static final String infantMatBldDt = "infantMatBldDt";
+    public static final String infantMatSlvaDt = "infantMatSlvaDt";
+    public static final String infantMatUrineDt = "infantMatUrineDt";
+
     //Crear tabla Zp02dInfantBiospecimenCollection
     public static final String CREATE_INFANTBIOCOLLECTION_TABLE = "create table if not exists "
             + INFANT_BIOCOLLECTION_TABLE + " ("
@@ -396,6 +445,9 @@ public class Zp02DBConstants {
             + infantCompleteDate2 + " date, "
             + infantPerson3 + " text, "
             + infantCompleteDate3 + " date, "
+            + infantMatBldDt + " date, "
+            + infantMatSlvaDt + " date, "
+            + infantMatUrineDt + " date, "
             + MainDBConstants.recordDate + " date, "
             + MainDBConstants.recordUser + " text, "
             + MainDBConstants.pasive + " text, "

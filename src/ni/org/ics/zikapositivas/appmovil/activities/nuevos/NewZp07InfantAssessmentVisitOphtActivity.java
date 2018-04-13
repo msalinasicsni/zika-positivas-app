@@ -56,7 +56,7 @@ public class NewZp07InfantAssessmentVisitOphtActivity extends AbstractAsyncActiv
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (!FileUtils.storageReady()) {
-            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.error, R.string.storage_error),Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.error) + "," + getString(R.string.storage_error),Toast.LENGTH_LONG);
             toast.show();
             finish();
         }
@@ -280,6 +280,7 @@ public class NewZp07InfantAssessmentVisitOphtActivity extends AbstractAsyncActiv
             mInfantAssessment.setInfantOrganEvalu(zp07Xml.getInfantOrganEvalu());
             mInfantAssessment.setInfantAbdominal(zp07Xml.getInfantAbdominal());
             mInfantAssessment.setInfantLiverSpleen(zp07Xml.getInfantLiverSpleen());*/
+            mInfantAssessment.setInfantOpDt(zp07Xml.getInfantOpDt());
             mInfantAssessment.setInfantOphth(zp07Xml.getInfantOphth());
             mInfantAssessment.setInfantOphthType(zp07Xml.getInfantOphthType());
             mInfantAssessment.setInfantOphthAbno(zp07Xml.getInfantOphthAbno());
@@ -432,9 +433,11 @@ public class NewZp07InfantAssessmentVisitOphtActivity extends AbstractAsyncActiv
                 try {
                     zikaPos.open();
                     if (accionaRealizar == ADD_ZP07_ODK){
+                        mInfantAssessment.setPart2(1);
                         zikaPos.crearZp07InfantAssessmentVisit(mInfantAssessment);
                     }
                     else{
+                        mInfantAssessment.setPart2(2);
                         zikaPos.editarZp07InfantAssessmentVisit(mInfantAssessment);
                     }
                     zikaPos.close();

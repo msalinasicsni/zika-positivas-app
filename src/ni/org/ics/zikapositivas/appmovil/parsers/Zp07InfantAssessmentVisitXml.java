@@ -107,8 +107,8 @@ public class Zp07InfantAssessmentVisitXml {
     private String infantBreastOther;
     @Element(required=false)
     private String infantNeurodeve;
-    @Element(required=false)
-    private String infantExhibited; //multiple
+  /*  @Element(required=false)
+    private String infantExhibited; //multiple  no utilizado en v2.5 */
     @Element(required=false)
     private String infantAsymType;
     @Element(required=false)
@@ -336,6 +336,44 @@ public class Zp07InfantAssessmentVisitXml {
     @Element(required=false)
     private Integer idInstancia3;
 
+    //v2.5
+    @Element(required=false)
+    private Date infantHearDt; //version 2.5
+    @Element(required=false)
+    private Date infantNeuroDt; //version 2.5
+    @Element(required=false)
+    private String infantExhibited1; //version 2.5
+    @Element(required=false)
+    private String infantExhibited2; //version 2.5
+    @Element(required=false)
+    private String infantExhibited3; //version 2.5
+    @Element(required=false)
+    private String infantExhibited4; //version 2.5
+    @Element(required=false)
+    private String infantExhibited5; //version 2.5
+    @Element(required=false)
+    private String infantExhibited6; //version 2.5
+    @Element(required=false)
+    private String infantExhibited7; //version 2.5
+    @Element(required=false)
+    private String infantExhibited8; //version 2.5
+    @Element(required=false)
+    private String infantExhibited9; //version 2.5
+    @Element(required=false)
+    private String infantExhibited10; //version 2.5
+    @Element(required=false)
+    private String infantExhibited11; //version 2.5
+    @Element(required=false)
+    private String infantExhibited12; //version 2.5
+    @Element(required=false)
+    private String infantExhibited13; //version 2.5
+    @Element(required=false)
+    private String infantExhibited14; //version 2.5
+    @Element(required=false)
+    private Date infantNedeveDt;  //version 2.5
+    @Element(required=false)
+    private Date infantOpDt; //version 2.5
+
 
     @Element(required=false)
     private String group1;
@@ -381,6 +419,10 @@ public class Zp07InfantAssessmentVisitXml {
     private String group21;
     @Element(required=false)
     private String group22;
+
+    //v2.5
+    @Element(required=false)
+    private String group24;
 
 
     @Element(required=false)
@@ -594,9 +636,9 @@ public class Zp07InfantAssessmentVisitXml {
         return infantNeurodeve;
     }
 
-    public String getInfantExhibited() {
+  /*  public String getInfantExhibited() {
         return infantExhibited;
-    }
+    }*/
 
     public String getInfantFurtherNeuro() {
         return infantFurtherNeuro;
@@ -1309,5 +1351,77 @@ public class Zp07InfantAssessmentVisitXml {
     }
     public void setToday(Date today) {
         this.today = today;
+    }
+
+    public Date getInfantHearDt() {
+        return infantHearDt;
+    }
+
+    public Date getInfantNeuroDt() {
+        return infantNeuroDt;
+    }
+
+    public String getInfantExhibited1() {
+        return infantExhibited1;
+    }
+
+    public String getInfantExhibited2() {
+        return infantExhibited2;
+    }
+
+    public String getInfantExhibited3() {
+        return infantExhibited3;
+    }
+
+    public String getInfantExhibited4() {
+        return infantExhibited4;
+    }
+
+    public String getInfantExhibited5() {
+        return infantExhibited5;
+    }
+
+    public String getInfantExhibited6() {
+        return infantExhibited6;
+    }
+
+    public String getInfantExhibited7() {
+        return infantExhibited7;
+    }
+
+    public String getInfantExhibited8() {
+        return infantExhibited8;
+    }
+
+    public String getInfantExhibited9() {
+        return infantExhibited9;
+    }
+
+    public String getInfantExhibited10() {
+        return infantExhibited10;
+    }
+
+    public String getInfantExhibited11() {
+        return infantExhibited11;
+    }
+
+    public String getInfantExhibited12() {
+        return infantExhibited12;
+    }
+
+    public String getInfantExhibited13() {
+        return infantExhibited13;
+    }
+
+    public String getInfantExhibited14() {
+        return infantExhibited14;
+    }
+
+    public Date getInfantNedeveDt() {
+        return infantNedeveDt;
+    }
+
+    public Date getInfantOpDt() {
+        return infantOpDt;
     }
 }

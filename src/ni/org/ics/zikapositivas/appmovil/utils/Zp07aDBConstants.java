@@ -36,6 +36,37 @@ public class Zp07aDBConstants {
     public static final String infantEyidEntry = "infantEyidEntry" ;
     public static final String infantEydtEnt = "infantEydtEnt" ;
 
+    //v2.6
+    public static final String infantMicrocep = "infantMicrocep";
+    public static final String infantCongCataract = "infantCongCataract";
+    public static final String infantGlaucoma = "infantGlaucoma";
+    public static final String infantMyopia = "infantMyopia";
+    public static final String infantBlindness = "infantBlindness";
+    public static final String infantOtherDisease = "infantOtherDisease";
+    public static final String infantOtherSpecify = "infantOtherSpecify";
+    public static final String infantGestAge = "infantGestAge";
+    public static final String infantLight = "infantLight";
+    public static final String infantFixFollow = "infantFixFollow";
+    public static final String infantFacialExpression = "infantFacialExpression";
+    public static final String infantSmile = "infantSmile";
+    public static final String infantPtosis = "infantPtosis";
+    public static final String infantCataract = "infantCataract";
+    public static final String infantOtherLens = "infantOtherLens";
+    public static final String infantLenOhterSpec = "infantLenOhterSpec";
+    public static final String infantNystagmus = "infantNystagmus";
+    public static final String infantIntraPress = "infantIntraPress";
+    public static final String infantTonoLeft = "infantTonoLeft";
+    public static final String infantTonoRight = "infantTonoRight";
+    public static final String infantFocalSpecify = "infantFocalSpecify";
+    public static final String infantAbnoVascu = "infantAbnoVascu";
+    public static final String infantFovealLoss = "infantFovealLoss";
+    public static final String infantRetinaColoboma = "infantRetinaColoboma";
+    public static final String infantAtrophy = "infantAtrophy";
+    public static final String infantColoboma = "infantColoboma";
+    public static final String infantDiscLeft = "infantDiscLeft";
+    public static final String infantDiscRight = "infantDiscRight";
+    public static final String infantHypoplasia = "infantHypoplasia";
+
     //Crear tabla Zp07aInfantOphtResults
     public static final String CREATE_AINFANT_OPHTRESULTS_TABLE = "create table if not exists "
             + AINFANT_OPHTRESULTS_TABLE + " ("
@@ -65,8 +96,35 @@ public class Zp07aDBConstants {
             + infantEydtRevi + " date, "
             + infantEyidEntry + " text, "
             + infantEydtEnt + " date, "
-
-
+            + infantMicrocep + " text, "
+            + infantCongCataract + " text, "
+            + infantGlaucoma + " text, "
+            + infantMyopia + " text, "
+            + infantBlindness + " text, "
+            + infantOtherDisease + " text, "
+            + infantOtherSpecify + " text, "
+            + infantGestAge + " real, "
+            + infantLight + " text, "
+            + infantFixFollow + " text, "
+            + infantFacialExpression + " text, "
+            + infantSmile + " text, "
+            + infantPtosis + " text, "
+            + infantCataract + " text, "
+            + infantOtherLens + " text, "
+            + infantLenOhterSpec + " text, "
+            + infantNystagmus + " text, "
+            + infantIntraPress + " text, "
+            + infantTonoLeft + " integer, "
+            + infantTonoRight + " integer, "
+            + infantFocalSpecify + " text, "
+            + infantAbnoVascu + " text, "
+            + infantFovealLoss + " text, "
+            + infantRetinaColoboma + " text, "
+            + infantAtrophy + " text, "
+            + infantColoboma + " text, "
+            + infantDiscLeft + " real, "
+            + infantDiscRight + " real, "
+            + infantHypoplasia + " text, "
             + MainDBConstants.recordDate + " date, "
             + MainDBConstants.recordUser + " text, "
             + MainDBConstants.pasive + " text, "

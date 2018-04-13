@@ -349,6 +349,29 @@ public class NewZp02BiospecimenCollectionActivity extends AbstractAsyncActivity 
             mZp02.setAddtHemoglobin(zp02Xml.getAddtHemoglobin());
             //Termina version 2
 
+            //v2.7
+            mZp02.setBscMatOamfId1(zp02Xml.getBscMatOamfId1());
+            mZp02.setBscMatOamfDt1(zp02Xml.getBscMatOamfDt1());
+            mZp02.setBscMatOamfTm1(zp02Xml.getBscMatOamfTm1());
+            mZp02.setBscMatOamfId2(zp02Xml.getBscMatOamfId2());
+            mZp02.setBscMatOamfDt2(zp02Xml.getBscMatOamfDt2());
+            mZp02.setBscMatOamfTm2(zp02Xml.getBscMatOamfTm2());
+            mZp02.setBscMatOtherId1(zp02Xml.getBscMatOtherId1());
+            mZp02.setBscMatOtherDt1(zp02Xml.getBscMatOtherDt1());
+            mZp02.setBscMatOtherTm1(zp02Xml.getBscMatOtherTm1());
+            mZp02.setBscMatOtherId2(zp02Xml.getBscMatOtherId2());
+            mZp02.setBscMatOtherDt2(zp02Xml.getBscMatOtherDt2());
+            mZp02.setBscMatOtherTm2(zp02Xml.getBscMatOtherTm2());
+            mZp02.setBscMatOtherId3(zp02Xml.getBscMatOtherId3());
+            mZp02.setBscMatOtherDt3(zp02Xml.getBscMatOtherDt3());
+            mZp02.setBscMatOtherTm3(zp02Xml.getBscMatOtherTm3());
+            mZp02.setBscMatOtherId4(zp02Xml.getBscMatOtherId4());
+            mZp02.setBscMatOtherDt4(zp02Xml.getBscMatOtherDt4());
+            mZp02.setBscMatOtherTm4(zp02Xml.getBscMatOtherTm4());
+            mZp02.setBscMatOtherTyp2(zp02Xml.getBscMatOtherTyp2());
+            mZp02.setBscMatOtherTyp3(zp02Xml.getBscMatOtherTyp3());
+            mZp02.setBscMatOtherTyp4(zp02Xml.getBscMatOtherTyp4());
+
             mZp02.setRecordDate(new Date());
             mZp02.setRecordUser(username);
             mZp02.setIdInstancia(idInstancia);
@@ -579,6 +602,64 @@ public class NewZp02BiospecimenCollectionActivity extends AbstractAsyncActivity 
 
                     if (msj != null) {
                         showToast(msj);
+                    }
+                }
+
+                //other amniotic fluid
+                Integer amnt;
+                String numOamfMx = zp02Xml.getQuestion24() ;
+                if (numOamfMx != null) {
+                    amnt = Integer.parseInt(numOamfMx);
+                    for (int i = 1; i <= amnt; i++) {
+                        String otherAmfId = null;
+                        switch (i) {
+                            case 1:
+                                otherAmfId = mZp02.getBscMatOamfId1();
+                                break;
+                            case 2:
+                                otherAmfId = mZp02.getBscMatOamfId2();
+                                break;
+                        }
+
+                        if (otherAmfId != null) {
+                            //validate codes
+                            msj = validateCodes(codEvent, otherAmfId);
+                        }
+                        if (msj != null) {
+                            showToast(msj);
+                        }
+                    }
+                }
+
+                //other mx
+                Integer amnt2;
+                String numOtherMx = zp02Xml.getQuestion26() ;
+                if (numOtherMx != null) {
+                    amnt2 = Integer.parseInt(numOtherMx);
+                    for (int i = 1; i <= amnt2; i++) {
+                        String otherMxId = null;
+                        switch (i) {
+                            case 1:
+                                otherMxId = mZp02.getBscMatOtherId1();
+                                break;
+                            case 2:
+                                otherMxId = mZp02.getBscMatOtherId2();
+                                break;
+                            case 3:
+                                otherMxId = mZp02.getBscMatOtherId3();
+                                break;
+                            case 4:
+                                otherMxId = mZp02.getBscMatOtherId4();
+                                break;
+                        }
+
+                        if (otherMxId != null) {
+                            //validate codes
+                            msj = validateCodes(codEvent, otherMxId);
+                        }
+                        if (msj != null) {
+                            showToast(msj);
+                        }
                     }
                 }
 
