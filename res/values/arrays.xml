@@ -192,8 +192,10 @@
         <!--<item>Carmen Gisselle Arauz</item>-->
         <item>Fabio Marchena</item>
         <item>Oscar Ortega</item>
-        <item>Joxiry Rios</item>
         <item>Yamileth Hernandez</item>
+        <item>Emile Ivan Olivieri</item>
+        <item>Joxiry Rios</item>
+
     </string-array>
     
    	<string-array name="list_personas_llegada_cons">
@@ -207,8 +209,10 @@
         <!--<item>Carmen Gisselle Arauz</item>-->
         <item>Fabio Marchena</item>
         <item>Oscar Ortega</item>
-        <item>Joxiry Rios</item>
         <item>Yamileth Hernandez</item>
+        <item>Emile Ivan Olivieri</item>
+        <item>Joxiry Rios</item>
+
     </string-array>   
     
    	<string-array name="list_personas_salida_us">
@@ -228,8 +232,10 @@
         <!--<item>Carmen Gisselle Arauz</item>-->
         <item>Fabio Marchena</item>
         <item>Oscar Ortega</item>
-        <item>Joxiry Rios</item>
         <item>Yamileth Hernandez</item>
+        <item>Emile Ivan Olivieri</item>
+        <item>Joxiry Rios</item>
+        <item></item>
     </string-array>
     
    	<string-array name="list_personas_llegada_us">
@@ -244,8 +250,10 @@
         <!--<item>Carmen Gisselle Arauz</item>-->
         <item>Fabio Marchena</item>
         <item>Oscar Ortega</item>
-        <item>Joxiry Rios</item>
         <item>Yamileth Hernandez</item>
+        <item>Emile Ivan Olivieri</item>
+        <item>Joxiry Rios</item>
+
     </string-array>
     
     <string-array name="list_lugares_salida">
