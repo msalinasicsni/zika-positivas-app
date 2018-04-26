@@ -30,6 +30,13 @@ public class Zp08StudyExit extends BaseMetaData{
     private String extIdDataEntry;
     private Date extDateEntered;
 
+    //v2.3
+    private String extReasonIneligi;
+    private String extIneigiOther;
+    private Date extDeathDt1;
+    private Date extDeathDt2;
+    private Date extDeathDt3;
+
 
     public String getRecordId() {
         return recordId;
@@ -177,5 +184,45 @@ public class Zp08StudyExit extends BaseMetaData{
 
     public void setExtDateEntered(Date extDateEntered) {
         this.extDateEntered = extDateEntered;
+    }
+
+    public String getExtReasonIneligi() {
+        return extReasonIneligi;
+    }
+
+    public void setExtReasonIneligi(String extReasonIneligi) {
+        this.extReasonIneligi = extReasonIneligi;
+    }
+
+    public String getExtIneigiOther() {
+        return extIneigiOther;
+    }
+
+    public void setExtIneigiOther(String extIneigiOther) {
+        this.extIneigiOther = extIneigiOther;
+    }
+
+    public Date getExtDeathDt1() {
+        return extDeathDt1;
+    }
+
+    public void setExtDeathDt1(Date extDeathDt1) {
+        this.extDeathDt1 = extDeathDt1;
+    }
+
+    public Date getExtDeathDt2() {
+        return extDeathDt2;
+    }
+
+    public void setExtDeathDt2(Date extDeathDt2) {
+        this.extDeathDt2 = extDeathDt2;
+    }
+
+    public Date getExtDeathDt3() {
+        return extDeathDt3;
+    }
+
+    public void setExtDeathDt3(Date extDeathDt3) {
+        this.extDeathDt3 = extDeathDt3;
     }
 }

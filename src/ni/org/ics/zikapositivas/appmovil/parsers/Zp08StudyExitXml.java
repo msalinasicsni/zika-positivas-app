@@ -76,6 +76,18 @@ public class Zp08StudyExitXml {
     @Attribute(required=false)
     private String version;
 
+    //v2.3
+    @Element(required=false)
+    private String extReasonIneligi; //v.2.3
+    @Element(required=false)
+    private String extIneigiOther; //v2.3
+    @Element(required=false)
+    private Date extDeathDt1; //v2.3
+    @Element(required=false)
+    private Date extDeathDt2; //v2.3
+    @Element(required=false)
+    private Date extDeathDt3; //v2.3
+
 
     public Date getExtStudyExitDate() {
         return extStudyExitDate;
@@ -143,6 +155,27 @@ public class Zp08StudyExitXml {
 
     public Date getExtDateEntered() {
         return extDateEntered;
+    }
+
+    //v2.3
+    public String getExtReasonIneligi() {
+        return extReasonIneligi;
+    }
+
+    public String getExtIneigiOther() {
+        return extIneigiOther;
+    }
+
+    public Date getExtDeathDt1() {
+        return extDeathDt1;
+    }
+
+    public Date getExtDeathDt2() {
+        return extDeathDt2;
+    }
+
+    public Date getExtDeathDt3() {
+        return extDeathDt3;
     }
 
     public String getId() {

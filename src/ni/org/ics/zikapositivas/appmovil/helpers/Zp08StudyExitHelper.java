@@ -50,6 +50,14 @@ public class Zp08StudyExitHelper {
         cv.put(MainDBConstants.PHONE_NUMBER, studyExit.getPhonenumber());
         if (studyExit.getToday() != null) cv.put(MainDBConstants.TODAY, studyExit.getToday().getTime());
 
+        //v2.3
+        if (studyExit.getExtDeathDt1() != null) cv.put(Zp08DBConstants.extDeathDt1, studyExit.getExtDeathDt1().getTime());
+        if (studyExit.getExtDeathDt2() != null) cv.put(Zp08DBConstants.extDeathDt2, studyExit.getExtDeathDt2().getTime());
+        if (studyExit.getExtDeathDt3() != null) cv.put(Zp08DBConstants.extDeathDt3, studyExit.getExtDeathDt3().getTime());
+        cv.put(Zp08DBConstants.extReasonIneligi, studyExit.getExtReasonIneligi());
+        cv.put(Zp08DBConstants.extIneigiOther, studyExit.getExtIneigiOther());
+
+
         return cv;
     }
 
@@ -88,6 +96,13 @@ public class Zp08StudyExitHelper {
         studyExit.setPhonenumber(cursor.getString(cursor.getColumnIndex(MainDBConstants.PHONE_NUMBER)));
         studyExit.setDeviceid(cursor.getString(cursor.getColumnIndex(MainDBConstants.DEVICE_ID)));
         if(cursor.getLong(cursor.getColumnIndex(MainDBConstants.TODAY))>0) studyExit.setToday(new Date(cursor.getLong(cursor.getColumnIndex(MainDBConstants.TODAY))));
+
+        //v2.3
+        if (cursor.getLong(cursor.getColumnIndex(Zp08DBConstants.extDeathDt1))>0) studyExit.setExtDeathDt1(new Date(cursor.getLong(cursor.getColumnIndex(Zp08DBConstants.extDeathDt1))));
+        if (cursor.getLong(cursor.getColumnIndex(Zp08DBConstants.extDeathDt2))>0) studyExit.setExtDeathDt2(new Date(cursor.getLong(cursor.getColumnIndex(Zp08DBConstants.extDeathDt2))));
+        if (cursor.getLong(cursor.getColumnIndex(Zp08DBConstants.extDeathDt3))>0) studyExit.setExtDeathDt3(new Date(cursor.getLong(cursor.getColumnIndex(Zp08DBConstants.extDeathDt3))));
+        studyExit.setExtReasonIneligi(cursor.getString(cursor.getColumnIndex(Zp08DBConstants.extReasonIneligi)));
+        studyExit.setExtIneigiOther(cursor.getString(cursor.getColumnIndex(Zp08DBConstants.extIneigiOther)));
 
         return studyExit;
     }

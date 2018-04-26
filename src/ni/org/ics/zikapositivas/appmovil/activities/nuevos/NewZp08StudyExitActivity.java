@@ -210,12 +210,12 @@ public class NewZp08StudyExitActivity  extends AbstractAsyncActivity {
             mExit.setExtTestResultsRcvd(zp08Xml.getExtTestResultsRcvd());
             mExit.setExtCounselingRcvd(zp08Xml.getExtCounselingRcvd());
             mExit.setExtComments(zp08Xml.getExtComments());
-            mExit.setExtIdCompleting(zp08Xml.getExtIdCompleting());
-            mExit.setExtDateCompleted(zp08Xml.getExtDateCompleted());
-            mExit.setExtIdReviewer(zp08Xml.getExtIdReviewer());
-            mExit.setExtDateReviewed(zp08Xml.getExtDateReviewed());
-            mExit.setExtIdDataEntry(zp08Xml.getExtIdDataEntry());
-            mExit.setExtDateEntered(zp08Xml.getExtDateEntered());
+            mExit.setExtIdCompleting(username);
+            mExit.setExtDateCompleted(new Date());
+            mExit.setExtIdReviewer(username);
+            mExit.setExtDateReviewed(new Date());
+            mExit.setExtIdDataEntry(username);
+            mExit.setExtDateEntered(new Date());
 
             mExit.setRecordDate(new Date());
             mExit.setRecordUser(username);
@@ -228,6 +228,14 @@ public class NewZp08StudyExitActivity  extends AbstractAsyncActivity {
             mExit.setSimserial(zp08Xml.getSimserial());
             mExit.setPhonenumber(zp08Xml.getPhonenumber());
             mExit.setToday(zp08Xml.getToday());
+
+            //v2.3
+            mExit.setExtDeathDt1(zp08Xml.getExtDeathDt1());
+            mExit.setExtDeathDt2(zp08Xml.getExtDeathDt2());
+            mExit.setExtDeathDt3(zp08Xml.getExtDeathDt3());
+            mExit.setExtReasonIneligi(zp08Xml.getExtReasonIneligi());
+            mExit.setExtIneigiOther(zp08Xml.getExtIneigiOther());
+
 
             new SaveDataTask().execute();
 
